@@ -15,6 +15,7 @@
 <link rel="canonical" href="https://rehabwheel.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Rehabwheel Inc.","url":"https://rehabwheel.com","description":"Developer of LegMaker, a wheelchair-first lower-limb motion platform.","brand":{"@type":"Brand","name":"LegMaker"}}</script>
 <script defer src="app.js"></script>
 </head>
 <body>
@@ -25,9 +26,9 @@
     <nav class="links">
       <a href="#legmaker">LegMaker</a><a href="technology.html">Technology</a><a href="#clinicians">Clinicians</a><a href="research.html">Research</a><a href="company.html">Company</a>
     </nav>
-    <a class="btn btn-sm" href="#demo">Request demo</a>
+    <a class="btn btn-sm desktop-cta" href="#demo">Request demo</a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
   </div>
-</header>
+<div class="mobile-nav" aria-hidden="true"><a href="#legmaker">LegMaker</a><a href="technology.html">Technology</a><a href="#clinicians">Clinicians</a><a href="research.html">Research</a><a href="company.html">Company</a><a class="btn" href="#demo">Request demo</a></div></header>
 
 <main id="top">
 <section class="announcement"><div class="wrap">Rehabwheel is building the next generation of wheelchair-integrated lower-limb motion. <a href="#demo">Connect with us <span>↗</span></a></div></section>
@@ -148,10 +149,11 @@
 </section>
 
 <section class="audiences"><div class="wrap audience-grid"><a href="#demo"><small>CLINICAL & RESEARCH</small><h3>Explore evaluation opportunities</h3><span>Start a conversation →</span></a><a href="#demo"><small>STRATEGIC PARTNERS</small><h3>Build the next generation with us</h3><span>Partner with Rehabwheel →</span></a></div></section>
+<section class="final-proof"><div class="wrap"><p class="eyebrow">THE PLATFORM</p><div class="final-proof-grid"><div><strong>01</strong><h3>Fits the workflow</h3><p>A product direction centered on the wheelchair and seated lower-limb movement.</p></div><div><strong>02</strong><h3>Configures the motion</h3><p>Passive, active and resistance-based modes within one product architecture.</p></div><div><strong>03</strong><h3>Connects the session</h3><p>A roadmap for readable metrics and connected patient/provider experiences.</p></div></div></div></section>
 <section id="demo" class="cta">
   <div class="wrap cta-inner">
     <div><p class="eyebrow">REHABWHEEL</p><h2>See LegMaker in motion.</h2><p>For research, clinical, partnership and product-development conversations.</p></div>
-    <a class="btn lightbtn" href="mailto:info@rehabwheel.com">Request a demo</a>
+    <div class="contact-actions"><a class="btn lightbtn" href="mailto:info@rehabwheel.com?subject=LegMaker%20Demo%20Request">Request a demo</a><span>info@rehabwheel.com</span></div>
   </div>
 </section>
 </main>
