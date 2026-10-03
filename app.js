@@ -1,7 +1,7 @@
 const progress=document.getElementById('progress');
-addEventListener('scroll',()=>{const h=document.documentElement;progress.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('show')}),{threshold:.1});
-document.querySelectorAll('.section-head,.cards article,.panel,.research-card,.patents>div,.journey-grid>div,.product-band-inner>*,.spec-grid>div,.clinical-grid>*,.audience-grid>*').forEach(el=>{el.classList.add('reveal');observer.observe(el)});
+if(progress)addEventListener('scroll',()=>{const h=document.documentElement,den=h.scrollHeight-h.clientHeight;progress.style.width=(den?Math.min(100,h.scrollTop/den*100):0)+'%'},{passive:true});
+const revealEls=document.querySelectorAll('.section-head,.cards article,.panel,.research-card,.patents>div,.journey-grid>div,.product-band-inner>*,.spec-grid>div,.clinical-grid>*,.audience-grid>*');
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){revealEls.forEach(el=>el.classList.add('show'));}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4%'});revealEls.forEach(el=>{el.classList.add('reveal');observer.observe(el)});}
 const modes={passive:{k:'MOTOR-ASSISTED',t:'Passive motion',c:'The system drives the pedal cycle to provide continuous lower-limb movement.',v:'Assist'},active:{k:'USER-DRIVEN',t:'Active motion',c:'The user drives the movement while the platform is designed to sense and track the session.',v:'Active'},resistance:{k:'ADJUSTABLE LOAD',t:'Resistance training',c:'Planned adjustable resistance supports progressively configured lower-limb exercise sessions.',v:'1–15'}};
 document.querySelectorAll('.mode-tab').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.mode-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');const m=modes[button.dataset.mode];document.getElementById('mode-kicker').textContent=m.k;document.getElementById('mode-title').textContent=m.t;document.getElementById('mode-copy').textContent=m.c;document.getElementById('mode-value').textContent=m.v;}));
 const header=document.querySelector('.site-header'),toggle=document.querySelector('.menu-toggle'),mobile=document.querySelector('.mobile-nav');
@@ -50,3 +50,6 @@ if(ai){
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){const p=document.getElementById("rwAiPanel");const l=document.getElementById("rwAiLaunch");if(p&&!p.hidden){p.hidden=true;l?.setAttribute("aria-expanded","false");l?.focus()}}});
 document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))rwAnalytics.track("lead_form_submit",{type:e.target.querySelector('[name="Inquiry type"]')?.value||"unknown"})});
+
+/* Current-page navigation semantics */
+(()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a,.mobile-nav a').forEach(a=>{const href=(a.getAttribute('href')||'').split('?')[0].split('#')[0];if(href===current)a.setAttribute('aria-current','page')})})();
