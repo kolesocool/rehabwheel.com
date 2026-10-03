@@ -509,3 +509,31 @@ a[href^="mailto:"],a[href^="tel:"]{overflow-wrap:anywhere}
  .rw-ai-launch{width:48px;padding:0;justify-content:center}
  .rw-ai-spark{background:transparent;color:#fff}
 }
+
+/* X10000 precision release — visual hierarchy, CWV-safe rendering, accessibility */
+:root{--rw-content:1240px;--rw-copy:720px;--rw-hairline:rgba(17,24,32,.09);--rw-elev:0 18px 55px rgba(17,24,32,.08)}
+body{min-height:100dvh}
+main{isolation:isolate}
+img{height:auto}
+.section,.prototype-gallery,.problem-story,.session-intel,.simulator,.spec-table-section{content-visibility:auto;contain-intrinsic-size:auto 800px}
+.hero,.page-hero,.product-hero{content-visibility:visible}
+.hero-copy,.page-hero>*,.product-hero>div{position:relative;z-index:1}
+.announcement{border-bottom:1px solid var(--rw-hairline)}
+.announcement a{font-weight:700;text-underline-offset:3px}
+.hero-note{max-width:620px}
+.hero-product figcaption{backdrop-filter:blur(2px)}
+.proof-strip{overflow-x:auto;scrollbar-width:none}
+.proof-strip::-webkit-scrollbar{display:none}
+.kpis div+div{border-left:1px solid var(--rw-hairline)}
+.section-head p,.page-hero>p:last-child{max-width:var(--rw-copy)}
+.cards article,.audience-grid>a,.prototype-card{transform:translateZ(0)}
+.cards article:focus-within,.audience-grid>a:focus-visible{box-shadow:0 0 0 3px rgba(17,24,32,.08),var(--rw-elev)}
+.team-photo{background:#edf0f2}
+.faq-list details{overflow:clip}
+.faq-list summary{list-style:none}
+.faq-list summary::-webkit-details-marker{display:none}
+.mobile-nav.open{max-height:calc(100dvh - 64px);overflow:auto;overscroll-behavior:contain}
+.skip-link:focus{z-index:2000}
+@media(max-width:820px){.kpis div+div{border-left:0}.kpis div:nth-child(even){border-left:1px solid var(--rw-hairline)}}
+@media(max-width:520px){.proof-strip{justify-content:flex-start!important;padding-inline:2px}.proof-strip>*{flex:0 0 auto}.hero-product figcaption{left:16px;right:16px}.cards article{padding:24px!important}}
+@media(prefers-contrast:more){.btn,.cards article,.audience-grid>a,.prototype-card{border-width:2px!important}.eyebrow{color:#414a55!important}}
