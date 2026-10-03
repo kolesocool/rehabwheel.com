@@ -40,3 +40,5 @@ html{scroll-padding-top:88px}body{font-synthesis:none;text-rendering:optimizeLeg
 
 /* Team photography — sourced from the Rehabmaker executive-team presentation */
 .team-photo{width:112px;height:112px;display:block;object-fit:cover;object-position:center 35%;border-radius:50%;margin:0 0 20px;border:1px solid rgba(15,23,42,.10);box-shadow:0 10px 30px rgba(15,23,42,.10);background:#eef2f6}.cards.team article{overflow:hidden}.cards.team article:hover .team-photo{transform:translateY(-2px);transition:transform .2s ease}@media(max-width:700px){.team-photo{width:96px;height:96px}}
+
+.linkedin-link{display:inline-flex;align-items:center;gap:4px;margin:2px 0 10px;font-size:.84rem;font-weight:700;letter-spacing:.01em;text-decoration:none}.linkedin-link:hover{text-decoration:underline;text-underline-offset:3px}
