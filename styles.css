@@ -548,3 +548,24 @@ img{height:auto}
 .btn,.rw-ai-launch,.menu-toggle{will-change:transform}.site-header{transition:box-shadow .2s ease,background .2s ease}.site-header.scrolled{background:rgba(255,255,255,.94)}
 .hero-product,.prototype-card,.cards article,.audience-grid>a{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 @media(hover:hover){.audience-grid>a:hover,.prototype-card:hover{transform:translateY(-3px);box-shadow:0 22px 58px rgba(17,24,32,.09);border-color:#d9dee3}}
+
+/* X10000 UI refinement — analytics-aware premium system */
+.rw-insights{max-height:min(720px,calc(100dvh - 32px));overflow:auto}
+.rw-insights-grid{grid-template-columns:repeat(4,1fr)}
+.rw-insights-grid div{min-height:86px;position:relative;overflow:hidden}
+.rw-insights-grid div:after{content:"";position:absolute;inset:auto 12px 9px;height:2px;border-radius:2px;background:linear-gradient(90deg,#111820,#aab3bc);opacity:.12}
+.rw-insights-grid strong{font-variant-numeric:tabular-nums}
+.rw-insights-head{position:sticky;top:0;z-index:2;background:rgba(255,255,255,.94);backdrop-filter:blur(18px)}
+.rw-insights-foot{position:sticky;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid #eef0f2}
+.hero-copy{max-width:760px}.hero .actions .btn{min-width:148px}
+.hero-product{border:1px solid rgba(17,24,32,.08)}
+.hero-product figcaption{background:linear-gradient(180deg,rgba(255,255,255,.93),rgba(255,255,255,.98))}
+.proof-strip b{letter-spacing:-.015em}
+.kpis strong{line-height:1}.kpis span{margin-top:7px}
+.mode-tab,.rw-ai-suggestions button{min-height:40px}
+.mode-tab:focus-visible,.rw-ai-suggestions button:focus-visible{outline:3px solid rgba(17,24,32,.15);outline-offset:2px}
+.prototype-card figcaption{min-height:92px}
+.prototype-card figcaption strong{letter-spacing:-.015em}
+.mobile-demo-cta{box-shadow:0 -10px 35px rgba(17,24,32,.08)}
+@media(max-width:900px){.rw-insights-grid{grid-template-columns:repeat(2,1fr)}.hero-copy{max-width:none}}
+@media(max-width:520px){.rw-insights{border-radius:22px}.rw-insights-grid div{min-height:78px}.rw-insights-grid strong{font-size:24px}.hero .actions{gap:9px}.hero .actions .btn{width:100%}}
