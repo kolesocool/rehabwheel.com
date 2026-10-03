@@ -70,7 +70,7 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
  const panel=document.createElement("aside");panel.className="rw-insights";panel.id="rwInsights";panel.hidden=true;panel.setAttribute("aria-label","Local analytics preview");
  panel.innerHTML='<div class="rw-insights-head"><div><small>FIRST-PARTY ANALYTICS</small><strong>Local insights</strong></div><button type="button" aria-label="Close analytics">×</button></div><div class="rw-insights-grid"></div><div class="rw-insights-foot"><span>Stored only in this browser</span><button type="button" data-clear>Clear local data</button></div>';
  document.body.appendChild(panel);
- const render=()=>{const x=summarize();panel.querySelector(".rw-insights-grid").innerHTML=[["Page views",x.pageViews],["Pages",x.pages],["Demo clicks",x.demos],["AI questions",x.aiQuestions],["Lead submits",x.leads],["Max scroll",x.maxScroll+"%"]].map(([k,v])=>'<div><strong>'+v+'</strong><span>'+k+'</span></div>').join("")};
+ const render=()=>{const x=A.summary();panel.querySelector(".rw-insights-grid").innerHTML=[["Page views",x.pageViews],["Pages",x.pages],["CTA clicks",x.ctaClicks||0],["Demo rate",(x.demoRate||0)+"%"],["Lead rate",(x.leadRate||0)+"%"],["AI use",(x.aiRate||0)+"%"],["Sections",x.engagedSections||0],["Max scroll",x.maxScroll+"%"]].map(([k,v])=>'<div><strong>'+v+'</strong><span>'+k+'</span></div>').join("")};
  panel.querySelector(".rw-insights-head button").onclick=()=>panel.hidden=true;
  panel.querySelector("[data-clear]").onclick=()=>{localStorage.removeItem("rw_analytics");A.queue.length=0;render();A.track("analytics_local_reset")};
  window.rwAnalytics.openDashboard=()=>{render();panel.hidden=false;A.track("analytics_dashboard_open")};
