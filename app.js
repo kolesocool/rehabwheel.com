@@ -53,3 +53,26 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
 
 /* Current-page navigation semantics */
 (()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a,.mobile-nav a').forEach(a=>{const href=(a.getAttribute('href')||'').split('?')[0].split('#')[0];if(href===current)a.setAttribute('aria-current','page')})})();
+
+/* Analytics console + richer conversion instrumentation */
+(()=> {
+ const A=window.rwAnalytics;if(!A)return;
+ const safeEvents=()=>{try{return JSON.parse(localStorage.getItem("rw_analytics")||"[]")}catch(e){return[]}};
+ const summarize=()=>{const ev=safeEvents(),count=n=>ev.filter(x=>x.name===n).length,pages=[...new Set(ev.filter(x=>x.name==="page_view").map(x=>x.path))];
+  return {events:ev.length,pageViews:count("page_view"),pages:pages.length,demos:count("demo_cta_click"),aiQuestions:count("ai_question"),leads:count("lead_form_submit"),outbound:count("outbound_click"),maxScroll:Math.max(0,...ev.filter(x=>x.name==="scroll_depth").map(x=>Number(x.data?.percent)||0))}};
+ window.rwAnalytics.summary=summarize;
+ document.addEventListener("click",e=>{const el=e.target.closest("button,[data-mode],[data-sim-mode],[data-inquiry],summary");if(!el)return;
+  if(el.matches(".mode-tab"))A.track("product_mode_interaction",{mode:el.dataset.mode});
+  else if(el.hasAttribute("data-sim-mode"))A.track("simulator_mode_interaction",{mode:el.dataset.simMode});
+  else if(el.hasAttribute("data-inquiry"))A.track("inquiry_type_select",{type:el.dataset.inquiry});
+  else if(el.tagName==="SUMMARY")A.track("faq_open",{question:el.textContent.trim().slice(0,120)});
+ });
+ const panel=document.createElement("aside");panel.className="rw-insights";panel.id="rwInsights";panel.hidden=true;panel.setAttribute("aria-label","Local analytics preview");
+ panel.innerHTML='<div class="rw-insights-head"><div><small>FIRST-PARTY ANALYTICS</small><strong>Local insights</strong></div><button type="button" aria-label="Close analytics">×</button></div><div class="rw-insights-grid"></div><div class="rw-insights-foot"><span>Stored only in this browser</span><button type="button" data-clear>Clear local data</button></div>';
+ document.body.appendChild(panel);
+ const render=()=>{const x=summarize();panel.querySelector(".rw-insights-grid").innerHTML=[["Page views",x.pageViews],["Pages",x.pages],["Demo clicks",x.demos],["AI questions",x.aiQuestions],["Lead submits",x.leads],["Max scroll",x.maxScroll+"%"]].map(([k,v])=>'<div><strong>'+v+'</strong><span>'+k+'</span></div>').join("")};
+ panel.querySelector(".rw-insights-head button").onclick=()=>panel.hidden=true;
+ panel.querySelector("[data-clear]").onclick=()=>{localStorage.removeItem("rw_analytics");A.queue.length=0;render();A.track("analytics_local_reset")};
+ window.rwAnalytics.openDashboard=()=>{render();panel.hidden=false;A.track("analytics_dashboard_open")};
+ if(new URLSearchParams(location.search).get("analytics")==="1")setTimeout(()=>window.rwAnalytics.openDashboard(),300);
+})();
