@@ -11,7 +11,10 @@ document.querySelectorAll('.attach-step').forEach(step=>step.addEventListener('c
 const rpm=document.querySelector('#rpm'),res=document.querySelector('#resistance'),dur=document.querySelector('#duration');if(rpm){const sync=()=>{document.querySelector('#rpmValue').textContent=rpm.value+' RPM';document.querySelector('#bigRpm').textContent=rpm.value;document.querySelector('#resValue').textContent=res.value+' / 15';document.querySelector('#resReadout').textContent=res.value;document.querySelector('#durationValue').textContent=dur.value+' min';document.querySelector('#durationReadout').textContent=dur.value+' min'};[rpm,res,dur].forEach(x=>x.addEventListener('input',sync));document.querySelectorAll('[data-sim-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-sim-mode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelector('#modeValue').textContent=b.dataset.simMode;}));sync();}
 document.querySelectorAll('[data-inquiry]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-inquiry]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const subject=btn.dataset.inquiry;const title=document.querySelector('#inquiryTitle'),email=document.querySelector('#inquiryEmail');if(title)title.textContent=subject;if(email)email.href='mailto:info@rehabwheel.com?subject='+encodeURIComponent(subject);}));
 /* Rehabwheel analytics + AI assistant */
-window.rwAnalytics=window.rwAnalytics||{queue:[],track:function(name,data={}){const event={name,data,path:location.pathname,ts:new Date().toISOString()};this.queue.push(event);try{const stored=JSON.parse(localStorage.getItem("rw_analytics")||"[]");stored.push(event);localStorage.setItem("rw_analytics",JSON.stringify(stored.slice(-100)));}catch(e){} window.dispatchEvent(new CustomEvent("rw:analytics",{detail:event}));}};
+window.rwAnalytics=window.rwAnalytics||{queue:[],session:crypto.randomUUID?crypto.randomUUID():String(Date.now()),track:function(name,data={}){const event={name,data,path:location.pathname,ts:new Date().toISOString(),session:this.session};this.queue.push(event);try{const stored=JSON.parse(localStorage.getItem("rw_analytics")||"[]");stored.push(event);localStorage.setItem("rw_analytics",JSON.stringify(stored.slice(-250)));}catch(e){} window.dispatchEvent(new CustomEvent("rw:analytics",{detail:event}));}};
+rwAnalytics.track("page_view",{title:document.title,referrer:document.referrer?new URL(document.referrer).hostname:"direct",viewport:innerWidth+"x"+innerHeight});
+let rwMaxScroll=0;addEventListener("scroll",()=>{const d=document.documentElement,p=Math.round((d.scrollTop/(d.scrollHeight-d.clientHeight))*100);[25,50,75,90].forEach(n=>{if(p>=n&&rwMaxScroll<n){rwMaxScroll=n;rwAnalytics.track("scroll_depth",{percent:n})}})},{passive:true});
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")rwAnalytics.track("page_exit",{seconds:Math.round(performance.now()/1000),maxScroll:rwMaxScroll})});
 document.addEventListener("click",e=>{
  const a=e.target.closest("a"); if(a){
   const href=a.getAttribute("href")||"";
@@ -24,7 +27,7 @@ document.addEventListener("click",e=>{
 const ai=document.getElementById("rehabwheelAI");
 if(ai){
  const launch=document.getElementById("rwAiLaunch"),panel=document.getElementById("rwAiPanel"),close=document.getElementById("rwAiClose"),form=document.getElementById("rwAiForm"),input=document.getElementById("rwAiInput"),msgs=document.getElementById("rwAiMessages");
- const toggle=open=>{panel.hidden=!open;launch.setAttribute("aria-expanded",String(open));if(open){rwAnalytics.track("ai_open");setTimeout(()=>input.focus(),50)}};
+ let aiTurns=0;const toggle=open=>{panel.hidden=!open;launch.setAttribute("aria-expanded",String(open));if(open){rwAnalytics.track("ai_open");setTimeout(()=>input.focus(),50)}};
  launch.onclick=()=>toggle(panel.hidden);close.onclick=()=>toggle(false);
  const add=(who,txt)=>{const d=document.createElement("div");d.className="rw-ai-msg "+who;d.innerHTML="<b>"+(who==="bot"?"AI Assistant":"You")+"</b><p></p>";d.querySelector("p").textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
  const localAnswer=q=>{const x=q.toLowerCase();
@@ -35,7 +38,7 @@ if(ai){
   if(x.includes("legmaker")||x.includes("what is")) return "LegMaker is Rehabwheel’s wheelchair-integrated lower-limb motion platform under development for assisted, active and resistance exercise, with connected session information in the roadmap.";
   return null;
  };
- const ask=async q=>{q=q.trim();if(!q)return;add("user",q);input.value="";rwAnalytics.track("ai_question",{length:q.length});
+ const ask=async q=>{q=q.trim();if(!q)return;aiTurns++;add("user",q);input.value="";rwAnalytics.track("ai_question",{length:q.length,turn:aiTurns});
   const local=localAnswer(q);if(local){setTimeout(()=>add("bot",local),180);return}
   const wait=add("bot","Thinking…");
   try{const r=await fetch("/api/assistant",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q,page:location.pathname})});if(!r.ok)throw new Error();const j=await r.json();wait.querySelector("p").textContent=j.answer||"I couldn't answer that question.";}
@@ -44,3 +47,6 @@ if(ai){
  form.addEventListener("submit",e=>{e.preventDefault();ask(input.value)});
  document.querySelectorAll("[data-ai-q]").forEach(b=>b.addEventListener("click",()=>ask(b.dataset.aiQ)));
 }
+
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){const p=document.getElementById("rwAiPanel");const l=document.getElementById("rwAiLaunch");if(p&&!p.hidden){p.hidden=true;l?.setAttribute("aria-expanded","false");l?.focus()}}});
+document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))rwAnalytics.track("lead_form_submit",{type:e.target.querySelector('[name="Inquiry type"]')?.value||"unknown"})});
