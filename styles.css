@@ -337,3 +337,56 @@ main{overflow:clip}
  .web-contact-form .form-submit{width:100%}
  .form-helper{text-align:center}
 }
+
+/* Rehabwheel UX100 — navigation, inner pages, documents, touch, consistency */
+.inner .site-header{position:sticky;top:0;z-index:900}
+.inner main>section:first-child{scroll-margin-top:92px}
+.inner h1{max-width:900px;text-wrap:balance}
+.inner .section-head h2,.inner h2{text-wrap:balance}
+.inner p{ text-wrap:pretty}
+.links a[href="legmaker.html"],.links a[href="technology.html"],.links a[href="research.html"],.links a[href="company.html"]{font-weight:550}
+.mobile-nav{box-shadow:0 18px 45px rgba(17,24,32,.10)}
+.mobile-nav a{min-height:50px;display:flex;align-items:center}
+.menu-toggle{border-radius:10px!important}
+.menu-toggle:active{transform:scale(.96)}
+.inner .contact-hero,.inner .product-hero{padding-top:clamp(64px,8vw,112px);padding-bottom:clamp(64px,8vw,112px)}
+.inner .section-head{max-width:800px}
+.inner .section-head h2{max-width:760px}
+.inner .section-head p{max-width:700px}
+.inner .cards article{border-radius:20px}
+.inner .cards article h3{line-height:1.15}
+.inner .cards article a{font-weight:600;text-underline-offset:3px}
+.inner .spec-table>div{gap:24px}
+.inner .spec-table b{text-align:right}
+.inner .disclosure{margin-top:0}
+.legal,.policy,.document,.legal-page{max-width:900px}
+.legal p,.policy p,.document p,.legal-page p{line-height:1.78}
+.legal li,.policy li,.document li,.legal-page li{line-height:1.7}
+.legal h2,.policy h2,.document h2,.legal-page h2{scroll-margin-top:110px}
+.footer{min-height:92px;gap:24px;align-items:center}
+.footer a{text-underline-offset:4px}
+.footer a:hover{text-decoration-thickness:2px}
+section[id]{scroll-margin-top:96px}
+summary{cursor:pointer}
+summary::-webkit-details-marker{display:none}
+.faq-list details[open]{background:#fafbfc}
+.faq-list details[open] summary span{transform:rotate(45deg)}
+.faq-list summary span{transition:transform .2s ease}
+button,input,select,textarea{font:inherit}
+button,.btn,.social-link,.menu-toggle,summary{touch-action:manipulation}
+::selection{background:#111820;color:#fff}
+@media(max-width:820px){
+ .desktop-cta,.links{display:none!important}
+ .menu-toggle{display:flex!important}
+ .inner .site-header{min-height:66px}
+ .inner main>section:first-child{scroll-margin-top:72px}
+ .footer{padding-bottom:24px}
+}
+@media(max-width:600px){
+ .inner .contact-hero,.inner .product-hero{padding-top:46px;padding-bottom:58px}
+ .inner h1{font-size:clamp(2.35rem,12vw,4rem);line-height:.98}
+ .inner .section-head h2{font-size:clamp(2rem,9vw,3rem)}
+ .inner .spec-table>div{grid-template-columns:1fr!important;gap:7px!important}
+ .inner .spec-table b{text-align:left}
+ .footer{flex-direction:column;align-items:flex-start!important}
+}
