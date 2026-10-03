@@ -180,3 +180,81 @@ footer{padding-bottom:max(28px,env(safe-area-inset-bottom))}
 .seo-pathways a{display:inline-flex;align-items:center;min-height:44px;font-size:.9rem;font-weight:600;color:#334155;text-decoration:none}
 .seo-pathways a:hover{color:#111827;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:600px){.seo-pathways{padding:32px 0}.seo-pathways nav{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px}}
+
+/* Rehabwheel UI System VNext — premium medical-tech */
+:root{
+ --rw-bg:#fff;--rw-soft:#f6f8fa;--rw-soft2:#eef2f5;--rw-ink:#111820;--rw-muted:#657180;
+ --rw-line:rgba(17,24,32,.09);--rw-line2:rgba(17,24,32,.14);--rw-accent:#d9232e;
+ --rw-shadow:0 18px 55px rgba(17,24,32,.07);--rw-shadow-hover:0 24px 70px rgba(17,24,32,.11);
+ --rw-ease:cubic-bezier(.2,.75,.25,1);
+}
+body{background:var(--rw-bg);color:var(--rw-ink)}
+.section{padding-block:clamp(76px,8vw,124px)}
+.section-head{max-width:780px;margin-bottom:clamp(30px,4vw,52px)}
+.section-head p:not(.eyebrow){max-width:680px;color:var(--rw-muted);font-size:clamp(1rem,1.35vw,1.15rem);line-height:1.68}
+.eyebrow{font-size:.72rem!important;font-weight:700!important;letter-spacing:.15em!important;color:#6d7785!important}
+.site-header{border-bottom:1px solid rgba(17,24,32,.07);background:rgba(255,255,255,.88)!important}
+.site-header .nav{max-width:1320px}
+.brand{font-weight:700!important;letter-spacing:-.02em;text-decoration:none!important}
+.site-header .brand .logo{box-shadow:none!important;border:1px solid rgba(17,24,32,.08)}
+.links a{position:relative;color:#4d5967!important;text-decoration:none!important}
+.links a:after{content:"";position:absolute;left:0;right:100%;bottom:6px;height:1.5px;background:var(--rw-ink);transition:right .25s var(--rw-ease)}
+.links a:hover{color:var(--rw-ink)!important}.links a:hover:after{right:0}
+.btn{border-radius:999px!important;padding-inline:21px!important;box-shadow:none!important;font-weight:650!important}
+.btn:not(.secondary):not(.lightbtn){background:#111820!important;color:#fff!important;border-color:#111820!important}
+.btn:not(.secondary):not(.lightbtn):hover{background:#27313c!important;transform:translateY(-1px)}
+.btn.secondary{background:#fff!important;border:1px solid var(--rw-line2)!important;color:var(--rw-ink)!important}
+.btn.secondary:hover{background:var(--rw-soft)!important}
+.hero{min-height:min(760px,82vh);align-items:center;gap:clamp(40px,7vw,100px);padding-block:clamp(76px,9vw,140px)}
+.hero-copy{max-width:820px}
+.hero h1{max-width:850px;margin-bottom:24px}
+.hero .lede{max-width:700px;color:#566270}
+.hero .actions{margin-top:30px}
+.trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px!important}
+.trust span{padding:7px 11px;border:1px solid var(--rw-line);border-radius:999px;background:#fff;font-size:.78rem;color:#596574}
+.hero-note{margin-top:14px;color:#7a8592;font-size:.78rem}
+.proof-strip{border-block:1px solid var(--rw-line);padding-block:22px!important;gap:12px 20px!important}
+.proof-strip span{font-size:.66rem!important;letter-spacing:.13em!important;color:#8a94a1!important}.proof-strip b{font-weight:600!important}
+.kpis{gap:1px!important;background:var(--rw-line);border:1px solid var(--rw-line);border-radius:22px;overflow:hidden}
+.kpis>div{background:#fff;padding:28px!important}
+.kpis strong{font-size:clamp(2rem,4vw,3.3rem)!important;letter-spacing:-.05em}.kpis span{color:var(--rw-muted)!important}
+.cards{align-items:stretch}
+.cards article{background:#fff!important;border:1px solid var(--rw-line)!important;box-shadow:none!important;padding:clamp(24px,3vw,34px)!important;transition:transform .25s var(--rw-ease),box-shadow .25s var(--rw-ease),border-color .25s var(--rw-ease)}
+.cards article:hover{border-color:var(--rw-line2)!important;box-shadow:var(--rw-shadow)!important}
+.cards article>span:first-child{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:var(--rw-soft);font-size:.68rem;font-weight:700;color:#6d7785}
+.cards article h3{margin-top:24px;letter-spacing:-.025em}.cards article p{color:var(--rw-muted);line-height:1.65}
+.prototype-gallery{background:var(--rw-soft)!important}
+.prototype-grid{gap:16px!important}
+.prototype-card{background:#dde3e8!important;border:1px solid rgba(17,24,32,.06)!important;box-shadow:none!important}
+.prototype-card img{transition:transform .55s var(--rw-ease),filter .35s ease!important}
+.prototype-card:hover img{transform:scale(1.025)!important}
+.prototype-card figcaption{padding:70px 24px 22px!important}
+.prototype-note{color:#7b8693!important}
+.web-contact-form{border:1px solid var(--rw-line)!important;box-shadow:var(--rw-shadow)!important;padding:clamp(22px,4vw,38px)!important}
+.web-contact-form input,.web-contact-form select,.web-contact-form textarea{background:#fff!important;border-color:#d9dfe5!important;border-radius:12px!important}
+.web-contact-form input:hover,.web-contact-form select:hover,.web-contact-form textarea:hover{border-color:#bdc6cf!important}
+.web-contact-form input:focus,.web-contact-form select:focus,.web-contact-form textarea:focus{border-color:#6d7785!important;box-shadow:0 0 0 4px rgba(17,24,32,.06)!important}
+.social-link{background:#fff!important;border-color:var(--rw-line)!important;box-shadow:none!important}
+.social-link:hover{border-color:var(--rw-line2)!important;box-shadow:0 8px 24px rgba(17,24,32,.07)!important}
+.social-icon{background:#111820!important}
+.seo-pathways{background:var(--rw-soft)!important;border-color:var(--rw-line)!important}
+.seo-pathways nav{gap:8px 24px!important}
+.seo-pathways a{color:#53606e!important}.seo-pathways a:hover{color:#111820!important}
+footer{border-top:1px solid var(--rw-line)}
+@media(max-width:820px){
+ .hero{min-height:auto;padding-top:64px;padding-bottom:72px}
+ .kpis{grid-template-columns:1fr 1fr!important}
+ .mobile-nav{background:rgba(255,255,255,.98)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+ .mobile-nav a{border-bottom:1px solid var(--rw-line)}
+}
+@media(max-width:600px){
+ .section{padding-block:68px}
+ .hero{padding-top:50px}
+ .hero h1{letter-spacing:-.045em}
+ .kpis{grid-template-columns:1fr!important}
+ .kpis>div{padding:22px!important}
+ .trust{gap:6px!important}
+ .prototype-grid{gap:12px!important}
+ .prototype-card{border-radius:16px!important}
+ .seo-pathways nav{grid-template-columns:1fr!important}
+}
