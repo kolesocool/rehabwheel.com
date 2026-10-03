@@ -270,3 +270,8 @@ footer{border-top:1px solid var(--rw-line)}
 .contact-team-grid article p{margin-bottom:20px}
 .contact-team-grid article>a{margin-top:auto;font-weight:550}
 @media(max-width:760px){.contact-team-grid{grid-template-columns:1fr!important;gap:14px!important}.contact-team-grid article{min-height:0}}
+
+/* Universal textual card badges: prevent clipped labels on every page */
+.cards article>span:first-child:not(.card-label){height:auto!important;min-height:30px!important;min-width:30px!important;width:auto!important;max-width:100%!important;padding:7px 10px!important;line-height:1!important;white-space:nowrap!important}
+.cards article>span:first-child:not(.card-label){overflow:visible!important}
+@media(max-width:420px){.cards article>span:first-child{white-space:normal!important;line-height:1.15!important}}
