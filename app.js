@@ -76,3 +76,16 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
  window.rwAnalytics.openDashboard=()=>{render();panel.hidden=false;A.track("analytics_dashboard_open")};
  if(new URLSearchParams(location.search).get("analytics")==="1")setTimeout(()=>window.rwAnalytics.openDashboard(),300);
 })();
+
+/* X10000 funnel analytics */
+(()=>{const A=window.rwAnalytics;if(!A)return;
+ const started=performance.now(),seen=new Set(),sectionStart=new Map();
+ const classify=a=>{const t=(a.textContent||"").trim().toLowerCase(),h=a.getAttribute("href")||"";if(/demo/.test(t+h))return"demo";if(/question|contact|connect/.test(t+h))return"contact";if(/legmaker/.test(t+h))return"product";if(/research/.test(t+h))return"research";if(/invest/.test(t+h))return"investor";return"navigation"};
+ document.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;A.track("cta_click",{kind:classify(a),label:(a.textContent||"").trim().slice(0,80),href:a.getAttribute("href")||"",from:location.pathname})});
+ const sections=[...document.querySelectorAll("main section[id],main section")];if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(x=>{const key=x.target.id||("section-"+sections.indexOf(x.target));if(x.isIntersecting){if(!seen.has(key)){seen.add(key);A.track("section_view",{section:key})}sectionStart.set(key,performance.now())}else if(sectionStart.has(key)){const sec=Math.round((performance.now()-sectionStart.get(key))/1000);if(sec>=2)A.track("section_engagement",{section:key,seconds:sec});sectionStart.delete(key)}}),{threshold:.45});sections.forEach(x=>io.observe(x))}
+ const original=A.summary;A.summary=()=>{const base=original(),ev=(()=>{try{return JSON.parse(localStorage.getItem("rw_analytics")||"[]")}catch(e){return[]}})(),count=n=>ev.filter(x=>x.name===n).length;
+  const views=Math.max(1,count("page_view")),demo=count("demo_cta_click"),leads=count("lead_form_submit"),ai=count("ai_question"),cta=count("cta_click");
+  return {...base,ctaClicks:cta,demoRate:Math.round(demo/views*100),leadRate:Math.round(leads/views*100),aiRate:Math.round(ai/views*100),engagedSections:new Set(ev.filter(x=>x.name==="section_view").map(x=>x.data?.section)).size};
+ };
+ addEventListener("pagehide",()=>A.track("session_summary",{seconds:Math.round((performance.now()-started)/1000),sections:seen.size,aiUsed:A.queue.some(x=>x.name==="ai_question"),demoIntent:A.queue.some(x=>x.name==="demo_cta_click")}),{once:true});
+})();
