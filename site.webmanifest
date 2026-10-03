@@ -1,1 +1,42 @@
-{"name":"Rehabwheel","short_name":"Rehabwheel","start_url":"/","display":"standalone","background_color":"#ffffff","theme_color":"#ffffff","description":"Rehabwheel — developer of the LegMaker lower-limb motion platform.","icons":[]}
+{
+  "name": "Rehabwheel — LegMaker",
+  "short_name": "Rehabwheel",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111820",
+  "description": "Explore Rehabwheel and the LegMaker wheelchair-integrated lower-limb motion platform under development.",
+  "categories": [
+    "medical",
+    "health",
+    "productivity"
+  ],
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "rehabwheel_logo.jpg?v=3",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Explore LegMaker",
+      "short_name": "LegMaker",
+      "url": "/legmaker.html"
+    },
+    {
+      "name": "Request a Demo",
+      "short_name": "Demo",
+      "url": "/contact.html?inquiry=demo#inquiry"
+    },
+    {
+      "name": "Research",
+      "short_name": "Research",
+      "url": "/research.html"
+    }
+  ]
+}
