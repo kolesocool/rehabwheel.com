@@ -258,3 +258,15 @@ footer{border-top:1px solid var(--rw-line)}
  .prototype-card{border-radius:16px!important}
  .seo-pathways nav{grid-template-columns:1fr!important}
 }
+
+/* Sitewide card/overflow correction */
+.cards article{min-width:0;overflow:hidden}
+.cards article h3,.cards article p,.cards article a{overflow-wrap:anywhere}
+.cards article>span:first-child{box-sizing:border-box;max-width:100%}
+.cards article .card-label{display:inline-flex!important;width:auto!important;min-width:0!important;height:auto!important;min-height:30px;padding:7px 11px!important;border-radius:999px!important;background:#111820!important;color:#fff!important;font-size:.66rem!important;font-weight:700!important;line-height:1!important;letter-spacing:.055em!important;white-space:nowrap!important}
+.contact-team-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important}
+.contact-team-grid article{min-height:270px;display:flex;flex-direction:column;align-items:flex-start}
+.contact-team-grid article h3{margin-top:26px}
+.contact-team-grid article p{margin-bottom:20px}
+.contact-team-grid article>a{margin-top:auto;font-weight:550}
+@media(max-width:760px){.contact-team-grid{grid-template-columns:1fr!important;gap:14px!important}.contact-team-grid article{min-height:0}}
