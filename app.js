@@ -298,3 +298,22 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
   if(!form.checkValidity())form.querySelector('.form-error')?.scrollIntoView({block:'nearest',behavior:'auto'});
  });
 });
+
+/* Resource category shortcuts keep the existing search and URL filters in sync. */
+(()=>{
+ document.querySelectorAll('[data-filter-select]').forEach(group=>{
+  const select=document.getElementById(group.dataset.filterSelect);if(!select)return;
+  const cards=[...document.querySelectorAll('.'+group.dataset.filterCards)],buttons=[...group.querySelectorAll('[data-filter-value]')];
+  const sync=()=>buttons.forEach(button=>{const active=button.dataset.filterValue===select.value;button.setAttribute('aria-pressed',String(active));button.classList.toggle('selected',active);});
+  buttons.forEach((button,index)=>{
+   const value=button.dataset.filterValue,total=cards.filter(card=>!value||card.dataset.category===value).length;
+   button.querySelector('.directory-category-count').textContent=String(total);
+   button.setAttribute('aria-label',button.querySelector('span').textContent+', '+total+' resources');
+   button.addEventListener('click',()=>{select.value=value;select.dispatchEvent(new Event('change',{bubbles:true}));sync();});
+   button.addEventListener('keydown',event=>{let next;if(event.key==='ArrowRight')next=(index+1)%buttons.length;if(event.key==='ArrowLeft')next=(index-1+buttons.length)%buttons.length;if(event.key==='Home')next=0;if(event.key==='End')next=buttons.length-1;if(next===undefined)return;event.preventDefault();buttons[next].focus();});
+  });
+  select.addEventListener('change',sync);
+  document.getElementById(select.id==='fund-category'?'fund-reset':'resourceReset')?.addEventListener('click',sync);
+  addEventListener('popstate',sync);sync();
+ });
+})();
