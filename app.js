@@ -167,3 +167,33 @@ dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault()
 dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewer-open');opener?.focus()});
 })();
+
+/* Keep persistent mobile actions from covering the content being read. */
+(()=>{
+ const cta=document.querySelector(".mobile-demo-cta");
+ const ai=document.querySelector(".rw-ai");
+ if(!cta&&!ai)return;
+ const mobile=window.matchMedia("(max-width: 820px)");
+ if(!mobile.matches)return;
+ const panel=ai?.querySelector(".rw-ai-panel");
+ let previousY=window.scrollY,scheduled=false;
+ const setDismissed=dismissed=>{
+  const hide=dismissed&&!(panel&&!panel.hidden);
+  cta?.classList.toggle("scroll-dismissed",hide);
+  ai?.classList.toggle("scroll-dismissed",hide);
+ };
+ const onScroll=()=>{
+  if(scheduled)return;
+  scheduled=true;
+  requestAnimationFrame(()=>{
+   const y=window.scrollY,delta=y-previousY;
+   if(Math.abs(delta)>4)setDismissed(y>180&&delta>0);
+   previousY=y;scheduled=false;
+  });
+ };
+ addEventListener("scroll",onScroll,{passive:true});
+ document.addEventListener("focusin",event=>{
+  if(event.target.closest(".mobile-demo-cta,.rw-ai"))setDismissed(false);
+ });
+ addEventListener("resize",()=>{if(!mobile.matches)setDismissed(false)},{passive:true});
+})();
