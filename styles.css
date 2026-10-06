@@ -1018,3 +1018,13 @@ body main #clinicians :is(.care-preview-badge,.mini-stats dt,.clinical-side smal
 @media(max-width:600px){.fund-page .fund-card-top{grid-template-rows:90px auto 22px}.fund-page .fund-more{width:100%;min-width:0}.fund-page .fund-card h3{min-height:0}}
 @media(prefers-reduced-motion:reduce){.fund-card,.resource-card,.directory-category{transition:none!important}}
 @media print{.directory-categories,.po-section-nav{display:none!important}}
+
+/* Cookie notice: readable, responsive and independent of navigation. */
+.rw-cookie-panel[hidden]{display:none!important}
+.rw-cookie-panel{position:fixed;z-index:9999;left:20px;right:20px;bottom:20px;max-width:1040px;margin:auto;background:#fff;color:#183039;border:1px solid #c5d7dc;border-radius:18px;padding:24px;box-shadow:0 12px 48px #102c3930;display:flex;align-items:center;gap:28px}
+.rw-cookie-panel strong{font-size:20px}.rw-cookie-panel p{font-size:16px;line-height:1.6;margin:8px 0 0;color:#405161}.rw-cookie-panel a{color:#126567;text-decoration:underline}
+.rw-cookie-actions{display:flex;gap:10px;flex-shrink:0}.rw-cookie-actions button,.rw-cookie-settings{font:inherit;font-size:14px;font-weight:700;min-height:44px;cursor:pointer;border:1px solid #126567;border-radius:10px;background:#fff;color:#126567;padding:12px 16px}
+.rw-cookie-actions button[data-choice="true"]{background:#126567;color:#fff}.rw-cookie-settings{display:block;margin:16px auto}
+.rw-cookie-panel button:focus-visible,.rw-cookie-settings:focus-visible{outline:3px solid #126567;outline-offset:4px}
+@media(max-width:800px){.rw-cookie-panel{left:12px;right:12px;bottom:12px;padding:18px;gap:16px;flex-direction:column;align-items:stretch;max-height:80vh;overflow:auto}.rw-cookie-actions{flex-wrap:wrap}.rw-cookie-actions button{flex:1}}
+@media print{.rw-cookie-panel,.rw-cookie-settings{display:none!important}}

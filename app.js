@@ -42,8 +42,29 @@ if(toggle&&mobile){
 document.querySelectorAll('.attach-step').forEach(step=>step.addEventListener('click',()=>{document.querySelectorAll('.attach-step').forEach(s=>s.classList.remove('active'));step.classList.add('active');const visual=document.querySelector('.attach-visual');if(visual)visual.dataset.step=step.dataset.step;}));
 const rpm=document.querySelector('#rpm'),res=document.querySelector('#resistance'),dur=document.querySelector('#duration');if(rpm){const sync=()=>{document.querySelector('#rpmValue').textContent=rpm.value+' RPM';document.querySelector('#bigRpm').textContent=rpm.value;document.querySelector('#resValue').textContent=res.value+' / 15';document.querySelector('#resReadout').textContent=res.value;document.querySelector('#durationValue').textContent=dur.value+' min';document.querySelector('#durationReadout').textContent=dur.value+' min'};[rpm,res,dur].forEach(x=>x.addEventListener('input',sync));document.querySelectorAll('[data-sim-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-sim-mode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelector('#modeValue').textContent=b.dataset.simMode;}));sync();}
 document.querySelectorAll('[data-inquiry]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-inquiry]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const subject=btn.dataset.inquiry;const title=document.querySelector('#inquiryTitle'),email=document.querySelector('#inquiryEmail');if(title)title.textContent=subject;if(email)email.href='mailto:info@rehabwheel.com?subject='+encodeURIComponent(subject);}));
+
+/* Cookie and local-storage preferences: optional analytics are off by default. */
+(()=>{
+ const key='rw_cookie_preferences';let prefs=null;
+ try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved?.version===1&&Date.now()-saved.savedAt<180*86400000)prefs=saved;}catch(e){}
+ window.rwCookieConsent={analytics:!!prefs?.analytics};
+ if(!prefs?.analytics){try{localStorage.removeItem('rw_analytics');}catch(e){}}
+ const panel=document.createElement('section');panel.className='rw-cookie-panel';panel.hidden=!!prefs;panel.setAttribute('aria-label','Cookie preferences');
+ panel.innerHTML='<div><strong>Cookies &amp; your privacy</strong><p>We use local storage to remember your choice. Optional analytics store website usage on this browser only and stay off unless you accept. <a href="/privacy.html#cookies">Learn more</a></p></div><div class="rw-cookie-actions"><button type="button" data-choice="false">Essential only</button><button type="button" data-choice="true">Accept analytics</button></div>';
+ const opener=document.createElement('button');opener.type='button';opener.className='rw-cookie-settings';opener.textContent='Cookie settings';opener.setAttribute('aria-expanded',String(!prefs));opener.setAttribute('aria-controls','rw-cookie-panel');panel.id='rw-cookie-panel';
+ const footer=document.querySelector('footer')||document.body;footer.appendChild(opener);document.body.appendChild(panel);
+ let returnFocus=null;
+ opener.addEventListener('click',()=>{returnFocus=opener;panel.hidden=false;opener.setAttribute('aria-expanded','true');panel.querySelector('button').focus();});
+ panel.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
+  const analytics=button.dataset.choice==='true';window.rwCookieConsent.analytics=analytics;
+  try{localStorage.setItem(key,JSON.stringify({version:1,analytics,savedAt:Date.now()}));if(!analytics)localStorage.removeItem('rw_analytics');}catch(e){}
+  if(!analytics&&window.rwAnalytics)window.rwAnalytics.queue.length=0;
+  panel.hidden=true;opener.setAttribute('aria-expanded','false');(returnFocus||opener).focus();
+ }));
+})();
+
 /* Rehabwheel analytics + AI assistant */
-window.rwAnalytics=window.rwAnalytics||{queue:[],session:crypto.randomUUID?crypto.randomUUID():String(Date.now()),track:function(name,data={}){const event={name,data,path:location.pathname,ts:new Date().toISOString(),session:this.session};this.queue.push(event);if(this.queue.length>250)this.queue.splice(0,this.queue.length-250);try{const parsed=JSON.parse(localStorage.getItem("rw_analytics")||"[]");const stored=Array.isArray(parsed)?parsed:[];stored.push(event);localStorage.setItem("rw_analytics",JSON.stringify(stored.slice(-250)));}catch(e){} window.dispatchEvent(new CustomEvent("rw:analytics",{detail:event}));}};
+window.rwAnalytics=window.rwAnalytics||{queue:[],session:crypto.randomUUID?crypto.randomUUID():String(Date.now()),track:function(name,data={}){if(!window.rwCookieConsent?.analytics)return;const event={name,data,path:location.pathname,ts:new Date().toISOString(),session:this.session};this.queue.push(event);if(this.queue.length>250)this.queue.splice(0,this.queue.length-250);try{const parsed=JSON.parse(localStorage.getItem("rw_analytics")||"[]");const stored=Array.isArray(parsed)?parsed:[];stored.push(event);localStorage.setItem("rw_analytics",JSON.stringify(stored.slice(-250)));}catch(e){} window.dispatchEvent(new CustomEvent("rw:analytics",{detail:event}));}};
 const rwParams=new URLSearchParams(location.search);rwAnalytics.track("page_view",{title:document.title,referrer:document.referrer?(()=>{try{return new URL(document.referrer).hostname}catch(e){return "unknown"}})():"direct",viewport:innerWidth+"x"+innerHeight,utm_source:rwParams.get("utm_source")||"",utm_medium:rwParams.get("utm_medium")||"",utm_campaign:rwParams.get("utm_campaign")||""});
 let rwMaxScroll=0;addEventListener("scroll",()=>{const d=document.documentElement,p=Math.round((d.scrollTop/(d.scrollHeight-d.clientHeight))*100);[25,50,75,90].forEach(n=>{if(p>=n&&rwMaxScroll<n){rwMaxScroll=n;rwAnalytics.track("scroll_depth",{percent:n})}})},{passive:true});
 let rwExitTracked=false;const rwTrackExit=()=>{if(rwExitTracked)return;rwExitTracked=true;rwAnalytics.track("page_exit",{seconds:Math.round(performance.now()/1000),maxScroll:rwMaxScroll})};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")rwTrackExit()});addEventListener("pagehide",rwTrackExit);
