@@ -646,3 +646,16 @@ a:not(.btn){text-underline-offset:4px}
 @media(max-width:900px){.hero{gap:36px!important}.section{padding-block:clamp(60px,8vw,88px)!important}.hero-product{margin:0!important}.cta-inner{gap:24px}}
 @media(max-width:620px){.wrap{width:calc(100% - 36px)!important}.hero h1{font-size:clamp(42px,11vw,58px)!important;line-height:1.06!important}.lede{font-size:18px!important;line-height:1.65}.section h2,.cta h2{font-size:clamp(30px,8.2vw,40px)!important}.cards h3{font-size:21px}.cards.team h3{font-size:19px}.actions{gap:12px}.actions .btn{width:100%}.rw-partner-grid{gap:16px}.rw-subscribe-form{gap:14px}.footer{gap:16px}.mobile-nav>a:not(.btn){font-size:clamp(23px,7vw,32px)!important}.mobile-nav{padding-inline:18px!important}.rw-ai-launch{max-width:calc(100vw - 32px)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.rw-video-play,.site-header,.rw-partner-card{transition:none!important}.marquee div{animation:none!important}}
+
+/* Original photo galleries preserve the complete hardware and watermarks. */
+.outdoor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.prototype-card.outdoor-photo{aspect-ratio:auto!important;min-height:0!important;background:#f5f7f9!important;display:flex;flex-direction:column;box-shadow:none!important}
+.outdoor-photo>a{display:block;aspect-ratio:4/3;overflow:hidden;background:#e6ebee}
+.outdoor-photo img{width:100%!important;height:100%!important;object-fit:contain!important;transform:none!important}
+.outdoor-photo figcaption{position:static!important;min-height:0!important;background:#f5f7f9!important;color:#17232d!important;padding:18px 20px!important;gap:6px}
+.outdoor-photo figcaption span{color:#465460!important;line-height:1.5}
+.outdoor-photo figcaption strong{font-size:17px}
+.outdoor-photo a:focus-visible{outline-offset:-4px}
+.photo-archive .outdoor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.outdoor-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.outdoor-grid,.photo-archive .outdoor-grid{grid-template-columns:1fr}.outdoor-photo figcaption{padding:16px 18px!important}}
