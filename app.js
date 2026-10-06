@@ -1,3 +1,17 @@
+/* Field-specific feedback shared by inquiry and purchase-order forms. */
+function rwFieldError(field,name){
+ const v=field?.validity;if(!v)return 'Please review this field.';
+ if(field.type==='checkbox')return 'Please select the required consent checkbox.';
+ if(v.valueMissing)return name.replace(/\s*\*\s*$/,'')+' is required.';
+ if(v.typeMismatch)return field.type==='email'?'Please enter a valid email address.':'Please enter a valid '+name.toLowerCase()+'.';
+ if(v.rangeUnderflow)return 'Enter a value of at least '+field.min+'.';
+ if(v.rangeOverflow)return 'Enter a value no greater than '+field.max+'.';
+ if(v.stepMismatch)return 'Enter a whole number for '+name.replace(/\s*\*\s*$/,'').toLowerCase()+'.';
+ if(v.tooLong)return 'Please shorten this field to '+field.maxLength+' characters.';
+ if(v.tooShort)return 'Use at least '+field.minLength+' characters.';
+ if(v.customError)return field.validationMessage;
+ return 'Please check '+name.replace(/\s*\*\s*$/,'').toLowerCase()+'.';
+}
 const progress=document.getElementById('progress');
 if(progress)addEventListener('scroll',()=>{const h=document.documentElement,den=h.scrollHeight-h.clientHeight;progress.style.width=(den?Math.min(100,h.scrollTop/den*100):0)+'%'},{passive:true});
 const revealEls=document.querySelectorAll('.section-head,.cards article,.panel,.research-card,.patents>div,.journey-grid>div,.product-band-inner>*,.spec-grid>div,.clinical-grid>*,.audience-grid>*');
@@ -10,7 +24,8 @@ if(toggle&&mobile){
  mobile.id=mobile.id||'mobile-navigation';
  toggle.setAttribute('aria-controls',mobile.id);
  toggle.setAttribute('type','button');
- const syncPosition=()=>mobile.style.setProperty('--menu-top',header.getBoundingClientRect().bottom+'px');
+ const syncPosition=()=>{mobile.style.setProperty('--menu-top',(header?.getBoundingClientRect().bottom||0)+'px');mobile.style.setProperty('--menu-viewport',Math.round(window.visualViewport?.height||innerHeight)+'px');};
+ window.visualViewport?.addEventListener('resize',()=>{if(mobile.classList.contains('open'))syncPosition();});
  const closeMenu=()=>{mobile.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');mobile.setAttribute('aria-hidden','true');mobile.inert=true;};
  closeMenu();
  toggle.addEventListener('click',()=>{const open=!mobile.classList.contains('open');if(!open){closeMenu();return;}syncPosition();mobile.inert=false;mobile.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation');mobile.setAttribute('aria-hidden','false');mobile.querySelector('a')?.focus();});
@@ -118,7 +133,7 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
   if(!form.checkValidity()){
    event.preventDefault();const invalid=form.querySelector(':invalid');
    const name=invalid?.closest('label')?.querySelector('span')?.textContent?.trim()||invalid?.name||'This field';
-   status.textContent=invalid?.type==='checkbox'?'Please select the required consent checkbox.':invalid?.validity.typeMismatch?'Please enter a valid email address.':invalid?.validity.tooLong?'Please shorten this field.':name+' is required.';
+   status.textContent=rwFieldError(invalid,name);
    form.querySelectorAll(':invalid').forEach(field=>field.setAttribute('aria-invalid','true'));invalid?.focus();
   }else{
    status.textContent='';window.rwAnalytics?.track('form_valid_submission',{form:form.classList.contains('rw-subscribe-form')?'subscribe':'contact'});
@@ -273,3 +288,11 @@ dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewe
   photo.addEventListener('load',()=>{notice.hidden=true;photo.style.display='block';});
  }
 })();
+
+/* Keep form errors visible and mobile navigation stable after history restoration. */
+addEventListener('pageshow',()=>{if(mobile?.classList.contains('open')&&toggle)toggle.click();});
+document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>{
+ form.addEventListener('submit',event=>{
+  if(!form.checkValidity())form.querySelector('.form-error')?.scrollIntoView({block:'nearest',behavior:'auto'});
+ });
+});
