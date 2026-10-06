@@ -583,3 +583,10 @@ img{height:auto}
 .links a,.mobile-nav a{gap:8px}.links .rw-icon{width:17px;height:17px}.mobile-nav .rw-icon{width:25px;height:25px}.cards h3 .rw-icon,.audience-grid h3 .rw-icon{margin-right:10px;color:#526b82}
 .icon-catalog{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}.icon-catalog li{display:flex;flex-direction:column;align-items:center;gap:18px;padding:28px 12px;background:#f4f6f8;border:1px solid #e2e7eb;border-radius:18px}.icon-catalog .rw-icon{width:32px;height:32px;color:#24465e}.icon-catalog span{text-transform:capitalize;font-size:14px}
 @media(min-width:901px) and (max-width:1100px){.links{gap:12px!important}.links .rw-icon{display:none}}
+
+/* Purposeful icon placement: consistent size, aligned with the content label. */
+.rw-icon-heading{display:flex;align-items:flex-start;gap:10px}
+.rw-icon-heading>.rw-icon{width:22px;height:22px;margin:2px 0 0!important;color:#526b82;flex-shrink:0}
+.rw-icon-control>.rw-icon{width:17px;height:17px;margin-right:6px;vertical-align:-3px}
+.mobile-nav .rw-icon{opacity:.8}
+@media(max-width:620px){.rw-icon-heading{gap:9px}.rw-icon-heading>.rw-icon{width:20px;height:20px}}
