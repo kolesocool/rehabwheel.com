@@ -292,7 +292,7 @@ dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewe
 })();
 
 /* Keep form errors visible and mobile navigation stable after history restoration. */
-addEventListener('pageshow',()=>{if(mobile?.classList.contains('open')&&toggle)toggle.click();});
+addEventListener('pageshow',event=>{if(event.persisted&&mobile?.classList.contains('open')&&toggle)toggle.click();});
 document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>{
  form.addEventListener('submit',event=>{
   if(!form.checkValidity())form.querySelector('.form-error')?.scrollIntoView({block:'nearest',behavior:'auto'});
