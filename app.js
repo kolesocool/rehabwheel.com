@@ -26,9 +26,11 @@ if(toggle&&mobile){
  toggle.setAttribute('type','button');
  const syncPosition=()=>{mobile.style.setProperty('--menu-top',(header?.getBoundingClientRect().bottom||0)+'px');mobile.style.setProperty('--menu-viewport',Math.round(window.visualViewport?.height||innerHeight)+'px');};
  window.visualViewport?.addEventListener('resize',()=>{if(mobile.classList.contains('open'))syncPosition();});
- const closeMenu=()=>{mobile.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');mobile.setAttribute('aria-hidden','true');mobile.inert=true;};
+ window.visualViewport?.addEventListener('scroll',()=>{if(mobile.classList.contains('open'))syncPosition();});
+ addEventListener('orientationchange',()=>requestAnimationFrame(()=>{if(mobile.classList.contains('open'))syncPosition();}));
+ const closeMenu=()=>{mobile.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');mobile.setAttribute('aria-hidden','true');mobile.inert=true;mobile.hidden=true;};
  closeMenu();
- toggle.addEventListener('click',()=>{const open=!mobile.classList.contains('open');if(!open){closeMenu();return;}syncPosition();mobile.inert=false;mobile.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation');mobile.setAttribute('aria-hidden','false');mobile.querySelector('a')?.focus();});
+ toggle.addEventListener('click',()=>{const open=!mobile.classList.contains('open');if(!open){closeMenu();toggle.focus();return;}mobile.hidden=false;syncPosition();mobile.inert=false;mobile.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation');mobile.setAttribute('aria-hidden','false');mobile.querySelector('a')?.focus();});
  mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
  document.addEventListener('keydown',e=>{
   if(!mobile.classList.contains('open'))return;
