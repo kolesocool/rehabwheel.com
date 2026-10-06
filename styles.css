@@ -893,3 +893,11 @@ img{max-width:100%}
  .comparison-table{min-width:0;font-size:10pt}
  body{padding-bottom:0!important}
 }
+
+/* Shared product resource navigation. */
+.resource-footer{display:flex;flex-wrap:wrap;gap:12px 24px;padding:20px;align-items:center;border-top:1px solid #d5e0e4;width:100%}
+.resource-footer a{min-height:44px;display:inline-flex;align-items:center;color:#244d65;font-size:14px;text-underline-offset:4px}
+footer:has(>.resource-footer){display:flex;flex-wrap:wrap}
+.links{gap:clamp(12px,1.8vw,24px)}
+.resource-grid:empty{display:none}
+@media(max-width:620px){.resource-footer{display:grid;grid-template-columns:1fr 1fr;padding:16px;gap:10px}.resource-footer a{line-height:1.5}}
