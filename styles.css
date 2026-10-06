@@ -901,3 +901,15 @@ footer:has(>.resource-footer){display:flex;flex-wrap:wrap}
 .links{gap:clamp(12px,1.8vw,24px)}
 .resource-grid:empty{display:none}
 @media(max-width:620px){.resource-footer{display:grid;grid-template-columns:1fr 1fr;padding:16px;gap:10px}.resource-footer a{line-height:1.5}}
+
+/* Procurement and resource readability across screen sizes. */
+.mobile-nav{max-height:calc(var(--menu-viewport,100dvh) - var(--menu-top,80px));padding-bottom:max(20px,env(safe-area-inset-bottom));overflow-y:auto}
+.web-contact-form fieldset{min-inline-size:0}
+.web-contact-form :is(input,textarea,select){max-width:100%;box-sizing:border-box}
+.web-contact-form [aria-invalid=true]{border-color:#9a1827!important}
+.web-contact-form .form-error:not(:empty){padding:14px 16px;background:#fff3f4;border:1px solid #edbdc4;border-radius:10px;line-height:1.6}
+.form-error:empty{display:none}
+.resource-footer a:hover{color:#126567;text-decoration:underline}
+:target{scroll-margin-top:110px}
+@media(max-width:620px){.resource-footer{grid-template-columns:1fr}.resource-footer a{padding:10px 0}.web-contact-form fieldset{padding-inline:16px}.web-contact-form legend{max-width:100%;white-space:normal}.comparison-scroll{overscroll-behavior-x:contain}}
+@media print{.site-header,.mobile-nav,.announcement,.resource-footer,.rw-subscribe{display:none!important}.po-layout{display:block!important}.po-sidebar{position:static!important}.po-form fieldset{break-inside:avoid}.po-hero{background:#fff!important;color:#17232d!important}.po-hero h1{color:#17232d!important}main a{color:#17232d!important;text-decoration:underline}}
