@@ -976,3 +976,5 @@ body main #clinicians :is(.care-preview-badge,.mini-stats dt,.clinical-side smal
 .footer-rich :is(a,b,span),.footer-rich .social-icon.wordmark{font-size:14px!important;line-height:1.6}
 .intel-main small,.intel-main .concept-label{color:#526171!important}
 .safety-grid b{color:#d7e4ed!important}
+
+.problem-grid>article>span{font-size:14px!important;line-height:1.6;color:#d7e4ed!important}
