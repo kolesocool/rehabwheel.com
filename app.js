@@ -150,3 +150,18 @@ const catalog=document.getElementById('icon-catalog');if(catalog)Object.keys(ico
 const buttons=document.querySelectorAll('.mode-tab,[data-sim-mode]');buttons.forEach(b=>{b.setAttribute('aria-pressed',String(b.classList.contains('active')));b.addEventListener('click',()=>{const group=b.matches('.mode-tab')?'.mode-tab':'[data-sim-mode]';document.querySelectorAll(group).forEach(x=>x.setAttribute('aria-pressed',String(x===b)))})});
 document.querySelectorAll('.form-error[role=alert]').forEach(el=>{el.setAttribute('aria-live','assertive');el.id=el.id||'validation-'+Math.random().toString(36).slice(2);el.closest('form')?.querySelectorAll('input:not([type=hidden]),textarea,select').forEach(field=>{field.setAttribute('aria-describedby',[field.getAttribute('aria-describedby'),el.id].filter(Boolean).join(' '))});});
 })();
+
+/* Full-photo viewer with keyboard navigation and native dialog focus handling. */
+(()=>{const links=[...document.querySelectorAll('.outdoor-photo>a')];if(!links.length||!('HTMLDialogElement'in window))return;
+const dialog=document.createElement('dialog');dialog.className='photo-viewer';dialog.setAttribute('aria-labelledby','photo-viewer-title');
+dialog.innerHTML='<div class="photo-viewer-head"><h2 id="photo-viewer-title">Prototype photograph</h2><button type="button" data-close aria-label="Close photo viewer">×</button></div><div class="photo-viewer-stage"><button type="button" data-prev aria-label="Previous photograph">←</button><img alt=""><button type="button" data-next aria-label="Next photograph">→</button></div><div class="photo-viewer-foot"><p data-caption></p><div><span data-counter aria-live="polite"></span><a data-original target="_blank" rel="noopener noreferrer">Open original photo ↗</a></div></div>';
+document.body.appendChild(dialog);let group=[],index=0,opener;
+const image=dialog.querySelector('img'),counter=dialog.querySelector('[data-counter]'),caption=dialog.querySelector('[data-caption]'),original=dialog.querySelector('[data-original]');
+const show=()=>{const a=group[index],img=a.querySelector('img');image.src=a.href;image.alt=img.alt;dialog.querySelector('#photo-viewer-title').textContent=a.closest('figure').querySelector('figcaption strong')?.textContent||'Prototype photograph';caption.textContent=img.alt;counter.textContent=(index+1)+' / '+group.length;original.href=a.href;dialog.querySelector('[data-prev]').disabled=group.length<2;dialog.querySelector('[data-next]').disabled=group.length<2;};
+const move=step=>{index=(index+step+group.length)%group.length;show();};
+links.forEach(a=>a.addEventListener('click',e=>{if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey)return;e.preventDefault();opener=a;const grid=a.closest('.outdoor-grid,.prototype-grid');group=grid?[...grid.querySelectorAll('.outdoor-photo>a')]:links;index=group.indexOf(a);show();dialog.showModal();document.body.classList.add('photo-viewer-open');}));
+dialog.querySelector('[data-close]').onclick=()=>dialog.close();dialog.querySelector('[data-prev]').onclick=()=>move(-1);dialog.querySelector('[data-next]').onclick=()=>move(1);
+dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();move(-1)}if(e.key==='ArrowRight'){e.preventDefault();move(1)}});
+dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
+dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewer-open');opener?.focus()});
+})();
