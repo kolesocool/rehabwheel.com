@@ -339,3 +339,13 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
   addEventListener('popstate',sync);sync();
  });
 })();
+
+/* Send keyboard focus to the content destination without losing scroll position. */
+(()=>{
+ document.querySelectorAll('.skip-link,.back-to-top').forEach(link=>link.addEventListener('click',event=>{
+  const target=document.getElementById('main');if(!target)return;
+  event.preventDefault();target.setAttribute('tabindex','-1');
+  target.scrollIntoView({block:'start',behavior:'auto'});target.focus({preventScroll:true});
+  if(location.hash!=='#main')history.replaceState(history.state,'',location.pathname+location.search+'#main');
+ }));
+})();

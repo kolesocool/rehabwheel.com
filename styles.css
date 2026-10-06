@@ -1037,3 +1037,15 @@ main details>summary{min-height:44px;padding-top:12px;padding-bottom:12px;cursor
 main input,main select,main textarea{max-width:100%}
 main p,main li,.fund-card h3,.resource-card h3{overflow-wrap:break-word}
 @media(max-width:600px){.page-breadcrumb{font-size:14px}.rw-cookie-actions{gap:12px}.rw-cookie-actions button{min-height:48px}}
+
+/* Explicit provider destinations and practical page utilities. */
+.fund-page .fund-card .fund-provider-domain{font-size:14px!important;line-height:1.6;color:#526171!important;margin:0 0 12px;overflow-wrap:anywhere}
+.fund-page .fund-card a .fund-action-label{margin-left:0;flex:1;flex-shrink:1;overflow-wrap:break-word;line-height:1.6}
+.fund-page .fund-card a>span[aria-hidden]{margin-left:auto;align-self:flex-start}
+.page-return{padding-block:20px;text-align:right}
+.back-to-top{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:10px 16px;border:1px solid #bcd0d6;border-radius:12px;background:#fff;color:#126567!important;font-size:15px;font-weight:700;text-decoration:none}
+.back-to-top:hover{background:#edf5f5}.back-to-top:focus-visible{outline:3px solid #126567;outline-offset:4px}
+.print-page-context{display:none}
+@media(max-width:600px){.page-return{text-align:left}.back-to-top{width:100%;justify-content:center}.fund-page .fund-card a{align-items:flex-start}}
+@media print{.print-page-context{display:block!important;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #777;color:#000!important}.print-page-context strong,.print-page-context span{display:block;font-size:12pt;color:#000!important}.print-page-context span{font-size:10pt;overflow-wrap:anywhere}.page-return{display:none!important}.fund-card,.resource-card{break-inside:avoid}.fund-provider-domain{color:#000!important}}
+@media(forced-colors:active){.back-to-top,.directory-category,.rw-cookie-actions button{border:1px solid ButtonText}.directory-category.selected{outline:2px solid Highlight;outline-offset:2px}}
