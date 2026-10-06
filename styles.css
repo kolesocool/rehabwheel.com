@@ -1049,3 +1049,21 @@ main p,main li,.fund-card h3,.resource-card h3{overflow-wrap:break-word}
 @media(max-width:600px){.page-return{text-align:left}.back-to-top{width:100%;justify-content:center}.fund-page .fund-card a{align-items:flex-start}}
 @media print{.print-page-context{display:block!important;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid #777;color:#000!important}.print-page-context strong,.print-page-context span{display:block;font-size:12pt;color:#000!important}.print-page-context span{font-size:10pt;overflow-wrap:anywhere}.page-return{display:none!important}.fund-card,.resource-card{break-inside:avoid}.fund-provider-domain{color:#000!important}}
 @media(forced-colors:active){.back-to-top,.directory-category,.rw-cookie-actions button{border:1px solid ButtonText}.directory-category.selected{outline:2px solid Highlight;outline-offset:2px}}
+
+/* Browser-local provider shortlist. */
+.fund-shortlist-toolbar{display:flex;align-items:end;flex-wrap:wrap;gap:16px;margin:20px 0 0;padding:18px;background:#fff;border:1px solid #c5d7dc;border-radius:14px}
+.fund-shortlist-toolbar label{display:grid;gap:6px;font-size:14px;color:#294550;font-weight:600}
+.fund-shortlist-toolbar select{min-height:46px;padding:10px 12px;border:1px solid #bcd0d6;border-radius:10px;background:#fff;color:#183039;font:inherit;font-size:16px}
+.fund-shortlist-toolbar .fund-saved-toggle{display:flex;align-items:center;gap:10px;min-height:46px;margin-right:auto;cursor:pointer}
+.fund-saved-toggle input{width:22px;height:22px;accent-color:#126567}.fund-saved-toggle b{display:inline-grid;place-items:center;min-width:26px;margin-left:6px;padding:2px 6px;background:#e1f3ed;color:#174b45;border-radius:6px;font-variant-numeric:tabular-nums}
+.fund-shortlist-toolbar button,.fund-save{min-height:46px;padding:10px 14px;border:1px solid #126567;border-radius:10px;background:#fff;color:#126567;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.fund-shortlist-toolbar button:disabled{color:#526171;border-color:#c5d7dc;cursor:default;background:#f5f8fa}
+.fund-page .fund-shortlist-note,.fund-page .fund-tool-status{font-size:14px!important;line-height:1.6;color:#405161!important;margin:12px 0}.fund-tool-status:empty{display:none}
+.fund-page .fund-card .fund-card-tools{display:flex;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid #dce6e9;margin-top:14px;padding-top:14px}
+.fund-save{display:inline-flex;align-items:center;gap:8px}.fund-save[aria-pressed="true"]{background:#e1f3ed;color:#174b45;border-color:#126567}
+.fund-page .fund-card .fund-entry-link{display:inline-flex;align-items:center;gap:8px;width:auto;min-height:44px;padding:8px 0;border:0;margin:0;font-size:14px}
+.fund-page .fund-card.resource-saved{border-color:#126567}
+.fund-save:focus-visible,.fund-shortlist-toolbar :is(input,select,button):focus-visible{outline:3px solid #126567;outline-offset:3px}
+.fund-card[id]{scroll-margin-top:96px}
+@media(max-width:700px){.fund-shortlist-toolbar{align-items:stretch;flex-direction:column}.fund-shortlist-toolbar .fund-saved-toggle{margin-right:0}.fund-shortlist-toolbar button{width:100%}.fund-card-tools{justify-content:space-between}}
+@media print{.fund-shortlist-toolbar,.fund-card-tools,.fund-tool-status{display:none!important}}
