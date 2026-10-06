@@ -144,3 +144,9 @@ document.querySelectorAll('.mode-tab,[data-sim-mode]').forEach(button=>{
 });
 const catalog=document.getElementById('icon-catalog');if(catalog)Object.keys(icons).forEach(name=>{const li=document.createElement('li');li.appendChild(svg(name));const label=document.createElement('span');label.textContent=name;li.appendChild(label);catalog.appendChild(li);});
 })();
+
+/* Deep links reveal optional content, including after a menu selection. */
+(()=>{const revealTarget=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1))}catch{return}const target=document.getElementById(id);if(!target)return;let p=target.parentElement,opened=false;while(p){if(p.tagName==='DETAILS'&&!p.open){p.open=true;opened=true}p=p.parentElement}if(opened)requestAnimationFrame(()=>target.scrollIntoView({block:'start',behavior:'auto'}));};addEventListener('hashchange',revealTarget);revealTarget();
+const buttons=document.querySelectorAll('.mode-tab,[data-sim-mode]');buttons.forEach(b=>{b.setAttribute('aria-pressed',String(b.classList.contains('active')));b.addEventListener('click',()=>{const group=b.matches('.mode-tab')?'.mode-tab':'[data-sim-mode]';document.querySelectorAll(group).forEach(x=>x.setAttribute('aria-pressed',String(x===b)))})});
+document.querySelectorAll('.form-error[role=alert]').forEach(el=>{el.setAttribute('aria-live','assertive');el.id=el.id||'validation-'+Math.random().toString(36).slice(2);el.closest('form')?.querySelectorAll('input:not([type=hidden]),textarea,select').forEach(field=>{field.setAttribute('aria-describedby',[field.getAttribute('aria-describedby'),el.id].filter(Boolean).join(' '))});});
+})();
