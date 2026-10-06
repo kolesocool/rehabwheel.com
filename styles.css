@@ -943,3 +943,27 @@ body.menu-open :is(.rw-ai,.floating-contact,.mobile-demo-cta){visibility:hidden;
 
 /* Fixed descendants of the sticky header must size from menu content. */
 .mobile-nav.open:not([hidden]){bottom:auto!important;height:auto!important;max-height:calc(var(--menu-viewport,100vh) - var(--menu-top,72px))!important}
+
+/* Readability audit: consistent text sizes and explicit light/dark surfaces. */
+:root{--rw-readable-muted:#526171;--rw-readable-copy:#405161;--rw-muted:#526171}
+body{font-size:16px;line-height:1.7}
+main p:not(.eyebrow):not(.rw-team-label){color:#405161!important;line-height:1.75}
+main .eyebrow{font-size:14px!important;color:#526171!important;line-height:1.6}
+main :is(small,.hero-note,.prototype-note,.linkedin-link,.card-label,.resource-category,.fund-tag,.fund-brand-note,.po-product-status,.po-section-number,.po-field-help,.po-completion,.care-preview-badge,.care-chart-head,.care-preview-note,.sim-status,.sim-readout small,.sim-controls label,.rw-team-label){font-size:14px!important;line-height:1.6}
+main :is(.hero-note,.prototype-note,.proof-strip span,.audience-grid>a>span,.cards article>span,.final-proof-grid strong,.spec-table span,.seo-pathways h2){color:#526171!important}
+:is(.proof-strip span,.proof-strip b,.trust span,.audience-grid>a>span,.audience-grid>a>b,.cards article>span,.product-realshot figcaption span,.status-row b,.journey-grid b,.intel-top span,.metric-row em,.chart-label span,.spec-table span,.architecture b,.safety-grid b,.transparency-grid span,.final-proof-grid strong,.contact-actions span,.po-completion label,.po-completion span,.po-address-copy button){font-size:14px!important;line-height:1.6}
+:is(.announcement,.announcement a,.footer-rich p,.footer-bottom,.footer-bottom span,.disclosure,.disclosure strong,.seo-pathways h2,.contact-note strong){font-size:14px!important;line-height:1.7}
+:is(.footer-rich p,.footer-bottom,.footer-bottom span,.disclosure,.disclosure p,.seo-pathways h2){color:#526171!important}
+main :is(.dark,.clinician,.simulator,.cta,.problem-story,.quote-band,.transparency,.safety-design,.fund-hero,.fund-cta,.po-hero,.contact-card,.section-head.light) p:not(.eyebrow):not(.rw-team-label){color:#d7e4ed!important}
+main :is(.dark,.clinician,.simulator,.cta,.problem-story,.quote-band,.transparency,.safety-design,.fund-hero,.fund-cta,.po-hero,.contact-card,.section-head.light) :is(.eyebrow,small,label,.safety-note){color:#d7e4ed!important;font-size:14px!important}
+main :is(.fund-hero,.fund-cta,.po-hero) :is(h1,h2,h3){color:#fff!important}
+main :is(.rw-video-play,.data-ring) small{color:#d7e4ed!important;font-size:14px!important}
+.intel-ui small,.intel-ui i,.architecture i{color:#d7e4ed!important;font-size:14px!important}
+.metric-row em,.chart-label span,.stack-map>span{color:#526171!important}
+.cards.modes article>span{color:#a9efdc!important}
+.product-realshot figcaption{background:#142c36!important;color:#fff!important;padding:16px 20px}
+.product-realshot figcaption :is(b,span){color:#fff!important;line-height:1.6}
+.web-contact-form :is(label>span,.form-consent,.form-consent span),.rw-subscribe-consent,.po-submit-area .form-consent{font-size:15px!important;line-height:1.7}
+.web-contact-form :is(input,select,textarea),.rw-subscribe-form input{font-size:16px!important;color:#17232d;background:#fff}
+input::placeholder,textarea::placeholder{color:#526171;opacity:1}
+@media(max-width:620px){main p:not(.eyebrow):not(.rw-team-label){font-size:16px!important}.announcement>.wrap{padding-block:10px}.proof-strip{flex-wrap:wrap;gap:16px}.proof-strip span{letter-spacing:.04em}.metric-row{flex-wrap:wrap}.chart-label{gap:12px;flex-wrap:wrap}}
