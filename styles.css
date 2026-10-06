@@ -870,3 +870,26 @@ img{max-width:100%}
  .btn,.mode-tab,.sim-modes button{border:1px solid ButtonText}
  .mode-tab.active,.sim-modes button.active{outline:2px solid Highlight}
 }
+
+/* Keep primary content discoverable and provide consistent interaction feedback. */
+.section,.prototype-gallery,.problem-story,.session-intel,.simulator,.spec-table-section{content-visibility:visible;contain-intrinsic-size:none}
+.reveal{opacity:1;transform:none}
+.mode-tab:hover:not(.active),.sim-modes button:hover:not(.active){background:#263843;color:#fff}
+.mode-tab:focus-visible,.sim-modes button:focus-visible{outline-color:#9fe5db}
+.dark a:focus-visible,.dark button:focus-visible,.simulator button:focus-visible{outline-color:#9fe5db}
+.mode-stage{scroll-margin-top:100px}
+.faq-list summary{min-height:48px;line-height:1.5}
+.faq-list summary:focus-visible{outline:3px solid #126567;outline-offset:4px}
+.faq-list details[open] summary{font-weight:700}
+.faq-list details[open] p{line-height:1.75}
+.photo-viewer-stage img{background:#101820}
+.photo-viewer-stage .photo-load-error{color:#fff;padding:32px;text-align:center;line-height:1.6}
+@media print{
+ .section,.prototype-gallery,.problem-story,.session-intel,.simulator,.spec-table-section{content-visibility:visible!important}
+ .rw-ai,.floating-contact,.mobile-demo-cta,.photo-viewer,.rw-insights,.menu-toggle{display:none!important}
+ .home-details:not([open]){display:none}
+ .cards article,.prototype-card,figure,.comparison-table tr{break-inside:avoid}
+ .comparison-scroll{overflow:visible}
+ .comparison-table{min-width:0;font-size:10pt}
+ body{padding-bottom:0!important}
+}

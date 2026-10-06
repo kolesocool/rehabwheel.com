@@ -255,3 +255,21 @@ dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewe
   a.rel=[...new Set((a.rel+' noopener noreferrer').trim().split(/\s+/))].join(' ');
  });
 })();
+
+/* Announce motion changes without interrupting focus, and recover failed photos. */
+(()=>{
+ const stage=document.querySelector('.mode-stage');
+ if(stage){
+  stage.setAttribute('role','region');stage.setAttribute('aria-label','Selected motion mode');
+  const status=document.createElement('p');status.className='sr-only';status.setAttribute('role','status');status.setAttribute('aria-atomic','true');stage.appendChild(status);
+  document.querySelectorAll('.mode-tab').forEach(button=>button.addEventListener('click',()=>{
+   status.textContent=document.getElementById('mode-title').textContent+'. '+document.getElementById('mode-copy').textContent;
+  }));
+ }
+ const photo=document.querySelector('.photo-viewer-stage img');
+ if(photo){
+  const notice=document.createElement('p');notice.className='photo-load-error';notice.hidden=true;notice.setAttribute('role','status');photo.parentElement.appendChild(notice);
+  photo.addEventListener('error',()=>{notice.hidden=false;notice.textContent='This photograph could not load. Try the next image or open the original photo below.';photo.style.display='none';});
+  photo.addEventListener('load',()=>{notice.hidden=true;photo.style.display='block';});
+ }
+})();
