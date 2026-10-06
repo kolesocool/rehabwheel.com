@@ -828,3 +828,45 @@ button:disabled{cursor:not-allowed}
 @media(prefers-reduced-motion:reduce){
   .mobile-demo-cta,.rw-ai{transition:none!important}
 }
+
+/* Shared readability, accessible navigation and small-screen controls. */
+main:focus{outline:none}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #126567;outline-offset:4px}
+.links a[aria-current=page],.mobile-nav a[aria-current=page]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.mode-tab,.sim-modes button{min-height:44px}
+.mode-stage small,.sim-status,.sim-readout small,.sim-controls label{color:#c1cdd7}
+.mode-stage p,.sim-controls label,.sim-modes button:not(.active){color:#cbd5df}
+.mode-switch{max-width:100%;flex-wrap:wrap}
+.mode-switch .mode-tab{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.mode-switch .mode-tab .rw-icon{margin:0;flex-shrink:0}
+.sim-controls input[type=range]{min-height:44px;cursor:pointer}
+.web-contact-form input,.web-contact-form select,.web-contact-form textarea,.rw-subscribe-form input{font-size:max(16px,1rem)}
+.web-contact-form textarea{resize:vertical;min-height:150px}
+.web-contact-form :is(input,select,textarea){scroll-margin-block:120px}
+.form-status:empty{display:none}
+.legal p,.seo-article p{max-width:80ch}
+.legal a,.seo-article p a{ text-underline-offset:3px}
+img{max-width:100%}
+.mobile-nav{overscroll-behavior:contain}
+@media(max-width:600px){
+ .actions{gap:12px;flex-wrap:wrap}
+ .actions .btn{min-height:48px}
+ .mode-switch{display:flex;border-radius:18px;gap:4px}
+ .mode-switch .mode-tab{flex:1 1 auto;padding:10px 12px}
+ .mode-stage{gap:20px}
+ .mode-stage h3{font-size:clamp(28px,8vw,36px)}
+ .sim-controls,.sim-display{padding:22px 18px}
+ .sim-readout{gap:12px}
+ .sim-readout small{font-size:10px;letter-spacing:.06em}
+ .sim-status{font-size:11px;letter-spacing:.06em}
+ .rw-ai-panel{max-height:calc(100dvh - 140px);overflow-y:auto;overscroll-behavior:contain}
+}
+@media(prefers-reduced-motion:reduce){
+ .mode-viz span,.sim-wave i,.status-pulse{animation:none!important}
+ .btn,.nav a{transition:none!important}
+ html{scroll-behavior:auto!important}
+}
+@media(forced-colors:active){
+ .btn,.mode-tab,.sim-modes button{border:1px solid ButtonText}
+ .mode-tab.active,.sim-modes button.active{outline:2px solid Highlight}
+}

@@ -1,7 +1,7 @@
 const progress=document.getElementById('progress');
 if(progress)addEventListener('scroll',()=>{const h=document.documentElement,den=h.scrollHeight-h.clientHeight;progress.style.width=(den?Math.min(100,h.scrollTop/den*100):0)+'%'},{passive:true});
 const revealEls=document.querySelectorAll('.section-head,.cards article,.panel,.research-card,.patents>div,.journey-grid>div,.product-band-inner>*,.spec-grid>div,.clinical-grid>*,.audience-grid>*');
-if(matchMedia('(prefers-reduced-motion: reduce)').matches){revealEls.forEach(el=>el.classList.add('show'));}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4%'});revealEls.forEach(el=>{el.classList.add('reveal');observer.observe(el)});}
+if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){revealEls.forEach(el=>el.classList.add('show'));}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4%'});revealEls.forEach(el=>{el.classList.add('reveal');observer.observe(el)});}
 const modes={passive:{k:'MOTOR-ASSISTED',t:'Passive motion',c:'The system drives the pedal cycle to provide continuous lower-limb movement.',v:'Assist'},active:{k:'USER-DRIVEN',t:'Active motion',c:'The user drives the movement while the platform is designed to sense and track the session.',v:'Active'},resistance:{k:'ADJUSTABLE LOAD',t:'Resistance training',c:'Planned adjustable resistance supports progressively configured lower-limb exercise sessions.',v:'1–15'}};
 document.querySelectorAll('.mode-tab').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.mode-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');const m=modes[button.dataset.mode];document.getElementById('mode-kicker').textContent=m.k;document.getElementById('mode-title').textContent=m.t;document.getElementById('mode-copy').textContent=m.c;document.getElementById('mode-value').textContent=m.v;}));
 const header=document.querySelector('.site-header'),toggle=document.querySelector('.menu-toggle'),mobile=document.querySelector('.mobile-nav');
@@ -196,4 +196,44 @@ dialog.addEventListener('close',()=>{document.body.classList.remove('photo-viewe
   if(event.target.closest(".mobile-demo-cta,.rw-ai"))setDismissed(false);
  });
  addEventListener("resize",()=>{if(!mobile.matches)setDismissed(false)},{passive:true});
+})();
+
+/* Shared control accessibility and navigation refinements. */
+(()=>{
+ const page=location.pathname.split('/').pop()||'index.html';
+ document.querySelectorAll('.links a,.mobile-nav a').forEach(a=>{
+  const url=new URL(a.href,location.href);
+  if(url.pathname.split('/').pop()===page&&!url.hash)a.setAttribute('aria-current','page');
+ });
+ document.querySelectorAll('.mode-switch,.sim-modes').forEach(group=>{
+  group.setAttribute('role','group');
+  group.setAttribute('aria-label',group.classList.contains('sim-modes')?'Session motion mode':'LegMaker motion mode');
+  const buttons=[...group.querySelectorAll('button')];
+  buttons.forEach((button,index)=>{
+   button.type='button';
+   button.addEventListener('keydown',event=>{
+    let next;
+    if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%buttons.length;
+    if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+buttons.length)%buttons.length;
+    if(event.key==='Home')next=0;
+    if(event.key==='End')next=buttons.length-1;
+    if(next===undefined)return;
+    event.preventDefault();buttons[next].focus();buttons[next].click();
+   });
+  });
+ });
+ const units={rpm:'RPM',resistance:'of 15',duration:'minutes'};
+ Object.entries(units).forEach(([id,unit])=>{
+  const field=document.getElementById(id);
+  if(!field)return;
+  const sync=()=>field.setAttribute('aria-valuetext',field.value+' '+unit);
+  field.addEventListener('input',sync);sync();
+ });
+ const menu=document.querySelector('.mobile-nav'),toggle=document.querySelector('.menu-toggle');
+ document.addEventListener('click',event=>{
+  if(menu?.classList.contains('open')&&!event.target.closest('.mobile-nav,.menu-toggle'))toggle?.click();
+ });
+ document.querySelectorAll('a[target="_blank"]').forEach(a=>{
+  a.rel=[...new Set((a.rel+' noopener noreferrer').trim().split(/\s+/))].join(' ');
+ });
 })();
