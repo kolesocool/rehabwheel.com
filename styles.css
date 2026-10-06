@@ -700,3 +700,40 @@ a:not(.btn){text-underline-offset:4px}
 @media(max-width:1000px){.care-section-head{align-items:flex-start;flex-direction:column;gap:20px}}
 @media(max-width:900px){#clinicians .clinical-grid{grid-template-columns:1fr}.clinical-side{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){#clinicians .clinical-side{grid-template-columns:1fr}#clinicians .clinical-main,#clinicians .clinical-side article{padding:22px}.care-cadence{gap:18px}#clinicians .big-number{font-size:60px}#clinicians .mini-stats{gap:8px}#clinicians .mini-stats>div{padding:12px 10px}#clinicians .mini-stats dd{font-size:18px}.care-section-head h2{font-size:36px!important}}
+
+/* Readability palette: strong contrast on both white and charcoal surfaces. */
+:root{--rw-readable-ink:#17232d;--rw-readable-copy:#405161;--rw-readable-muted:#526171;--rw-readable-light:#c5d2dd}
+body{color:var(--rw-readable-ink);font-size:16px;line-height:1.65}
+main p:not(.eyebrow):not(.rw-team-label),main li{color:var(--rw-readable-copy)}
+main :is(.eyebrow,small,.prototype-note,.form-helper){color:var(--rw-readable-muted)}
+.eyebrow{font-size:13px!important;line-height:1.5;letter-spacing:.09em!important}
+main p:not(.eyebrow):not(.rw-team-label){font-size:max(1em,16px);line-height:1.7}
+.cards p,.cards.team p{font-size:16px!important;color:var(--rw-readable-copy)!important;line-height:1.65}
+.cards.team .rw-team-label{font-size:13px!important;color:#126567!important}
+main :is(small,.prototype-note,.form-helper){font-size:14px;line-height:1.6}
+main :is(.spec-grid span,.trust,.kpis span,.metric span,.mini-top,.care-chart-head,.care-preview-note,.care-tags span){font-size:14px!important;line-height:1.6;color:var(--rw-readable-muted)}
+.footer,.disclosure,.seo-pathways{font-size:14px!important;line-height:1.7;color:var(--rw-readable-muted)}
+.footer a,.seo-pathways a{color:#244d65}
+.web-contact-form label,.rw-subscribe-consent,.rw-subscribe-form .form-helper{font-size:14px!important;line-height:1.6;color:var(--rw-readable-copy)}
+.web-contact-form :is(input,select,textarea),.rw-subscribe-form input[type=email]{font-size:16px!important}
+.form-error{color:#9a1827!important}
+:is(.dark,.clinician,.simulator,.cta,.problem-story,.quote-band,.transparency){color:#f3f7fa}
+main :is(.dark,.clinician,.simulator,.cta,.problem-story,.quote-band,.transparency) :is(p,li,small,.eyebrow,.mini-top,.care-chart-head,.care-preview-note,.care-tags span,.mini-stats dt){color:var(--rw-readable-light)!important}
+main :is(.dark,.clinician,.simulator,.cta,.problem-story,.quote-band,.transparency) :is(h2,h3,strong,dd){color:#f3f7fa}
+.dark .cards p{color:var(--rw-readable-light)!important}
+#clinicians .clinical-side p{font-size:16px!important}
+#clinicians :is(.care-preview-badge,.clinical-side small,.mini-stats dt){font-size:13px!important;line-height:1.6}
+#clinicians .care-cadence span{font-size:14px;color:#c5d2dd}
+#clinicians .big-number small{color:#c5d2dd!important;font-size:16px}
+#clinicians .mini-stats dd small{font-size:14px;color:#c5d2dd}
+.care-next-link{color:#d1eef7;font-size:15px}
+.dark .mode-tab:not(.active){color:#c5d2dd}
+.hero-product figcaption,.prototype-card:not(.outdoor-photo) figcaption{background:linear-gradient(transparent,rgba(8,15,27,.96))!important;color:#fff!important}
+.hero-product figcaption :is(span,strong,a),.prototype-card:not(.outdoor-photo) figcaption :is(span,strong){color:#fff!important;opacity:1!important}
+.hero-product figcaption span{font-size:13px!important}.prototype-card figcaption span{font-size:14px!important}
+.outdoor-photo figcaption span{color:#405161!important;font-size:14px}
+.rw-partner-card p{color:#405161!important}
+.rw-ai-msg p,.rw-ai-panel small,.rw-ai-suggestions button{font-size:14px!important;line-height:1.65;color:#405161}
+.rw-ai-input{font-size:16px}
+.announcement,.announcement a{color:#e6edf3!important}
+@media(max-width:620px){main p:not(.eyebrow):not(.rw-team-label){font-size:16px}.footer{font-size:14px!important}}
