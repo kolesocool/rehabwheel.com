@@ -349,3 +349,40 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
   if(location.hash!==link.hash)history.replaceState(history.state,'',location.pathname+location.search+link.hash);
  }));
 })();
+
+/* Clear form guidance and field-level recovery without storing draft content. */
+(()=>{
+ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach((form,formIndex)=>{
+  const fields=[...form.querySelectorAll('input:not([type="hidden"]):not([name="_honey"]),textarea,select')].filter(field=>field.type!=='submit'&&field.type!=='button');
+  const notes=new Map();
+  const labelOf=field=>{if(field.type==='checkbox')return form.classList.contains('rw-subscribe-form')?'Mailing-list consent':'Inquiry consent';const label=field.closest('label')||document.querySelector('label[for="'+field.id+'"]');return label?.querySelector('span')?.textContent?.trim()||[...(label?.childNodes||[])].filter(node=>node.nodeType===3).map(node=>node.textContent).join(' ').trim()||field.name||'This field';};
+  const whitespace=field=>{if(field.required&&(field.tagName==='TEXTAREA'||field.type==='text'))field.setCustomValidity(field.value.length>0&&!field.value.trim()?'Please enter '+labelOf(field).toLowerCase()+' using more than spaces.':'');};
+  const feedback=field=>{const note=notes.get(field);if(!note)return;const valid=field.validity.valid;note.hidden=valid;note.textContent=valid?'':rwFieldError(field,labelOf(field));valid?field.removeAttribute('aria-invalid'):field.setAttribute('aria-invalid','true');};
+  const instruction=document.createElement('p');instruction.className='form-requirements';instruction.textContent=form.classList.contains('rw-subscribe-form')?'Enter your email and select the required mailing-list consent before subscribing.':'Required fields are marked. Review any highlighted fields before sending.';form.prepend(instruction);
+  const summary=document.createElement('div');summary.className='validation-summary';summary.hidden=true;summary.setAttribute('role','group');summary.setAttribute('aria-label','Fields needing attention');instruction.after(summary);
+  fields.forEach((field,index)=>{
+   field.id=field.id||'rw-form-'+formIndex+'-field-'+index;
+   const note=document.createElement('p');note.className='field-feedback';note.id=field.id+'-feedback';note.hidden=true;notes.set(field,note);
+   const parent=field.closest('label');parent&&field.type!=='checkbox'?parent.appendChild(note):(parent||field).after(note);
+   field.setAttribute('aria-describedby',[field.getAttribute('aria-describedby'),note.id].filter(Boolean).join(' '));
+   field.addEventListener('blur',()=>{whitespace(field);feedback(field);});
+   field.addEventListener('input',()=>{whitespace(field);if(field.hasAttribute('aria-invalid'))feedback(field);});
+   field.addEventListener('change',()=>{whitespace(field);if(field.hasAttribute('aria-invalid'))feedback(field);});
+   if(field.tagName==='TEXTAREA'&&field.maxLength>0){
+    const counter=document.createElement('p');counter.className='field-counter';counter.id=field.id+'-count';field.after(counter);
+    field.setAttribute('aria-describedby',field.getAttribute('aria-describedby')+' '+counter.id);
+    const sync=()=>{counter.textContent=field.value.length.toLocaleString('en-US')+' / '+field.maxLength.toLocaleString('en-US')+' characters';counter.classList.toggle('near-limit',field.value.length>=field.maxLength*.9);};
+    field.addEventListener('input',sync);form.addEventListener('reset',()=>setTimeout(sync,0));sync();
+   }
+  });
+  const buildSummary=()=>{
+   const invalid=fields.filter(field=>!field.validity.valid);summary.replaceChildren();summary.hidden=invalid.length===0;if(!invalid.length)return;
+   const heading=document.createElement('p');heading.textContent='Review '+invalid.length+' field'+(invalid.length===1?'':'s')+' before sending:';summary.appendChild(heading);
+   const list=document.createElement('ul');invalid.forEach(field=>{const item=document.createElement('li'),link=document.createElement('a');link.href='#'+field.id;link.textContent=labelOf(field);link.addEventListener('click',event=>{event.preventDefault();field.scrollIntoView({block:'center',behavior:'auto'});field.focus({preventScroll:true});});item.appendChild(link);list.appendChild(item);feedback(field);});summary.appendChild(list);
+  };
+  form.addEventListener('submit',()=>fields.forEach(whitespace),true);
+  form.addEventListener('submit',buildSummary);
+  const syncSummary=()=>{if(!summary.hidden)buildSummary();};form.addEventListener('input',syncSummary);form.addEventListener('change',syncSummary);
+  form.addEventListener('reset',()=>{summary.hidden=true;fields.forEach(field=>{field.setCustomValidity('');field.removeAttribute('aria-invalid');const note=notes.get(field);note.hidden=true;note.textContent='';});});
+ });
+})();

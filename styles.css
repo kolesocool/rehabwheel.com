@@ -1067,3 +1067,19 @@ main p,main li,.fund-card h3,.resource-card h3{overflow-wrap:break-word}
 .fund-card[id]{scroll-margin-top:96px}
 @media(max-width:700px){.fund-shortlist-toolbar{align-items:stretch;flex-direction:column}.fund-shortlist-toolbar .fund-saved-toggle{margin-right:0}.fund-shortlist-toolbar button{width:100%}.fund-card-tools{justify-content:space-between}}
 @media print{.fund-shortlist-toolbar,.fund-card-tools,.fund-tool-status{display:none!important}}
+
+/* Clear required fields, character limits and links to validation errors. */
+.form-requirements{font-size:14px!important;line-height:1.6;color:#405161!important;margin:0 0 20px}
+.web-contact-form label:not(.form-consent):has(> :is(input,select,textarea)[required])>span:first-child::after{content:"Required";display:inline-block;margin-left:10px;font-size:14px;font-weight:600;line-height:1.5;padding:2px 6px;border-radius:5px;background:#edf5f5;color:#126567}
+.field-feedback[hidden],.validation-summary[hidden]{display:none!important}
+.web-contact-form .field-feedback,.rw-subscribe-form .field-feedback{font-size:14px!important;line-height:1.6;color:#9b2525!important;margin:8px 0 0}
+.web-contact-form .field-counter{font-size:14px!important;line-height:1.6;color:#526171!important;margin:8px 0 0;text-align:right;font-variant-numeric:tabular-nums}
+.web-contact-form .field-counter.near-limit{color:#865300!important;font-weight:700}
+.validation-summary{padding:16px 20px;margin-bottom:20px;border:1px solid #b74343;border-left-width:4px;border-radius:10px;background:#fff5f5;color:#762121}
+.validation-summary p{font-size:15px!important;font-weight:700;color:#762121!important;margin:0 0 8px}
+.validation-summary ul{margin:0;padding-left:22px}.validation-summary a{display:inline-flex;align-items:center;min-height:44px;color:#762121!important;text-decoration:underline;font-size:15px;line-height:1.6}
+.web-contact-form :is(input,select,textarea)[aria-invalid="true"],.rw-subscribe-form input[aria-invalid="true"]{border-color:#b74343!important;box-shadow:0 0 0 2px #b7434320}
+.web-contact-form :is(input,select,textarea){scroll-margin-top:100px}
+.rw-subscribe-form .form-requirements{color:#405161!important;flex-basis:100%}
+.rw-subscribe-form .field-feedback{color:#9b2525!important;flex-basis:100%}
+@media(max-width:600px){.web-contact-form label:not(.form-consent):has(> :is(input,select,textarea)[required])>span:first-child::after{margin-left:6px}.validation-summary{padding:14px}.validation-summary a{min-height:48px}}
