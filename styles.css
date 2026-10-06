@@ -590,3 +590,59 @@ img{height:auto}
 .rw-icon-control>.rw-icon{width:17px;height:17px;margin-right:6px;vertical-align:-3px}
 .mobile-nav .rw-icon{opacity:.8}
 @media(max-width:620px){.rw-icon-heading{gap:9px}.rw-icon-heading>.rw-icon{width:20px;height:20px}}
+
+/* Shared UI refinement: readable hierarchy, restrained surfaces, responsive spacing. */
+:root{--ui-copy:#465460;--ui-line:#dde4e9;--ui-surface:#f6f8fa;--ui-accent:#126567}
+body{line-height:1.65;text-rendering:optimizeLegibility}
+main{overflow-wrap:break-word}
+h1,h2,h3{ text-wrap:balance }
+.section-head p,.lede,.page-hero>p{ text-wrap:pretty }
+.section-head{max-width:780px;margin-bottom:clamp(28px,4vw,48px)}
+.section h2,.cta h2{font-size:clamp(34px,4.1vw,58px)!important;line-height:1.12!important;letter-spacing:-.035em!important}
+.section-head p:last-child,.lede-sm{line-height:1.7;color:var(--ui-copy)}
+.cards h3{line-height:1.3;letter-spacing:-.02em}
+.cards p{line-height:1.7}
+.cards article,.research-card,.panel{border-radius:22px!important;border:1px solid var(--ui-line)!important}
+.cards article{padding:clamp(22px,2.4vw,32px)!important}
+.cards article p:last-child{margin-bottom:0}
+.cards article>h3:first-child{margin-top:0}
+.cards.team article{display:flex;flex-direction:column;align-items:flex-start}
+.cards.team h3{margin-top:20px;line-height:1.35}
+.cards.team p{margin-top:8px}
+.cards.team .rw-team-label{margin-top:auto;padding-top:16px}
+.cards.team .team-photo{border-radius:20px!important;box-shadow:0 4px 14px rgba(17,24,32,.07)}
+.btn{min-height:48px;line-height:1.3;gap:9px;transition:background .18s ease,transform .18s ease,box-shadow .18s ease!important}
+.btn.secondary{border-color:#cbd5de}
+.btn:active{transform:translateY(1px)}
+.actions{flex-wrap:wrap}
+.links a{font-weight:500}
+.site-header.scrolled{box-shadow:0 3px 18px rgba(17,24,32,.055)}
+.rw-video-grid{gap:clamp(16px,2.4vw,28px)}
+.rw-video-card>p{color:var(--ui-copy);line-height:1.65}
+.rw-video-play{transition:background .2s ease}
+.rw-video-play:hover{background:#1b4353}
+.rw-partner-card{border-radius:20px!important;border-color:var(--ui-line)!important;display:flex;flex-direction:column}
+.rw-partner-link{margin-top:auto;min-height:44px;display:inline-flex;align-items:center}
+.rw-partner-logo{object-fit:contain}
+.faq-list summary{min-height:56px;padding-block:18px;line-height:1.5}
+.faq-list details[open]{background:var(--ui-surface)}
+.faq-list details p{max-width:72ch;line-height:1.75}
+.web-contact-form input,.web-contact-form select,.web-contact-form textarea,.rw-subscribe-form input[type=email]{font:inherit;min-height:48px;border:1px solid #b9c7d2;border-radius:12px;background:#fff;color:#17232d}
+.web-contact-form textarea{min-height:150px;resize:vertical;line-height:1.6}
+.web-contact-form label{line-height:1.5}
+input::placeholder,textarea::placeholder{color:#697985;opacity:1}
+input[aria-invalid=true],textarea[aria-invalid=true],select[aria-invalid=true]{border-color:#9a1827!important;box-shadow:0 0 0 1px #9a1827}
+.form-error:empty{display:none}
+.form-error{font-size:14px;line-height:1.5;margin:12px 0 0}
+.rw-subscribe-consent{line-height:1.6}
+input[type=checkbox]{accent-color:var(--ui-accent);min-width:18px;min-height:18px}
+.footer{flex-wrap:wrap;line-height:1.8}
+.footer a{display:inline-block;padding-block:6px;text-underline-offset:4px}
+a:not(.btn){text-underline-offset:4px}
+.dark .cards article{border-color:#34414d!important}
+.dark .rw-icon-heading>.rw-icon{color:#a6cbd1}
+.dark .cards p{color:#c0c9d2!important}
+@media(hover:hover){.btn:hover{box-shadow:0 8px 22px rgba(17,24,32,.13)}.rw-partner-card:hover{border-color:#afc0cd!important}}
+@media(max-width:900px){.hero{gap:36px!important}.section{padding-block:clamp(60px,8vw,88px)!important}.hero-product{margin:0!important}.cta-inner{gap:24px}}
+@media(max-width:620px){.wrap{width:calc(100% - 36px)!important}.hero h1{font-size:clamp(42px,11vw,58px)!important;line-height:1.06!important}.lede{font-size:18px!important;line-height:1.65}.section h2,.cta h2{font-size:clamp(30px,8.2vw,40px)!important}.cards h3{font-size:21px}.cards.team h3{font-size:19px}.actions{gap:12px}.actions .btn{width:100%}.rw-partner-grid{gap:16px}.rw-subscribe-form{gap:14px}.footer{gap:16px}.mobile-nav>a:not(.btn){font-size:clamp(23px,7vw,32px)!important}.mobile-nav{padding-inline:18px!important}.rw-ai-launch{max-width:calc(100vw - 32px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.rw-video-play,.site-header,.rw-partner-card{transition:none!important}.marquee div{animation:none!important}}
