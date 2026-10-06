@@ -53,10 +53,11 @@ document.querySelectorAll('[data-inquiry]').forEach(btn=>btn.addEventListener('c
  panel.innerHTML='<div><strong>Cookies &amp; your privacy</strong><p>We use local storage to remember your choice. Optional analytics store website usage on this browser only and stay off unless you accept. <a href="/privacy.html#cookies">Learn more</a></p></div><div class="rw-cookie-actions"><button type="button" data-choice="false">Essential only</button><button type="button" data-choice="true">Accept analytics</button></div>';
  const opener=document.createElement('button');opener.type='button';opener.className='rw-cookie-settings';opener.textContent='Cookie settings';opener.setAttribute('aria-expanded',String(!prefs));opener.setAttribute('aria-controls','rw-cookie-panel');panel.id='rw-cookie-panel';
  const footer=document.querySelector('footer')||document.body;footer.appendChild(opener);document.body.appendChild(panel);
+ const status=document.createElement('p');status.className='rw-cookie-status';status.setAttribute('role','status');panel.querySelector('div').appendChild(status);const updateStatus=()=>{status.textContent='Essential storage: always on · Analytics: '+(window.rwCookieConsent.analytics?'on':'off');};updateStatus();
  let returnFocus=null;
  opener.addEventListener('click',()=>{returnFocus=opener;panel.hidden=false;opener.setAttribute('aria-expanded','true');panel.querySelector('button').focus();});
  panel.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
-  const analytics=button.dataset.choice==='true';window.rwCookieConsent.analytics=analytics;
+  const analytics=button.dataset.choice==='true';window.rwCookieConsent.analytics=analytics;updateStatus();
   try{localStorage.setItem(key,JSON.stringify({version:1,analytics,savedAt:Date.now()}));if(!analytics)localStorage.removeItem('rw_analytics');}catch(e){}
   if(!analytics&&window.rwAnalytics)window.rwAnalytics.queue.length=0;
   panel.hidden=true;opener.setAttribute('aria-expanded','false');(returnFocus||opener).focus();

@@ -1028,3 +1028,12 @@ body main #clinicians :is(.care-preview-badge,.mini-stats dt,.clinical-side smal
 .rw-cookie-panel button:focus-visible,.rw-cookie-settings:focus-visible{outline:3px solid #126567;outline-offset:4px}
 @media(max-width:800px){.rw-cookie-panel{left:12px;right:12px;bottom:12px;padding:18px;gap:16px;flex-direction:column;align-items:stretch;max-height:80vh;overflow:auto}.rw-cookie-actions{flex-wrap:wrap}.rw-cookie-actions button{flex:1}}
 @media print{.rw-cookie-panel,.rw-cookie-settings{display:none!important}}
+
+.rw-cookie-panel .rw-cookie-status{font-size:14px;font-weight:700;color:#126567;border-top:1px solid #dbe6e9;padding-top:12px}
+.page-breadcrumb ol{flex-wrap:wrap;row-gap:8px}
+.resource-footer{flex-wrap:wrap;row-gap:12px}
+.resource-footer a{min-height:44px;display:inline-flex;align-items:center}
+main details>summary{min-height:44px;padding-top:12px;padding-bottom:12px;cursor:pointer}
+main input,main select,main textarea{max-width:100%}
+main p,main li,.fund-card h3,.resource-card h3{overflow-wrap:break-word}
+@media(max-width:600px){.page-breadcrumb{font-size:14px}.rw-cookie-actions{gap:12px}.rw-cookie-actions button{min-height:48px}}
