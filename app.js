@@ -362,6 +362,7 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
   const summary=document.createElement('div');summary.className='validation-summary';summary.hidden=true;summary.setAttribute('role','group');summary.setAttribute('aria-label','Fields needing attention');instruction.after(summary);
   fields.forEach((field,index)=>{
    field.id=field.id||'rw-form-'+formIndex+'-field-'+index;
+   if(field.type!=='checkbox')field.setAttribute('aria-label',labelOf(field));
    const note=document.createElement('p');note.className='field-feedback';note.id=field.id+'-feedback';note.hidden=true;notes.set(field,note);
    const parent=field.closest('label');parent&&field.type!=='checkbox'?parent.appendChild(note):(parent||field).after(note);
    field.setAttribute('aria-describedby',[field.getAttribute('aria-describedby'),note.id].filter(Boolean).join(' '));
