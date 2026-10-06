@@ -516,3 +516,11 @@
 | icons.html | Image alternatives | Pass |
 | icons.html | Image decoding | Pass |
 | icons.html | Structured data syntax | Pass |
+
+
+## Follow-up SEO correction — 2026-10-06
+
+A targeted JSON-LD audit found repeated `BreadcrumbList` objects on 13 indexable pages. The site review checked that structured data parsed, but had not checked for duplicate breadcrumb objects. Each affected page now keeps one breadcrumb list with the page's descriptive label; its URL still matches the page canonical.
+
+Affected pages: bylaws.html, company.html, compliance.html, confidentiality.html, contact.html, investors.html, legmaker.html, news.html, patents.html, research.html, security.html, technology.html, terms.html.
+
