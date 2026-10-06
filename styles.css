@@ -967,3 +967,12 @@ main :is(.rw-video-play,.data-ring) small{color:#d7e4ed!important;font-size:14px
 .web-contact-form :is(input,select,textarea),.rw-subscribe-form input{font-size:16px!important;color:#17232d;background:#fff}
 input::placeholder,textarea::placeholder{color:#526171;opacity:1}
 @media(max-width:620px){main p:not(.eyebrow):not(.rw-team-label){font-size:16px!important}.announcement>.wrap{padding-block:10px}.proof-strip{flex-wrap:wrap;gap:16px}.proof-strip span{letter-spacing:.04em}.metric-row{flex-wrap:wrap}.chart-label{gap:12px;flex-wrap:wrap}}
+
+/* Final audit corrections for nested preview cards and footer labels. */
+a:hover{opacity:1}
+.chips b,.problem-grid>div>span,.quote-band .wrap>span,.who-grid a,.disclosure p,.seo-pathways a,.floating-contact span,.po-next li>div,.po-next li strong{font-size:14px!important;line-height:1.6}
+body main .cards.team .rw-team-label,body main .cards.contact-team-grid .card-label{font-size:14px!important;line-height:1.6}
+body main #clinicians :is(.care-preview-badge,.mini-stats dt,.clinical-side small){font-size:14px!important;line-height:1.6}
+.footer-rich :is(a,b,span),.footer-rich .social-icon.wordmark{font-size:14px!important;line-height:1.6}
+.intel-main small,.intel-main .concept-label{color:#526171!important}
+.safety-grid b{color:#d7e4ed!important}
