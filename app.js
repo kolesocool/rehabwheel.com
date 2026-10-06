@@ -112,8 +112,35 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
 
 /* Rehabwheel's 50 original line icons. Decorative icons preserve text labels. */
 (()=>{const icons={"home":"M3 10 12 3 21 10M5 9v12h14V9M10 21v-7h4v7","wheelchair":"M9 3v8h7l3 8 3-1M9 7h7M7 12a6 6 0 1 0 8 7","motion":"M3 12h18M16 7l5 5-5 5M8 5H3M8 19H3","technology":"M7 7h10v10H7zM9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4","clinicians":"M8 3v6a4 4 0 0 0 8 0V3M6 3h4M14 3h4M12 13v3a4 4 0 0 0 8 0v-3M18 11h4v3h-4z","research":"M9 3h6M10 3v6L4 19q-1 2 2 2h12q3 0 2-2L14 9V3M7 15h10","company":"M5 21V3h14v18M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M10 21v-6h4v6","partners":"M3 9l4-4 5 2 5-2 4 4-4 10-5-2-5 2zM7 10l5 4 5-4","mail":"M3 5h18v14H3zM3 6l9 7 9-7","phone":"M5 3h4l2 5-3 2q2 4 6 6l2-3 5 2v4q-1 3-6 1Q4 16 3 6z","calendar":"M4 5h16v16H4zM8 3v4M16 3v4M4 10h16M8 14h2M14 14h2","play":"M8 4l13 8-13 8z","team":"M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6M16 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6M2 21v-4q0-5 6-5t6 5v4M16 13q6 0 6 5v3","person":"M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M4 21v-3q0-5 8-5t8 5v3","advisor":"M3 8l9-5 9 5-9 5zM6 10v6q6 5 12 0v-6M21 8v9","leadership":"M3 6l4 5 5-8 5 8 4-5-2 13H5zM6 22h12","heart":"M12 21 3 12C-3 3 9 0 12 7c3-7 15-4 9 5z","pulse":"M2 12h5l3-8 4 16 3-8h5","shield":"M12 3l9 3v7q-1 6-9 9-8-3-9-9V6zM8 12l3 3 5-6","lock":"M5 10h14v11H5zM8 10V7a4 4 0 0 1 8 0v3M12 14v3","privacy":"M3 12q9-12 18 0-9 12-18 0M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0M3 3l18 18","document":"M5 3h9l5 5v13H5zM14 3v6h5M8 13h8M8 17h6","patent":"M8 3h8v10H8zM8 6h8M8 10h8M10 13l-2 8 4-2 4 2-2-8","check":"M4 12l5 5L20 6","arrow":"M3 12h18M15 6l6 6-6 6","external":"M14 3h7v7M21 3l-9 9M10 5H3v16h16v-7","search":"M10 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14M15 15l6 6","menu":"M3 6h18M3 12h18M3 18h18","close":"M5 5l14 14M19 5 5 19","download":"M12 3v12M7 10l5 5 5-5M3 16v5h18v-5","upload":"M12 16V3M7 8l5-5 5 5M3 16v5h18v-5","cloud":"M6 19h12a4 4 0 0 0 0-8 6 6 0 0 0-12-2 5 5 0 0 0 0 10","data":"M3 6q9-6 18 0v12q-9 6-18 0zM3 6q9 6 18 0M3 12q9 6 18 0","chart":"M3 3v18h18M7 17v-5M12 17V8M17 17V5","settings":"M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2","battery":"M2 6h18v12H2zM23 10v4M6 10v4M10 10v4M14 10v4","bluetooth":"M12 2v20l6-6L6 6M6 18 18 8 12 2","wifi":"M2 8q10-10 20 0M5 12q7-7 14 0M8 16q4-4 8 0M12 20h.01","timer":"M9 2h6M12 2v3M12 7a7 7 0 1 0 0 14 7 7 0 0 0 0-14M12 10v5l3 2M18 6l2-2","resistance":"M2 9h3v6H2zM5 6h3v12H5zM8 12h8M16 6h3v12h-3zM19 9h3v6h-3z","active":"M14 3h.01M7 8l5-3 4 6 5 1M12 5l-2 8-6 7M10 13l5 3 1 5","passive":"M4 12a8 8 0 0 1 14-5M18 3v4h-4M20 12a8 8 0 0 1-14 5M6 21v-4h4","accessibility":"M12 3h.01M3 7l9 2 9-2M12 9v6M12 15l-5 7M12 15l5 7","location":"M12 22S4 14 4 9a8 8 0 0 1 16 0c0 5-8 13-8 13M9 9a3 3 0 1 0 6 0 3 3 0 0 0-6 0","globe":"M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20M2 12h20M12 2q-8 10 0 20M12 2q8 10 0 20","message":"M3 3h18v14H8l-5 5zM7 8h10M7 12h6","newsletter":"M3 5h18v16H3zM7 9h4v4H7zM14 9h3M14 13h3M7 17h10","hand":"M7 13V6q0-3 3-3v8-6q3-3 3 0v6-5q3-2 3 1v5-3q3-1 3 2v6q0 5-6 5h-3q-3 0-5-4l-3-5q0-3 3-1l2 2","lightbulb":"M9 18h6M9 22h6M9 18v-3a7 7 0 1 1 6 0v3M12 2v2","sparkles":"M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3zM20 2v4M18 4h4"};const svg=name=>{const el=document.createElementNS('http://www.w3.org/2000/svg','svg');el.setAttribute('viewBox','0 0 24 24');el.setAttribute('class','rw-icon');el.setAttribute('aria-hidden','true');el.setAttribute('focusable','false');const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',icons[name]||icons.sparkles);el.appendChild(p);return el;};
-const names={'LegMaker':'wheelchair','Technology':'technology','Clinicians':'clinicians','Research':'research','Company':'company','Partners':'partners','Contact':'mail','Request demo':'calendar'};
-document.querySelectorAll('.links a,.mobile-nav a').forEach(a=>{const name=names[a.textContent.trim()];if(name)a.prepend(svg(name));});
-document.querySelectorAll('.cards article,.audience-grid>a').forEach((e,i)=>{const title=e.querySelector('h3');if(title)title.prepend(svg(['motion','pulse','shield','data','team','research'][i%6]));});
+const names={'LegMaker':'wheelchair','Technology':'technology','Clinicians':'clinicians','Research':'research','Company':'company','Partners':'partners','Contact':'mail','Request demo':'message'};
+/* Compact desktop navigation stays text-led; mobile rows have useful visual cues. */
+document.querySelectorAll('.mobile-nav a').forEach(a=>{const name=names[a.textContent.trim()];if(name)a.prepend(svg(name));});
+const topics={
+'Wheelchair-first fit':'wheelchair','Lower-limb focus':'motion','Connected sessions':'data',
+'The chair stays central.':'wheelchair','Movement becomes configurable.':'settings','Sessions become readable.':'chart',
+'Purposeful controls.':'settings','Metrics that stay readable.':'chart',
+'Wheelchair users':'wheelchair','Rehabilitation teams':'clinicians','Home & caregiver workflows':'home',
+'Wheelchair users & caregivers':'wheelchair','Clinicians & care teams':'clinicians','Researchers':'research','Investors & partners':'partners',
+'Engineering & product development':'technology','Connected product experience':'wifi','No implied clearance or efficacy':'document',
+'Explore evaluation opportunities':'research','Build the next generation with us':'partners',
+'Explore workflow and usability.':'accessibility','Study measurable movement.':'chart','Help build what comes next.':'partners',
+'Fits the workflow':'wheelchair','Configures the motion':'settings','Connects the session':'data',
+'Lower-limb movement':'motion','16 · 18 · 20 inch':'wheelchair','Rechargeable':'battery','Connected roadmap':'wifi',
+'Position':'wheelchair','Configure':'settings','Move':'motion','Review':'chart',
+'Motion':'motion','Control':'settings','Sense':'pulse','Connect':'wifi','Interpret':'chart',
+'Controlled motion':'motion','Session readiness':'check','Device state':'battery','Development verification':'shield',
+'Passive':'passive','Active':'active','Resistance':'resistance',
+'Prototype documentation':'document','Usability and safety':'shield','Clinical evaluation':'research',
+'Intelligent, accessible mobility hardware.':'wheelchair','Robotic assistance integrated into everyday life.':'technology','Mechatronics + clinical outcomes.':'pulse',
+'Leadership & General Inquiries':'mail','Clinical Research & Partnerships':'research','Investor Relations & Strategic Growth':'partners','Regulatory & Compliance':'shield'
+};
+document.querySelectorAll('.cards article h3,.audience-grid>a h3,.spec-grid h3,.journey-grid h3,.clinical-grid h3,.contact-team-grid h3').forEach(title=>{
+ const name=topics[title.textContent.trim()];
+ if(name&&!title.querySelector('.rw-icon')){title.classList.add('rw-icon-heading');title.prepend(svg(name));}
+});
+document.querySelectorAll('.mode-tab,[data-sim-mode]').forEach(button=>{
+ const name=topics[button.textContent.trim()];
+ if(name&&!button.querySelector('.rw-icon')){button.classList.add('rw-icon-control');button.prepend(svg(name));}
+});
 const catalog=document.getElementById('icon-catalog');if(catalog)Object.keys(icons).forEach(name=>{const li=document.createElement('li');li.appendChild(svg(name));const label=document.createElement('span');label.textContent=name;li.appendChild(label);catalog.appendChild(li);});
 })();
