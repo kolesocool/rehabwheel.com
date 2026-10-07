@@ -1154,3 +1154,19 @@ footer .rw-social-squares .social-link:hover{background:#fff!important;border-co
 .rw-newsletter-dialog .form-helper{margin-bottom:0}
 @media(max-width:600px){.rw-support-strip{padding:44px 0}.rw-support-logo,.rw-california-badge{min-height:180px}.rw-newsletter-content{padding:24px}.rw-newsletter-visual{margin:-24px -24px 18px;height:140px}.rw-newsletter-dialog h2{font-size:32px}}
 @media(prefers-reduced-motion:reduce){.rw-support-logo,.rw-california-badge{transition:none;transform:none!important}}
+
+/* Cohesive social tiles: navy, sea glass and crisp optical alignment. */
+footer .social-block{background:linear-gradient(135deg,#17394a,#162f45)!important;border:1px solid #ffffff18;padding:24px!important;border-radius:22px;box-shadow:0 10px 28px #102c3914}
+footer .social-block>b{color:#dcebed!important;letter-spacing:.12em;font-size:11px;margin-bottom:18px}
+footer .rw-social-squares{gap:10px!important;max-width:300px}
+footer .rw-social-squares .social-link{position:relative;width:52px!important;height:52px!important;min-height:52px!important;flex:0 0 52px;border-radius:16px!important;background:linear-gradient(145deg,#ffffff12,#ffffff06)!important;border:1px solid #a5d1d438!important;color:#e1f2f1!important;box-shadow:inset 0 1px 0 #ffffff12,0 3px 8px #061b2912;transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}
+footer .rw-social-squares .social-icon{width:24px!important;height:24px!important;font-size:17px!important;font-weight:750;line-height:1;letter-spacing:-.06em}
+footer .rw-social-squares .social-icon svg{display:block;width:23px!important;height:23px!important;fill:currentColor}
+footer .rw-social-squares .instagram .social-icon svg{fill:none}
+footer .rw-social-squares .youtube .social-icon svg{width:26px!important;height:26px!important}
+footer .rw-social-squares .social-link:hover{background:linear-gradient(145deg,#e6f5f1,#c9e7e5)!important;color:#145a63!important;border-color:#c9e7e5!important;transform:translateY(-3px);box-shadow:0 7px 16px #061b2933}
+footer .rw-social-squares .social-link:active{transform:translateY(0)}
+footer .rw-social-squares .social-link:focus-visible{outline:3px solid #8ee0d5!important;outline-offset:4px}
+@media(max-width:600px){footer .social-block{padding:20px!important}footer .rw-social-squares{max-width:none;gap:10px!important}footer .rw-social-squares .social-link{width:48px!important;height:48px!important;min-height:48px!important;flex-basis:48px;border-radius:14px!important}}
+@media(prefers-reduced-motion:reduce){footer .rw-social-squares .social-link{transition:none!important;transform:none!important}}
+@media(forced-colors:active){footer .rw-social-squares .social-link{border:1px solid LinkText!important}}
