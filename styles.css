@@ -1083,3 +1083,74 @@ main p,main li,.fund-card h3,.resource-card h3{overflow-wrap:break-word}
 .rw-subscribe-form .form-requirements{color:#405161!important;flex-basis:100%}
 .rw-subscribe-form .field-feedback{color:#9b2525!important;flex-basis:100%}
 @media(max-width:600px){.web-contact-form label:not(.form-consent):has(> :is(input,select,textarea)[required])>span:first-child::after{margin-left:6px}.validation-summary{padding:14px}.validation-summary a{min-height:48px}}
+
+
+/* October 7 reference-inspired footer and subscription experience */
+.rw-support-strip{padding:64px 0;background:#f4f7fa;border-top:1px solid #dce5ed;color:#142b44}
+.rw-support-heading{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.rw-support-heading h2{font-size:clamp(28px,4vw,42px);line-height:1.12;margin:8px 0;letter-spacing:-.035em}
+.rw-support-heading>p{max-width:370px;color:#425770;margin:0;font-size:16px}
+.rw-support-logos{display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:stretch}
+.rw-support-logo,.rw-california-badge{border:1px solid #dce5ed;border-radius:20px;display:flex;align-items:center;justify-content:center;background:#fff;padding:20px;text-decoration:none}
+.rw-support-logo img{width:min(100%,390px);height:auto;object-fit:contain}
+.rw-california-badge{flex-direction:column;gap:16px;color:#203b56}
+.rw-california-badge img{width:220px;max-width:100%;height:auto;border-radius:12px}
+.rw-california-badge span{font-size:13px;text-align:center;font-weight:600}
+.rw-newsletter-trigger{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:14px 20px;border:1px solid #294866;border-radius:12px;background:#183956;color:#fff;font:inherit;font-weight:700;cursor:pointer;min-height:48px}
+.rw-newsletter-trigger svg,.rw-newsletter-emblem svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.6}
+footer .rw-social-squares{display:flex!important;flex-wrap:wrap!important;gap:12px!important;align-items:center}
+footer .rw-social-squares .social-link{width:48px!important;height:48px!important;min-height:48px!important;padding:0!important;display:inline-flex!important;align-items:center;justify-content:center;border-radius:12px!important;background:#eef3f8!important;border:1px solid #d4dfe9!important;color:#173655!important;transition:background .2s,transform .2s}
+footer .rw-social-squares .social-link>span:not(.social-icon){position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+footer .rw-social-squares .social-icon{width:26px;height:26px;margin:0;display:grid;place-items:center;background:transparent!important;color:inherit!important;border-radius:0!important}
+footer .rw-social-squares .social-icon svg{width:24px;height:24px}
+footer .rw-social-squares .social-link:hover{background:#dde9f3!important;transform:translateY(-2px)}
+.rw-newsletter-dialog{width:min(520px,calc(100vw - 28px));max-height:calc(100dvh - 32px);padding:0;border:1px solid #d9e4ed;border-radius:28px;background:linear-gradient(150deg,#eaf5f6 0%,#f6f9fc 54%,#fff 100%);color:#142b44;box-shadow:0 28px 100px #07182c55;overflow:auto}
+.rw-newsletter-dialog::backdrop{background:rgba(8,22,37,.65);backdrop-filter:blur(6px)}
+.rw-newsletter-content{position:relative;padding:38px}
+.rw-newsletter-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border:1px solid #ccdce6;border-radius:50%;background:#fff;color:#173655;font-size:28px;cursor:pointer}
+.rw-newsletter-emblem{display:grid;place-items:center;width:66px;height:66px;border:1px solid #c7dce3;border-radius:19px;background:#dbeef1;color:#225e68;margin-bottom:24px}
+.rw-newsletter-emblem svg{width:32px;height:32px}
+.rw-newsletter-dialog h2{font-size:clamp(30px,5vw,42px);line-height:1.08;letter-spacing:-.04em;margin:10px 0 16px;color:#142b44}
+.rw-newsletter-dialog #rw-newsletter-description{font-size:16px;line-height:1.6;color:#40566d;margin-bottom:22px}
+.rw-newsletter-dialog .rw-subscribe-form{padding:0!important;background:transparent!important;border:0!important;border-radius:0!important}
+.rw-newsletter-email{display:grid;gap:8px;font-weight:700;font-size:14px}
+.rw-newsletter-email input{width:100%;min-height:52px;border:1px solid #8fa7bd;border-radius:12px;background:#fff;color:#152f48;padding:14px;font:inherit}
+.rw-newsletter-dialog .rw-subscribe-consent{font-size:12px;line-height:1.6;color:#3c5269;gap:10px;margin:16px 0}
+.rw-newsletter-dialog .rw-subscribe-consent input{width:18px;height:18px;accent-color:#225e68;flex-shrink:0}
+.rw-newsletter-dialog a{color:#174d73;text-decoration:underline;text-underline-offset:3px}
+.rw-newsletter-dialog .rw-newsletter-submit{display:flex;justify-content:space-between;gap:10px;width:100%;min-height:54px;border:0;border-radius:14px;background:#173e5f!important;color:#fff!important;padding:16px 20px;font:inherit;font-weight:700;cursor:pointer}
+.rw-newsletter-dialog .form-helper,.rw-newsletter-dialog .form-requirements{font-size:12px;color:#40566d;line-height:1.6}
+.rw-newsletter-later{display:block;margin:10px auto 0;border:0;background:transparent;color:#40566d;min-height:44px;padding:8px 16px;font:inherit;font-size:13px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.rw-newsletter-dialog :focus-visible,.rw-support-strip :focus-visible,footer .rw-social-squares a:focus-visible{outline:3px solid #168f9c;outline-offset:4px}
+.rw-newsletter-dialog .form-error:empty{display:none}
+@media(max-width:600px){.rw-support-strip{padding:40px 0}.rw-support-heading{display:block}.rw-support-heading>p{margin-top:12px}.rw-support-logos{grid-template-columns:1fr}.rw-newsletter-content{padding:28px 22px}.rw-newsletter-trigger{width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){footer .rw-social-squares .social-link{transition:none;transform:none!important}}
+
+/* Refined medtech visual treatment */
+.rw-support-strip{background:radial-gradient(ellipse at 85% 0%,#dcecf1 0%,transparent 50%),linear-gradient(180deg,#f5f8fc,#edf3f7);padding:72px 0}
+.rw-support-heading .eyebrow{color:#346577;letter-spacing:.17em}
+.rw-support-heading h2{font-weight:750;color:#14354f}
+.rw-support-logo,.rw-california-badge{box-shadow:0 10px 30px rgba(24,53,79,.045);border-color:#d9e3ec;transition:transform .2s,border-color .2s,box-shadow .2s;min-height:220px}
+.rw-support-logo:hover,.rw-california-badge:hover{transform:translateY(-3px);border-color:#8baebd;box-shadow:0 16px 36px rgba(24,53,79,.09)}
+.rw-newsletter-trigger{background:linear-gradient(120deg,#174b60,#183956);border:0;box-shadow:0 6px 18px rgba(23,75,96,.13);border-radius:14px}
+footer .social-block{padding:22px!important;border-radius:20px;background:linear-gradient(145deg,#1c3556,#233f69);box-shadow:0 12px 30px #142b4412;align-self:start}
+footer .social-block>b{display:block;color:#fff!important;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+footer .rw-social-squares .social-link{background:#e8eef7!important;border-color:#d2def0!important;border-radius:10px!important;color:#243f68!important}
+footer .rw-social-squares .social-link:hover{background:#fff!important;border-color:#fff!important}
+.rw-newsletter-dialog{background:#f8fbfd;border-radius:30px;box-shadow:0 35px 120px rgba(4,20,36,.4)}
+.rw-newsletter-content{padding:32px}
+.rw-newsletter-visual{position:relative;height:170px;margin:-32px -32px 22px;overflow:hidden;background:#dfecef;border-radius:29px 29px 0 0}
+.rw-newsletter-visual img{width:100%;height:100%;object-fit:cover;object-position:center 56%;display:block}
+.rw-newsletter-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,32,49,.56),transparent 65%)}
+.rw-newsletter-visual>span{position:absolute;left:24px;bottom:18px;color:#fff;background:rgba(12,39,60,.68);border:1px solid #ffffff55;backdrop-filter:blur(4px);border-radius:99px;padding:7px 12px;font-size:10px;letter-spacing:.12em;font-weight:750;z-index:1}
+.rw-newsletter-close{z-index:2;top:12px;right:12px;background:#f8fbfded;border-color:#ffffffa8;box-shadow:0 4px 16px #142b4422}
+.rw-newsletter-emblem{width:46px;height:46px;border-radius:14px;margin-bottom:14px;background:#e5f0f1}
+.rw-newsletter-emblem svg{width:24px;height:24px}
+.rw-newsletter-dialog .eyebrow{color:#315f70;font-size:10px;letter-spacing:.16em}
+.rw-newsletter-dialog h2{font-size:38px;line-height:1.1;letter-spacing:-.045em;margin-bottom:12px}
+.rw-newsletter-dialog #rw-newsletter-description{margin:0 0 18px;font-size:15px}
+.rw-newsletter-dialog .rw-newsletter-submit{background:linear-gradient(110deg,#176173,#173e5f)!important;box-shadow:0 8px 18px #17617320}
+.rw-newsletter-dialog .form-requirements{margin-top:0}
+.rw-newsletter-dialog .form-helper{margin-bottom:0}
+@media(max-width:600px){.rw-support-strip{padding:44px 0}.rw-support-logo,.rw-california-badge{min-height:180px}.rw-newsletter-content{padding:24px}.rw-newsletter-visual{margin:-24px -24px 18px;height:140px}.rw-newsletter-dialog h2{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.rw-support-logo,.rw-california-badge{transition:none;transform:none!important}}
