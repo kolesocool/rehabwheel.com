@@ -1203,3 +1203,21 @@ textarea{resize:vertical;min-height:130px}
 .rw-next-card{transition:border-color .18s,box-shadow .18s,transform .18s}.rw-next-card:hover{border-color:#7fb6b4;box-shadow:0 10px 24px #17394a10;transform:translateY(-2px)}
 @media(max-width:700px){.rw-next-grid{grid-template-columns:1fr}.rw-next-section{padding-block:36px}.rw-next-card{padding:22px 52px 22px 22px}}
 @media(prefers-reduced-motion:reduce){.rw-next-card{transition:none;transform:none!important}}@media print{.rw-next-section{display:none}}
+
+/* Resource browsing refinements */
+.fund-page .fund-card h3{line-height:1.35;letter-spacing:-.018em}
+.fund-page .fund-card .fund-region{font-size:14px!important;line-height:1.6;color:#526875!important}
+.fund-page .fund-tag{font-weight:700;line-height:1.5;border:1px solid #d6e8e5}
+.fund-page .fund-card:hover{border-color:#8ab9b6;box-shadow:0 8px 24px #153e4a0b}
+.fund-shortlist-toolbar{row-gap:14px;column-gap:18px}
+.fund-save[aria-pressed="true"]{box-shadow:inset 0 0 0 1px #126567;background:#d9eee7!important}
+.fund-save:hover{background:#edf6f3;border-color:#17666a}
+.fund-entry-link{white-space:normal;line-height:1.5;text-underline-offset:4px}
+@media(max-width:420px){.fund-card-tools{align-items:stretch!important;flex-direction:column!important}.fund-save{justify-content:center;width:100%}.fund-entry-link{justify-content:center}}
+.resource-card p{line-height:1.7;color:#4e6572}
+.resource-card h2{line-height:1.3;letter-spacing:-.018em}
+.resource-card:hover{border-color:#8ab9b6}
+.directory-category{line-height:1.5;text-align:left;overflow-wrap:anywhere}
+.fund-filter select,.resource-filters select,.fund-filter input,.resource-filters input{min-height:48px}
+.fund-provider-domain{overflow-wrap:anywhere;word-break:normal}
+@media(forced-colors:active){.fund-save[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:2px}.directory-category.selected{border-color:Highlight}}
