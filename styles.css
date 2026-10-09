@@ -1260,3 +1260,26 @@ body{font-family:Roboto,Arial,system-ui,sans-serif;color:var(--rw-navy)}
 .rw-nav-panel a:hover,.rw-nav-panel a:focus-visible{background:#eff8f7;color:#0c5d60}
 .rw-nav-panel strong{font-size:14px}.rw-nav-panel small{font-size:12px;line-height:1.4;color:#56717a}
 @media(max-width:1020px){.rw-desktop-nav{display:none!important}}
+
+
+/* Product journey, consistent iconography and footer refinement */
+.rw-product-journey{padding-block:clamp(38px,6vw,78px)}
+.rw-journey-intro{max-width:760px;margin-bottom:26px}
+.rw-journey-intro h2{font-size:clamp(28px,3.3vw,45px);letter-spacing:-.035em;line-height:1.13;margin:12px 0;color:#103142}
+.rw-journey-intro>p:last-child{color:#506977;font-size:17px;line-height:1.7}
+.rw-journey-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.rw-journey-card{display:flex;flex-direction:column;align-items:flex-start;gap:15px;padding:clamp(22px,3vw,32px);border:1px solid #d7e6e7;border-radius:22px;background:linear-gradient(155deg,#fff,#f4fafa);color:#183846;text-decoration:none;box-shadow:0 8px 30px rgba(14,54,64,.045);transition:border-color .2s,transform .2s,box-shadow .2s}
+.rw-journey-card:hover{border-color:#6aabb0;transform:translateY(-3px);box-shadow:0 18px 40px rgba(14,54,64,.1)}
+.rw-journey-icon{display:grid;place-items:center;width:58px;height:58px;background:#e1f2f1;color:#0d6268;border-radius:16px}
+.rw-journey-icon svg{width:31px;height:31px;stroke-linecap:round;stroke-linejoin:round}
+.rw-journey-card strong{font-size:20px;line-height:1.35;color:#103142}
+.rw-journey-card>span:not(.rw-journey-icon){font-size:15px;line-height:1.7;color:#4a6572}
+.rw-journey-card b{margin-top:auto;color:#0c6268;font-size:14px}
+#site-footer{background:#0d2c3a;color:#eaf3f5}
+#site-footer .footer-brand,#site-footer .footer-links b{color:#fff}
+#site-footer a{color:#e0f1f1}
+#site-footer a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+#site-footer .social-link{border-color:rgba(255,255,255,.18)}
+@media(max-width:850px){.rw-journey-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:580px){.rw-journey-grid{grid-template-columns:1fr}.rw-journey-card{padding:24px}}
+@media(prefers-reduced-motion:reduce){.rw-journey-card{transition:none!important}.rw-journey-card:hover{transform:none}}
