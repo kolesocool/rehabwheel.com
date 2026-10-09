@@ -1468,3 +1468,14 @@ main{background:linear-gradient(180deg,#f9fbfa 0%,#fff 26%,#f8fbfa 70%,#fff 100%
 @media(max-width:850px){.rw-deploy-cta{grid-template-columns:1fr}}
 @media(max-width:600px){.rw-deploy-cta{border-radius:19px;padding:25px 20px}}
 @media(prefers-reduced-motion:reduce){.rw-deploy-button{transition:none}}
+
+
+/* Clinical inquiry: safety messaging and clear form hierarchy */
+.rw-clinical-notice{max-width:960px;margin:0 auto 22px;padding:22px 26px;border:1px solid #bddbd8;border-left:5px solid #08777a;border-radius:12px;background:#f0f8f7;color:#173e4a}
+.rw-clinical-notice strong{display:block;margin-bottom:8px;font-size:18px;color:#0c4650}
+.rw-clinical-notice p{margin:0;max-width:88ch;line-height:1.7;font-size:14px;color:#335864}
+.web-contact-form select,.web-contact-form input,.web-contact-form textarea{max-width:100%;background:#fff;border-color:#b7d1d0;color:#183b48}
+.web-contact-form label>span{font-weight:700;color:#153e4b}
+.web-contact-form :is(select,input,textarea):focus-visible{outline:3px solid #0a7b7d;outline-offset:2px}
+.web-contact-form .form-consent{padding:16px;border-radius:12px;background:#f1f7f6}
+@media(max-width:650px){.rw-clinical-notice{padding:18px 16px}}
