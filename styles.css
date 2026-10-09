@@ -1449,3 +1449,22 @@ main{background:linear-gradient(180deg,#f9fbfa 0%,#fff 26%,#f8fbfa 70%,#fff 100%
 .hero-product>figcaption a{margin-left:auto!important;font-size:13px!important;font-weight:700!important;color:#08686e!important;text-decoration:underline!important;text-underline-offset:3px}
 .hero-product:before,.hero-product:after,.hero-product>figcaption:before,.hero-product>figcaption:after{content:none!important;display:none!important}
 @media(max-width:700px){.hero-product>figcaption{padding:14px 16px!important;gap:7px 12px!important}.hero-product>figcaption a{margin-left:0!important;width:100%}}
+
+
+/* Rehabwheel deployment CTA — original, no third-party customer login */
+.rw-deploy-cta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(270px,.8fr);gap:clamp(24px,4vw,64px);align-items:center;margin-block:clamp(25px,4vw,55px);padding:clamp(26px,4vw,52px);background:linear-gradient(125deg,#092d3d 0%,#0c4854 70%,#0b6264 100%);border:1px solid rgba(255,255,255,.13);border-radius:26px;box-shadow:0 22px 55px rgba(9,50,61,.16);color:#fff}
+.rw-deploy-kicker{font-size:11px;letter-spacing:.16em;font-weight:800;color:#b9e8df}
+.rw-deploy-copy h2{font-size:clamp(29px,3vw,44px);letter-spacing:-.045em;line-height:1.12;color:#fff;margin:13px 0 16px}
+.rw-deploy-copy p:last-child{color:#e0eeee;font-size:15px;line-height:1.75;max-width:65ch}
+.rw-deploy-actions{display:grid;gap:11px}
+.rw-deploy-button{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;padding:13px 19px;border-radius:11px;text-decoration:none!important;font-size:14px;font-weight:800;transition:transform .2s,background .2s,border-color .2s}
+.rw-deploy-primary{background:#fff;color:#0b3947!important}
+.rw-deploy-primary:hover{background:#e4f6f2}
+.rw-deploy-secondary{background:#0b777b;color:#fff!important;border:1px solid #83c9c6}
+.rw-deploy-secondary:hover{background:#096367}
+.rw-deploy-quiet{background:rgba(255,255,255,.07);color:#fff!important;border:1px solid rgba(255,255,255,.34)}
+.rw-deploy-quiet:hover{background:rgba(255,255,255,.15)}
+.rw-deploy-button:focus-visible{outline:3px solid #b2ece4;outline-offset:3px}
+@media(max-width:850px){.rw-deploy-cta{grid-template-columns:1fr}}
+@media(max-width:600px){.rw-deploy-cta{border-radius:19px;padding:25px 20px}}
+@media(prefers-reduced-motion:reduce){.rw-deploy-button{transition:none}}
