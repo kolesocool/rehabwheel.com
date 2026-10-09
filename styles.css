@@ -1417,3 +1417,23 @@ main{background:linear-gradient(180deg,#f9fbfa 0%,#fff 26%,#f8fbfa 70%,#fff 100%
 @media(max-width:1020px){.rw-luxury-intro-grid{grid-template-columns:1fr}.hero-product img{aspect-ratio:4/3}}
 @media(max-width:700px){.wrap{width:min(100% - 36px,1280px)}.hero.wrap{padding-top:44px;padding-bottom:62px}.hero h1{font-size:clamp(40px,10vw,58px)}.rw-luxury-intro{padding-block:62px}.rw-luxury-intro-grid{gap:18px}.rw-luxury-intro h2{font-size:clamp(33px,8vw,48px)}.rw-journey-grid{gap:15px}.rw-feature-inner{padding-block:55px}}
 @media(prefers-reduced-motion:reduce){.rw-luxury-intro *{animation:none!important;transition:none!important}}
+
+
+/* Luxury finish: micro-interactions, section rhythm, fine typography */
+:root{--rw-lux-border:#d6e5e3;--rw-lux-glow:rgba(9,115,113,.12)}
+.hero h1,.rw-luxury-intro h2,.rw-feature-inner h2,.section-head h2{font-kerning:normal;text-wrap:balance}
+.hero .actions a,.rw-feature-link,.rw-luxury-text-link{transition:background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+.hero .actions a:focus-visible,.rw-feature-link:focus-visible,.rw-luxury-text-link:focus-visible{outline:3px solid #087a7b;outline-offset:5px}
+.hero-product img{transition:transform .6s ease}
+.rw-feature-photo img{transition:transform .65s ease}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.hero-product:hover img,.rw-feature-photo:hover img{transform:scale(1.025)}.rw-journey-card:hover{transform:translateY(-4px)}}
+.rw-luxury-intro{background:linear-gradient(110deg,rgba(255,255,255,.78),rgba(232,245,242,.45));border-radius:22px;padding-inline:clamp(20px,3vw,44px)}
+.rw-journey-card strong{letter-spacing:-.025em}
+.rw-journey-card b{border-bottom:1px solid #a6ccca;padding-bottom:5px}
+.rw-journey-card:focus-visible{outline:3px solid #087a7b;outline-offset:4px}
+.rw-nav-panel a:focus-visible{outline:3px solid #087a7b;outline-offset:2px}
+.rw-feature-link:hover,.rw-luxury-text-link:hover{text-underline-offset:9px}
+.audience-grid>a,.rw-partner-card{transition:box-shadow .2s ease,border-color .2s ease,transform .2s ease}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.audience-grid>a:hover,.rw-partner-card:hover{transform:translateY(-3px);box-shadow:0 20px 50px rgba(10,52,61,.1)}}
+@media(max-width:700px){.rw-luxury-intro{border-radius:16px;padding-inline:20px}.hero-product img{aspect-ratio:4/3}.hero .lede{line-height:1.65}.rw-feature-photo img{aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){.hero-product img,.rw-feature-photo img,.hero .actions a,.rw-feature-link,.rw-luxury-text-link,.audience-grid>a,.rw-partner-card{transition:none!important;transform:none!important}}
