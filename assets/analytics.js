@@ -5,6 +5,8 @@
   "use strict";
   const allowed = new Set(["page_view","cta_click","navigation_click","outbound_click","demo_request_submitted","contact_request_submitted","newsletter_opt_in_confirmed","purchase_order_request_submitted","funding_resource_clicked","research_collaboration_request_submitted","assistant_opened","assistant_interaction_completed","form_validation_error","site_search","download_click","video_play","video_complete","not_found"]);
   const config = window.REHABWHEEL_ANALYTICS || {};
+  // Site owners may set a measurement ID through a separate, public config file.
+  // Consent must be explicitly granted; never infer it from browsing.
   const validId = /^G-[A-Z0-9]+$/.test(config.measurementId || "");
   const enabled = config.consent === true && validId;
   function send(name, data) {
@@ -18,6 +20,9 @@
     return true;
   }
   window.RehabwheelAnalytics = Object.freeze({track: send, isEnabled: () => enabled});
+  // Integration hook: call track only after the server confirms success.
+  // Example: RehabwheelAnalytics.track("demo_request_submitted",{form_type:"demo"});
+  // Never send email addresses, names, medical details or form text.
   if (!enabled) return;
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
