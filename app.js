@@ -1,5 +1,28 @@
-/* Load the privacy-gated GA4 event module across every page. No measurement ID or consent is assumed. */
-(function(){if(document.querySelector('script[data-rw-analytics]'))return;const s=document.createElement('script');s.src='/assets/analytics.js?v=20261009';s.defer=true;s.dataset.rwAnalytics='';document.head.appendChild(s)})();
+/* Rehabwheel GA4: optional analytics require affirmative visitor consent. */
+(function(){
+  'use strict';
+  const key='rw-analytics-consent-v1';
+  const choice=()=>{try{return localStorage.getItem(key)}catch(_){return null}};
+  function load(){
+    if(document.querySelector('script[data-rw-analytics]'))return;
+    window.REHABWHEEL_ANALYTICS={measurementId:'G-Y2VQGBLHHB',consent:true};
+    const s=document.createElement('script');s.src='/assets/analytics.js?v=20261009b';s.dataset.rwAnalytics='';s.defer=true;document.head.appendChild(s);
+  }
+  function show(){
+    if(document.getElementById('rw-analytics-consent'))return;
+    const bar=document.createElement('aside');bar.id='rw-analytics-consent';bar.setAttribute('aria-label','Analytics privacy choices');
+    bar.style.cssText='position:fixed;bottom:12px;left:12px;right:12px;max-width:620px;margin:auto;z-index:99999;background:#fff;color:#12323b;border:2px solid #126567;border-radius:16px;box-shadow:0 8px 32px #0003;padding:18px;font:16px/1.5 system-ui,sans-serif';
+    const p=document.createElement('p');p.textContent='May we use optional Google Analytics to understand website visits and improve Rehabwheel? You can decline and continue using the site.';p.style.margin='0 0 12px';bar.appendChild(p);
+    for(const [label,value] of [['Decline','denied'],['Allow analytics','granted']]){
+      const b=document.createElement('button');b.type='button';b.textContent=label;b.style.cssText='margin:4px 10px 4px 0;padding:9px 15px;border:1px solid #126567;border-radius:9px;background:'+(value==='granted'?'#126567':'#fff')+';color:'+(value==='granted'?'#fff':'#126567')+';font:inherit;cursor:pointer';
+      b.addEventListener('click',()=>{try{localStorage.setItem(key,value)}catch(_){}bar.remove();if(value==='granted')load()});bar.appendChild(b);
+    }
+    document.body.appendChild(bar);
+  }
+  function init(){if(choice()==='granted')load();else if(choice()!=='denied')show()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  window.RehabwheelPrivacy=Object.freeze({changeAnalyticsChoice:()=>{try{localStorage.removeItem(key)}catch(_){}show()}});
+})();
 /* Reference-inspired subscription dialog and California support strip. */
 (()=>{
  const footer=document.getElementById('site-footer')||document.querySelector('footer');
