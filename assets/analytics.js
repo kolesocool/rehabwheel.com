@@ -33,6 +33,7 @@
   script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(config.measurementId);
   document.head.appendChild(script);
   send("page_view", {category:"website"});
+  window.dispatchEvent(new Event("rw-analytics-ready"));
   document.addEventListener("click", function(e) {
     const a = e.target.closest && e.target.closest("a[href]");
     if (!a) return;
