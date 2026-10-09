@@ -1,3 +1,5 @@
+/* Load the privacy-gated GA4 event module across every page. No measurement ID or consent is assumed. */
+(function(){if(document.querySelector('script[data-rw-analytics]'))return;const s=document.createElement('script');s.src='/assets/analytics.js?v=20261009';s.defer=true;s.dataset.rwAnalytics='';document.head.appendChild(s)})();
 /* Reference-inspired subscription dialog and California support strip. */
 (()=>{
  const footer=document.getElementById('site-footer')||document.querySelector('footer');
