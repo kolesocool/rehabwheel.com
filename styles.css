@@ -1700,3 +1700,21 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:700px){.rw-quick-find-head{grid-template-columns:1fr}.rw-qf-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:430px){.rw-quick-find{width:calc(100% - 28px);padding:18px}.rw-qf-results{grid-template-columns:1fr}.rw-qf-link{min-height:80px}}
 @media(prefers-reduced-motion:reduce){.rw-qf-link{transition:none}}
+
+
+/* Institutional buyer entry point: clear, high-contrast enterprise conversion */
+.rw-institutional-entry{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(24px,4vw,60px);align-items:center;margin-block:clamp(48px,6vw,88px);padding:clamp(26px,4vw,56px);border-radius:22px;background:linear-gradient(125deg,#082f3d,#126269);color:#fff;box-shadow:0 24px 52px rgba(6,46,58,.14)}
+.rw-inst-eyebrow{font-size:11px!important;font-weight:850;letter-spacing:.12em;color:#b3f2e4!important;line-height:1.6!important;margin:0 0 14px!important}
+.rw-institutional-entry h2{color:#fff!important;font-size:clamp(30px,3.5vw,48px)!important;line-height:1.13!important;letter-spacing:-.035em;max-width:17ch;margin:0 0 18px}
+.rw-institutional-entry p:not(.rw-inst-eyebrow){color:#e3f4f2!important;line-height:1.7!important;max-width:58ch}
+.rw-inst-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.rw-inst-actions a{display:inline-flex;min-height:46px;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:750;text-decoration:none}
+.rw-inst-primary{background:#fff;color:#073b48!important}
+.rw-inst-secondary{border:1px solid #a4d8d4;color:#fff!important}
+.rw-inst-details{min-width:0;padding:24px;background:rgba(255,255,255,.09);border:1px solid rgba(223,255,251,.24);border-radius:16px}
+.rw-inst-details strong{display:block;color:#fff;font-size:16px;margin-bottom:16px}
+.rw-inst-details a{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid rgba(255,255,255,.2);color:#edf9f6!important;text-decoration:none;font-size:14px;font-weight:650}
+.rw-inst-details a:hover{text-decoration:underline}
+.rw-institutional-entry a:focus-visible{outline:3px solid #90f0df;outline-offset:3px}
+@media(max-width:850px){.rw-institutional-entry{grid-template-columns:1fr}}
+@media(max-width:480px){.rw-institutional-entry{padding:24px 18px}.rw-inst-actions{flex-direction:column}.rw-inst-actions a{width:100%}}
