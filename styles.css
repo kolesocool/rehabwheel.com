@@ -1737,3 +1737,13 @@ html,body{max-width:100%;overflow-x:clip}
 #rw-support-strip .rw-support-explanations .rw-support-caveat{color:#536b79!important;font-size:12px;line-height:1.65;margin-bottom:0}
 #rw-support-strip .rw-support-heading>p{color:#36566a!important;line-height:1.7!important;max-width:55ch}
 @media(max-width:700px){#rw-support-strip .rw-support-explanations{grid-template-columns:1fr}}
+
+
+/* Support logo image should sit on a uniformly white surface, not a gray checker/placeholder */
+#rw-support-strip .rw-support-logos,
+#rw-support-strip .rw-support-logos > *,
+#rw-support-strip .rw-support-logos img,
+#rw-support-strip .rw-support-logos picture,
+#rw-support-strip .rw-support-logos figure{background-color:#fff!important;background-image:none!important}
+#rw-support-strip .rw-support-logos img{mix-blend-mode:normal!important;filter:none!important}
+#rw-support-strip .rw-support-logos{background:#fff!important}
