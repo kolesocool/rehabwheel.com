@@ -1747,3 +1747,19 @@ html,body{max-width:100%;overflow-x:clip}
 #rw-support-strip .rw-support-logos figure{background-color:#fff!important;background-image:none!important}
 #rw-support-strip .rw-support-logos img{mix-blend-mode:normal!important;filter:none!important}
 #rw-support-strip .rw-support-logos{background:#fff!important}
+
+
+/* Editorial support cards: one logo + its explanation, equal heights, no double card borders */
+#rw-support-strip .rw-support-organized{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin:26px 0 28px;align-items:stretch}
+#rw-support-strip .rw-support-partner{min-width:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid #d8e4e8;border-radius:20px;background:#fff;box-shadow:0 12px 32px rgba(13,58,74,.045)}
+#rw-support-strip .rw-support-partner-visual{height:210px;min-height:210px;display:flex;align-items:center;justify-content:center;padding:22px;background:#fff;overflow:hidden}
+#rw-support-strip .rw-support-partner-visual .rw-support-logo{width:100%;height:100%;display:flex!important;align-items:center;justify-content:center;min-width:0;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important}
+#rw-support-strip .rw-support-partner-visual .rw-support-logo img{display:block;max-width:100%;max-height:160px;width:auto;height:auto;object-fit:contain;mix-blend-mode:normal}
+#rw-support-strip .rw-support-partner-body{flex:1;display:flex;flex-direction:column;padding:24px 28px 27px;border-top:1px solid #e6eeee;background:#fff}
+#rw-support-strip .rw-support-partner-body h3{font-size:19px!important;line-height:1.35!important;margin:0 0 12px!important;color:#103d4d!important}
+#rw-support-strip .rw-support-partner-body p{color:#385a6c!important;font-size:14px!important;line-height:1.7!important;margin:0 0 13px!important;opacity:1!important}
+#rw-support-strip .rw-support-partner-body .rw-support-caveat{font-size:12px!important;color:#59717e!important;margin-top:auto!important;padding-top:14px;border-top:1px solid #e7eeee}
+#rw-support-strip .rw-support-heading{align-items:end;gap:30px}
+#rw-support-strip .rw-support-heading>p{max-width:53ch;color:#3a5a6c!important}
+#rw-support-strip .rw-support-organized a:focus-visible{outline:3px solid #08787c;outline-offset:4px}
+@media(max-width:760px){#rw-support-strip .rw-support-organized{grid-template-columns:1fr;gap:16px}#rw-support-strip .rw-support-partner-visual{height:185px;min-height:185px}#rw-support-strip .rw-support-partner-body{padding:21px}}
