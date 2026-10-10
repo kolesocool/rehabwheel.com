@@ -1679,3 +1679,24 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:900px){.rw-industrial-hub-head{grid-template-columns:1fr}.rw-hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){.rw-industrial-hub{padding:20px;margin-block:40px}.rw-hub-grid{grid-template-columns:1fr}.rw-hub-tile{padding:20px}}
 @media(prefers-reduced-motion:reduce){.rw-hub-tile{transition:none}}
+
+
+/* Reusable procurement-oriented quick navigation across inner pages */
+.rw-quick-find{width:min(1180px,calc(100% - 40px));margin:28px auto 40px;padding:clamp(20px,3vw,32px);background:#f2f8f7;border:1px solid #d5e7e5;border-radius:20px;box-shadow:0 12px 28px rgba(7,54,66,.045)}
+.rw-quick-find-head{display:grid;grid-template-columns:1fr minmax(220px,360px);gap:22px;align-items:end}
+.rw-qf-eyebrow{font-size:11px;font-weight:850;letter-spacing:.13em;color:#087178}
+.rw-quick-find h2{font-size:clamp(22px,2.5vw,32px);line-height:1.2;color:#0c3441;margin:8px 0 0;letter-spacing:-.025em}
+.rw-qf-search{display:grid;gap:6px;color:#244e59;font-size:12px;font-weight:750}
+.rw-qf-search input{width:100%;min-width:0;border:1px solid #aac9c9;border-radius:10px;background:white;padding:12px 14px;font:inherit;font-size:14px;color:#0a3542}
+.rw-qf-results{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:22px}
+.rw-qf-link{position:relative;display:flex;flex-direction:column;gap:7px;min-width:0;min-height:116px;padding:16px 14px;border-radius:12px;border:1px solid #d5e5e5;background:white;text-decoration:none;color:#143e49;transition:border-color .15s,transform .15s}
+.rw-qf-link strong{font-size:14px;line-height:1.35;color:#0a3744}
+.rw-qf-link small{font-size:12px;line-height:1.5;color:#496a73}
+.rw-qf-link>span{position:absolute;right:12px;top:12px;color:#087478}
+.rw-qf-link:hover{border-color:#459d9b;transform:translateY(-2px)}
+.rw-qf-status{margin:12px 0 0;color:#526e76;font-size:12px}
+.rw-quick-find :is(a,input):focus-visible{outline:3px solid #087478;outline-offset:3px}
+@media(max-width:1000px){.rw-qf-results{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.rw-quick-find-head{grid-template-columns:1fr}.rw-qf-results{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:430px){.rw-quick-find{width:calc(100% - 28px);padding:18px}.rw-qf-results{grid-template-columns:1fr}.rw-qf-link{min-height:80px}}
+@media(prefers-reduced-motion:reduce){.rw-qf-link{transition:none}}
