@@ -1633,3 +1633,22 @@ body .hero.wrap .hero-product{align-self:center!important}
 .rw-feature-band{margin-bottom:0!important;padding-bottom:0!important}
 @media(min-width:851px){.rw-feature-band .rw-feature-inner{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important}}
 @media(max-width:850px){.rw-feature-band .rw-feature-inner{grid-template-columns:minmax(0,1fr)!important}}
+
+
+/* Footer screenshot fix: readable copy, no clipped columns or horizontal overflow */
+html,body{max-width:100%;overflow-x:clip}
+#site-footer{background:#072b39!important;color:#e7f4f2!important}
+#site-footer .wrap{width:min(1180px,calc(100% - 40px))!important;max-width:100%!important}
+#site-footer .footer-rich{display:grid!important;grid-template-columns:minmax(230px,1fr) minmax(0,1.65fr)!important;gap:clamp(28px,5vw,70px)!important;align-items:start!important}
+#site-footer .footer-rich>div{min-width:0!important}
+#site-footer .footer-rich p,#site-footer .footer-rich .footer-brand,#site-footer .footer-rich .footer-brand span{color:#e4f3f1!important;opacity:1!important}
+#site-footer .footer-rich p{font-size:14px!important;line-height:1.75!important;max-width:38ch!important}
+#site-footer .footer-links{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(18px,3vw,38px)!important;min-width:0!important}
+#site-footer .footer-links>div{min-width:0!important}
+#site-footer .footer-links b{color:#fff!important}
+#site-footer .footer-links a{color:#d4e9e6!important;overflow-wrap:anywhere}
+#site-footer .footer-links a:hover{color:#fff!important}
+#site-footer .social-links{display:flex!important;flex-wrap:wrap!important;gap:8px!important}
+@media(max-width:900px){#site-footer .footer-rich{grid-template-columns:1fr!important}#site-footer .footer-links{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media(max-width:580px){#site-footer .wrap{width:calc(100% - 32px)!important}#site-footer .footer-links{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:26px 16px!important}}
+@media(max-width:370px){#site-footer .footer-links{grid-template-columns:1fr!important}}
