@@ -1723,7 +1723,7 @@ html,body{max-width:100%;overflow-x:clip}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(p,.eyebrow,.kicker,.subtitle,.lede,.section-lede,.section-intro,.muted,.description,.rw-deploy-kicker,.rw-deploy-copy>p,.rw-feature-inner>div>p){color:#e6f5f3!important;opacity:1!important;text-shadow:none!important}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(h1,h2,h3,h4,h5,h6){color:#fff!important;opacity:1!important}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(.eyebrow,.kicker,.rw-deploy-kicker,.rw-inst-eyebrow){color:#b8f0e4!important;opacity:1!important}
-:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:not(.btn):not(.inst-btn):not(.rw-inst-primary):not(.rw-deploy-button):not(.rw-hub-tile):not(.rw-qf-link){color:#e5f9f5!important}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:not(.btn):not(.inst-btn):not(.rw-inst-primary):not(.rw-deploy-button):not(.rw-hub-tile):not(.rw-qf-link):not(.back-to-top){color:#e5f9f5!important}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:focus-visible{outline:3px solid #7ce6d7;outline-offset:3px}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(.card,.inst-card,.rw-hub-tile,.rw-qf-link,.rw-inst-details){text-shadow:none}
 @media(prefers-contrast:more){:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,#site-footer) p{color:#fff!important}}
@@ -1864,3 +1864,16 @@ main img{max-width:100%}
 @media(min-width:1100px){.hero .hero-copy h1{font-size:clamp(44px,4.4vw,66px)!important}}
 @media(max-width:800px){.hero .hero-copy h1{font-size:clamp(34px,8vw,54px)!important;max-width:18ch}.hero .hero-product img{aspect-ratio:4/3}}
 @media(max-width:480px){.hero .hero-copy h1{font-size:clamp(32px,9vw,43px)!important}.rw-showcase-overlay strong{font-size:clamp(19px,6vw,27px)!important}}
+
+/* Shared dark-surface text and light controls: explicit foreground/background pairs. */
+body .inst-banner :is(p,li,.inst-lede){color:#e6f5f3!important;opacity:1;}
+body .inst-banner :is(h2,h3){color:#fff!important;}
+body #site-footer .back-to-top,
+body #site-footer .back-to-top:visited{background:#fff;color:#126567!important;opacity:1;}
+body #site-footer .back-to-top:hover{background:#edf5f5;color:#0b3948!important;}
+body #site-footer .back-to-top span{color:inherit!important;}
+body .inst-banner .inst-btn{background:#fff;color:#103e49!important;}
+body .inst-banner .inst-btn:hover{background:#e6f5f3;color:#103e49!important;}
+
+/* A single, scannable entry to the five interactive product views. */
+.rw-explorer-entry{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:clamp(24px,4vw,46px);margin-block:36px;background:#edf6f3;border:1px solid #c9dfd9;border-radius:22px}.rw-explorer-entry h2{font-size:clamp(27px,3vw,40px);color:#123c49!important;line-height:1.15;margin:12px 0}.rw-explorer-entry p{color:#46616c!important;line-height:1.7}.rw-explorer-entry .rw-explorer-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:#09696d!important}.rw-explorer-links{display:grid;gap:9px}.rw-explorer-links a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:13px 17px;background:#fff;border:1px solid #ccdfda;border-radius:10px;color:#123c49!important;font-size:14px;font-weight:750;text-decoration:none}.rw-explorer-links a:hover{border-color:#09696d;background:#f5fbf9}.rw-explorer-links a:focus-visible{outline:3px solid #09696d;outline-offset:3px}@media(max-width:760px){.rw-explorer-entry{grid-template-columns:1fr;gap:20px}}
