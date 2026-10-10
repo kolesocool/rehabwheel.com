@@ -1599,3 +1599,14 @@ body:has(.rw-deploy-cta) .section-head>p:not(.eyebrow),body:has(.rw-deploy-cta) 
 .rw-deploy-cta a:focus-visible,.rw-journey-card:focus-visible,.rw-feature-link:focus-visible{outline:3px solid #a9ece3!important;outline-offset:4px!important}
 @media(max-width:760px){.proof-strip.wrap{gap:8px 12px!important}.rw-feature-band .rw-feature-inner{padding-block:44px!important}.rw-feature-band .rw-feature-inner h2{font-size:clamp(32px,8vw,46px)!important}}
 @media(max-width:480px){.proof-strip.wrap{display:grid!important;grid-template-columns:auto 1fr;align-items:baseline}.proof-strip.wrap b{margin-right:0!important}.kpis.wrap{grid-template-columns:repeat(2,minmax(0,1fr))!important}.rw-deploy-cta .rw-deploy-actions a{min-height:56px!important}}
+
+
+/* Team portraits and cards: consistent size, baseline and alignment across pages */
+.cards.team{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))!important;align-items:stretch!important;gap:clamp(16px,2vw,26px)!important}
+.cards.team>article{display:flex!important;flex-direction:column!important;align-items:flex-start!important;min-width:0!important;height:100%!important;padding:clamp(20px,2.2vw,30px)!important;border-radius:18px!important}
+.cards.team>article>.team-photo,.inner .cards.team>article>.team-photo{display:block!important;flex:0 0 auto!important;width:128px!important;height:128px!important;min-width:128px!important;min-height:128px!important;max-width:128px!important;max-height:128px!important;aspect-ratio:1/1!important;object-fit:cover!important;object-position:center 32%!important;border-radius:16px!important;margin:0 0 18px!important;background:#e9f1f0!important;box-shadow:0 8px 22px rgba(10,50,60,.09)!important}
+.cards.team>article>.rw-team-label{margin:0 0 8px!important;padding:0!important;min-height:18px!important}
+.cards.team>article>h3{margin:0 0 10px!important;min-height:2.7em!important;font-size:clamp(17px,1.5vw,20px)!important;line-height:1.35!important}
+.cards.team>article>.linkedin-link{margin:0 0 12px!important;min-height:28px!important}
+.cards.team>article>p{line-height:1.65!important}
+@media(max-width:580px){.cards.team{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))!important}.cards.team>article>.team-photo,.inner .cards.team>article>.team-photo{width:116px!important;height:116px!important;min-width:116px!important;min-height:116px!important;max-width:116px!important;max-height:116px!important}}
