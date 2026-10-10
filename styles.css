@@ -1727,3 +1727,13 @@ html,body{max-width:100%;overflow-x:clip}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:focus-visible{outline:3px solid #7ce6d7;outline-offset:3px}
 :is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(.card,.inst-card,.rw-hub-tile,.rw-qf-link,.rw-inst-details){text-shadow:none}
 @media(prefers-contrast:more){:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,#site-footer) p{color:#fff!important}}
+
+
+/* California support: explain logos with readable, aligned editorial content */
+#rw-support-strip .rw-support-explanations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:18px 0 28px}
+#rw-support-strip .rw-support-explanations article{min-width:0;background:#fff;border:1px solid #d7e4e8;border-radius:16px;padding:22px 25px;box-shadow:0 8px 20px rgba(15,55,69,.035)}
+#rw-support-strip .rw-support-explanations h3{color:#103c50!important;font-size:18px;line-height:1.35;margin:0 0 10px}
+#rw-support-strip .rw-support-explanations p{color:#35576a!important;font-size:14px;line-height:1.7;margin:0 0 12px;opacity:1!important}
+#rw-support-strip .rw-support-explanations .rw-support-caveat{color:#536b79!important;font-size:12px;line-height:1.65;margin-bottom:0}
+#rw-support-strip .rw-support-heading>p{color:#36566a!important;line-height:1.7!important;max-width:55ch}
+@media(max-width:700px){#rw-support-strip .rw-support-explanations{grid-template-columns:1fr}}
