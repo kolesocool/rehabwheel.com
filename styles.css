@@ -1866,7 +1866,7 @@ main img{max-width:100%}
 @media(max-width:480px){.hero .hero-copy h1{font-size:clamp(32px,9vw,43px)!important}.rw-showcase-overlay strong{font-size:clamp(19px,6vw,27px)!important}}
 
 /* Shared dark-surface text and light controls: explicit foreground/background pairs. */
-body .inst-banner :is(p,li,.inst-lede){color:#e6f5f3!important;opacity:1;}
+body #main .inst-banner :is(p,li,.inst-lede){color:#e6f5f3!important;opacity:1;}
 body .inst-banner :is(h2,h3){color:#fff!important;}
 body #site-footer .back-to-top,
 body #site-footer .back-to-top:visited{background:#fff;color:#126567!important;opacity:1;}
