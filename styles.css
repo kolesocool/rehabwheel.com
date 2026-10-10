@@ -1828,3 +1828,25 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:900px){.rw-showcase-head{align-items:flex-start;flex-direction:column}.rw-showcase-grid{grid-template-columns:1fr 1fr}.rw-showcase-feature{aspect-ratio:1}}
 @media(max-width:650px){.rw-media-showcase{padding:17px}.rw-showcase-grid{grid-template-columns:1fr}.rw-showcase-feature{aspect-ratio:4/3}.rw-showcase-cta{width:100%}.rw-showcase-play{width:70px;height:70px;font-size:26px}}
 @media(prefers-reduced-motion:reduce){.rw-showcase-feature img{transition:none}.rw-showcase-feature:hover img{transform:none}}
+
+
+/* Institutional homepage polish: consistent hierarchy, images, legibility and motion */
+:root{--rw-ink:#0b3543;--rw-body:#365868;--rw-focus:#087a80}
+html{scroll-behavior:smooth}
+body{overflow-x:clip}
+main :is(h1,h2,h3){text-wrap:balance}
+main :is(p,li){overflow-wrap:break-word}
+main :is(.section-head p,.lede,.lede-sm,.rw-showcase-head p){max-width:72ch}
+main :is(a,button,input,select,textarea):focus-visible{outline:3px solid var(--rw-focus);outline-offset:3px}
+main img{max-width:100%}
+#video .rw-video-frame{aspect-ratio:16/9;min-height:0}
+#video .rw-video-frame iframe{width:100%!important;height:100%!important;aspect-ratio:16/9;border:0;display:block}
+#video .rw-video-card{display:flex;flex-direction:column}
+#video .rw-video-card>a{margin-top:auto;padding-top:9px}
+#prototype .prototype-grid img{background:#eef4f3}
+#prototype .prototype-card img{transition:transform .25s ease}
+#prototype .prototype-card:hover img{transform:scale(1.015)}
+.rw-showcase-feature img{background:#e9f2f0}
+.rw-showcase-feature,.rw-video-card,.prototype-card{contain:layout style}
+@media(max-width:780px){main :is(.section-head h2,.rw-showcase-head h2){font-size:clamp(28px,7vw,42px)!important;line-height:1.16!important}main .section{padding-block:clamp(28px,6vw,56px)}#video .rw-video-card{padding:10px 10px 16px}#video .rw-video-frame{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#prototype .prototype-card img{transition:none}#prototype .prototype-card:hover img{transform:none}}
