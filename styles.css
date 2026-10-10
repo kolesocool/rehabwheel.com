@@ -1652,3 +1652,30 @@ html,body{max-width:100%;overflow-x:clip}
 @media(max-width:900px){#site-footer .footer-rich{grid-template-columns:1fr!important}#site-footer .footer-links{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media(max-width:580px){#site-footer .wrap{width:calc(100% - 32px)!important}#site-footer .footer-links{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:26px 16px!important}}
 @media(max-width:370px){#site-footer .footer-links{grid-template-columns:1fr!important}}
+
+
+/* Grainger-inspired discoverability, original Rehabwheel clinical design */
+.rw-industrial-hub{margin-block:clamp(48px,6vw,92px);padding:clamp(24px,3vw,44px);border:1px solid #d8e6e6;border-radius:24px;background:linear-gradient(135deg,#f5faf9,#fff 62%);box-shadow:0 20px 55px rgba(7,55,68,.06)}
+.rw-industrial-hub-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);align-items:end;gap:clamp(20px,4vw,55px);margin-bottom:28px}
+.rw-hub-kicker{color:#087477;font-size:12px;font-weight:800;letter-spacing:.14em;margin:0 0 10px}
+.rw-industrial-hub h2{font-size:clamp(28px,3vw,42px);line-height:1.16;letter-spacing:-.035em;color:#0a3544;margin:0 0 12px}
+.rw-industrial-hub-head p:not(.rw-hub-kicker){color:#3e5e69;line-height:1.65;margin:0}
+.rw-hub-search label{display:block;font-weight:750;font-size:13px;color:#244957;margin-bottom:8px}
+.rw-hub-search>div{display:flex;border:1px solid #9cbfc0;border-radius:12px;background:#fff;overflow:hidden;min-width:0}
+.rw-hub-search input{width:100%;min-width:0;padding:14px 12px;border:0;background:#fff;color:#123d49;font:inherit;font-size:14px}
+.rw-hub-search button{flex:0 0 auto;border:0;background:#086d73;color:#fff;font-weight:750;padding:0 16px;cursor:pointer}
+.rw-hub-search small{display:block;margin-top:8px;color:#496b73}
+.rw-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rw-hub-tile{display:flex;flex-direction:column;gap:10px;min-width:0;padding:24px;border:1px solid #d9e7e6;border-radius:16px;background:#fff;color:#143b49;text-decoration:none;box-shadow:0 6px 22px rgba(10,55,65,.035);transition:transform .18s,border-color .18s,box-shadow .18s}
+.rw-hub-tile:hover{transform:translateY(-2px);border-color:#78b6b4;box-shadow:0 15px 32px rgba(10,55,65,.095)}
+.rw-hub-tile-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#e5f3f0;color:#00696e;font-weight:850;font-size:14px;letter-spacing:.04em}
+.rw-hub-tile strong{font-size:18px;line-height:1.3;color:#0b3544}
+.rw-hub-tile small{font-size:14px;line-height:1.55;color:#49636e;flex:1}
+.rw-hub-tile b{font-size:13px;color:#006f74}
+.rw-hub-empty{padding:20px;color:#365b68}
+.rw-hub-disclaimer{font-size:12px;line-height:1.6;color:#536f77;margin:20px 0 0}
+.rw-hub-tile[hidden],.rw-hub-empty[hidden]{display:none!important}
+.rw-industrial-hub :is(a,button,input):focus-visible{outline:3px solid #08767a;outline-offset:3px}
+@media(max-width:900px){.rw-industrial-hub-head{grid-template-columns:1fr}.rw-hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.rw-industrial-hub{padding:20px;margin-block:40px}.rw-hub-grid{grid-template-columns:1fr}.rw-hub-tile{padding:20px}}
+@media(prefers-reduced-motion:reduce){.rw-hub-tile{transition:none}}
