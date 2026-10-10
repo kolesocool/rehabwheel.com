@@ -1718,3 +1718,12 @@ html,body{max-width:100%;overflow-x:clip}
 .rw-institutional-entry a:focus-visible{outline:3px solid #90f0df;outline-offset:3px}
 @media(max-width:850px){.rw-institutional-entry{grid-template-columns:1fr}}
 @media(max-width:480px){.rw-institutional-entry{padding:24px 18px}.rw-inst-actions{flex-direction:column}.rw-inst-actions a{width:100%}}
+
+/* Site-wide dark-surface legibility safeguards — scoped to known dark sections */
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(p,.eyebrow,.kicker,.subtitle,.lede,.section-lede,.section-intro,.muted,.description,.rw-deploy-kicker,.rw-deploy-copy>p,.rw-feature-inner>div>p){color:#e6f5f3!important;opacity:1!important;text-shadow:none!important}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(h1,h2,h3,h4,h5,h6){color:#fff!important;opacity:1!important}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(.eyebrow,.kicker,.rw-deploy-kicker,.rw-inst-eyebrow){color:#b8f0e4!important;opacity:1!important}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:not(.btn):not(.inst-btn):not(.rw-inst-primary):not(.rw-deploy-button):not(.rw-hub-tile):not(.rw-qf-link){color:#e5f9f5!important}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) a:focus-visible{outline:3px solid #7ce6d7;outline-offset:3px}
+:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,.dark-section,.dark-panel,.section-dark,.bg-dark,#site-footer) :is(.card,.inst-card,.rw-hub-tile,.rw-qf-link,.rw-inst-details){text-shadow:none}
+@media(prefers-contrast:more){:is(.rw-feature-band,.rw-deploy-cta,.rw-institutional-entry,.inst-hero,.po-hero,.cta,#site-footer) p{color:#fff!important}}
