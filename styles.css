@@ -1506,3 +1506,33 @@ main{background:linear-gradient(180deg,#f9fbfa 0%,#fff 26%,#f8fbfa 70%,#fff 100%
 .rw-pathway-summary strong{font-size:19px;line-height:1.3;color:#095d61}
 .rw-pathway-summary p{margin:0;line-height:1.65;color:#335b65}
 @media(max-width:600px){.rw-pathway-summary{padding:17px}}
+
+
+/* 2026 unified clinical design foundation: intentional scoped overrides */
+:root{--rw-ink:#153745;--rw-muted:#486472;--rw-teal:#08767a;--rw-border:#d6e4e5;--rw-surface:#f4f8f8;--rw-focus:#08767a}
+html{scroll-padding-top:100px}body{overflow-wrap:break-word;-webkit-font-smoothing:antialiased}img,video,svg{max-width:100%}img{height:auto}a,button,input,textarea,select{touch-action:manipulation}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--rw-focus);outline-offset:3px}
+:where(.hero,.rw-deploy-cta,.rw-clinical-paths,.form-grid)>*{min-width:0}
+.hero.wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto;overflow:visible;align-items:center}
+.hero .hero-copy{min-width:0;max-width:100%}
+.hero .hero-copy h1{font-size:clamp(2.35rem,5vw,4.8rem);line-height:1.09;letter-spacing:-.052em;overflow-wrap:normal;hyphens:auto;max-width:14ch}
+.hero .hero-copy .lede{max-width:62ch;line-height:1.7}
+.hero .hero-product{min-width:0;max-width:100%;height:auto!important;min-height:0!important;aspect-ratio:auto!important;overflow:hidden;background:#fff!important;border:1px solid #dce6e6;border-radius:20px;box-shadow:0 18px 40px rgba(10,55,64,.1)}
+.hero .hero-product>img{display:block;position:static!important;width:100%!important;height:auto!important;min-height:0!important;max-height:560px!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center;background:#fff}
+.hero .hero-product>figcaption{display:flex!important;position:static!important;inset:auto!important;transform:none!important;flex-direction:column;align-items:flex-start;gap:5px;width:100%;min-height:0!important;padding:16px 20px!important;background:#f1f7f6!important;color:#183d49!important;box-shadow:none!important}
+.hero .hero-product>figcaption :is(span,strong,a){color:#183d49!important;text-shadow:none!important}
+.hero .hero-product::before,.hero .hero-product::after{display:none!important}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero .actions .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+.rw-deploy-cta{isolation:isolate}.rw-deploy-actions{min-width:0}.rw-deploy-button{overflow-wrap:anywhere}
+.web-contact-form{max-width:960px;margin-inline:auto}
+.web-contact-form .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.web-contact-form .form-grid label{display:flex;flex-direction:column;gap:7px;min-width:0}
+.web-contact-form .form-grid .form-wide{grid-column:1/-1}
+.web-contact-form :is(input:not([type=checkbox]),select,textarea){width:100%;min-height:48px;padding:12px 14px;border:1px solid #adc8ca;border-radius:10px;font:inherit;line-height:1.5}
+.web-contact-form textarea{min-height:150px;resize:vertical}
+.web-contact-form .form-consent{display:flex;align-items:flex-start;gap:12px}
+.web-contact-form .form-consent input{width:20px;height:20px;flex:none;accent-color:#08767a}
+.rw-clinical-paths>a,.rw-deploy-button{position:relative}
+@media(max-width:900px){.hero.wrap{grid-template-columns:1fr!important;gap:28px}.hero .hero-copy h1{max-width:18ch}.hero .hero-product{width:100%}}
+@media(max-width:650px){.hero.wrap{width:calc(100% - 32px)}.hero .hero-copy h1{font-size:clamp(2.1rem,9vw,3.2rem)}.hero .hero-product>figcaption{padding:14px!important}.web-contact-form .form-grid{grid-template-columns:1fr;gap:15px}.web-contact-form .form-grid .form-wide{grid-column:1}.rw-deploy-cta{width:calc(100% - 32px)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
