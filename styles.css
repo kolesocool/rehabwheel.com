@@ -1763,3 +1763,19 @@ html,body{max-width:100%;overflow-x:clip}
 #rw-support-strip .rw-support-heading>p{max-width:53ch;color:#3a5a6c!important}
 #rw-support-strip .rw-support-organized a:focus-visible{outline:3px solid #08787c;outline-offset:4px}
 @media(max-width:760px){#rw-support-strip .rw-support-organized{grid-template-columns:1fr;gap:16px}#rw-support-strip .rw-support-partner-visual{height:185px;min-height:185px}#rw-support-strip .rw-support-partner-body{padding:21px}}
+
+
+/* Clear, inviting video controls and full-size player */
+#video .rw-video-grid{align-items:stretch;gap:clamp(18px,2.5vw,30px)}
+#video .rw-video-card{min-width:0;background:#fff;border:1px solid #d7e5e8;border-radius:19px;padding:14px 14px 20px;box-shadow:0 10px 26px rgba(9,55,68,.05)}
+#video .rw-video-frame{position:relative;aspect-ratio:16/9;margin-bottom:15px;border-radius:13px;background:#092d3c;overflow:hidden}
+#video .rw-video-play{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;width:100%;height:100%;padding:20px;background:linear-gradient(135deg,#082f40,#126b72)!important;color:#fff!important;text-align:center;border:0;cursor:pointer}
+#video .rw-video-play:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 38%,rgba(255,255,255,.13),transparent 58%);pointer-events:none}
+#video .rw-video-play-icon{display:grid;place-items:center;width:78px;height:78px;min-height:78px;background:#fff;color:#075361!important;border-radius:50%;font-size:30px!important;line-height:1;box-shadow:0 8px 28px rgba(0,0,0,.24);transition:transform .2s ease}
+#video .rw-video-play:hover .rw-video-play-icon{transform:scale(1.09)}
+#video .rw-video-play strong{font-size:clamp(17px,1.7vw,22px);line-height:1.3;color:#fff!important;max-width:24ch;z-index:1}
+#video .rw-video-play small{font-size:13px;color:#d9f4f1!important;z-index:1}
+#video .rw-video-frame iframe{display:block;width:100%;height:100%;border:0;background:#000}
+#video .rw-video-play:focus-visible{outline:4px solid #64e5d3;outline-offset:-5px}
+#video .rw-video-card>a{display:inline-flex;align-items:center;min-height:40px;font-size:14px;font-weight:750;color:#07636d!important;text-underline-offset:3px}
+@media(max-width:760px){#video .rw-video-grid{grid-template-columns:1fr}#video .rw-video-play-icon{width:68px;height:68px;min-height:68px}}
