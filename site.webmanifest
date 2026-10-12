@@ -1,5 +1,5 @@
 {
-  "name": "Rehabwheel — LegMaker",
+  "name": "Rehabwheel \u2014 LegMaker",
   "short_name": "Rehabwheel",
   "id": "/",
   "start_url": "/",
@@ -7,7 +7,7 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#111820",
-  "description": "Explore Rehabwheel and the LegMaker wheelchair-integrated lower-limb motion platform under development.",
+  "description": "Explore LegMaker, Rehabwheel\u2019s investigational device for wheelchair-integrated lower-limb motion.",
   "categories": [
     "medical",
     "health",
@@ -16,10 +16,10 @@
   "lang": "en-US",
   "icons": [
     {
-      "src": "rehabwheel_logo.jpg?v=3",
-      "sizes": "512x512",
-      "type": "image/jpeg",
-      "purpose": "any maskable"
+      "src": "/icon-192.png?v=20261012",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "shortcuts": [

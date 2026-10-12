@@ -1877,3 +1877,11 @@ body .inst-banner .inst-btn:hover{background:#e6f5f3;color:#103e49!important;}
 
 /* A single, scannable entry to the five interactive product views. */
 .rw-explorer-entry{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:clamp(24px,4vw,46px);margin-block:36px;background:#edf6f3;border:1px solid #c9dfd9;border-radius:22px}.rw-explorer-entry h2{font-size:clamp(27px,3vw,40px);color:#123c49!important;line-height:1.15;margin:12px 0}.rw-explorer-entry p{color:#46616c!important;line-height:1.7}.rw-explorer-entry .rw-explorer-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:#09696d!important}.rw-explorer-links{display:grid;gap:9px}.rw-explorer-links a{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;padding:13px 17px;background:#fff;border:1px solid #ccdfda;border-radius:10px;color:#123c49!important;font-size:14px;font-weight:750;text-decoration:none}.rw-explorer-links a:hover{border-color:#09696d;background:#f5fbf9}.rw-explorer-links a:focus-visible{outline:3px solid #09696d;outline-offset:3px}@media(max-width:760px){.rw-explorer-entry{grid-template-columns:1fr;gap:20px}}
+
+/* Compact support marks: crop the baked-in blank strip and remove oversized cards. */
+#rw-support-strip .rw-support-logos{background:transparent!important;gap:16px;align-items:center}
+#rw-support-strip .rw-support-logo,#rw-support-strip .rw-california-badge{min-height:0;height:auto;padding:16px 20px;box-shadow:none;border-radius:14px}
+#rw-support-strip .rw-support-logo img{display:block;width:min(100%,390px);height:auto;aspect-ratio:459/165;object-fit:cover;object-position:center 35%}
+#rw-support-strip .rw-california-badge img{max-height:100px;width:auto;max-width:100%;object-fit:contain}
+#rw-support-strip{padding-block:32px}
+@media(max-width:600px){#rw-support-strip .rw-support-logos{gap:12px}#rw-support-strip .rw-support-logo,#rw-support-strip .rw-california-badge{padding:14px 18px;min-height:0}}
