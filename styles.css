@@ -1885,3 +1885,6 @@ body .inst-banner .inst-btn:hover{background:#e6f5f3;color:#103e49!important;}
 #rw-support-strip .rw-california-badge img{max-height:100px;width:auto;max-width:100%;object-fit:contain}
 #rw-support-strip{padding-block:32px}
 @media(max-width:600px){#rw-support-strip .rw-support-logos{gap:12px}#rw-support-strip .rw-support-logo,#rw-support-strip .rw-california-badge{padding:14px 18px;min-height:0}}
+/* Preserve light introductory copy against the explorer hero's dark background. */
+#main.explore .ex-hero p{color:#d8eeec!important}
+#main.explore .ex-hero .ex-kicker{color:#91dfce!important}
