@@ -1,0 +1,106 @@
+/* Editorial UI pass — 100 scoped changes; see docs/UI_100_EXTRA.md. */
+/* 01–10: reading and page composition */
+body.agency-site{--ui-red:#b42927;--ui-ink:#102e38;--ui-soft:#f5f8f7;--ui-line:#dbe5e4}
+.agency-site main{background-image:linear-gradient(180deg,#f5f8f7 0,transparent 640px)}
+.agency-site main>.wrap,.agency-site main .wrap{max-width:1240px}
+.agency-site main :is(.eyebrow,.ex-kicker,.rw-explorer-kicker){display:flex;align-items:center;gap:10px}
+.agency-site main :is(.eyebrow,.ex-kicker,.rw-explorer-kicker):before{content:'';width:22px;height:3px;background:var(--ui-red);flex-shrink:0}
+.agency-site main p{ text-wrap:pretty }
+.agency-site main :is(ul,ol){line-height:1.75}
+.agency-site main :is(output,.metric,.big-number,.ex-metrics,.fund-count){font-variant-numeric:tabular-nums}
+.agency-site ::selection{background:#f5d7ce;color:#102e38}
+.agency-site main a:not([class]){text-underline-offset:4px;text-decoration-thickness:1px}
+.agency-site main :is(h1,h2,h3){hyphens:none}
+/* 11–20: navigation */
+.agency-site .site-header{background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--ui-line);box-shadow:none!important}
+.agency-site.ui-scrolled .site-header{box-shadow:0 8px 25px #102e3810!important}
+.agency-site .site-header .rw-nav-trigger{border-radius:8px;padding:12px 15px}
+.agency-site .rw-nav-trigger[aria-expanded=true]{background:#e8f2ef;color:#07585a}
+.agency-site .rw-nav-panel{border:1px solid #d5e2df;border-top:3px solid var(--ui-red);box-shadow:0 20px 45px #102e3824;border-radius:0 0 14px 14px}
+.agency-site .rw-nav-panel a{border-radius:8px;padding:14px!important}
+.agency-site .rw-nav-panel a+a{border-top:1px solid #edf2f0}
+.agency-site .rw-nav-panel a span{line-height:1.5;color:#52656b}
+.agency-site .mobile-nav{max-height:calc(100dvh - 82px);overflow-y:auto;overscroll-behavior:contain}
+@media(min-width:1021px){.agency-site .site-header .menu-toggle{display:none!important}}
+/* 21–30: homepage presentation */
+.agency-site .hero-product{position:relative;border:1px solid #d3dfdc!important;border-radius:20px!important;box-shadow:0 20px 50px #123c4914!important;overflow:hidden}
+.agency-site .hero-product:before{content:'LEGMAKER / 01';position:absolute;z-index:1;top:16px;left:16px;background:#fff;color:#173c46;font-size:10px;font-weight:800;letter-spacing:.1em;padding:9px 12px;border-radius:5px}
+.agency-site .hero-product img{aspect-ratio:3/2;width:100%;object-fit:cover}
+.agency-site .hero .trust span{box-shadow:none!important;border-radius:6px!important;font-size:12px}
+.agency-site .hero .actions .btn:first-child:after{content:'↗';margin-left:16px;font-size:18px}
+.agency-site #video .rw-video-grid{gap:28px}
+.agency-site #video .rw-video-frame{border-radius:12px;overflow:hidden;background:#102e38}
+.agency-site .rw-explorer-links{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px!important}
+.agency-site .rw-explorer-links a{display:flex;align-items:center;min-height:88px;padding:18px!important;border-radius:10px!important;line-height:1.5;font-size:14px!important}
+.agency-site .rw-institutional-entry{border-left:5px solid #b42927!important}
+/* 31–40: photography + lightbox */
+.agency-site .outdoor-grid{gap:24px!important}
+.agency-site .prototype-card{position:relative;overflow:hidden;border:1px solid var(--ui-line);border-radius:14px!important;box-shadow:none!important}
+.agency-site .prototype-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.agency-site .prototype-card figcaption{padding:20px!important;display:grid;gap:7px;background:white;color:#123c49}
+.agency-site .prototype-card figcaption span{font-size:13px;line-height:1.6;color:#52656b}
+.ui-photo-link{display:block;position:relative}.ui-photo-link:after{content:'View photo ↗';position:absolute;bottom:12px;right:12px;padding:8px 11px;border-radius:6px;color:#fff;background:#102e38e8;font-size:12px;font-weight:700}
+.ui-lightbox{width:min(1100px,94vw);max-width:1100px;height:auto;max-height:94dvh;padding:0;border:1px solid #52656b;border-radius:16px;background:#10232c;color:#fff;overflow:auto}.ui-lightbox::backdrop{background:#06151be8;backdrop-filter:blur(5px)}
+.ui-lightbox-header,.ui-lightbox-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px}.ui-lightbox-header button,.ui-lightbox-footer button{min-height:44px;min-width:44px;border:1px solid #617781;border-radius:7px;background:#213b47;color:#fff;font:inherit;cursor:pointer}.ui-lightbox img{display:block;width:100%;height:min(65dvh,660px);object-fit:contain;background:#081920}.ui-lightbox-caption{margin:0;padding:20px 22px;line-height:1.6;color:#e4eeef}.ui-lightbox-footer a{color:#fff;text-underline-offset:4px}.ui-lightbox button:focus-visible,.ui-lightbox a:focus-visible{outline:3px solid #f7c884;outline-offset:3px}
+/* 41–50: people, partners, information cards */
+.agency-site .cards.team{align-items:stretch;gap:24px}
+.agency-site .cards.team article{display:flex;flex-direction:column;border-radius:14px!important;border:1px solid var(--ui-line);box-shadow:none!important;overflow:hidden}
+.agency-site .cards.team .team-photo{aspect-ratio:1/1;object-fit:cover;object-position:50% 25%;border-radius:10px!important;background:#edf3f1}
+.agency-site .cards.team h3{font-size:20px!important;letter-spacing:-.02em}
+.agency-site .rw-team-label{font-size:10px!important;letter-spacing:.13em;color:#765044!important;margin-top:16px}
+.agency-site .cards.team .linkedin-link{align-self:flex-start;border-radius:6px;padding:8px 10px;min-height:40px}
+.agency-site .rw-partner-card{border:1px solid var(--ui-line);border-radius:12px!important;box-shadow:none!important}
+.agency-site .rw-partner-logo{background:#fff;border-bottom:1px solid #edf2f0;padding:22px;min-height:130px;display:flex;align-items:center;justify-content:center}
+.agency-site .rw-partner-link{display:block;margin-top:16px;font-size:12px!important;letter-spacing:.02em}
+.agency-site .cards.three:not(.modes)>article{border-top:3px solid #a8c8bd;border-radius:12px;box-shadow:none}
+/* 51–60: forms */
+.agency-site :is(.web-contact-form,.rw-subscribe-form) :is(input:not([type=checkbox]):not([type=hidden]),select,textarea){border:1px solid #9eb8b6!important;border-radius:8px!important;background:#fff!important;color:#163b46!important;box-shadow:none;min-height:48px;padding:12px 14px}
+.agency-site :is(.web-contact-form,.rw-subscribe-form) :is(input,select,textarea):focus{border-color:#09696d!important;box-shadow:0 0 0 3px #09696d20!important}
+.agency-site .web-contact-form textarea{resize:vertical;min-height:155px;line-height:1.65}
+.agency-site .web-contact-form label>span{font-weight:650;line-height:1.45;margin-bottom:8px}
+.agency-site .web-contact-form [aria-invalid=true]{border-color:#af302c!important;background:#fff6f3!important}
+.agency-site :is(.web-contact-form,.rw-subscribe-form) input[type=checkbox]{width:20px;height:20px;accent-color:#09696d;flex-shrink:0}
+.agency-site .agency-optional[open]{background:#f5f9f7;border-color:#9ab8b0}
+.agency-site .web-contact-form :is(.form-helper,.po-field-help){font-size:13px;line-height:1.6;color:#52656b}
+.agency-site .web-contact-form[data-accepted=true]{border-left:4px solid #09696d;padding-left:20px}
+.agency-site .agency-submit-status:not(:empty){padding:16px;border:1px solid #b9ceca;border-radius:9px;background:#eff6f3;color:#173f45}
+/* 61–70: directory browsing */
+.agency-site :is(.resource-filters,.fund-filter){padding:22px;border:1px solid #c8dcd5;border-radius:14px;background:#f0f6f3;gap:14px}
+.agency-site :is(.resource-filters,.fund-filter) input{min-height:50px;border:1px solid #9fbcb2;border-radius:8px;padding:12px 16px;font:inherit;background:#fff}
+.agency-site .directory-categories{gap:8px;padding-block:14px}
+.agency-site .directory-category{border-radius:7px!important;min-height:42px;font-size:13px!important}
+.agency-site .directory-category-count{border-radius:4px!important;padding:3px 6px;background:#e0ece6;color:#214b40;font-variant-numeric:tabular-nums}
+.agency-site :is(.resource-count,.fund-count){padding:14px 0;font-size:13px;font-weight:700;border-bottom:1px solid #d6e4dd;margin-bottom:22px}
+.agency-site :is(.resource-card,.fund-card){border:1px solid #d2e0da;border-radius:12px!important;box-shadow:none!important;padding:24px!important}
+.agency-site :is(.resource-category,.fund-tag){border-radius:4px;background:#eaf2ec;color:#294c3c;font-size:11px;letter-spacing:.04em;padding:6px 8px}
+.agency-site .fund-save[aria-pressed=true]{background:#0b615d!important;color:#fff!important;border-color:#0b615d!important}
+.agency-site .fund-card-tools{border-top:1px solid #e0e9e4;margin-top:18px;padding-top:16px;gap:10px}
+/* 71–80: explorer */
+.agency-site .ex-nav a{border-bottom:3px solid transparent;border-radius:8px!important}
+.agency-site .ex-nav a[aria-current=location]{border-bottom-color:#b42927;background:#fbe8e2!important}
+.agency-site .ex-section+.ex-section{border-top:1px solid #ceded8;margin-top:52px}
+.agency-site :is(.ex-panel,.ex-visual,.ex-photo){border-radius:14px;box-shadow:0 8px 25px #123c4907}
+.agency-site .ex-options button[aria-pressed=true]:before{content:'✓';margin-right:7px}
+.agency-site .ex-metrics>div{border-left:3px solid #a7cdbf;padding-left:16px}
+.agency-site .ex-chart{border:1px solid #dde7e3;border-radius:10px;background:#fbfdfc;padding:10px;box-sizing:border-box}
+.agency-site .ex-data-table tbody tr:nth-child(even){background:#f0f6f3}
+.agency-site .ex-steps button b{display:grid;place-items:center;min-width:32px;height:32px;border:1px solid currentColor;border-radius:50%;font-size:14px;opacity:1}
+.agency-site .ex-note{border-left:2px solid #afc6bc;padding-left:14px}
+/* 81–90: decisions, FAQs and utility surfaces */
+.agency-site .rw-next-card{border:1px solid #cdded7;border-radius:12px!important;box-shadow:none!important}
+.agency-site .rw-next-number{font-size:12px;letter-spacing:.12em;color:#7d4438!important}
+.agency-site .rw-next-arrow{border:1px solid #b5ccc2;border-radius:50%;width:36px;height:36px;display:grid;place-items:center}
+.agency-site .faq details{border:0!important;border-bottom:1px solid #cbdcd3!important;border-radius:0!important;padding:16px 0!important;background:transparent!important}
+.agency-site .faq details[open]{border-left:3px solid #b42927!important;padding-left:18px!important;background:#f5f9f6!important}
+.agency-site .faq summary{font-size:18px!important;line-height:1.5;min-height:48px}
+.agency-site #subscribe{border-top:1px solid #d2e0d8;border-bottom:1px solid #d2e0d8;background:#f2f7f4;border-radius:16px;padding:36px!important;margin-block:40px}
+.agency-site .rw-cookie-panel{border-radius:12px!important;border-top:3px solid #09696d!important;box-shadow:0 12px 40px #102e3826!important}
+.agency-site #rwAiLaunch{box-shadow:0 5px 18px #102e3820!important;font-size:13px!important;max-width:250px}
+.agency-site #site-footer .footer-links>div{border-top:2px solid #427078;padding-top:16px}
+/* 91–100: responsive details and motion */
+@media(hover:hover){.agency-site :is(.rw-next-card,.rw-partner-card,.resource-card,.fund-card):hover{border-color:#719c8b;box-shadow:0 10px 24px #123c4910!important}.agency-site .prototype-card .ui-photo-link img{transition:transform .3s ease}.agency-site .prototype-card .ui-photo-link:hover img{transform:scale(1.025)}}
+@media(min-width:761px){.agency-site .outdoor-grid .prototype-card:first-child{grid-column:span 2}.agency-site .outdoor-grid .prototype-card:first-child img{aspect-ratio:2/1}}
+@media(min-width:761px) and (max-width:1100px){.agency-site .cards.team{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){.agency-site .rw-explorer-links{grid-template-columns:1fr 1fr!important}.agency-site .rw-explorer-links a:last-child{grid-column:1/-1}.agency-site .rw-explorer-links a{min-height:64px}.agency-site .prototype-card figcaption{padding:16px!important}.agency-site .ex-options{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.agency-site .ex-options button{padding:10px 6px;font-size:12px}.agency-site .ex-options.ex-vertical{grid-template-columns:1fr}.agency-site #subscribe{padding:24px!important}.agency-site .rw-cookie-panel .rw-cookie-actions{display:grid;grid-template-columns:1fr 1fr}.ui-lightbox{width:100vw;max-width:100vw;max-height:100dvh;border-radius:0}.ui-lightbox-header,.ui-lightbox-footer{padding:12px}.ui-lightbox img{height:55dvh}}
+@media(max-width:400px){.agency-site .ex-metrics{grid-template-columns:1fr;gap:20px}.agency-site .ex-metrics>div{display:grid;grid-template-columns:1fr 1fr;align-items:center}.agency-site .ex-metrics strong{font-size:25px}}
+@media(prefers-reduced-motion:reduce){.agency-site .prototype-card .ui-photo-link img{transition:none!important;transform:none!important}}
