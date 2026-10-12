@@ -1,27 +1,13 @@
-/* Rehabwheel GA4: optional analytics require affirmative visitor consent. */
-(function(){
-  'use strict';
-  const key='rw-analytics-consent-v1';
-  const choice=()=>{try{return localStorage.getItem(key)}catch(_){return null}};
-  function load(){
-    if(document.querySelector('script[data-rw-analytics]'))return;
-    window.REHABWHEEL_ANALYTICS={measurementId:'G-Y2VQGBLHHB',consent:true};
-    const s=document.createElement('script');s.src='/assets/analytics.js?v=20261009b';s.dataset.rwAnalytics='';s.defer=true;document.head.appendChild(s);
-  }
-  function show(){
-    if(document.getElementById('rw-analytics-consent'))return;
-    const bar=document.createElement('aside');bar.id='rw-analytics-consent';bar.setAttribute('aria-label','Analytics privacy choices');
-    bar.style.cssText='position:fixed;bottom:12px;left:12px;right:12px;max-width:620px;margin:auto;z-index:99999;background:#fff;color:#12323b;border:2px solid #126567;border-radius:16px;box-shadow:0 8px 32px #0003;padding:18px;font:16px/1.5 system-ui,sans-serif';
-    const p=document.createElement('p');p.textContent='May we use optional Google Analytics to understand website visits and improve Rehabwheel? You can decline and continue using the site.';p.style.margin='0 0 12px';bar.appendChild(p);
-    for(const [label,value] of [['Decline','denied'],['Allow analytics','granted']]){
-      const b=document.createElement('button');b.type='button';b.textContent=label;b.style.cssText='margin:4px 10px 4px 0;padding:9px 15px;border:1px solid #126567;border-radius:9px;background:'+(value==='granted'?'#126567':'#fff')+';color:'+(value==='granted'?'#fff':'#126567')+';font:inherit;cursor:pointer';
-      b.addEventListener('click',()=>{try{localStorage.setItem(key,value)}catch(_){}bar.remove();if(value==='granted')load()});bar.appendChild(b);
-    }
-    document.body.appendChild(bar);
-  }
-  function init(){if(choice()==='granted')load();else if(choice()!=='denied')show()}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
-  window.RehabwheelPrivacy=Object.freeze({changeAnalyticsChoice:()=>{try{localStorage.removeItem(key)}catch(_){}show()}});
+/* One consent source controls local analytics and GA4. */
+(()=>{'use strict';
+ const key='rw_cookie_preferences',id='G-Y2VQGBLHHB';let prefs=null;
+ try{const p=JSON.parse(localStorage.getItem(key)||'null');if(p?.version===2&&Date.now()-p.savedAt<180*86400000)prefs=p;}catch{}
+ window.rwCookieConsent={analytics:!!prefs?.analytics};window['ga-disable-'+id]=!prefs?.analytics;
+ const load=()=>{window['ga-disable-'+id]=false;window.REHABWHEEL_ANALYTICS={measurementId:id,consent:true};window.gtag?.('consent','update',{analytics_storage:'granted'});if(document.querySelector('script[data-rw-analytics]'))return;const script=document.createElement('script');script.src='/assets/analytics.js?v=agency-20261012';script.dataset.rwAnalytics='';document.head.appendChild(script);};
+ const init=()=>{const panel=document.createElement('section');panel.className='rw-cookie-panel';panel.id='rw-cookie-panel';panel.hidden=!!prefs;panel.setAttribute('aria-label','Cookie preferences');panel.innerHTML='<div><strong>Your privacy choices</strong><p>Essential storage remembers your choices. With permission, Google Analytics measures website use. <a href="/privacy.html#cookies">Privacy details</a></p></div><div class="rw-cookie-actions"><button type="button" data-choice="false">Essential only</button><button type="button" data-choice="true">Allow analytics</button></div>';const opener=document.createElement('button');opener.type='button';opener.className='rw-cookie-settings';opener.textContent='Cookie settings';opener.setAttribute('aria-controls',panel.id);opener.setAttribute('aria-expanded',String(!prefs));(document.querySelector('footer')||document.body).append(opener);document.body.append(panel);
+ const open=()=>{panel.hidden=false;opener.setAttribute('aria-expanded','true');panel.querySelector('button').focus();};opener.addEventListener('click',open);window.RehabwheelPrivacy=Object.freeze({changeAnalyticsChoice:open});
+ panel.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{const allowed=b.dataset.choice==='true';window.rwCookieConsent.analytics=allowed;window['ga-disable-'+id]=!allowed;try{localStorage.setItem(key,JSON.stringify({version:2,analytics:allowed,savedAt:Date.now()}));localStorage.removeItem('rw-analytics-consent-v1');if(!allowed)localStorage.removeItem('rw_analytics');}catch{}if(allowed)load();else{if(window.rwAnalytics)window.rwAnalytics.queue.length=0;window.gtag?.('consent','update',{analytics_storage:'denied'});document.cookie.split(';').forEach(c=>{const name=c.trim().split('=')[0];if(/^_ga/.test(name)){document.cookie=name+'=; Max-Age=0; path=/';document.cookie=name+'=; Max-Age=0; path=/; domain=.'+location.hostname;}});}panel.hidden=true;opener.setAttribute('aria-expanded','false');opener.focus();window.dispatchEvent(new Event('rw-consent-change'));}));if(prefs?.analytics)load();};
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 /* Reference-inspired subscription dialog and California support strip. */
 (()=>{
@@ -50,12 +36,8 @@
  dialog.addEventListener('close',()=>{document.body.style.overflow=previousOverflow;dismiss();opener?.focus?.({preventScroll:true});});
  dialog.querySelector('form').addEventListener('submit',()=>{if(dialog.querySelector('form').checkValidity())dismiss();});
  document.querySelectorAll('[data-open-newsletter]').forEach(button=>button.addEventListener('click',open));
- // Only invite homepage readers after engagement. A dismissal lasts 30 days.
- const home=location.pathname.endsWith('/')||location.pathname.endsWith('/index.html');
- let dismissed=false;try{const at=Number(localStorage.getItem(key)||0);dismissed=at>0&&Date.now()-at<30*86400000}catch{dismissed=true}
- if(home&&!dismissed&&!new URLSearchParams(location.search).has('subscription')){
-  setTimeout(()=>{const busy=document.querySelector('dialog[open],.mobile-nav.open')||document.activeElement?.matches('input,textarea,select')||document.hidden;if(!busy&&scrollY>180)open();},20000);
- }
+ // Subscription dialog opens only when requested by the visitor.
+
 })();
 
 /* Field-specific feedback shared by inquiry and purchase-order forms. */
@@ -76,7 +58,7 @@ const progress=document.getElementById('progress');
 if(progress)addEventListener('scroll',()=>{const h=document.documentElement,den=h.scrollHeight-h.clientHeight;progress.style.width=(den?Math.min(100,h.scrollTop/den*100):0)+'%'},{passive:true});
 const revealEls=document.querySelectorAll('.section-head,.cards article,.panel,.research-card,.patents>div,.journey-grid>div,.product-band-inner>*,.spec-grid>div,.clinical-grid>*,.audience-grid>*');
 if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){revealEls.forEach(el=>el.classList.add('show'));}else{const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.08,rootMargin:'0px 0px -4%'});revealEls.forEach(el=>{el.classList.add('reveal');observer.observe(el)});}
-const modes={passive:{k:'MOTOR-ASSISTED',t:'Passive motion',c:'The system drives the pedal cycle to provide continuous lower-limb movement.',v:'Assist'},active:{k:'USER-DRIVEN',t:'Active motion',c:'The user drives the movement while the platform is designed to sense and track the session.',v:'Active'},resistance:{k:'ADJUSTABLE LOAD',t:'Resistance training',c:'Planned adjustable resistance supports progressively configured lower-limb exercise sessions.',v:'1–15'}};
+const modes={assistive:{k:'SHARED EFFORT',t:'Assistive motion',c:'A proposed mode combining user effort with motor support.',v:'Support'},passive:{k:'MOTOR-ASSISTED',t:'Passive motion',c:'The system drives the pedal cycle to provide continuous lower-limb movement.',v:'Assist'},active:{k:'USER-DRIVEN',t:'Active motion',c:'The user drives the movement while the platform is designed to sense and track the session.',v:'Active'},resistance:{k:'ADJUSTABLE LOAD',t:'Resistance training',c:'Planned adjustable resistance supports progressively configured lower-limb exercise sessions.',v:'1–15'}};
 document.querySelectorAll('.mode-tab').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.mode-tab').forEach(x=>x.classList.remove('active'));button.classList.add('active');const m=modes[button.dataset.mode];document.getElementById('mode-kicker').textContent=m.k;document.getElementById('mode-title').textContent=m.t;document.getElementById('mode-copy').textContent=m.c;document.getElementById('mode-value').textContent=m.v;}));
 const header=document.querySelector('.site-header'),toggle=document.querySelector('.menu-toggle'),mobile=document.querySelector('.mobile-nav');
 addEventListener('scroll',()=>header&&header.classList.toggle('scrolled',scrollY>10),{passive:true});
@@ -90,12 +72,12 @@ if(toggle&&mobile){
  addEventListener('orientationchange',()=>requestAnimationFrame(()=>{if(mobile.classList.contains('open'))syncPosition();}));
  const closeMenu=()=>{mobile.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');mobile.setAttribute('aria-hidden','true');mobile.inert=true;mobile.hidden=true;};
  closeMenu();
- toggle.addEventListener('click',()=>{const open=!mobile.classList.contains('open');if(!open){closeMenu();toggle.focus();return;}mobile.hidden=false;syncPosition();mobile.inert=false;mobile.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation');mobile.setAttribute('aria-hidden','false');mobile.querySelector('a')?.focus();});
+ toggle.addEventListener('click',()=>{const open=!mobile.classList.contains('open');if(!open){closeMenu();toggle.focus();return;}mobile.hidden=false;syncPosition();mobile.inert=false;mobile.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.setAttribute('aria-label','Close navigation');mobile.setAttribute('aria-hidden','false');mobile.querySelector('a,summary')?.focus();});
  mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
  document.addEventListener('keydown',e=>{
   if(!mobile.classList.contains('open'))return;
   if(e.key==='Escape'){closeMenu();toggle.focus();}
-  if(e.key==='Tab'){const items=[toggle,...mobile.querySelectorAll('a[href],button:not([disabled])')],first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
+  if(e.key==='Tab'){const items=[toggle,...[...mobile.querySelectorAll('a[href],button:not([disabled]),summary')].filter(x=>x.getClientRects().length)],first=items[0],last=items[items.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
  });
  addEventListener('resize',()=>{if(getComputedStyle(toggle).display==='none')closeMenu();else if(mobile.classList.contains('open'))syncPosition();});
 }
@@ -103,28 +85,7 @@ document.querySelectorAll('.attach-step').forEach(step=>step.addEventListener('c
 const rpm=document.querySelector('#rpm'),res=document.querySelector('#resistance'),dur=document.querySelector('#duration');if(rpm){const sync=()=>{document.querySelector('#rpmValue').textContent=rpm.value+' RPM';document.querySelector('#bigRpm').textContent=rpm.value;document.querySelector('#resValue').textContent=res.value+' / 15';document.querySelector('#resReadout').textContent=res.value;document.querySelector('#durationValue').textContent=dur.value+' min';document.querySelector('#durationReadout').textContent=dur.value+' min'};[rpm,res,dur].forEach(x=>x.addEventListener('input',sync));document.querySelectorAll('[data-sim-mode]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-sim-mode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelector('#modeValue').textContent=b.dataset.simMode;}));sync();}
 document.querySelectorAll('[data-inquiry]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-inquiry]').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const subject=btn.dataset.inquiry;const title=document.querySelector('#inquiryTitle'),email=document.querySelector('#inquiryEmail');if(title)title.textContent=subject;if(email)email.href='mailto:info@rehabwheel.com?subject='+encodeURIComponent(subject);}));
 
-/* Cookie and local-storage preferences: optional analytics are off by default. */
-(()=>{
- const key='rw_cookie_preferences';let prefs=null;
- try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(saved?.version===1&&Date.now()-saved.savedAt<180*86400000)prefs=saved;}catch(e){}
- window.rwCookieConsent={analytics:!!prefs?.analytics};
- if(!prefs?.analytics){try{localStorage.removeItem('rw_analytics');}catch(e){}}
- const panel=document.createElement('section');panel.className='rw-cookie-panel';panel.hidden=!!prefs;panel.setAttribute('aria-label','Cookie preferences');
- panel.innerHTML='<div><strong>Cookies &amp; your privacy</strong><p>We use local storage to remember your choices and saved resources. Optional analytics store website usage on this browser only and stay off unless you accept. <a href="/privacy.html#cookies">Learn more</a></p></div><div class="rw-cookie-actions"><button type="button" data-choice="false">Essential only</button><button type="button" data-choice="true">Accept analytics</button></div>';
- const opener=document.createElement('button');opener.type='button';opener.className='rw-cookie-settings';opener.textContent='Cookie settings';opener.setAttribute('aria-expanded',String(!prefs));opener.setAttribute('aria-controls','rw-cookie-panel');panel.id='rw-cookie-panel';
- const footer=document.querySelector('footer')||document.body;footer.appendChild(opener);document.body.appendChild(panel);
- const status=document.createElement('p');status.className='rw-cookie-status';status.setAttribute('role','status');panel.querySelector('div').appendChild(status);const updateStatus=()=>{status.textContent='Essential storage: always on · Analytics: '+(window.rwCookieConsent.analytics?'on':'off');};updateStatus();
- let returnFocus=null;
- opener.addEventListener('click',()=>{returnFocus=opener;panel.hidden=false;opener.setAttribute('aria-expanded','true');panel.querySelector('button').focus();});
- panel.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
-  const analytics=button.dataset.choice==='true';window.rwCookieConsent.analytics=analytics;updateStatus();
-  try{localStorage.setItem(key,JSON.stringify({version:1,analytics,savedAt:Date.now()}));if(!analytics)localStorage.removeItem('rw_analytics');}catch(e){}
-  if(!analytics&&window.rwAnalytics)window.rwAnalytics.queue.length=0;
-  panel.hidden=true;opener.setAttribute('aria-expanded','false');(returnFocus||opener).focus();
- }));
-})();
-
-/* Rehabwheel analytics + AI assistant */
+/* Rehabwheel analytics + product guide */
 window.rwAnalytics=window.rwAnalytics||{queue:[],session:crypto.randomUUID?crypto.randomUUID():String(Date.now()),track:function(name,data={}){if(!window.rwCookieConsent?.analytics)return;const event={name,data,path:location.pathname,ts:new Date().toISOString(),session:this.session};this.queue.push(event);if(this.queue.length>250)this.queue.splice(0,this.queue.length-250);try{const parsed=JSON.parse(localStorage.getItem("rw_analytics")||"[]");const stored=Array.isArray(parsed)?parsed:[];stored.push(event);localStorage.setItem("rw_analytics",JSON.stringify(stored.slice(-250)));}catch(e){} window.dispatchEvent(new CustomEvent("rw:analytics",{detail:event}));}};
 const rwParams=new URLSearchParams(location.search);rwAnalytics.track("page_view",{title:document.title,referrer:document.referrer?(()=>{try{return new URL(document.referrer).hostname}catch(e){return "unknown"}})():"direct",viewport:innerWidth+"x"+innerHeight,utm_source:rwParams.get("utm_source")||"",utm_medium:rwParams.get("utm_medium")||"",utm_campaign:rwParams.get("utm_campaign")||""});
 let rwMaxScroll=0;addEventListener("scroll",()=>{const d=document.documentElement,p=Math.round((d.scrollTop/(d.scrollHeight-d.clientHeight))*100);[25,50,75,90].forEach(n=>{if(p>=n&&rwMaxScroll<n){rwMaxScroll=n;rwAnalytics.track("scroll_depth",{percent:n})}})},{passive:true});
@@ -143,10 +104,10 @@ if(ai){
  const launch=document.getElementById("rwAiLaunch"),panel=document.getElementById("rwAiPanel"),close=document.getElementById("rwAiClose"),form=document.getElementById("rwAiForm"),input=document.getElementById("rwAiInput"),msgs=document.getElementById("rwAiMessages");
  let aiTurns=0;const toggle=open=>{panel.hidden=!open;launch.setAttribute("aria-expanded",String(open));if(open){rwAnalytics.track("ai_open");setTimeout(()=>input.focus(),50)}else launch.focus()};
  launch.onclick=()=>toggle(panel.hidden);close.onclick=()=>toggle(false);
- const add=(who,txt)=>{const d=document.createElement("div");d.className="rw-ai-msg "+who;d.innerHTML="<b>"+(who==="bot"?"AI Assistant":"You")+"</b><p></p>";d.querySelector("p").textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
+ const add=(who,txt)=>{const d=document.createElement("div");d.className="rw-ai-msg "+who;d.innerHTML="<b>"+(who==="bot"?"Product guide":"You")+"</b><p></p>";d.querySelector("p").textContent=txt;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d};
  const localAnswer=q=>{const x=q.toLowerCase();
   if(x.includes("attach")||x.includes("wheelchair")) return "LegMaker is being developed as a compact lower-limb motion unit designed around common 16-, 18- and 20-inch manual wheelchairs. See the real prototype photos on this page for the current development configuration.";
-  if(x.includes("mode")||x.includes("passive")||x.includes("active")||x.includes("resistance")) return "The product direction includes three modes: Passive motor-assisted motion, Active user-driven movement, and Resistance exercise with up to 15 planned levels.";
+  if(x.includes("mode")||x.includes("passive")||x.includes("active")||x.includes("resistance")) return "The product direction includes three proposed modes: Passive motor-assisted motion, Assistive user effort with motor support, and Active user-driven movement. Adjustable resistance is a separate proposed setting.";
   if(x.includes("demo")||x.includes("contact")) return "You can request a LegMaker demo through the Rehabwheel contact form. I can take you there now: use the Request a Demo button on this page.";
   if(x.includes("status")||x.includes("available")||x.includes("availability")) return "LegMaker is an investigational device. Contact Rehabwheel for current development and evaluation opportunities.";
   if(x.includes("research")||x.includes("clinical")) return "Rehabwheel is preparing structured usability, engineering and clinical evaluation work. LegMaker is an investigational device; the website does not represent regulatory clearance or clinical efficacy.";
@@ -165,7 +126,7 @@ if(ai){
 }
 
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){const p=document.getElementById("rwAiPanel");const l=document.getElementById("rwAiLaunch");if(p&&!p.hidden){p.hidden=true;l?.setAttribute("aria-expanded","false");l?.focus()}}});
-document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))rwAnalytics.track("lead_form_submit",{type:e.target.querySelector('[name="Inquiry type"]')?.value||"unknown"})});
+document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))rwAnalytics.track("form_attempt",{type:e.target.querySelector('[name="Inquiry type"]')?.value||"unknown"})});
 
 /* Current-page navigation semantics */
 (()=>{const current=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.links a,.mobile-nav a').forEach(a=>{const href=(a.getAttribute('href')||'').split('?')[0].split('#')[0];if(href===current&&!(a.getAttribute('href')||'').includes('#'))a.setAttribute('aria-current','page')})})();
@@ -175,7 +136,7 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
  const A=window.rwAnalytics;if(!A)return;
  const safeEvents=()=>{try{return JSON.parse(localStorage.getItem("rw_analytics")||"[]")}catch(e){return[]}};
  const summarize=()=>{const ev=safeEvents(),count=n=>ev.filter(x=>x.name===n).length,pages=[...new Set(ev.filter(x=>x.name==="page_view").map(x=>x.path))];
-  return {events:ev.length,pageViews:count("page_view"),pages:pages.length,demos:count("demo_cta_click"),aiQuestions:count("ai_question"),leads:count("lead_form_submit"),outbound:count("outbound_click"),maxScroll:Math.max(0,...ev.filter(x=>x.name==="scroll_depth").map(x=>Number(x.data?.percent)||0))}};
+  return {events:ev.length,pageViews:count("page_view"),pages:pages.length,demos:count("demo_cta_click"),aiQuestions:count("ai_question"),leads:count("form_attempt"),outbound:count("outbound_click"),maxScroll:Math.max(0,...ev.filter(x=>x.name==="scroll_depth").map(x=>Number(x.data?.percent)||0))}};
  window.rwAnalytics.summary=summarize;
  document.addEventListener("click",e=>{const el=e.target.closest("button,[data-mode],[data-sim-mode],[data-inquiry],summary");if(!el)return;
   if(el.matches(".mode-tab"))A.track("product_mode_interaction",{mode:el.dataset.mode});
@@ -186,7 +147,7 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
  const panel=document.createElement("aside");panel.className="rw-insights";panel.id="rwInsights";panel.hidden=true;panel.setAttribute("aria-label","Local analytics preview");
  panel.innerHTML='<div class="rw-insights-head"><div><small>FIRST-PARTY ANALYTICS</small><strong>Local insights</strong></div><button type="button" aria-label="Close analytics">×</button></div><div class="rw-insights-grid"></div><div class="rw-insights-foot"><span>Stored only in this browser</span><button type="button" data-clear>Clear local data</button></div>';
  document.body.appendChild(panel);
- const render=()=>{const x=A.summary();panel.querySelector(".rw-insights-grid").innerHTML=[["Page views",x.pageViews],["Pages",x.pages],["CTA clicks",x.ctaClicks||0],["Demo rate",(x.demoRate||0)+"%"],["Lead rate",(x.leadRate||0)+"%"],["AI use",(x.aiRate||0)+"%"],["Sections",x.engagedSections||0],["Max scroll",x.maxScroll+"%"]].map(([k,v])=>'<div><strong>'+v+'</strong><span>'+k+'</span></div>').join("")};
+ const render=()=>{const x=A.summary();panel.querySelector(".rw-insights-grid").innerHTML=[["Page views",x.pageViews],["Pages",x.pages],["CTA clicks",x.ctaClicks||0],["Demo rate",(x.demoRate||0)+"%"],["Attempt rate",(x.leadRate||0)+"%"],["Guide use",(x.aiRate||0)+"%"],["Sections",x.engagedSections||0],["Max scroll",x.maxScroll+"%"]].map(([k,v])=>'<div><strong>'+v+'</strong><span>'+k+'</span></div>').join("")};
  panel.querySelector(".rw-insights-head button").onclick=()=>panel.hidden=true;
  panel.querySelector("[data-clear]").onclick=()=>{try{localStorage.removeItem("rw_analytics")}catch{}A.queue.length=0;render();A.track("analytics_local_reset")};
  window.rwAnalytics.openDashboard=()=>{render();panel.hidden=false;A.track("analytics_dashboard_open")};
@@ -200,7 +161,7 @@ document.addEventListener("submit",e=>{if(e.target.matches(".web-contact-form"))
  document.addEventListener("click",e=>{const a=e.target.closest("a");if(!a)return;A.track("cta_click",{kind:classify(a),label:(a.textContent||"").trim().slice(0,80),href:a.getAttribute("href")||"",from:location.pathname})});
  const sections=[...document.querySelectorAll("main section[id],main section")];if("IntersectionObserver"in window){const io=new IntersectionObserver(es=>es.forEach(x=>{const key=x.target.id||("section-"+sections.indexOf(x.target));if(x.isIntersecting){if(!seen.has(key)){seen.add(key);A.track("section_view",{section:key})}sectionStart.set(key,performance.now())}else if(sectionStart.has(key)){const sec=Math.round((performance.now()-sectionStart.get(key))/1000);if(sec>=2)A.track("section_engagement",{section:key,seconds:sec});sectionStart.delete(key)}}),{threshold:.45});sections.forEach(x=>io.observe(x))}
  const original=A.summary;A.summary=()=>{const base=original(),ev=(()=>{try{return JSON.parse(localStorage.getItem("rw_analytics")||"[]")}catch(e){return[]}})(),count=n=>ev.filter(x=>x.name===n).length;
-  const views=Math.max(1,count("page_view")),demo=count("demo_cta_click"),leads=count("lead_form_submit"),ai=count("ai_question"),cta=count("cta_click");
+  const views=Math.max(1,count("page_view")),demo=count("demo_cta_click"),leads=count("form_attempt"),ai=count("ai_question"),cta=count("cta_click");
   return {...base,ctaClicks:cta,demoRate:Math.round(demo/views*100),leadRate:Math.round(leads/views*100),aiRate:Math.round(ai/views*100),engagedSections:new Set(ev.filter(x=>x.name==="section_view").map(x=>x.data?.section)).size};
  };
  addEventListener("pagehide",()=>A.track("session_summary",{seconds:Math.round((performance.now()-started)/1000),sections:seen.size,aiUsed:A.queue.some(x=>x.name==="ai_question"),demoIntent:A.queue.some(x=>x.name==="demo_cta_click")}),{once:true});
