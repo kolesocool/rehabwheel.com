@@ -33,3 +33,20 @@
 .agency-site .blog-body blockquote{margin:32px 0;padding:24px;border-left:4px solid #a82725;background:#edf4f0;color:#173d47}
 .agency-site .blog-body blockquote p{margin-bottom:12px}.blog-body cite{font-size:14px;line-height:1.6;font-style:normal;color:#425d62}
 .blog-press-contact{border-top:1px solid #cad9d3;margin-top:32px;padding-top:4px}
+/* Single-post launch: use the available width instead of two empty columns. */
+.agency-site .blog-grid:has(>.blog-card:only-child){grid-template-columns:1fr}
+.agency-site .blog-grid>.blog-card:only-child{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:center;border-block:1px solid #d4e0da;padding-block:24px}
+.agency-site .blog-card:only-child .blog-card-copy{padding:16px 12px 16px 0}
+.agency-site .blog-card:only-child h3{font-size:clamp(24px,2.5vw,36px)!important;line-height:1.2!important}
+.blog-card:only-child .blog-meta{margin-top:12px}
+.agency-site .blog-post-header{padding-top:32px;padding-bottom:28px}
+.agency-site .blog-post .blog-back{margin-bottom:24px}
+.agency-site .blog-cover{max-width:920px;margin-bottom:32px}
+.agency-site .blog-cover img{max-height:420px;border-radius:12px}
+.agency-site .blog-cover figcaption{text-align:center;padding:0 12px}
+.agency-site .blog-post .blog-body{padding-bottom:40px}
+.agency-site .blog-post .blog-byline{font-size:13px;color:#405c63;line-height:1.6}
+.agency-site .blog-press-contact{padding:20px 24px;background:#f0f5f2;border-radius:12px;border:1px solid #ccddd5}
+.agency-site .blog-press-contact h2{margin-top:0!important;font-size:22px!important}
+.agency-site .blog-press-contact p{margin-bottom:0}
+@media(max-width:640px){.agency-site .blog-grid>.blog-card:only-child{grid-template-columns:1fr;gap:0}.agency-site .blog-card:only-child .blog-card-copy{padding:20px 0 0}.agency-site .blog-cover img{max-height:300px}.agency-site .blog-post h1{font-size:36px!important}.agency-site .blog-press-contact{padding:20px}.blog-byline{gap:8px}}
