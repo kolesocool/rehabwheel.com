@@ -1,3 +1,5 @@
+/* Shared visual system on every page using app.js. */
+(()=>{if(!document.querySelector('link[data-rw-institutional-ui]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/institutional-ui.css?v=20261013';l.dataset.rwInstitutionalUi='';document.head.appendChild(l);}})();
 /* One consent source controls local analytics and GA4. */
 (()=>{'use strict';
  const key='rw_cookie_preferences',id='G-Y2VQGBLHHB';let prefs=null;
