@@ -1,0 +1,201 @@
+/* Clarity and beauty: 100 scoped visual refinements. */
+/* 001: Tighten the vertical rhythm of standard sections. */
+.agency-site main > section.section{padding-block:clamp(36px,5vw,64px)!important}
+/* 002: Balance headline line breaks. */
+.agency-site main :is(h1,h2,h3){text-wrap:balance!important}
+/* 003: Give section titles a compact editorial silhouette. */
+.agency-site main h2{letter-spacing:-.035em!important;line-height:1.14!important}
+/* 004: Unify the gap below section introductions. */
+.agency-site main .section-head{margin-bottom:28px!important}
+/* 005: Separate contextual reading links from primary copy. */
+.agency-site main .seo-related{font-size:13px!important;line-height:1.5!important;margin-top:16px!important;padding-top:12px!important;border-top:1px solid #cddbd7!important}
+/* 006: Reduce the first-screen empty space. */
+.agency-site .hero{padding-block:36px!important;min-height:0!important;gap:36px!important}
+/* 007: Sharpen the hero headline hierarchy. */
+.agency-site .hero .hero-copy h1{font-size:clamp(36px,4.5vw,62px)!important;letter-spacing:-.045em!important;line-height:1.04!important}
+/* 008: Keep the hero explanation close to the headline. */
+.agency-site .hero .hero-copy .lede{margin-block:20px!important;max-width:43ch!important}
+/* 009: Make the device-status note a compact secondary line. */
+.agency-site .hero .hero-note{font-size:12px!important;line-height:1.5!important;margin-top:14px!important}
+/* 010: Align the hero photo caption with the image edge. */
+.agency-site .hero-product figcaption{padding:14px 18px!important;font-size:13px!important;line-height:1.5!important;text-align:left!important}
+/* 011: Left-align dropdown links and their icons. */
+.agency-site .rw-nav-panel a{text-align:left!important;justify-content:flex-start!important;gap:12px!important}
+/* 012: Distinguish dropdown link titles. */
+.agency-site .rw-nav-panel a strong{font-size:15px!important;letter-spacing:-.01em!important}
+/* 013: Reduce visual competition from dropdown descriptions. */
+.agency-site .rw-nav-panel a span{font-size:12px!important;line-height:1.45!important}
+/* 014: Give mobile menu groups a clear touch row. */
+.agency-site .mobile-nav summary{padding:16px 12px!important;line-height:1.4!important}
+/* 015: Allow long mobile navigation labels to wrap. */
+.agency-site .mobile-nav a{white-space:normal!important;overflow-wrap:anywhere!important}
+/* 016: Bring video content closer to the hero. */
+.agency-site #video{padding-top:36px!important}
+/* 017: Frame video cards with a clean edge. */
+.agency-site .rw-video-card{padding:0!important;overflow:hidden!important;border:1px solid #cddbd7!important;border-radius:16px!important;background:#fff!important}
+/* 018: Align video titles with a shared inner gutter. */
+.agency-site .rw-video-card h3{padding-inline:18px!important;margin-block:18px 8px!important;font-size:20px!important}
+/* 019: Create a quieter external video-link style. */
+.agency-site .rw-video-card > a{padding-inline:18px!important;margin-bottom:18px!important;font-size:14px!important;line-height:1.6!important}
+/* 020: Use an uninterrupted widescreen video surface. */
+.agency-site .rw-video-frame{aspect-ratio:16/9!important;border-radius:0!important}
+/* 021: Group the five visualization links on one calm surface. */
+.agency-site .rw-explorer-entry{padding:28px!important;border-radius:18px!important;background:#eaf2ee!important}
+/* 022: Make the visualization introduction easier to scan. */
+.agency-site .rw-explorer-entry h2{max-width:24ch!important;font-size:clamp(27px,3vw,38px)!important}
+/* 023: Give each visualization a distinct tile. */
+.agency-site .rw-explorer-links a{flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;gap:14px!important;min-height:112px!important}
+/* 024: Enlarge visualization tile icons. */
+.agency-site .rw-explorer-links .chroma-icon{width:24px!important;height:24px!important;flex-shrink:0!important}
+/* 025: Make keyboard selection of visualizations unmistakable. */
+.agency-site .rw-explorer-links a:focus-visible{outline:3px solid #9a2423!important;outline-offset:4px!important}
+/* 026: Unify the spacing between overview cards. */
+.agency-site .cards.three:not(.modes){gap:20px!important}
+/* 027: Use a generous consistent overview-card inset. */
+.agency-site .cards.three:not(.modes)>article{padding:26px!important;min-width:0!important}
+/* 028: Give overview card titles a crisp scale. */
+.agency-site .cards.three:not(.modes) h3{font-size:22px!important;line-height:1.2!important;margin-bottom:14px!important}
+/* 029: Improve overview card reading density. */
+.agency-site .cards.three:not(.modes) p{font-size:15px!important;line-height:1.65!important}
+/* 030: Separate overview card numbers from their titles. */
+.agency-site .cards.three:not(.modes)>article>span{font-size:12px!important;letter-spacing:.12em!important;margin-bottom:12px!important;display:block!important}
+/* 031: Group the mode controls in a compact rail. */
+.agency-site .mode-switch{gap:8px!important;padding:6px!important;border-radius:12px!important}
+/* 032: Normalize mode control dimensions. */
+.agency-site .mode-tab{min-height:46px!important;padding:12px 18px!important;border-radius:8px!important;font-size:14px!important}
+/* 033: Give the mode demonstration an even inset. */
+.agency-site .mode-stage{padding:clamp(20px,3vw,36px)!important;border-radius:18px!important}
+/* 034: Keep the demonstration explanation readable. */
+.agency-site .agency-mode-note{max-width:62ch!important;font-size:13px!important;line-height:1.6!important}
+/* 035: Separate mode summaries from their controls. */
+.agency-site .cards.three.modes{gap:18px!important;margin-top:24px!important}
+/* 036: Use a consistent prototype gallery gutter. */
+.agency-site .prototype-grid{gap:20px!important}
+/* 037: Strengthen photo caption titles. */
+.agency-site .prototype-card figcaption strong{font-size:17px!important;line-height:1.35!important;letter-spacing:-.015em!important}
+/* 038: Give captions a subtle image divider. */
+.agency-site .prototype-card figcaption{border-top:1px solid #e0e8e4!important}
+/* 039: Constrain the gallery note to a readable line length. */
+.agency-site .prototype-note{max-width:64ch!important;font-size:13px!important;line-height:1.6!important;margin-top:20px!important}
+/* 040: Show a clear keyboard ring on photo links. */
+.agency-site .ui-photo-link:focus-visible{outline:4px solid #a82725!important;outline-offset:-4px!important}
+/* 041: Align clinical preview columns at their top edge. */
+.agency-site .clinical-grid{gap:24px!important;align-items:start!important}
+/* 042: Unify the main preview panel inset. */
+.agency-site .clinical-main{padding:28px!important;border-radius:18px!important}
+/* 043: Allow chart labels to wrap cleanly. */
+.agency-site .care-chart-head{gap:12px!important;flex-wrap:wrap!important}
+/* 044: Visually separate sample-data context. */
+.agency-site .care-preview-note{font-size:12px!important;line-height:1.6!important;border-top:1px solid #cddbd7!important;padding-top:12px!important}
+/* 045: Prevent preview tags from crowding. */
+.agency-site .care-tags{gap:8px!important;flex-wrap:wrap!important}
+/* 046: Give team cards a consistent interior rhythm. */
+.agency-site .cards.team article{padding:24px!important;gap:0!important}
+/* 047: Bring names and roles into a clearer group. */
+.agency-site .cards.team h3{margin-block:14px 6px!important;line-height:1.2!important}
+/* 048: Tighten team biography reading density. */
+.agency-site .cards.team p{font-size:14px!important;line-height:1.6!important;margin-block:8px!important}
+/* 049: Align team profile actions at the bottom. */
+.agency-site .cards.team .linkedin-link{margin-top:auto!important;padding-top:12px!important}
+/* 050: Add a restrained portrait frame. */
+.agency-site .cards.team .team-photo{border:1px solid #d7e2dc!important;padding:3px!important}
+/* 051: Tighten the partner logo grid. */
+.agency-site .rw-partner-grid{gap:18px!important}
+/* 052: Use even partner-card insets. */
+.agency-site .rw-partner-card{overflow:hidden!important;padding:18px!important}
+/* 053: Reduce empty space around partner logos. */
+.agency-site .rw-partner-logo{min-height:110px!important;padding:16px!important}
+/* 054: Clarify partner names beneath logos. */
+.agency-site .rw-partner-card h3{font-size:18px!important;line-height:1.3!important;margin-block:16px 8px!important}
+/* 055: Keep partner descriptions visually secondary. */
+.agency-site .rw-partner-card p{font-size:13px!important;line-height:1.6!important}
+/* 056: Reduce empty space before contact choices. */
+.agency-site .contact-hero{padding-block:36px!important}
+/* 057: Separate inquiry pathway controls evenly. */
+.agency-site .rw-clinical-paths{gap:10px!important}
+/* 058: Make the selected inquiry path easy to spot. */
+.agency-site .rw-pathway-summary{padding:16px 18px!important;border-left:3px solid #7a9c91!important;border-radius:0 10px 10px 0!important}
+/* 059: Group the post-inquiry sequence. */
+.agency-site .agency-next-steps{gap:16px!important;margin-top:24px!important}
+/* 060: Give the contact directory a consistent gutter. */
+.agency-site .contact-team-grid{gap:20px!important}
+/* 061: Create clear separation between form fields. */
+.agency-site .web-contact-form .form-grid{column-gap:22px!important;row-gap:24px!important}
+/* 062: Give longer messages more writing room. */
+.agency-site .web-contact-form textarea{padding:16px!important;min-height:170px!important}
+/* 063: Separate consent text from input fields. */
+.agency-site .web-contact-form .form-consent{padding-block:16px!important;line-height:1.6!important;font-size:13px!important}
+/* 064: Make optional details a clear disclosure row. */
+.agency-site .agency-optional summary{min-height:48px!important;display:flex!important;align-items:center!important;gap:12px!important}
+/* 065: Strengthen the primary form action. */
+.agency-site .form-submit{min-height:50px!important;padding:14px 24px!important;letter-spacing:.01em!important}
+/* 066: Allow purchasing section links to wrap evenly. */
+.agency-site .po-section-nav{gap:8px!important;padding-block:16px!important;flex-wrap:wrap!important}
+/* 067: Clarify purchasing form section titles. */
+.agency-site .po-form legend{font-size:25px!important;line-height:1.2!important;margin-block:28px 12px!important}
+/* 068: Constrain purchasing instructions to readable lines. */
+.agency-site .po-section-help{font-size:14px!important;line-height:1.6!important;max-width:62ch!important}
+/* 069: Give the order summary a consistent panel inset. */
+.agency-site .po-summary{padding:24px!important;border-radius:16px!important}
+/* 070: Separate the final purchasing action from fields. */
+.agency-site .po-submit-area{margin-top:28px!important;padding-top:24px!important;border-top:1px solid #cadad3!important}
+/* 071: Limit resource introduction line length. */
+.agency-site .resource-intro{max-width:72ch!important}
+/* 072: Unify resource listing gutters. */
+.agency-site .resource-grid{gap:20px!important}
+/* 073: Establish a clear resource title hierarchy. */
+.agency-site .resource-card h2{font-size:21px!important;line-height:1.25!important;margin-block:14px 10px!important}
+/* 074: Improve resource description density. */
+.agency-site .resource-card p{font-size:14px!important;line-height:1.65!important}
+/* 075: Separate directory help from listing cards. */
+.agency-site .resource-help{padding:24px!important;border-radius:14px!important;margin-top:28px!important}
+/* 076: Unify funding listing gutters. */
+.agency-site .fund-grid{gap:20px!important}
+/* 077: Clarify funding provider titles. */
+.agency-site .fund-card h3{font-size:21px!important;line-height:1.25!important;margin-block:14px 10px!important}
+/* 078: Improve funding description density. */
+.agency-site .fund-card p{font-size:14px!important;line-height:1.65!important}
+/* 079: Prevent provider domains from overflowing. */
+.agency-site .fund-provider-domain{font-size:12px!important;overflow-wrap:anywhere!important}
+/* 080: Keep saved-list controls orderly at narrow widths. */
+.agency-site .fund-shortlist-toolbar{gap:12px!important;flex-wrap:wrap!important;align-items:center!important}
+/* 081: Keep visualization introductions concise in width. */
+.agency-site .ex-heading{max-width:70ch!important;margin-bottom:24px!important}
+/* 082: Align visualization controls and graphics. */
+.agency-site .ex-grid{gap:24px!important;align-items:start!important}
+/* 083: Give visualization controls an even panel inset. */
+.agency-site .ex-panel{padding:24px!important}
+/* 084: Emphasize the session duration total. */
+.agency-site .ex-total{font-size:clamp(30px,4vw,48px)!important;letter-spacing:-.04em!important}
+/* 085: Improve the sample data table rhythm. */
+.agency-site .ex-data-table :is(th,td){padding:12px 14px!important;line-height:1.5!important}
+/* 086: Keep FAQ text within a readable column. */
+.agency-site .faq-list{max-width:900px!important;margin-inline:auto!important}
+/* 087: Improve expanded FAQ reading comfort. */
+.agency-site .faq details p{max-width:68ch!important;font-size:15px!important;line-height:1.7!important;padding-right:20px!important}
+/* 088: Give next-step cards a balanced inset. */
+.agency-site .rw-next-card{padding:24px!important;gap:16px!important}
+/* 089: Clarify next-step titles. */
+.agency-site .rw-next-card h3{font-size:21px!important;line-height:1.25!important}
+/* 090: Balance closing call-to-action text and buttons. */
+.agency-site .cta-inner{gap:28px!important;align-items:center!important}
+/* 091: Tighten the footer into a coherent grid. */
+.agency-site #site-footer .footer-rich{gap:32px!important;padding-block:40px!important}
+/* 092: Separate footer link groups consistently. */
+.agency-site #site-footer .footer-links{gap:28px!important}
+/* 093: Make footer link rows easier to scan. */
+.agency-site #site-footer .footer-links a{line-height:1.5!important;padding-block:6px!important}
+/* 094: Let footer utility links wrap naturally. */
+.agency-site #site-footer .footer-bottom{gap:16px!important;flex-wrap:wrap!important;padding-block:20px!important}
+/* 095: Protect narrow footer columns from long labels. */
+.agency-site #site-footer .footer-links>div{min-width:0!important;overflow-wrap:anywhere!important}
+/* 096: Compact the mobile hero. */
+@media(max-width:760px){.agency-site .hero{gap:24px!important;padding-block:24px!important}}
+/* 097: Reduce visualization invitation insets on mobile. */
+@media(max-width:760px){.agency-site .rw-explorer-entry{padding:20px!important}}
+/* 098: Keep mobile visualization tiles balanced. */
+@media(max-width:760px){.agency-site .rw-explorer-links a{min-height:96px!important;padding:14px!important}}
+/* 099: Recover usable width inside mobile panels. */
+@media(max-width:760px){.agency-site .clinical-main,.ex-panel,.po-summary{padding:20px!important}}
+/* 100: Keep the mobile hero caption compact. */
+@media(max-width:760px){.agency-site .hero-product figcaption{padding:12px 14px!important;font-size:12px!important}}
