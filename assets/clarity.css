@@ -199,3 +199,8 @@
 @media(max-width:760px){.agency-site .clinical-main,.ex-panel,.po-summary{padding:20px!important}}
 /* 100: Keep the mobile hero caption compact. */
 @media(max-width:760px){.agency-site .hero-product figcaption{padding:12px 14px!important;font-size:12px!important}}
+/* Contrast repair: dark movement-mode cards shown in the user's screenshot. */
+html body.agency-site .dark .cards.three.modes>article{background:#15232d!important;border:1px solid #657c85!important}
+html body.agency-site .dark .cards.three.modes>article h3{color:#f5fafb!important}
+html body.agency-site .dark .cards.three.modes>article p{color:#d7e6eb!important}
+html body.agency-site .dark .cards.three.modes>article h3 :is(svg,.rw-icon,.chroma-icon){color:#abe7dc!important;stroke:currentColor!important}

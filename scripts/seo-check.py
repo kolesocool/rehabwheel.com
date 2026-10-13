@@ -31,7 +31,7 @@ class Page(HTMLParser):
 pages={p.name:Page(p.read_text()) for p in Path('.').glob('*.html')}
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
 root=ET.parse('sitemap.xml').getroot();urls=[e.text for e in root.findall('s:url/s:loc',ns)]
-assert len(urls)==len(set(urls))==23
+assert len(urls)==len(set(urls))==25
 assert not any(x.endswith(('404.html','icons.html')) for x in urls)
 seen_titles=set();seen_descriptions=set()
 for url in urls:
@@ -54,4 +54,4 @@ for url in urls:
 for image in root.findall('.//i:loc',ns):assert Path(urlsplit(image.text).path.lstrip('/')).is_file(),image.text
 assert 'noindex' in pages['icons.html'].meta['robots']
 assert len(re.findall(r'^\| \d+ \|',Path('docs/SEO_100_EXTRA.md').read_text(),re.M))==100
-print('PASS: 23 unique canonical pages, metadata alignment, consolidated schema, FAQ/product identities, contextual targets, sitemap images and 100-item record.')
+print('PASS: 25 unique canonical pages, metadata alignment, consolidated schema, FAQ/product identities, contextual targets, sitemap images and 100-item record.')
