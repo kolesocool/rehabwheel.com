@@ -1,0 +1,32 @@
+/* Rehabwheel institutional UI/icon polish — October 2026 */
+:root{--rw-icon-ink:#126567;--rw-icon-bg:#eaf5f4;--rw-focus:#087d82}
+:where(a,button,input,select,textarea,summary):focus-visible{outline:3px solid var(--rw-focus)!important;outline-offset:3px}
+:where(a,button,summary){-webkit-tap-highlight-color:transparent}
+:where(.btn,.rw-nav-trigger,.rw-nav-panel a,.mobile-nav a){transition:background-color .18s ease,color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+:where(.btn,.rw-nav-trigger,.rw-nav-panel a,.mobile-nav a):hover{transform:translateY(-1px)}
+:where(.rw-nav-panel a,.mobile-nav a){text-underline-offset:3px}
+:where(.rw-nav-panel a,.mobile-nav a):focus-visible{border-radius:5px}
+:where(.rw-partner-card,.rw-partner-card h3,.rw-partner-card p){overflow-wrap:anywhere}
+:where(.rw-partner-logo img){object-fit:contain}
+:where(.btn,.rw-nav-trigger,.menu-toggle){min-height:44px}
+:where(.mobile-nav a,.mobile-nav summary){min-height:44px}
+:where(.hero-copy,.hero-copy p,.hero-copy h1){overflow-wrap:break-word}
+:where(.hero-copy h1){text-wrap:balance}
+:where(.rw-partner-card h3){text-wrap:balance}
+:where(.rw-nav-panel a){display:flex;flex-direction:column;justify-content:center;gap:3px}
+:where(.rw-nav-panel a small){line-height:1.5}
+:where(.rw-icon){display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.25em;height:1.25em;vertical-align:-.2em;color:var(--rw-icon-ink)}
+:where(.rw-icon svg){display:block;width:100%;height:100%;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+:where(.rw-icon--tile){width:48px;height:48px;padding:11px;border-radius:14px;background:var(--rw-icon-bg)}
+:where(.rw-icon--lg){width:32px;height:32px}
+:where(.rw-icon--sm){width:16px;height:16px}
+:where(.rw-icon-label){display:inline-flex;align-items:center;gap:8px}
+:where(.rw-icon-label .rw-icon){color:inherit}
+:where(.rw-nav-trigger[aria-expanded="true"]){color:var(--rw-icon-ink)}
+:where(.rw-nav-trigger[aria-expanded="true"] span){transform:rotate(180deg)}
+:where(.rw-nav-trigger span){display:inline-block;transition:transform .18s}
+:where(.rw-partner-card:hover){box-shadow:0 10px 26px rgba(16,48,59,.08)}
+:where(.rw-subscribe-form input){min-height:44px}
+:where(.rw-subscribe-form input[aria-invalid="true"]){border-color:#b42318}
+@media(max-width:720px){:where(.rw-partner-grid){gap:14px}:where(.hero-copy h1){hyphens:auto}}
+@media(prefers-reduced-motion:reduce){:where(.btn,.rw-nav-trigger,.rw-nav-panel a,.mobile-nav a,.rw-nav-trigger span){transition:none!important}:where(.btn,.rw-nav-trigger,.rw-nav-panel a,.mobile-nav a):hover{transform:none!important}}
