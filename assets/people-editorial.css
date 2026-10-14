@@ -1,0 +1,63 @@
+/* Rehabwheel / People — editorial leadership layout
+   Scoped to the people gallery to avoid disrupting product, clinical or procurement pages. */
+:root{--people-ink:#142430;--people-muted:#5f6d77;--people-rule:#dce4e3;--people-teal:#126567;--people-paper:#f8f8f5}
+html{scroll-padding-top:92px}
+body .rw-people-hero{width:min(1352px,calc(100% - 48px));max-width:none;margin:0 auto;padding:clamp(72px,9vw,132px) 0 clamp(54px,5vw,82px);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);column-gap:clamp(38px,6vw,100px);align-items:end}
+body .rw-people-hero .rw-people-eyebrow,body .rw-people-collection .rw-people-eyebrow,body .rw-team-preview .rw-people-eyebrow{font:700 .72rem/1.4 Roboto,Inter,Arial,sans-serif;letter-spacing:.21em;text-transform:uppercase;color:var(--people-teal);margin:0 0 20px}
+body .rw-people-hero h1{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(3.6rem,7.6vw,7.9rem)!important;font-weight:500!important;letter-spacing:-.065em!important;line-height:1.01!important;color:var(--people-ink)!important;max-width:850px;margin:0!important;text-wrap:balance}
+body .rw-people-hero .rw-people-intro{font-size:clamp(1.06rem,1.65vw,1.38rem);line-height:1.63;color:#455761;margin:0 0 26px;max-width:470px}
+body .rw-people-hero .rw-people-jumplinks{display:flex;flex-wrap:wrap;gap:10px 24px}
+body .rw-people-hero .rw-people-jumplinks a{color:var(--people-ink);font-size:.88rem;font-weight:700;text-decoration:none;padding:9px 0;border-bottom:1px solid var(--people-ink);transition:color .2s}
+body .rw-people-hero .rw-people-jumplinks a:hover{color:var(--people-teal)}
+body .rw-people-collection{padding:0 0 clamp(70px,9vw,136px);background:#fff;color:var(--people-ink)}
+body .rw-people-collection.rw-people-advisory{background:var(--people-paper);padding:clamp(68px,7vw,100px) 0 clamp(78px,8vw,110px)}
+body .rw-people-collection .rw-people-wrap{width:min(1352px,calc(100% - 48px));max-width:none;margin:0 auto}
+body .rw-people-collection .rw-people-heading{display:flex;align-items:end;justify-content:space-between;gap:28px;margin:0 0 clamp(27px,3vw,43px);border-top:1px solid var(--people-rule);padding-top:26px}
+body .rw-people-collection .rw-people-heading h2{font-family:Georgia,"Times New Roman",serif!important;font-size:clamp(2.2rem,4vw,4rem)!important;font-weight:500!important;line-height:1.1!important;letter-spacing:-.04em!important;color:var(--people-ink)!important;margin:0!important}
+body .rw-people-collection .rw-people-heading p{font-size:.98rem;line-height:1.55;color:var(--people-muted);max-width:335px;margin:0}
+body .rw-people-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:clamp(36px,4.5vw,70px) clamp(16px,2.4vw,36px)!important;align-items:start}
+body .rw-people-grid .rw-person{min-width:0;background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;box-shadow:none!important;overflow:visible!important;transition:none!important;display:block!important}
+body .rw-people-grid .rw-person:hover{transform:none!important;box-shadow:none!important;border:none!important}
+body .rw-person .rw-person-portrait{width:100%;aspect-ratio:4/4.7;display:block;overflow:hidden;background:#e6e6e1;position:relative}
+body .rw-person .rw-person-portrait img{display:block!important;width:100%!important;height:100%!important;min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;object-fit:cover!important;object-position:center 24%!important;border:0!important;border-radius:0!important;box-shadow:none!important;transition:transform .55s cubic-bezier(.22,1,.36,1)!important;filter:none!important}
+body .rw-person:hover .rw-person-portrait img{transform:scale(1.035)!important}
+body .rw-person[data-person="stan-mcclellan"] img{object-position:center 18%!important}
+body .rw-person[data-person="denise-gobert"] img{object-position:center 19%!important}
+body .rw-person[data-person="kristin-yarboro"] img{object-position:center 19%!important}
+body .rw-person[data-person="michael-meier"] img{object-position:center 19%!important}
+body .rw-person .rw-person-caption{padding:18px 0 0}
+body .rw-person .rw-person-name{font-family:Georgia,"Times New Roman",serif!important;font-weight:500!important;font-size:clamp(1.45rem,2.05vw,2rem)!important;line-height:1.2!important;letter-spacing:-.025em!important;margin:0 0 7px!important;overflow-wrap:normal!important;hyphens:auto;color:var(--people-ink)!important}
+body .rw-person .rw-person-role{font-size:.93rem!important;line-height:1.45!important;color:#596775!important;margin:0 0 12px!important}
+body .rw-person .rw-person-actionbar{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--people-rule);margin-top:20px;padding-top:12px}
+body .rw-person .rw-person-open{display:inline-flex;gap:10px;align-items:center;justify-content:flex-start;background:none;border:0;padding:9px 0;color:var(--people-ink);font:700 .82rem/1.3 Roboto,Inter,Arial,sans-serif;letter-spacing:.035em;cursor:pointer}
+body .rw-person .rw-person-open span{font-size:1.15rem;transition:transform .2s}
+body .rw-person .rw-person-open:hover span{transform:translate(3px,-3px)}
+body .rw-person .rw-person-link{font:600 .79rem/1.4 Roboto,Inter,Arial,sans-serif;text-decoration:none!important;border-bottom:1px solid #a8b6b7;color:#34555a!important;padding:7px 0;white-space:nowrap}
+body .rw-person .rw-person-link:hover{color:var(--people-teal)!important}
+body .rw-person button:focus-visible,body .rw-person a:focus-visible,body .rw-person-dialog button:focus-visible{outline:3px solid #126567;outline-offset:4px}
+body .rw-person-dialog{border:0;border-radius:0;padding:0!important;width:min(980px,calc(100vw - 32px));max-width:980px;max-height:min(88vh,850px);overflow-y:auto;background:#fff;color:var(--people-ink);box-shadow:0 40px 100px rgba(7,24,35,.23)}
+body .rw-person-dialog::backdrop{background:rgba(8,22,28,.76);backdrop-filter:blur(5px)}
+body .rw-person-dialog .rw-dialog-inner{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);min-height:440px}
+body .rw-person-dialog .rw-dialog-image{width:100%;height:100%;max-height:700px;object-fit:cover;object-position:center 22%;background:#eaece9}
+body .rw-person-dialog .rw-dialog-copy{padding:clamp(34px,5vw,70px);max-height:84vh;overflow-y:auto}
+body .rw-person-dialog .rw-dialog-copy h2{font:500 clamp(2.2rem,3.2vw,3.5rem)/1.1 Georgia,serif!important;letter-spacing:-.035em;color:var(--people-ink)!important;margin:0 0 10px}
+body .rw-person-dialog .rw-dialog-role{font-size:.94rem;color:var(--people-muted);margin-bottom:28px!important}
+body .rw-person-dialog .rw-dialog-copy p{font-size:.96rem;line-height:1.78;color:#3b4c57;margin:0 0 17px}
+body .rw-person-dialog .rw-dialog-copy a{color:var(--people-teal);text-decoration:underline;text-underline-offset:3px}
+body .rw-person-dialog .rw-dialog-close{position:sticky;float:right;top:12px;right:12px;width:42px;height:42px;background:#fff;border:1px solid #d9e2e3;border-radius:50%;font-size:25px;color:var(--people-ink);z-index:2;cursor:pointer;margin:12px 12px -54px -54px}
+body .rw-team-preview{padding:clamp(70px,7vw,112px) 0!important;background:var(--people-paper)}
+body .rw-team-preview .rw-team-preview-wrap{width:min(1352px,calc(100% - 48px));margin:auto}
+body .rw-team-preview .rw-team-preview-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin:0 0 34px}
+body .rw-team-preview h2{font:500 clamp(2.5rem,5vw,5.2rem)/1.07 Georgia,serif!important;letter-spacing:-.055em!important;color:var(--people-ink)!important;margin:0!important}
+body .rw-team-preview .rw-team-preview-heading a{display:inline-flex;align-items:center;gap:12px;border-bottom:1px solid #12252d;color:#12252d;font-weight:700;font-size:.89rem;text-decoration:none;padding:12px 0}
+body .rw-team-preview .rw-team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 22px}
+body .rw-team-preview .rw-team-card{min-width:0}
+body .rw-team-preview .rw-team-card a{display:block;text-decoration:none;color:inherit}
+body .rw-team-preview .rw-team-card .rw-team-photo{aspect-ratio:4/4.7;overflow:hidden;background:#e7e8e4}
+body .rw-team-preview .rw-team-card img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .5s ease}
+body .rw-team-preview .rw-team-card a:hover img{transform:scale(1.045)}
+body .rw-team-preview .rw-team-card h3{font:500 clamp(1.22rem,1.55vw,1.55rem)/1.18 Georgia,serif!important;margin:15px 0 5px!important;color:var(--people-ink)!important;overflow-wrap:normal!important}
+body .rw-team-preview .rw-team-card .rw-team-role{font-size:.82rem;color:var(--people-muted);margin:0;line-height:1.5}
+@media(max-width:960px){body .rw-people-hero{grid-template-columns:1fr;padding-top:70px}body .rw-people-hero .rw-people-intro{margin-top:15px;max-width:730px}body .rw-people-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body .rw-team-preview .rw-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){body .rw-people-hero,body .rw-people-collection .rw-people-wrap,body .rw-team-preview .rw-team-preview-wrap{width:calc(100% - 36px)}body .rw-people-hero{padding:52px 0 48px;gap:0}body .rw-people-hero h1{font-size:clamp(3.45rem,15vw,5.7rem)!important}body .rw-people-collection .rw-people-heading{align-items:start;flex-direction:column;gap:12px}body .rw-people-grid{grid-template-columns:1fr!important;gap:38px!important}body .rw-person .rw-person-portrait{aspect-ratio:4/4.45}body .rw-person .rw-person-name{font-size:1.8rem!important}body .rw-person-dialog .rw-dialog-inner{grid-template-columns:1fr}body .rw-person-dialog .rw-dialog-image{height:230px}body .rw-person-dialog .rw-dialog-copy{max-height:none;padding:24px}body .rw-person-dialog .rw-dialog-close{position:sticky;top:10px;margin:10px 10px -52px -52px}body .rw-team-preview .rw-team-preview-heading{flex-direction:column;align-items:start}body .rw-team-preview .rw-team-grid{gap:25px 12px}body .rw-team-preview .rw-team-card h3{font-size:1.16rem!important}}
+@media(prefers-reduced-motion:reduce){body .rw-people-grid img,body .rw-team-grid img{transition:none!important}}
