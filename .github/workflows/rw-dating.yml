@@ -1,0 +1,45 @@
+name: RW Dating checks
+on:
+  push:
+    paths:
+      - 'rw-dating/**'
+      - '.github/workflows/rw-dating.yml'
+  pull_request:
+    paths:
+      - 'rw-dating/**'
+      - '.github/workflows/rw-dating.yml'
+jobs:
+  web-and-mobile-config:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: rw-dating
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: rw-dating/package-lock.json
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Validate web preview
+        run: |
+          test -s index.html
+          grep -q 'RW Dating' index.html
+          test -s capacitor.config.ts
+      - name: Generate Android project
+        run: |
+          npx cap add android
+          npx cap sync android
+      - name: Compile Android debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: rw-dating-android-debug
+          path: rw-dating/android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
