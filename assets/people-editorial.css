@@ -190,3 +190,17 @@ body .rw-team-preview .rw-team-preview-heading a{min-height:44px}
   body .rw-person-dialog{display:none!important}
   body .rw-person .rw-person-actionbar{display:none}
 }
+
+
+
+/* Homepage: original photography-led editorial profile links */
+body .rw-team-preview .rw-team-preview-heading h2{max-width:850px;text-wrap:balance}
+body .rw-team-preview .rw-team-preview-deck{max-width:660px;margin:18px 0 0;color:#52626d;font-size:clamp(1rem,1.25vw,1.14rem);line-height:1.67}
+body .rw-team-preview .rw-team-card .rw-team-card-cta{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:#126567;font-size:.78rem;font-weight:700;letter-spacing:.03em;border-bottom:1px solid #a5c2bd;padding-bottom:5px}
+body .rw-team-preview .rw-team-card a:hover .rw-team-card-cta{color:#0a4b4e;border-bottom-color:#0a4b4e}
+body .rw-team-preview .rw-team-card a:hover img{transform:scale(1.028)}
+body .rw-team-preview .rw-team-preview-heading>a:hover{color:var(--people-teal);border-bottom-color:var(--people-teal)}
+body .rw-team-preview .rw-team-card a:focus-visible{border-radius:2px}
+body .rw-people-hero .rw-people-note{max-width:580px}
+@media(max-width:620px){body .rw-team-preview .rw-team-preview-deck{font-size:1rem;margin-top:12px}body .rw-team-preview .rw-team-card .rw-team-card-cta{font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){body .rw-team-preview .rw-team-card a:hover img{transform:none!important}}
