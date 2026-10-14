@@ -1,4 +1,4 @@
-name: RW Dating checks
+name: Rehabwheel social checks
 on:
   push:
     paths:
@@ -24,7 +24,7 @@ jobs:
       - name: Validate web preview
         run: |
           test -s index.html
-          grep -q 'RW Dating' index.html
+          grep -q 'Rehabwheel' index.html
           test -s capacitor.config.ts
       - name: Generate Android project
         run: |
@@ -40,6 +40,6 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: rw-dating-android-debug
+          name: rehabwheel-social-android-debug
           path: rw-dating/android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
