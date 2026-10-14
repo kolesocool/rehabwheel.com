@@ -28,6 +28,8 @@ jobs:
           test -s capacitor.config.ts
       - name: Generate Android project
         run: |
+          mkdir -p www
+          cp index.html www/index.html
           npx cap add android
           npx cap sync android
       - name: Compile Android debug APK
