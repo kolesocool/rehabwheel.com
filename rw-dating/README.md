@@ -1,28 +1,8 @@
-# RW Dating — mobile preview
+# Rehabwheel — social community
 
-Standalone wheelchair-first dating/community prototype under the Rehabwheel brand. It does **not** share patient records, accounts or data with Rehabwheel Portal.
+One Rehabwheel app: social feed, friendships, opt-in dating, events, messaging, groups and profiles. Dating is a feature, not a separate app. The existing HTML is only a prototype and its interactive demo content is not a production backend.
 
-## Preview
-Open `index.html` locally in a browser. Posts and likes are temporary demo-only state; no real profiles, messages, moderation, or backend are connected.
+Keep social accounts/data separate from clinical LegMaker patient records. Use consent-based opt-in dating, 18+ age gating for dating, privacy controls, block/report/moderation, and accessibility.
 
-## Mobile wrapper preparation
-Requires Node.js, Android Studio for Android and macOS/Xcode for iOS.
-
-```sh
-npm install
-npx cap add android
-npx cap add ios
-npm run mobile:sync
-npm run mobile:android # Android Studio: build/install debug APK
-npm run mobile:ios     # Xcode: sign/build on macOS
-```
-
-These commands are **instructions, not evidence that native builds have succeeded**. Native project generation, signing, physical-device tests and release artifacts remain pending.
-
-## Production gates
-- Replace demo data with isolated Firebase project and secure authorization rules
-- 18+ age gate, reporting/blocking, human moderation and abuse handling
-- Consent-based matching and private messaging
-- Privacy policy, terms, deletion/export, accessibility and app-store disclosures
-- Signed Android/iOS builds and real-device QA
-- Keep Dancenlove and 10Strikers entirely separate
+## Mobile
+Install dependencies with npm install. Create www and copy index.html to www/index.html, then run npx cap add android / npx cap sync android (or iOS on macOS). CI is configured to attempt a debug Android APK; a successful build must be independently verified.
