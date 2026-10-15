@@ -27,7 +27,7 @@ try{
    await phone.locator('#activityForm input[name="duration"]').fill("35");
    await phone.locator("#saveModal").click();
    assert.equal(await phone.locator("#modal").getAttribute("hidden"),"");
-   assert((await phone.locator("#view").innerText()).includes("Court skills"));
+   assert((await phone.locator("#view").innerText()).includes("Court practice"));
  });
  await run("Edit previously saved private sport activity",async()=>{
    await phone.locator('#mobileNav [data-tab="progress"]').click();
