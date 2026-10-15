@@ -1,12 +1,12 @@
 {
-  "name": "Rehabwheel Community Preview",
+  "name": "Rehabwheel Sports Community",
   "short_name": "Rehabwheel",
-  "description": "Interactive wheelchair-first community concept. Local-only demonstration.",
+  "description": "Sports-first wheelchair-friendly activity journal and early-access community preview. Your sessions stay private on your device.",
   "id": "/community/",
   "start_url": "/community/",
   "scope": "/community/",
   "display": "standalone",
-  "theme_color": "#b5182c",
+  "theme_color": "#112c30",
   "background_color": "#f6f7f6",
   "icons": [
     {
