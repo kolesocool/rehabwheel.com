@@ -25,7 +25,7 @@ jobs:
           java-version: "21"
       - name: Install isolated Firebase emulator test dependencies
         working-directory: community/backend
-        run: npm install --no-save --ignore-scripts @firebase/rules-unit-testing@6 firebase@12 firebase-tools@15
+        run: npm install --no-save --ignore-scripts @firebase/rules-unit-testing@6 firebase@13 firebase-tools@15
       - name: Run real Firestore rules emulator tests (never production)
         working-directory: community/backend
         run: npx firebase emulators:exec --config firebase.json --only firestore --project demo-rehabwheel-community "node rules.test.mjs"
