@@ -1,0 +1,108 @@
+
+/* Rehabwheel Community — editorial product polish. 15 Oct 2026. */
+:root{--red:#af1729;--dark:#14272b;--soft:#f4f6f3;--line:#e0e8e4;--green:#116b61;--radius:20px}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;background:linear-gradient(125deg,#fbfcfa 0%,#f1f5f3 60%,#faf5f2 100%);letter-spacing:-.007em}
+::selection{background:#ffd1d3;color:#172c2d}
+.preview{min-height:38px;display:flex;flex-wrap:wrap;gap:8px 13px;background:#123338;color:#eff8f4;letter-spacing:.01em;padding:9px 16px}
+.preview b{color:#ffc6c8;letter-spacing:1px;font-size:10px}
+.preview a{color:#fff;text-decoration:underline;text-underline-offset:3px;font-weight:750}
+.shell{max-width:1480px;grid-template-columns:226px minmax(0,766px) 282px;gap:22px;padding-top:27px}
+.sidebar,.right .card,.card{border-color:#e1e8e5;box-shadow:0 14px 38px #1433310b,0 1px 2px #17232108}
+.sidebar{border-radius:22px;padding:22px 13px;min-height:700px}
+.logo{padding:0 8px 26px;gap:9px}
+.logo img{width:52px;height:52px;border-radius:11px;object-fit:contain}
+.logo strong{font:900 22px Inter,"Segoe UI",Arial,sans-serif;letter-spacing:-1px;color:#9e1424}
+.logo small{letter-spacing:1.1px;font-size:9px;color:#576f6b}
+.sidebtn{border-radius:11px;font-size:13px;padding:12px 13px;min-height:44px;font-weight:740}
+.sidebtn.active{box-shadow:inset 3px 0 #b51729}
+.sidebar .aside-note{background:#f5f8f6;border:1px solid #e0e8e4;border-radius:12px;margin:18px 5px 0;padding:13px;line-height:1.65}
+.topbar{padding:4px 2px;margin-bottom:19px}
+.topbar h1{font-size:clamp(29px,3vw,40px);font-weight:870;letter-spacing:-1.55px}
+.page-eyebrow{letter-spacing:1.9px;color:#a7182c}
+.btn{min-height:44px;border-radius:10px;transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn.red{background:#b51729;border-color:#b51729;box-shadow:0 7px 17px #b517291c}
+.btn.red:hover{background:#8c1121}
+.card{border-radius:18px}
+.welcome{min-height:294px;display:block;position:relative;margin-bottom:17px;border:1px solid #23444a;box-shadow:0 16px 39px #14343123;background:#152f32}
+.welcome:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#10282deF 0%,#10282dd8 39%,#10282d55 75%,#10282d12 100%);pointer-events:none}
+.welcome img{position:absolute;right:0;top:0;width:72%;height:100%;object-fit:cover;object-position:center 48%;filter:contrast(1.04) saturate(.78)}
+.welcome-copy{max-width:490px;position:relative;z-index:2;padding:34px 31px}
+.welcome h2{font-size:clamp(28px,3.2vw,42px);font-weight:900;line-height:1.06;letter-spacing:-1.6px;max-width:435px;margin:10px 0 12px}
+.welcome p{max-width:348px;color:#e0eae7;font-size:13px;margin-bottom:16px}
+.welcome .eyebrow{color:#ffd3d0;font-size:10px;letter-spacing:1.8px}
+.welcome .btn{border:0;color:#192f31;box-shadow:0 7px 19px #0d1f2344}
+.hero-micro{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.hero-micro span{font-size:10px;font-weight:670;color:#fff;border:1px solid #ffffff69;padding:5px 9px;border-radius:20px}
+.stats{gap:12px;margin-bottom:18px}
+.stat{padding:17px 18px;position:relative;overflow:hidden}
+.stat:before{content:"";position:absolute;height:3px;width:32px;left:18px;top:0;background:#b51729;border-radius:0 0 4px 4px}
+.stat b{font-size:28px;font-weight:880;letter-spacing:-1.1px}
+.stat small{font-size:10px;letter-spacing:.8px}
+.section-head h2{font-size:19px;font-weight:840;letter-spacing:-.5px}
+.filters{gap:8px;margin:12px 0 18px}
+.pill{min-height:40px;border-radius:9px;padding:9px 14px}
+.pill[aria-pressed=true]{background:#153237;border-color:#153237}
+.feed-card{margin-bottom:18px}
+.feed-head{padding:19px 20px 13px}
+.feed-person b{font-size:14px}
+.avatar{background:linear-gradient(140deg,#deebe2,#dee7e9);color:#233f42}
+.feed-body{padding:0 20px 14px}
+.feed-body h3{font-size:21px;font-weight:840;letter-spacing:-.55px}
+.feed-body p{color:#53686d}
+.feed-img{height:300px;object-fit:cover;object-position:50% 48%}
+.feed-metrics{gap:8px;padding:18px 20px;background:#fcfdfc}
+.feed-metrics b{font-size:18px}
+.feed-metrics span{text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+.feed-footer{padding:8px 13px;gap:6px}
+.feed-footer button{min-height:43px}
+.feed-footer button[aria-pressed=true]{background:#fff1f3}
+.right .card{padding:20px;border-radius:18px}
+.right h3{font-weight:850;letter-spacing:-.3px}
+.goal-ring{height:110px;width:110px}
+.goal-ring:before{width:83px;height:83px}
+.goal-ring strong{font-weight:890}
+.grid2{gap:15px}
+.tile{transition:transform .15s ease,border-color .15s ease}
+.tile:hover{transform:translateY(-2px);border-color:#bdd9d1}
+.tile h3{font-weight:850;letter-spacing:-.4px;line-height:1.2}
+.tag{border:1px solid #d4e8df}
+.listrow{padding:13px 0}
+.profile-cover{height:195px}
+.modal{backdrop-filter:blur(5px)}
+.dialog{border:1px solid #dee8e5}
+.privacy-note{line-height:1.55}
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 20px}
+.challenge{background:#fff;padding:16px;border:1px solid #e0e7e3;border-radius:16px;min-width:0}
+.challenge-label{display:flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.075em;color:#a02538;font-weight:900;text-transform:uppercase}
+.challenge strong{display:block;font-size:16px;margin:10px 0 4px;letter-spacing:-.4px}
+.challenge p{font-size:11px;line-height:1.5;color:#68787b;margin:0 0 11px}
+.challenge progress{width:100%;height:12px;accent-color:#b51729}
+.challenge-foot{display:flex;justify-content:space-between;font-weight:750;font-size:10px;color:#607477}
+.product-spotlight{display:grid;grid-template-columns:1.1fr .9fr;gap:15px;align-items:center;padding:19px;border:1px solid #e4e7df;background:linear-gradient(120deg,#f3f6f1,#faeee8);border-radius:17px;margin:0 0 18px}
+.product-spotlight h3{font-size:21px;line-height:1.15;letter-spacing:-.75px;margin:8px 0}
+.product-spotlight p{font-size:12px;color:#5e7477;line-height:1.6;margin:0}
+.product-spotlight img{width:100%;height:170px;object-fit:cover;object-position:center;border-radius:10px}
+.product-spotlight a{font-weight:800;color:#991729;text-decoration:underline;text-underline-offset:3px;font-size:12px;display:inline-block;margin-top:10px}
+.status-strip{display:flex;gap:9px;align-items:start;padding:13px 16px;background:#f5f8f5;border:1px solid #dfe8e1;border-radius:12px;margin:0 0 18px;font-size:11px;line-height:1.5;color:#50676b}
+.status-strip .svg{width:17px;height:17px;color:#11695e}
+.community-foot{display:flex;gap:15px;flex-wrap:wrap;margin:16px 0 0;padding:12px 3px 20px;font-size:11px;color:#607477}
+.community-foot a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1120px){.shell{grid-template-columns:206px minmax(0,790px)}.right{display:none}}
+@media(max-width:760px){
+ .shell{padding:14px 11px 111px}
+ .topbar h1{font-size:28px}
+ .welcome{min-height:278px}
+ .welcome-copy{padding:26px 19px}
+ .welcome h2{font-size:31px;max-width:270px}
+ .welcome p{max-width:235px}
+ .welcome img{width:92%;object-position:55% 48%}
+ .welcome:after{background:linear-gradient(90deg,#112b30f9 0%,#112b30de 44%,#112b3060 100%)}
+ .feed-img{height:245px}
+ .product-spotlight img{height:145px}
+ .challenge-grid{gap:9px}
+ .challenge{padding:13px}
+ .mobilebar{padding-bottom:max(8px,env(safe-area-inset-bottom))}
+}
+@media(max-width:390px){.top-actions .btn{padding:10px}.welcome h2{font-size:27px}.challenge-grid{grid-template-columns:1fr}.product-spotlight{grid-template-columns:1fr}.product-spotlight img{height:130px}}
+@media(prefers-reduced-motion:reduce){.btn,.tile{transition:none!important;transform:none!important}}
