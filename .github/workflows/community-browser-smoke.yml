@@ -1,0 +1,33 @@
+name: Rehabwheel community browser smoke
+on:
+  push:
+    paths:
+      - "community/**"
+      - "assets/photos/**"
+      - ".github/workflows/community-browser-smoke.yml"
+  pull_request:
+    paths:
+      - "community/**"
+      - "assets/photos/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-smoke:
+    name: Mobile and desktop browser smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install browser test runtime
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Start static preview server
+        run: |
+          python3 -m http.server 8123 --bind 127.0.0.1 > /tmp/rw-http.log 2>&1 &
+      - name: Test mobile and desktop community flows
+        run: node community/scripts/smoke.mjs
