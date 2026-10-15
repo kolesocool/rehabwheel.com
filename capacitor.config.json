@@ -1,0 +1,8 @@
+{
+  "appId": "com.rehabwheel.sports.preview",
+  "appName": "Rehabwheel Sports Preview",
+  "webDir": ".community-mobile-dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
