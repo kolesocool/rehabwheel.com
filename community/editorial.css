@@ -137,3 +137,5 @@ button:focus-visible{outline:3px solid #b6192e;outline-offset:3px}
 .sport-feed-select select:focus-visible{outline:3px solid #b5182e;outline-offset:2px}
 .sport-feed-select select:hover{border-color:#9bc8b5}
 @media(max-width:600px){.sport-feed-select{flex:1 1 100%;justify-content:space-between}.sport-feed-select select{flex:1;max-width:260px}.filters{align-items:center}}
+
+.offline-banner{display:flex;align-items:center;justify-content:center;background:#fff2d8;border-bottom:1px solid #e7c67f;color:#58451e;font-size:12px;font-weight:750;padding:10px 16px;text-align:center}.offline-banner[hidden]{display:none!important}
