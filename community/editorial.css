@@ -139,3 +139,7 @@ button:focus-visible{outline:3px solid #b6192e;outline-offset:3px}
 @media(max-width:600px){.sport-feed-select{flex:1 1 100%;justify-content:space-between}.sport-feed-select select{flex:1;max-width:260px}.filters{align-items:center}}
 
 .offline-banner{display:flex;align-items:center;justify-content:center;background:#fff2d8;border-bottom:1px solid #e7c67f;color:#58451e;font-size:12px;font-weight:750;padding:10px 16px;text-align:center}.offline-banner[hidden]{display:none!important}
+
+/* Home-screen install actions stay hidden until supported by the browser. */
+.top-actions .btn[hidden]{display:none!important}.top-actions #installBtn{border-color:#b7d5c9;background:#edf7f1;color:#1c6157}.top-actions #installBtn:hover{background:#d8efe4}
+@media(max-width:760px){.top-actions #installBtn{padding:10px}.top-actions #installBtn .label{display:none}}
