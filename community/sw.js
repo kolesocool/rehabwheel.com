@@ -2,7 +2,7 @@
    Caches public app code and brand assets only. Activities remain in local browser storage.
    No authentication, telemetry, API responses, or personal data are intercepted or stored.
 */
-const CACHE_NAME="rw-community-shell-v1";
+const CACHE_NAME="rw-community-shell-v2";
 const PREFIX="rw-community-shell-";
 const SHELL=["/community/","/community/editorial.css","/community/manifest.webmanifest","/rehabwheel_logo.jpg"];
 self.addEventListener("install",event=>{
@@ -26,8 +26,16 @@ self.addEventListener("fetch",event=>{
     }).catch(()=>caches.match("/community/")));
     return;
   }
-  if(url.pathname==="/community/editorial.css"||url.pathname==="/community/manifest.webmanifest"||url.pathname==="/rehabwheel_logo.jpg"||url.pathname.startsWith("/assets/photos/")){
-    event.respondWith(caches.match(req).then(cached=>cached||fetch(req).then(response=>{
+  if(url.pathname==="/community/editorial.css"||url.pathname==="/community/manifest.webmanifest"){
+    // Prefer fresh styles and metadata while retaining first-install offline support.
+    event.respondWith(fetch(req).then(response=>{
+      if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.put(req,copy)));}
+      return response;
+    }).catch(()=>caches.match(req,{ignoreSearch:true})));
+    return;
+  }
+  if(url.pathname==="/rehabwheel_logo.jpg"||url.pathname.startsWith("/assets/photos/")){
+    event.respondWith(caches.match(req,{ignoreSearch:true}).then(cached=>cached||fetch(req).then(response=>{
       if(response.ok){const copy=response.clone();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.put(req,copy)));}
       return response;
     })));
