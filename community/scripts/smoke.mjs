@@ -60,6 +60,21 @@ try{
    assert(confirmed);
    assert((await phone.locator("#view").innerText()).includes("Court skills"));
  });
+ await run("Real private session timer starts, persists, pauses and saves",async()=>{
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
+   await phone.locator("#timerSport").selectOption("Handcycling");
+   await phone.locator('[data-act="timer-start"]').click();
+   await phone.waitForTimeout(650);
+   await phone.reload({waitUntil:"domcontentloaded"});
+   await phone.waitForTimeout(750);
+   await phone.locator('[data-act="timer-pause"]').click();
+   const time=await phone.locator("#timerReadout").innerText();
+   assert.notEqual(time,"00:00","Timer did not record elapsed time");
+   await phone.locator('[data-act="timer-save"]').click();
+   const page=await phone.locator("#view").innerText();
+   assert(page.includes("Handcycling session"),"Timer did not create an activity");
+   assert(page.includes("41 minutes"),"Private weekly total did not include the saved 1-minute session");
+ });
  await run("Mobile page has no significant horizontal overflow",async()=>{
    const sizes=await phone.evaluate(()=>({body:document.body.scrollWidth,viewport:document.documentElement.clientWidth}));
    assert(sizes.body<=sizes.viewport+4,JSON.stringify(sizes));
@@ -84,6 +99,41 @@ try{
    const sizes=await desk.evaluate(()=>({body:document.body.scrollWidth,viewport:document.documentElement.clientWidth}));
    assert(sizes.body<=sizes.viewport+4,JSON.stringify(sizes));
  });
+
+ // Exercise the exact Rehabwheel homepage promotion shown in the user screenshot.
+ const contrast=(fg,bg)=>{
+   const rgb=str=>(str.match(/[\d.]+/g)||[]).slice(0,3).map(Number);
+   const lum=arr=>arr.map(c=>{c/=255;return c<=0.04045?c/12.92:((c+0.055)/1.055)**2.4}).reduce((v,c,i)=>v+c*[0.2126,0.7152,0.0722][i],0);
+   const a=lum(rgb(fg)),b=lum(rgb(bg));
+   return (Math.max(a,b)+0.05)/(Math.min(a,b)+0.05);
+ };
+ for(const width of [390,927,1440]){
+   const home=await browser.newPage({viewport:{width,height:850},serviceWorkers:"block"});
+   await home.goto(base+"/",{waitUntil:"domcontentloaded"});
+   await run("Homepage promo contrast and no clipping at "+width+"px",async()=>{
+     const info=await home.evaluate(()=>{
+       const card=document.querySelector("#rehabwheel-community");
+       const copy=card.querySelector(".rw-social-copy");
+       const body=copy.querySelector("p");
+       const actions=copy.querySelector(".rw-social-actions");
+       const buttons=[...actions.querySelectorAll("a")];
+       const rect=card.getBoundingClientRect(),copyRect=copy.getBoundingClientRect();
+       return {paragraph:getComputedStyle(body).color,background:getComputedStyle(copy).backgroundColor,
+         cardLeft:rect.left,cardRight:rect.right,copyRight:copyRect.right,
+         viewport:document.documentElement.clientWidth,bodyScroll:document.body.scrollWidth,
+         buttons:buttons.map(b=>({text:b.innerText,visible:b.getBoundingClientRect().width>=115,href:b.getAttribute("href")}))};
+     });
+     assert(contrast(info.paragraph,info.background)>=7,"Homepage description fails high contrast: "+JSON.stringify(info));
+     assert(info.cardLeft>=-2&&info.cardRight<=info.viewport+2,"Promo clipped: "+JSON.stringify(info));
+     assert(info.copyRight<=info.cardRight+2,"Text panel overflow: "+JSON.stringify(info));
+     assert(info.bodyScroll<=info.viewport+5,"Unexpected horizontal overflow: "+JSON.stringify(info));
+     assert.equal(info.buttons.length,2);
+     assert(info.buttons.every(b=>b.visible),JSON.stringify(info.buttons));
+     assert(info.buttons.some(b=>b.href==="/community/"),"Missing actual community app CTA");
+   });
+   await home.locator("#rehabwheel-community").screenshot({path:"/tmp/rehabwheel-promo-"+width+".png"});
+   await home.close();
+ }
  await desk.close();
  console.log("\n"+checked+" browser smoke checks passed.");
 }finally{await browser.close()}
