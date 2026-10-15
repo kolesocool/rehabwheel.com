@@ -45,6 +45,14 @@ try{
    assert((await phone.locator("#view").innerText()).includes("40 minutes"));
    assert((await phone.locator("#view").innerText()).includes("Wheelchair basketball"));
  });
+ await run("28-day training report reflects real edited session",async()=>{
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
+   assert.equal(await phone.locator(".training-insights").count(),1);
+   assert((await phone.locator(".training-insights").innerText()).includes("Your last 28 days"));
+   assert.equal(await phone.locator(".insights-totals strong").first().innerText(),"40");
+   assert.equal(await phone.locator(".insights-totals strong").nth(1).innerText(),"1");
+   assert((await phone.locator(".insights-sports").innerText()).includes("Wheelchair basketball"));
+ });
  await run("Private data export creates backup file",async()=>{
    await phone.locator('#mobileNav [data-tab="profile"]').click();
    const [download]=await Promise.all([phone.waitForEvent("download"),phone.locator('[data-act="backup"]').click()]);
@@ -75,6 +83,7 @@ try{
    const page=await phone.locator("#view").innerText();
    assert(page.includes("Handcycling session"),"Timer did not create an activity");
    assert(page.includes("41 minutes"),"Private weekly total did not include the saved 1-minute session");
+   assert.equal(await phone.locator(".insights-totals strong").first().innerText(),"41");
  });
  await run("Mobile page has no significant horizontal overflow",async()=>{
    const sizes=await phone.evaluate(()=>({body:document.body.scrollWidth,viewport:document.documentElement.clientWidth}));
