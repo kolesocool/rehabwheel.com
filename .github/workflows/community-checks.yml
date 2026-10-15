@@ -1,0 +1,30 @@
+name: Rehabwheel community checks
+on:
+  push:
+    paths:
+      - "community/**"
+      - "sports-community.html"
+      - "index.html"
+      - "sitemap.xml"
+      - ".github/workflows/community-checks.yml"
+  pull_request:
+    paths:
+      - "community/**"
+      - "sports-community.html"
+      - "index.html"
+      - "sitemap.xml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: Verify sports community
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run dependency-free community checks
+        run: node community/scripts/verify.mjs
