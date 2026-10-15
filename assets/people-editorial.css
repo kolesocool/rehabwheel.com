@@ -204,3 +204,14 @@ body .rw-team-preview .rw-team-card a:focus-visible{border-radius:2px}
 body .rw-people-hero .rw-people-note{max-width:580px}
 @media(max-width:620px){body .rw-team-preview .rw-team-preview-deck{font-size:1rem;margin-top:12px}body .rw-team-preview .rw-team-card .rw-team-card-cta{font-size:.78rem}}
 @media(prefers-reduced-motion:reduce){body .rw-team-preview .rw-team-card a:hover img{transform:none!important}}
+
+/* 2026-10-14: biography dialog layout, portrait crop and overflow fix */
+body .rw-person-dialog{box-sizing:border-box!important;width:min(1100px,calc(100vw - 48px))!important;max-width:1100px!important;max-height:min(88dvh,900px)!important;overflow:hidden!important;border-radius:10px!important;margin:auto!important}
+body .rw-person-dialog .rw-dialog-inner{display:grid!important;grid-template-columns:minmax(0,43%) minmax(0,57%)!important;min-height:0!important;max-height:min(88dvh,900px)!important;overflow:hidden!important;align-items:stretch!important}
+body .rw-person-dialog .rw-dialog-inner>*,body .rw-person-dialog .rw-dialog-copy{min-width:0!important}
+body .rw-person-dialog .rw-dialog-image{display:block!important;width:100%!important;height:100%!important;max-height:none!important;min-height:0!important;object-fit:contain!important;object-position:top center!important;background:#e9edef!important}
+body .rw-person-dialog .rw-dialog-copy{box-sizing:border-box!important;min-height:0!important;max-height:min(88dvh,900px)!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:clamp(28px,4.2vw,56px)!important;overflow-wrap:anywhere}
+body .rw-person-dialog .rw-dialog-copy h2{font-size:clamp(2.1rem,3.4vw,3.5rem)!important;overflow-wrap:break-word!important}
+body .rw-person-dialog .rw-dialog-close{z-index:8!important}
+@media(max-width:760px){body .rw-person-dialog{width:min(620px,calc(100vw - 20px))!important;max-height:94dvh!important;overflow-y:auto!important}body .rw-person-dialog .rw-dialog-inner{display:block!important;max-height:none!important;overflow:visible!important}body .rw-person-dialog .rw-dialog-image{height:auto!important;width:100%!important;max-height:min(42dvh,360px)!important;object-fit:contain!important}body .rw-person-dialog .rw-dialog-copy{max-height:none!important;overflow:visible!important;padding:26px 22px 40px!important}body .rw-person-dialog .rw-dialog-close{position:sticky!important;top:8px!important;margin:8px 8px -50px auto!important}}
+@media(max-width:390px){body .rw-person-dialog .rw-dialog-copy h2{font-size:2rem!important}}
