@@ -3,11 +3,15 @@ on:
   push:
     paths:
       - "community/**"
+      - "index.html"
+      - "assets/community-promo.css"
       - "assets/photos/**"
       - ".github/workflows/community-browser-smoke.yml"
   pull_request:
     paths:
       - "community/**"
+      - "index.html"
+      - "assets/community-promo.css"
       - "assets/photos/**"
   workflow_dispatch:
 permissions:
@@ -31,3 +35,11 @@ jobs:
           python3 -m http.server 8123 --bind 127.0.0.1 > /tmp/rw-http.log 2>&1 &
       - name: Test mobile and desktop community flows
         run: node community/scripts/smoke.mjs
+      - name: Save homepage visual regression screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rehabwheel-homepage-community-visual-check
+          path: /tmp/rehabwheel-promo-*.png
+          if-no-files-found: ignore
+          retention-days: 7
