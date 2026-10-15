@@ -106,3 +106,27 @@ body{font-family:Inter,"Segoe UI",Arial,sans-serif;background:linear-gradient(12
 }
 @media(max-width:390px){.top-actions .btn{padding:10px}.welcome h2{font-size:27px}.challenge-grid{grid-template-columns:1fr}.product-spotlight{grid-template-columns:1fr}.product-spotlight img{height:130px}}
 @media(prefers-reduced-motion:reduce){.btn,.tile{transition:none!important;transform:none!important}}
+
+/* SPORTS FIRST: interactive sport discovery, responsive accessibility */
+.sports-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:0 0 20px}
+.sport-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;text-align:left;min-height:178px;gap:6px;padding:18px;border:1px solid #dbe7e1;border-radius:17px;background:#fff;color:#183237;box-shadow:0 9px 21px #193e360a;transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease}
+.sport-card:hover{transform:translateY(-3px);border-color:#abccc0;box-shadow:0 15px 25px #193e3615}
+.sport-card:focus-visible{outline:3px solid #b6192e;outline-offset:3px}
+.sport-card .sport-symbol{display:grid;place-items:center;width:43px;height:43px;background:#eff5f1;border-radius:12px;font-size:24px;line-height:1}
+.sport-card strong{font-size:15px;line-height:1.2;font-weight:850;letter-spacing:-.35px}
+.sport-card small{font-size:11px;line-height:1.4;color:#667776}
+.sport-card .sport-start{margin-top:auto;font-weight:800;color:#a1192d;font-size:11px}
+.sport-card::after{position:absolute;right:14px;top:16px;content:"↗";color:#9ab4ab;font-weight:900}
+.sport-card:hover::after{color:#a1192d}
+.training-summary{display:flex;gap:10px;align-items:center;padding:15px 17px;border:1px solid #d7e7e1;border-radius:15px;background:linear-gradient(115deg,#edf7f1,#ffffff);margin-bottom:14px}
+.training-summary .svg{color:#12675d;flex-shrink:0}
+.training-summary b{display:block;font-size:13px}
+.training-summary small{display:block;font-size:11px;color:#5a7069;line-height:1.45}
+.export-panel{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+.export-panel .btn{white-space:nowrap}
+button:focus-visible{outline:3px solid #b6192e;outline-offset:3px}
+.feed-footer button[aria-pressed="true"]{color:#a41930}
+@media(max-width:780px){.sports-directory{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.sport-card{min-height:161px;padding:14px}.sport-card .sport-symbol{height:39px;width:39px;font-size:22px}}
+@media(max-width:380px){.sports-directory{grid-template-columns:1fr 1fr}.sport-card{min-height:156px;padding:12px}.sport-card strong{font-size:13px}.sport-card small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.sport-card{transition:none!important}.sport-card:hover{transform:none!important}}
+@media print{.sports-directory{grid-template-columns:repeat(3,1fr)}.sport-card{break-inside:avoid}}
