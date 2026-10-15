@@ -1,20 +1,111 @@
-/* Rehabwheel Community website launch cards — no speculative product claims */
-.rw-community-nav{display:inline-flex!important;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:9px 13px!important;border:1px solid #c5d9d2;border-radius:9px;background:#f0f8f4;color:#135f58!important;font-weight:800!important;text-decoration:none!important;white-space:nowrap}
-.rw-community-nav:hover,.rw-community-nav:focus-visible{background:#e0f2eb;color:#0c4e47!important;border-color:#8ccbb7}
-.rw-community-nav::before{content:"✦";font-size:15px;color:#b01b30}
-.rw-social-promo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);align-items:stretch;gap:0;overflow:hidden;margin-top:48px!important;margin-bottom:44px!important;border-radius:22px;background:#152e32;color:#fff;border:1px solid #294e50;box-shadow:0 18px 45px #18383720}
-.rw-social-promo .rw-social-copy{padding:clamp(25px,4vw,49px);display:flex;flex-direction:column;justify-content:center;gap:13px}
-.rw-social-promo .rw-social-kicker{color:#ffc9c7;text-transform:uppercase;letter-spacing:2px;font-weight:900;font-size:10px}
-.rw-social-promo h2{font-size:clamp(30px,4.1vw,51px)!important;line-height:1.06!important;letter-spacing:-1.7px!important;margin:0!important;max-width:530px;color:#fff!important}
-.rw-social-promo p{line-height:1.6;color:#d8e9e6;max-width:480px;margin:0;font-size:15px}
-.rw-social-promo .rw-social-cta{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:12px 19px;border-radius:9px;background:#fff;color:#193c3b!important;font-weight:850;text-decoration:none!important;width:max-content;max-width:100%}
-.rw-social-promo .rw-social-cta:hover{background:#ffe8e9;color:#92172a!important}
-.rw-social-promo .rw-social-disclaimer{font-size:11px;color:#c5d5d2}
-.rw-social-promo .rw-social-image{position:relative;min-height:280px;overflow:hidden}
-.rw-social-promo .rw-social-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-.rw-social-promo .rw-social-image:after{content:"REAL LEGMAKER PROTOTYPE";position:absolute;bottom:16px;right:16px;padding:7px 11px;border-radius:6px;background:#122c32dc;color:#fff;font-size:10px;font-weight:850;letter-spacing:1.15px}
-.rw-social-promo .rw-social-tags{display:flex;gap:8px;flex-wrap:wrap}
-.rw-social-promo .rw-social-tags span{font-size:11px;font-weight:700;color:#dbefeb;padding:6px 10px;border:1px solid #b3d2cd55;border-radius:25px}
-@media(max-width:850px){.rw-social-promo{grid-template-columns:1fr}.rw-social-promo .rw-social-image{min-height:230px;max-height:330px}.rw-community-nav{font-size:13px}}
-@media(max-width:520px){.rw-social-promo{margin-top:25px!important;border-radius:16px}.rw-social-promo .rw-social-copy{padding:26px 22px}.rw-social-promo h2{font-size:32px!important}.rw-social-promo .rw-social-image{height:225px;min-height:0}}
-@media print{.rw-social-promo,.rw-community-nav{display:none!important}}
+/* Rehabwheel 2026 — high-contrast sports community launch section.
+   Scoped to this module to avoid conflicts with the corporate design system. */
+.rw-community-nav{
+ display:inline-flex!important;align-items:center;justify-content:center;gap:7px;
+ min-height:43px;padding:9px 13px!important;border:1px solid #a8ccc2!important;
+ border-radius:10px!important;background:#e9f4ef!important;color:#124b46!important;
+ font-weight:830!important;text-decoration:none!important;white-space:nowrap
+}
+.rw-community-nav::before{content:"✦";font-size:15px;color:#b5172c}
+.rw-community-nav:hover,.rw-community-nav:focus-visible{background:#d2ebe1!important;border-color:#75b5a3!important}
+#rehabwheel-community.rw-social-promo{
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+ position:relative;isolation:isolate;align-items:stretch;gap:0;overflow:hidden;
+ width:min(1200px,calc(100% - 32px));max-width:1200px;margin:48px auto 54px!important;
+ border-radius:24px!important;background:#112c30!important;color:#fff!important;
+ border:1px solid #2d4e4f!important;box-shadow:0 23px 57px rgba(10,45,45,.19)!important
+}
+#rehabwheel-community .rw-social-copy{
+ display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:0;
+ min-width:0;padding:clamp(28px,4vw,52px)!important;
+ background:#112c30!important;color:#fff!important
+}
+#rehabwheel-community .rw-social-kicker{
+ display:block;font-size:11px!important;line-height:1.6!important;font-weight:900!important;
+ letter-spacing:.16em!important;text-transform:uppercase;color:#ffbfc5!important;
+ opacity:1!important;margin:0 0 16px!important
+}
+#rehabwheel-community h2{
+ display:block;margin:0 0 17px!important;max-width:520px;
+ color:#fff!important;opacity:1!important;
+ font-family:inherit;font-size:clamp(34px,3.55vw,53px)!important;
+ font-weight:900!important;letter-spacing:-.055em!important;line-height:1.07!important;
+ text-wrap:balance
+}
+#rehabwheel-community .rw-social-copy > p{
+ display:block;color:#e6f0ee!important;opacity:1!important;visibility:visible!important;
+ font-size:clamp(15px,1.24vw,17px)!important;
+ font-weight:460!important;line-height:1.7!important;letter-spacing:0!important;
+ max-width:480px;margin:0 0 21px!important
+}
+#rehabwheel-community .rw-social-tags{
+ display:flex!important;flex-wrap:wrap!important;gap:8px;
+ width:100%;margin:0 0 24px!important;padding:0!important
+}
+#rehabwheel-community .rw-social-tags span{
+ display:inline-flex;align-items:center;min-height:34px;
+ font-size:11px!important;line-height:1.2!important;font-weight:760!important;
+ color:#eafff9!important;opacity:1!important;letter-spacing:0!important;
+ background:rgba(243,255,248,.07)!important;border:1px solid rgba(201,232,222,.5)!important;
+ border-radius:100px!important;padding:7px 12px!important
+}
+#rehabwheel-community .rw-social-actions{
+ display:flex!important;align-items:stretch;gap:10px;flex-wrap:wrap;
+ margin:0 0 19px!important;width:100%
+}
+#rehabwheel-community .rw-social-cta{
+ display:inline-flex!important;align-items:center;justify-content:center;text-align:center;
+ white-space:normal!important;flex:0 1 auto;min-width:0;max-width:100%;
+ min-height:51px;padding:13px 18px!important;border-radius:10px!important;
+ background:#fff!important;border:1px solid #fff!important;color:#113538!important;
+ opacity:1!important;font-size:13px!important;line-height:1.3!important;
+ font-weight:850!important;text-decoration:none!important;
+ box-shadow:0 8px 19px rgba(0,0,0,.13)!important;transition:transform .16s ease,background .16s ease
+}
+#rehabwheel-community .rw-social-cta:hover{background:#ffe8e9!important;transform:translateY(-2px)}
+#rehabwheel-community .rw-social-cta.secondary{
+ color:#f3fbf7!important;background:transparent!important;
+ border-color:#b0cdc6!important;box-shadow:none!important
+}
+#rehabwheel-community .rw-social-cta.secondary:hover{background:rgba(255,255,255,.12)!important}
+#rehabwheel-community .rw-social-disclaimer{
+ color:#cbded9!important;opacity:1!important;line-height:1.55!important;
+ font-size:11px!important;font-weight:500!important;margin:0!important
+}
+#rehabwheel-community .rw-social-image{position:relative;min-width:0;min-height:450px;overflow:hidden}
+#rehabwheel-community .rw-social-image img{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ object-position:center 44%;display:block;filter:contrast(1.02)
+}
+#rehabwheel-community .rw-social-image::after{
+ content:"REAL LEGMAKER PROTOTYPE PHOTO";position:absolute;right:18px;bottom:18px;
+ background:rgba(12,35,37,.89);border:1px solid rgba(255,255,255,.18);
+ border-radius:8px;padding:9px 12px;color:#fff!important;
+ font-size:10px;line-height:1.3;font-weight:850;letter-spacing:.12em
+}
+@media(min-width:1500px){
+ #rehabwheel-community.rw-social-promo{width:min(1280px,calc(100% - 52px));max-width:1280px}
+}
+@media(max-width:1100px){
+ #rehabwheel-community.rw-social-promo{grid-template-columns:minmax(0,1fr) minmax(0,.86fr)!important}
+ #rehabwheel-community .rw-social-copy{padding:31px!important}
+ #rehabwheel-community h2{font-size:clamp(32px,4vw,45px)!important}
+ #rehabwheel-community .rw-social-image{min-height:410px}
+}
+@media(max-width:800px){
+ #rehabwheel-community.rw-social-promo{grid-template-columns:1fr!important;border-radius:20px!important}
+ #rehabwheel-community .rw-social-copy{padding:clamp(22px,5vw,36px)!important}
+ #rehabwheel-community .rw-social-image{min-height:290px;height:320px}
+ #rehabwheel-community .rw-social-image img{object-position:center 44%}
+ #rehabwheel-community h2{font-size:clamp(32px,6vw,46px)!important}
+}
+@media(max-width:520px){
+ #rehabwheel-community.rw-social-promo{margin:26px auto 36px!important;width:calc(100% - 24px);border-radius:17px!important}
+ #rehabwheel-community .rw-social-copy{padding:25px 19px!important}
+ #rehabwheel-community h2{font-size:clamp(32px,8vw,40px)!important}
+ #rehabwheel-community .rw-social-cta{flex:1 1 100%;width:100%!important}
+ #rehabwheel-community .rw-social-image{height:255px;min-height:0}
+ #rehabwheel-community .rw-social-image::after{font-size:9px;right:11px;bottom:11px}
+}
+@media(prefers-reduced-motion:reduce){#rehabwheel-community .rw-social-cta{transition:none!important}#rehabwheel-community .rw-social-cta:hover{transform:none}}
+@media print{#rehabwheel-community,.rw-community-nav{display:none!important}}
