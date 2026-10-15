@@ -27,11 +27,22 @@ try{
    await phone.locator('#activityForm input[name="duration"]').fill("35");
    await phone.locator("#saveModal").click();
    assert.equal(await phone.locator("#modal").getAttribute("hidden"),"");
-   assert((await phone.locator("#view").innerText()).includes("Court practice"));
+   assert((await phone.locator("#view").innerText()).includes("Court skills"));
+ });
+ await run("Edit previously saved private sport activity",async()=>{
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
+   await phone.locator('[data-act="edit"]').first().click();
+   assert.equal(await phone.locator('#activityForm input[name="title"]').inputValue(),"Court practice");
+   await phone.locator('#activityForm input[name="title"]').fill("Court skills");
+   await phone.locator('#activityForm input[name="duration"]').fill("40");
+   await phone.locator('#saveModal').click();
+   const view=await phone.locator("#view").innerText();
+   assert(view.includes("Court skills"));
+   assert(view.includes("40 minutes"));
  });
  await run("Progress displays real activity minutes",async()=>{
    await phone.locator('#mobileNav [data-tab="progress"]').click();
-   assert((await phone.locator("#view").innerText()).includes("35 minutes"));
+   assert((await phone.locator("#view").innerText()).includes("40 minutes"));
    assert((await phone.locator("#view").innerText()).includes("Wheelchair basketball"));
  });
  await run("Private data export creates backup file",async()=>{
@@ -45,7 +56,7 @@ try{
    await phone.locator('#mobileNav [data-tab="progress"]').click();
    let confirmed=false;
    phone.once("dialog",async dialog=>{confirmed=true;await dialog.dismiss()});
-   await phone.locator('[data-act="report"]').first().click();
+   await phone.locator('[data-act="delete"]').first().click();
    assert(confirmed);
    assert((await phone.locator("#view").innerText()).includes("Court practice"));
  });
