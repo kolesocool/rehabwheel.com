@@ -43,7 +43,7 @@ test("Runtime helpers execute without network",()=>{
   const document={querySelector(){return mock},querySelectorAll(){return []},getElementById(){return mock},addEventListener(){},body:{appendChild(){}}};
   const window={addEventListener(){},scrollTo(){},navigator:{}};
   const navigator={onLine:true};const storage={getItem(){return null},setItem(){},removeItem(){}};
-  const context={document,window,navigator,location:{protocol:"https:"},localStorage:storage,console,Date,Number,String,Math,JSON,setTimeout,clearTimeout,Blob,URL,confirm(){return true}};
+  const context={document,window,navigator,location:{protocol:"https:"},localStorage:storage,console,Date,Number,String,Math,JSON,setTimeout,clearTimeout,setInterval(){return 1},clearInterval(){},Blob,URL,confirm(){return true}};
   vm.createContext(context);
   vm.runInContext(harness,context,{timeout:1800});
   internal=context.__rwQa;
