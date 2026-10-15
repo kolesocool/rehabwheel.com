@@ -1,0 +1,31 @@
+name: Rehabwheel Firestore privacy rules
+on:
+  push:
+    paths:
+      - "community/backend/**"
+      - ".github/workflows/community-firestore-rules.yml"
+  pull_request:
+    paths:
+      - "community/backend/**"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  firestore-rules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Install isolated Firebase emulator test dependencies
+        working-directory: community/backend
+        run: npm install --no-save --ignore-scripts @firebase/rules-unit-testing@6 firebase@12 firebase-tools@15
+      - name: Run real Firestore rules emulator tests (never production)
+        working-directory: community/backend
+        run: npx firebase emulators:exec --config firebase.json --only firestore --project demo-rehabwheel-community "node rules.test.mjs"
