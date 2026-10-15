@@ -1,0 +1,45 @@
+name: Rehabwheel Android sports preview
+on:
+  push:
+    paths:
+      - "community/index.html"
+      - "community/editorial.css"
+      - "community/native-preview/**"
+      - "capacitor.config.json"
+      - ".github/workflows/rehabwheel-android-preview.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  android-debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: Prepare original-photo, sports-only offline bundle
+        run: node community/native-preview/prepare.mjs
+      - name: Verify preinstalled Android SDK
+        run: test -d "$ANDROID_HOME"
+      - name: Install temporary Capacitor build dependencies
+        run: |
+          npm init -y
+          npm install --no-audit --no-fund @capacitor/core@7 @capacitor/android@7 @capacitor/cli@7
+          npx cap add android
+          npx cap sync android
+      - name: Assemble Android debug APK
+        working-directory: android
+        run: bash ./gradlew --no-daemon assembleDebug
+      - name: Upload internal-only APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: rehabwheel-android-sports-preview-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
+          if-no-files-found: error
