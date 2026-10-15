@@ -58,7 +58,7 @@ try{
    phone.once("dialog",async dialog=>{confirmed=true;await dialog.dismiss()});
    await phone.locator('[data-act="delete"]').first().click();
    assert(confirmed);
-   assert((await phone.locator("#view").innerText()).includes("Court practice"));
+   assert((await phone.locator("#view").innerText()).includes("Court skills"));
  });
  await run("Mobile page has no significant horizontal overflow",async()=>{
    const sizes=await phone.evaluate(()=>({body:document.body.scrollWidth,viewport:document.documentElement.clientWidth}));
