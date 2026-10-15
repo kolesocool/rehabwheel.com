@@ -130,3 +130,10 @@ button:focus-visible{outline:3px solid #b6192e;outline-offset:3px}
 @media(max-width:380px){.sports-directory{grid-template-columns:1fr 1fr}.sport-card{min-height:156px;padding:12px}.sport-card strong{font-size:13px}.sport-card small{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.sport-card{transition:none!important}.sport-card:hover{transform:none!important}}
 @media print{.sports-directory{grid-template-columns:repeat(3,1fr)}.sport-card{break-inside:avoid}}
+
+/* Sport-specific feed filtering and responsive form controls */
+.sport-feed-select{display:inline-flex;align-items:center;gap:7px;min-height:40px;margin-left:auto;color:#48635f;font-size:11px;font-weight:850}
+.sport-feed-select select{max-width:220px;min-height:40px;border:1px solid #cbdcd4;background:#fff;border-radius:9px;padding:6px 27px 6px 11px;color:#203c39;font-size:12px;font-weight:650;cursor:pointer}
+.sport-feed-select select:focus-visible{outline:3px solid #b5182e;outline-offset:2px}
+.sport-feed-select select:hover{border-color:#9bc8b5}
+@media(max-width:600px){.sport-feed-select{flex:1 1 100%;justify-content:space-between}.sport-feed-select select{flex:1;max-width:260px}.filters{align-items:center}}
