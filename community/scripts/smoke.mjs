@@ -85,6 +85,37 @@ try{
    assert(page.includes("41 minutes"),"Private weekly total did not include the saved 1-minute session");
    assert.equal(await phone.locator(".insights-totals strong").first().innerText(),"41");
  });
+ await run("Privacy erase removes saved sessions and stops active timer",async()=>{
+   await phone.locator("#timerSport").selectOption("Swimming");
+   await phone.locator('[data-act="timer-start"]').click();
+   await phone.locator('#mobileNav [data-tab="profile"]').click();
+   await phone.locator('[data-act="privacy"]').first().click();
+   phone.once("dialog",dialog=>dialog.accept());
+   await phone.locator("#clearAll").click();
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
+   assert.equal(await phone.locator("#timerReadout").innerText(),"00:00");
+   assert.equal(await phone.locator(".insights-totals strong").first().innerText(),"0");
+   assert.equal(await phone.locator(".insights-totals strong").nth(1).innerText(),"0");
+   const saved=await phone.evaluate(()=>localStorage.getItem("rw-preview-v1"));
+   assert.equal(saved,null);
+ });
+ await run("Restoring a private backup resets an unfinished timer",async()=>{
+   await phone.locator("#timerSport").selectOption("Handcycling");
+   await phone.locator('[data-act="timer-start"]').click();
+   await phone.locator('#mobileNav [data-tab="profile"]').click();
+   const payload={
+      format:"rehabwheel-private-activities",version:1,weeklyGoal:80,
+      activities:[{createdAt:new Date().toISOString(),title:"Morning roll",duration:15,mode:"Wheelchair rolling"}]
+   };
+   phone.once("dialog",dialog=>dialog.accept());
+   await phone.locator("#backupImport").setInputFiles({
+     name:"rehabwheel-backup.json",mimeType:"application/json",
+     buffer:Buffer.from(JSON.stringify(payload))
+   });
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
+   assert.equal(await phone.locator("#timerReadout").innerText(),"00:00");
+   assert.equal(await phone.locator(".insights-totals strong").first().innerText(),"15");
+ });
  await run("Mobile page has no significant horizontal overflow",async()=>{
    const sizes=await phone.evaluate(()=>({body:document.body.scrollWidth,viewport:document.documentElement.clientWidth}));
    assert(sizes.body<=sizes.viewport+4,JSON.stringify(sizes));
