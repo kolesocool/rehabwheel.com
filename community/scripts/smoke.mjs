@@ -66,6 +66,7 @@ try{
    await phone.locator('[data-act="timer-start"]').click();
    await phone.waitForTimeout(650);
    await phone.reload({waitUntil:"domcontentloaded"});
+   await phone.locator('#mobileNav [data-tab="progress"]').click();
    await phone.waitForTimeout(750);
    await phone.locator('[data-act="timer-pause"]').click();
    const time=await phone.locator("#timerReadout").innerText();
