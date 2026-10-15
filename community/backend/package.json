@@ -1,0 +1,8 @@
+{
+  "name": "rehabwheel-community-security-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:rules": "firebase emulators:exec --only firestore --project demo-rehabwheel-community 'node rules.test.mjs'"
+  }
+}
