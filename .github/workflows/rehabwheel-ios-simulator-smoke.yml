@@ -1,0 +1,45 @@
+name: Rehabwheel iOS Simulator launch smoke
+on:
+  push:
+    paths:
+      - "community/native-preview/**"
+      - ".github/workflows/rehabwheel-ios-simulator-smoke.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  simulator-launch:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Compile actual sports-app simulator build
+        run: |
+          node community/native-preview/prepare.mjs
+          npm init -y
+          npm install --no-audit --no-fund @capacitor/core@7 @capacitor/ios@7 @capacitor/cli@7
+          npx cap add ios
+          npx cap sync ios
+          xcodebuild -workspace ios/App/App.xcworkspace -scheme App -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
+      - name: Boot a real simulator, install and launch app
+        run: |
+          SIM=$(xcrun simctl list -j devices available | python3 -c 'import json,sys; j=json.load(sys.stdin); print(next(d["udid"] for a in j["devices"].values() for d in a if d.get("isAvailable") and "iPhone" in d.get("name","")))')
+          test -n "$SIM"
+          echo "Testing simulator $SIM"
+          xcrun simctl boot "$SIM"
+          xcrun simctl bootstatus "$SIM" -b
+          xcrun simctl install "$SIM" build/Build/Products/Debug-iphonesimulator/App.app
+          xcrun simctl launch "$SIM" com.rehabwheel.sports.preview
+          sleep 8
+          xcrun simctl io "$SIM" screenshot /tmp/rehabwheel-ios-launch.png
+      - name: Upload simulator launch screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rehabwheel-ios-launch-screenshot
+          path: /tmp/rehabwheel-ios-launch.png
+          if-no-files-found: ignore
+          retention-days: 7
