@@ -65,6 +65,31 @@ service cloud.firestore {
     match /reports/{reportId} {
       allow read, write: if false;
     }
+    // Dedicated performance labs: invitation granted ONLY by trusted Admin SDK.
+    // Do not store PHI or unreviewed clinical telemetry in these collections.
+    function approvedLab(sportId) {
+      return signedIn()
+        && request.auth.token.email_verified == true
+        && sportId in ['mma', 'basketball']
+        && exists(/databases/$(database)/documents/performanceLabs/$(sportId)/members/$(request.auth.uid))
+        && get(/databases/$(database)/documents/performanceLabs/$(sportId)/members/$(request.auth.uid)).data.active == true
+        && get(/databases/$(database)/documents/performanceLabs/$(sportId)/members/$(request.auth.uid)).data.role in ['admin', 'coach', 'analyst'];
+    }
+    match /performanceLabs/{sportId}/members/{uid} {
+      // A signed-in, email-verified user can check their OWN invitation only.
+      allow get: if owns(uid) && request.auth.token.email_verified == true
+        && sportId in ['mma', 'basketball'];
+      allow list, create, update, delete: if false;
+    }
+    match /performanceLabs/{sportId}/sessions/{sessionId} {
+      allow get, list: if approvedLab(sportId);
+      // Session creation and correction must go through a trusted backend.
+      allow create, update, delete: if false;
+    }
+    match /performanceLabs/{sportId}/protocols/{protocolId} {
+      allow get, list: if approvedLab(sportId);
+      allow create, update, delete: if false;
+    }
     // Never co-mingle clinical data with public sports profiles.
     match /clinical/{document=**} {
       allow read, write: if false;
