@@ -455,3 +455,21 @@ body.agency-site{
  .agency-site .site-header .mobile-nav{width:100%;max-width:100%}
  .agency-site main .rw26-pathways p{font-size:15px!important}
 }
+
+/* Topic-level context for high-intent LegMaker searches */
+.agency-site .rw-seo-questions{padding-block:clamp(65px,7vw,95px)!important}
+.agency-site .rw-seo-questions-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px
+}
+.agency-site .rw-seo-questions-grid article{
+  min-width:0;border:1px solid #d4e2db;border-radius:18px;
+  background:#f7faf8;padding:clamp(22px,2.5vw,34px);
+  display:flex;flex-direction:column;gap:16px
+}
+.agency-site .rw-seo-questions-grid h3{
+  color:#17323b!important;line-height:1.19!important;letter-spacing:-.03em!important;
+  font-size:clamp(20px,2vw,25px)!important;margin:0!important
+}
+.agency-site .rw-seo-questions-grid p{color:#365057!important;margin:0;font-size:16px!important;line-height:1.68!important;flex:1}
+.agency-site .rw-seo-questions-grid a{color:#075d57!important;font-weight:800;min-height:44px;align-content:center;align-self:flex-start}
+@media(max-width:900px){.agency-site .rw-seo-questions-grid{grid-template-columns:1fr}}
