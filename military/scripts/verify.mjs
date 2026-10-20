@@ -18,7 +18,7 @@ test('Login requests email and password; portal initially hidden',()=>{assert(ht
 test('Authenticated vault contents are absent from public HTML',()=>{assert(!html.includes('AFWERX Phase I'));assert(!html.includes('Texas State University'));assert(!html.includes('Shepherd Center'));assert(!html.includes('AURC'));});
 test('Official Rehabwheel logo and government disclaimer present',()=>{assert(html.includes('/rehabwheel_logo.jpg'));assert(html.includes('Not a U.S. Army'));assert(fs.existsSync(path.join(root,'rehabwheel_logo.jpg')));});
 test('Firebase public configuration defaults to null (fail closed)',()=>{assert(/firebaseConfig\s*=\s*null/.test(config));assert(!config.includes('AIza'));});
-test('UI gates email verification and custom claims',()=>{assert(js.includes('getIdTokenResult(user,true)'));assert(js.includes('email_verified===true'));assert(js.includes('rehabwheelMilitary===true'));assert(js.includes('roles.includes(c.militaryRole)'));});
+test('UI gates email verification and custom claims',()=>{assert(js.includes('getIdTokenResult(user,forceRefresh)'));assert(js.includes('email_verified===true'));assert(js.includes('rehabwheelMilitary===true'));assert(js.includes('roles.includes(c.militaryRole)'));});
 test('UI never caches program content in localStorage',()=>{assert(!js.includes('localStorage'));assert(js.includes('inMemoryPersistence'));});
 test('UI uses private authenticated getBlob, not public download URLs',()=>{assert(js.includes('storageApi.getBlob'));assert(!js.includes('storageApi.getDownloadURL'));});
 test('Portal sections read Firestore only after verification',()=>{assert(js.includes('if(!currentUser||!role||!catalogs[key])'));assert(js.includes('dbApi.getDocs'));});
