@@ -1,0 +1,12 @@
+{
+  "name":"rehabwheel-military-hub-security",
+  "version":"0.1.0",
+  "private":true,
+  "type":"module",
+  "scripts":{
+    "test:rules":"firebase emulators:exec --project demo-rehabwheel-military --only firestore,storage 'node rules.test.mjs'",
+    "provision":"node provision-user.mjs"
+  },
+  "dependencies":{"firebase-admin":"^13.0.0"},
+  "devDependencies":{"firebase":"^11.0.0","@firebase/rules-unit-testing":"^4.0.0","firebase-tools":"^14.0.0"}
+}
