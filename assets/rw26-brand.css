@@ -395,3 +395,63 @@ body.agency-site{
  .agency-site .rw26-pathways{break-inside:avoid}
  .agency-site .site-header{position:static}
 }
+
+
+/* Legibility hardening: guarantee contrast across legacy nested components. */
+.agency-site{font-size:16px;line-height:1.63}
+.agency-site :is(.links a,.rw-nav-panel a,.mobile-nav a){text-decoration:none}
+.agency-site .site-header .rw-nav-trigger{font-size:15px!important;letter-spacing:0}
+.agency-site .site-header .rw-nav-panel a{color:#183a42!important;font-size:15px!important}
+.agency-site .site-header .rw-nav-panel a :is(strong,small,span){color:#183a42!important;opacity:1!important}
+.agency-site .site-header .rw-nav-panel a small{color:#3b5660!important;font-size:13px!important}
+.agency-site .mobile-nav :is(a,summary){color:#153e43!important;font-size:15px!important}
+.agency-site main .hero .rw-evidence-hero{font-size:14px!important}
+.agency-site main .hero .hero-note{font-size:14px!important;color:#e5f3ed!important}
+.agency-site main .hero .trust span{font-size:13px!important}
+.agency-site main .hero .hero-product figcaption{font-size:14px!important}
+.agency-site main .hero .hero-product figcaption :is(strong,span,a){color:#16353c!important}
+.agency-site main :is(.prototype-card,.rw-video-card,.rw-team-card,.rw-partner-card,.inst-card){
+  color:#183840!important;
+}
+.agency-site main :is(.prototype-card,.rw-video-card,.rw-team-card,.rw-partner-card,.inst-card) :is(h3,strong){
+  color:#17343d!important
+}
+.agency-site main :is(.prototype-card,.rw-video-card,.rw-team-card,.rw-partner-card,.inst-card) p{
+  color:#3b535c!important;opacity:1!important
+}
+.agency-site .prototype-card figcaption :is(span,strong){color:#28484f!important;opacity:1!important}
+.agency-site main .rw26-pathways p{color:#344e54!important;font-size:16px!important}
+.agency-site main .rw26-pathways a{color:#075e56!important;font-size:15px!important}
+.agency-site main .rw-explorer-entry p{color:#344e54!important}
+.agency-site main .rw-explorer-links a{font-size:15px!important;font-weight:750!important}
+.agency-site main .rw-institutional-entry{color:#f7fcfa!important}
+.agency-site main .rw-institutional-entry :is(p,small,span){color:#e4f2ed!important;opacity:1!important}
+.agency-site main .rw-institutional-entry h2{color:#fff!important}
+.agency-site main .rw-institutional-entry .rw-inst-eyebrow{color:#b2f7e1!important}
+.agency-site main .rw-institutional-entry .rw-inst-details a{color:#fff!important;font-size:15px!important}
+.agency-site main .rw-institutional-entry .rw-inst-primary{color:#182a31!important}
+.agency-site main :is(.dark,.cta) :is(h1,h2,h3){color:#fff!important}
+.agency-site main :is(.dark,.cta) :is(p,li,small){color:#e9f5f0!important;opacity:1!important}
+.agency-site main .dark .cards article{background:#fff!important}
+.agency-site main .dark .cards article :is(h3,p,small,li){color:#173740!important}
+.agency-site main .rw-social-promo :is(.rw-social-copy,.rw-social-copy h2){color:#fff!important}
+.agency-site main .rw-social-promo .rw-social-copy>p{color:#eaf5f2!important;opacity:1!important}
+.agency-site .rw-team-card .rw-team-role{color:#3b5159!important;font-size:14px!important}
+.agency-site .rw-team-card .rw-team-card-cta{color:#0a655d!important;font-weight:800}
+.agency-site #partners .rw-partner-card :is(h3,strong){color:#173b42!important}
+.agency-site #partners .rw-partner-card p{color:#425a62!important}
+.agency-site .inst-hero :is(h1,h2,h3){color:#fff!important}
+.agency-site .inst-hero p{color:#e6f5f0!important;font-size:clamp(17px,1.4vw,20px)!important}
+.agency-site .inst-card p{font-size:16px!important}
+.agency-site .po-hero :is(h1,h2,h3){color:#fff!important}
+.agency-site .po-hero :is(p,li,small){color:#ecf6f3!important}
+.agency-site .po-page :is(.po-section-help,.po-form label,.po-form legend){color:#24414a!important}
+.agency-site footer :is(h2,h3,strong,.footer-brand){color:#f4fffa!important}
+.agency-site footer :is(a,.footer-links a){color:#e7f8f0!important}
+@media(max-width:620px){
+ .agency-site main .hero .trust span{font-size:12px!important}
+ .agency-site main .hero .rw-evidence-hero{font-size:13px!important}
+ .agency-site main .hero .hero-note{font-size:13px!important}
+ .agency-site .site-header .mobile-nav{width:100%;max-width:100%}
+ .agency-site main .rw26-pathways p{font-size:15px!important}
+}
