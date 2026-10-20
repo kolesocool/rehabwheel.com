@@ -100,7 +100,7 @@ for restricted in ("AURC/Shepherd", "Partner scope, safety review", "participant
            "Private research planning text was published")
 
 matrix = (ROOT / "docs/SEO_1000_AUDIT_MATRIX.md").read_text(encoding="utf-8")
-ids = re.findall(r"\\| SEO-(\\d{4}) \\|", matrix)
+ids = re.findall(r"\| SEO-(\d{4}) \|", matrix)
 verify(len(ids) == 1000 and ids == [str(i).zfill(4) for i in range(1, 1001)],
        "The 1,000-item audit matrix is incomplete or misnumbered")
 verify("work backlog" in matrix.lower(), "The 1,000-item matrix must not be represented as completed work")
