@@ -35,9 +35,9 @@ function friendlyError(error){const code=String(error?.code||'');if(code==='auth
 function configIsReady(c){return !!(c&&typeof c==='object'&&typeof c.apiKey==='string'&&c.apiKey.length>3&&typeof c.authDomain==='string'&&typeof c.projectId==='string'&&typeof c.appId==='string'&&typeof c.storageBucket==='string');}
 function setUserIdentity(user){$('identityEmail').textContent=user.email||'Authorized account';$('roleChip').textContent=role||'member';}
 async function signOutNow(){authEpoch++;clearPrivateState();if(auth&&authApi){try{await authApi.signOut(auth)}catch{} } show('login');$('password').value='';loginMessage('Signed out. Reauthenticate to open the private workspace.');}
-async function checkAuthorization(user,epoch){
+async function checkAuthorization(user,epoch,forceRefresh=false){
   try{
-   const token=await authApi.getIdTokenResult(user,true);
+   const token=await authApi.getIdTokenResult(user,forceRefresh);
    if(epoch!==authEpoch)return;
    const authorized=verifiedRole(token);
    if(!authorized){clearPrivateState();show('denied');return;}
@@ -56,7 +56,7 @@ async function boot(){
   const app=appMod.initializeApp(firebaseConfig,'rehabwheel-military-hub');
   auth=authMod.getAuth(app);db=fireMod.getFirestore(app);storage=storageMod.getStorage(app);
   await authMod.setPersistence(auth,authMod.inMemoryPersistence);
-  authMod.onIdTokenChanged(auth,user=>{const epoch=++authEpoch;if(!user){clearPrivateState();show('login');loginMessage('Secure sign-in available for authorized Rehabwheel team members.');loginButton.disabled=false;return;}loginMessage('Verifying organizational permissions…');checkAuthorization(user,epoch);});
+  authMod.onIdTokenChanged(auth,user=>{const epoch=++authEpoch;if(!user){clearPrivateState();show('login');loginMessage('Secure sign-in available for authorized Rehabwheel team members.');loginButton.disabled=false;return;}loginMessage('Verifying organizational permissions…');checkAuthorization(user,epoch,false);});
   loginButton.disabled=false;
   loginMessage('Sign in with your verified Rehabwheel account.');
  }catch(e){loginButton.disabled=true;loginMessage('The secure identity service is unavailable. No content can be accessed until it is restored.',true);}
@@ -79,7 +79,7 @@ $('signout').addEventListener('click',signOutNow);
 $('deniedSignout').addEventListener('click',signOutNow);
 for(const evt of ['pointerdown','keydown'])document.addEventListener(evt,()=>{if(currentUser)lastActivity=Date.now();},{passive:true});
 setInterval(()=>{if(currentUser&&Date.now()-lastActivity>idleMs)signOutNow();},60000);
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&currentUser){const epoch=++authEpoch;checkAuthorization(currentUser,epoch);}});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&currentUser){const epoch=++authEpoch;checkAuthorization(currentUser,epoch,true);}});
 $('hubNav').addEventListener('click',event=>{const btn=event.target.closest('[data-view]');if(!btn||!currentUser)return;activate(btn.dataset.view);});
 function updatedValue(value){if(!value)return '—';if(typeof value==='string')return value;if(typeof value.toDate==='function')return value.toDate().toLocaleDateString();return '—';}
 async function readCollection(key){
