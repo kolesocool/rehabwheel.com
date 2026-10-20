@@ -1,0 +1,32 @@
+name: Rehabwheel SEO release checks
+on:
+  push:
+    paths:
+      - '*.html'
+      - 'community/index.html'
+      - 'community/thanks.html'
+      - 'sports-community.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/seo-check.py'
+      - '.github/workflows/seo-qa.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'community/index.html'
+      - 'community/thanks.html'
+      - 'sports-community.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'scripts/seo-check.py'
+      - '.github/workflows/seo-qa.yml'
+permissions:
+  contents: read
+jobs:
+  metadata-and-crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify canonical metadata, sitemap, link targets and JSON-LD
+        run: python3 scripts/seo-check.py

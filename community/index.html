@@ -1,266 +1,141 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ad1526">
-<title>Rehabwheel Community — Interactive Product Preview</title>
-<meta name="description" content="Explore Rehabwheel's wheelchair-first community concept: activities, progress, clubs, events, and connections. Interactive preview only.">
-<meta name="robots" content="noindex,nofollow">
-<style>
-:root{--red:#b5182c;--dark:#15212a;--soft:#f5f5f4;--line:#e8e9e7;--muted:#667079;--green:#146f65;--radius:18px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f6f7f6;color:var(--dark);font-family:Inter,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.55}a{color:inherit;text-decoration:none}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #d34d59;outline-offset:3px}
-.svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;flex:none}
-.preview{display:flex;align-items:center;justify-content:center;text-align:center;gap:8px;padding:9px 16px;background:#262e30;color:#fff;font-size:12px;font-weight:600}
-.preview b{color:#f5c3ca}.shell{display:grid;grid-template-columns:238px minmax(0,720px) 295px;justify-content:center;gap:24px;max-width:1400px;margin:auto;padding:24px 16px 40px}
-.sidebar{position:sticky;top:20px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:24px;padding:23px 16px;min-height:655px}
-.logo{display:flex;align-items:center;gap:10px;padding:0 9px 30px}.logo img{width:48px;height:48px;object-fit:contain;border-radius:8px}.logo strong{font-family:Georgia,serif;color:#961320;font-size:20px;letter-spacing:-.6px}.logo small{display:block;font:700 9px Inter,"Segoe UI",sans-serif;color:#91999c;letter-spacing:1.4px;margin-top:1px}
-.sidebtn{display:flex;gap:14px;align-items:center;width:100%;border:0;background:transparent;text-align:left;padding:12px 14px;border-radius:12px;font-size:14px;font-weight:650;color:#49555e;margin-bottom:5px}
-.sidebtn.active{background:#fff0f1;color:#9f1526}.sidebtn:hover:not(.active){background:#f6f7f7}.sidebtn .svg{width:21px;height:21px}
-.side-divider{height:1px;background:var(--line);margin:15px 8px}.aside-note{font-size:11px;color:var(--muted);padding:0 13px;margin-top:22px;line-height:1.65}
-.main{min-width:0}.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:21px}.page-eyebrow{display:block;color:var(--red);font-weight:800;letter-spacing:2px;font-size:10px;text-transform:uppercase;margin-bottom:4px}.topbar h1{font-size:clamp(25px,3vw,34px);letter-spacing:-1.3px;line-height:1.1;margin:0}
-.top-actions{display:flex;gap:8px}.btn{border:1px solid var(--line);border-radius:11px;padding:11px 14px;display:inline-flex;gap:8px;align-items:center;justify-content:center;font-weight:750;font-size:13px;background:#fff;color:var(--dark)}.btn.red{background:var(--red);color:#fff;border-color:var(--red)}.btn.red:hover{background:#8e1120}.btn:hover:not(.red){border-color:#bdc9ca;background:#fcfcfc}.btn.sm{padding:8px 12px;font-size:12px}.btn .svg{width:17px;height:17px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 15px #24333a07}.pad{padding:20px}.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:11px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.4px}.eyebrow{font-size:11px;font-weight:750;color:var(--red);text-transform:uppercase;letter-spacing:1.4px}
-.welcome{display:grid;grid-template-columns:1.12fr .88fr;background:#253d42;color:#fff;border-radius:23px;overflow:hidden;margin-bottom:20px;min-height:216px}
-.welcome-copy{padding:25px 23px;position:relative;z-index:1}.welcome .eyebrow{color:#ffb6b5}.welcome h2{font-size:28px;letter-spacing:-1.1px;line-height:1.13;margin:9px 0 12px;max-width:360px}.welcome p{color:#d5e1df;font-size:12px;line-height:1.65;max-width:320px}.welcome img{height:100%;width:100%;object-fit:cover;object-position:50% 50%}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:19px}.stat{padding:15px 16px}.stat b{display:block;font-size:25px;line-height:1.2;letter-spacing:-1px}.stat small{display:block;font-size:10px;color:var(--muted);font-weight:750;text-transform:uppercase;letter-spacing:.9px;margin-top:5px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0}.pill{border:1px solid var(--line);padding:8px 13px;border-radius:50px;color:#5a636b;background:#fff;font-weight:700;font-size:12px}.pill[aria-pressed=true]{color:#fff;background:#243c42;border-color:#243c42}
-.feed-card{margin-bottom:15px}.feed-head{display:flex;align-items:center;gap:11px;padding:16px 17px 12px}.avatar{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#e9edef;color:#284650;font-size:12px;font-weight:900;flex:none}.feed-person{flex:1;min-width:0}.feed-person b{font-size:13px}.feed-person small{display:block;color:var(--muted);font-size:11px}.feed-body{padding:0 18px 13px}.feed-body h3{margin:0 0 5px;font-size:19px;letter-spacing:-.35px}.feed-body p{font-size:13px;color:#5f6c72;margin:0 0 12px;line-height:1.55}.feed-img{width:100%;height:230px;display:block;object-fit:cover;background:#d9e1df}.feed-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px 18px}.feed-metrics span{font-size:11px;color:#718087}.feed-metrics b{display:block;color:#273940;font-size:17px;letter-spacing:-.4px}.feed-footer{display:flex;border-top:1px solid var(--line);padding:6px 12px;gap:5px}.feed-footer button{border:0;background:transparent;color:#526068;padding:9px 13px;border-radius:8px;font-weight:700;font-size:12px;display:inline-flex;align-items:center;gap:6px}.feed-footer button:hover{background:#f5f6f5}.feed-footer button[aria-pressed=true]{color:var(--red)}.feed-footer button .svg{width:17px}
-.right{position:sticky;top:20px;align-self:start;display:grid;gap:16px}.right h3{font-size:15px;margin:0 0 12px}.right .card{padding:19px}.goal-ring{position:relative;height:100px;width:100px;border-radius:50%;background:conic-gradient(var(--red) 0 36%,#f0e9ea 36% 100%);display:grid;place-items:center;margin:9px auto 12px}.goal-ring:before{content:"";background:#fff;width:77px;height:77px;position:absolute;border-radius:50%}.goal-ring strong{position:relative;font-size:22px;letter-spacing:-.8px}.listrow{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #eff1f0}.listrow:last-child{border-bottom:0}.listrow b{font-size:12px;display:block}.listrow span{font-size:11px;color:var(--muted)}.listrow .btn{margin-left:auto}.stack{display:grid;gap:12px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.tile{padding:20px}.tile .cover{width:100%;height:165px;object-fit:cover;border-radius:12px;margin-bottom:12px}.tile h3{margin:0 0 5px;font-size:18px}.tile p{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 14px}.tag{font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--green);display:inline-block;padding:5px 8px;border-radius:6px;background:#eaf4f1;margin-bottom:9px}
-.progress-chart{display:flex;align-items:end;height:170px;gap:10px;border-bottom:1px solid var(--line);padding:0 10px}.progress-chart .bar{flex:1;background:#f3d7db;border-radius:6px 6px 0 0;min-height:7px;position:relative}.progress-chart .bar:last-child{background:var(--red)}.axis{display:flex;justify-content:space-around;color:var(--muted);font-size:10px;padding:8px 0}
-.profile-cover{height:152px;background:linear-gradient(110deg,#253d42bb,#253d4288),url('/assets/photos/legmaker-outdoor-3.webp') center/cover}.profile-info{padding:18px}.profile-info h2{margin:0}.privacy-note{background:#fff6ed;border:1px solid #f3e0c8;border-radius:12px;padding:12px 14px;font-size:12px;color:#76562f;margin:13px 0}.empty{text-align:center;padding:55px 20px;color:var(--muted)}.empty .svg{height:33px;width:33px;color:#91a1a1}.empty h3{color:var(--dark)}
-.modal{position:fixed;inset:0;background:#102027b3;display:grid;place-items:center;padding:20px;z-index:100}.modal[hidden]{display:none}.dialog{width:min(100%,510px);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:25px;box-shadow:0 18px 65px #0e1e2250}.dialog h2{font-size:24px;letter-spacing:-.6px;margin:0 0 8px}.dialog p{color:var(--muted);font-size:12px;line-height:1.6}.formgrid{display:grid;gap:13px;margin:18px 0}.field{display:grid;gap:5px;font-size:12px;font-weight:700;color:#485960}.field input,.field select,.field textarea{width:100%;border:1px solid #cfd7d7;border-radius:9px;padding:11px;background:#fff;color:#243640;min-height:43px}.field textarea{resize:vertical}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:120;background:#21373b;color:#fff;padding:12px 18px;border-radius:11px;box-shadow:0 12px 30px #172a2840;font-size:13px;display:none;max-width:90vw}.toast.visible{display:block}
-.mobilebar{display:none}.skip{position:absolute;left:-999px;top:0}.skip:focus{left:10px;top:10px;z-index:130;background:#fff;padding:12px}
-@media(max-width:1120px){.shell{grid-template-columns:205px minmax(0,700px)}.right{display:none}}
-@media(max-width:760px){.shell{display:block;padding:15px 12px 105px}.sidebar{display:none}.topbar{margin:4px 0 18px}.topbar h1{font-size:27px}.btn{padding:10px 12px}.top-actions .btn .label{display:none}.welcome{min-height:190px}.welcome-copy{padding:19px}.welcome h2{font-size:22px}.welcome img{object-position:55% center}.stats{gap:8px}.stat{padding:14px}.stat b{font-size:21px}.stat small{font-size:9px}.feed-img{height:215px}.grid2{grid-template-columns:1fr}.mobilebar{display:flex;position:fixed;z-index:50;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:6px 8px max(8px,env(safe-area-inset-bottom));justify-content:space-around;box-shadow:0 -6px 24px #193a3620}.mobilebar button{display:grid;justify-items:center;gap:2px;border:0;background:none;color:#66727c;font-size:10px;font-weight:700;padding:7px 4px;min-width:53px}.mobilebar button.active{color:var(--red)}.mobilebar .svg{width:21px;height:21px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style><link rel="manifest" href="/community/manifest.webmanifest"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="stylesheet" href="/community/editorial.css?v=20261015" media="screen"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Rehabwheel"><meta property="og:type" content="website"><meta property="og:title" content="Rehabwheel Community — Wheelchair-first movement"><meta property="og:description" content="Explore the early interactive Rehabwheel community preview: movement, clubs and progress, built for wheelchair users."><meta property="og:image" content="https://rehabwheel.com/assets/photos/legmaker-seated-demonstration.webp"></head><body>
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-<symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11H3z"/><path d="M9 21v-7h6v7"/></symbol>
-<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
-<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3z"/><path d="M17 5a3 3 0 0 1 0 6m2 3a4 4 0 0 1 2 4v2"/></symbol>
-<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M6 17V9m6 8V4m6 13v-6"/></symbol>
-<symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
-<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
-<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 9c0 5-8.8 11-8.8 11S3.2 14 3.2 9A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8.8 2z"/></symbol>
-<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18"/></symbol>
-<symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3"/></symbol>
-<symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4m0 1c4-3 8 3 14 0v11c-6 3-10-3-14 0"/></symbol>
-<symbol id="i-message" viewBox="0 0 24 24"><path d="M4 5h16v13H9l-5 3z"/></symbol>
-<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
-</svg>
-<a class="skip" href="#content">Skip to main content</a>
-<div class="preview"><b>ADAPTIVE SPORTS PREVIEW</b><span>Friendly clubs &amp; personal activity · Sample content · Private on this device · No live social accounts</span><a href="/sports-community.html" aria-label="Explore Rehabwheel adaptive sports community overview">About sports community ↗</a></div>
-<div class="offline-banner" id="offlineBanner" role="status" aria-live="polite" hidden>Offline mode · Your activities remain on this device. No syncing is available.</div>
-<div class="shell">
-<aside class="sidebar" aria-label="Main sections"><a href="/" class="logo"><img src="/rehabwheel_logo.jpg" alt="Rehabwheel"><span><strong>Rehabwheel</strong><small>MOVE · CONNECT · BELONG</small></span></a><nav id="sideNav"></nav><div class="side-divider"></div><button class="sidebtn" id="sideCreate"><svg class="svg"><use href="#i-plus"/></svg> Log an activity</button><p class="aside-note">Wheelchair-first design. Sharing is opt-in. Rehab sessions and personal health details are not published to this social preview.</p></aside>
-<main class="main" id="content" tabindex="-1"><div class="topbar"><div><span class="page-eyebrow">THE COMMUNITY EXPERIENCE</span><h1 id="pageTitle">Your community</h1></div><div class="top-actions"><button class="btn" id="installBtn" hidden aria-label="Add Rehabwheel web preview to your home screen"><svg class="svg"><use href="#i-plus"/></svg><span class="label">Install web app</span></button><button class="btn" id="privacyBtn" aria-label="Privacy preferences"><svg class="svg"><use href="#i-lock"/></svg><span class="label">Privacy</span></button><button class="btn red" id="newBtn"><svg class="svg"><use href="#i-plus"/></svg><span class="label">Log activity</span></button></div></div><div id="view" aria-live="polite"><div class="card pad">Loading interactive preview…</div></div><div class="community-foot"><a href="/">Rehabwheel.com</a><a href="/privacy.html">Privacy policy</a><a href="/contact.html">Contact us</a><span>Public preview · Not a live social network</span></div></main>
-<aside class="right" id="rightRail"></aside></div><nav class="mobilebar" id="mobileNav" aria-label="Mobile navigation"></nav>
-<div class="modal" id="modal" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><h2 id="modalTitle">New activity</h2><p id="modalIntro"></p><div id="modalBody"></div><div class="dialog-actions"><button class="btn" id="cancelModal">Cancel</button><button class="btn red" id="saveModal">Save</button></div></div></div><div class="toast" id="toast" role="status" aria-live="polite"></div><input id="backupImport" type="file" accept="application/json,.json" hidden aria-label="Import private Rehabwheel activity backup">
-<script>
-(function(){
-"use strict";
-var tabs=[["feed","Feed","i-home"],["explore","Sports","i-compass"],["clubs","Clubs","i-users"],["progress","Progress","i-chart"],["profile","You","i-person"]];
-var samples=[
-{id:"s1",who:"Rehabwheel Team",initials:"RW",when:"Featured demo activity",title:"Explore movement, your way",desc:"A look at the wheelchair-integrated LegMaker prototype. The image shows investigational hardware—not a verified clinical outcome.",duration:25,mode:"Motor-assisted cycling",img:"/assets/photos/legmaker-seated-demonstration.webp",tag:"clubs"},
-{id:"s2",who:"Community Preview",initials:"CP",when:"Sample club post",title:"A place to make progress together",desc:"Clubs can bring people together around accessible fitness, friendship and local community events.",duration:30,mode:"Adaptive movement",img:"/assets/photos/legmaker-outdoor-1.webp",tag:"following"},
-{id:"s3",who:"LegMaker Prototype",initials:"LM",when:"Photo gallery",title:"Built for the chair you already use",desc:"Original product photography from rehabwheel.com. Compatible-wheelchair fit and safety remain subject to evaluation.",duration:20,mode:"Product demo",img:"/assets/photos/legmaker-outdoor-4.webp",tag:"clubs"}
-];
-var demoClubs=[{id:"c1",name:"Wheelchair Sports Club",desc:"Adaptive sports, weekly goals and supportive training partners.",members:"Sample club"},{id:"c2",name:"Handcycling & Rolling",desc:"Find encouragement around rolling and handcycling.",members:"Sample club"},{id:"c3",name:"Adaptive Court Sports",desc:"Wheelchair basketball, tennis and accessible games.",members:"Sample club"},{id:"c4",name:"Rehabwheel Movement Club",desc:"A welcoming space for seated movement and individual progress.",members:"Sample club"}];
-var demoEvents=[{id:"e1",name:"Adaptive sports discovery",date:"Oct 24",where:"Sample event · Location not confirmed"},{id:"e2",name:"Wheelchair sports community meetup",date:"Nov 04",where:"Sample event · Location not confirmed"}];
-var key="rw-preview-v1";var state={tab:"feed",filter:"all",sportFilter:"All sports",activities:[],likes:[],clubs:[],rsvps:[],follows:[],blocked:[],goal:90,timer:{sport:"Wheelchair rolling",elapsedMs:0,startedAt:0,running:false}};
-try{var stored=JSON.parse(localStorage.getItem(key)||"{}");["activities","likes","clubs","rsvps","follows","blocked"].forEach(function(k){if(Array.isArray(stored[k]))state[k]=stored[k]});if(Number.isFinite(stored.goal)&&stored.goal>=15&&stored.goal<=600)state.goal=stored.goal;
-if(stored.timer&&typeof stored.timer==="object"){
- var t=stored.timer;
- var allSports=["Wheelchair rolling","Handcycling","Wheelchair basketball","Wheelchair tennis","Wheelchair racing","Adaptive soccer","Swimming","Strength training","Seated cycling","Motor-assisted cycling","Assisted pedaling","Active pedaling","Stretching / mobility","Other adaptive sport"];
- if(allSports.indexOf(t.sport)>=0&&Number.isFinite(t.elapsedMs)&&t.elapsedMs>=0&&t.elapsedMs<=36000000&&
- Number.isFinite(t.startedAt)&&t.startedAt>=0&&t.startedAt<=Date.now()+60000&&typeof t.running==="boolean"){
- state.timer={sport:t.sport,elapsedMs:t.elapsedMs,startedAt:t.startedAt,running:t.running};}}
-}catch(_){}
-var $=function(q){return document.querySelector(q)};
-function esc(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function ico(n){return '<svg class="svg" aria-hidden="true"><use href="#i-'+n+'"></use></svg>'}
-function persist(){try{localStorage.setItem(key,JSON.stringify({activities:state.activities,likes:state.likes,clubs:state.clubs,rsvps:state.rsvps,follows:state.follows,blocked:state.blocked,goal:state.goal,timer:state.timer}))}catch(_){toast("Storage unavailable; changes may not persist.")}}
-function toast(msg){var t=$("#toast");t.textContent=msg;t.classList.add("visible");clearTimeout(window.rwToastId);window.rwToastId=setTimeout(function(){t.classList.remove("visible")},3300)}
-function toggle(arr,id){var i=arr.indexOf(id);if(i<0)arr.push(id);else arr.splice(i,1);persist();render()}
-function empty(heading,desc){return '<div class="empty">'+ico("compass")+'<h3>'+esc(heading)+'</h3><p>'+esc(desc)+'</p></div>'}
-function head(title,link){return '<div class="section-head"><h2>'+esc(title)+'</h2>'+(link||"")+'</div>'}
-function stat(label,value){return '<div class="card stat"><b>'+esc(value)+'</b><small>'+esc(label)+'</small></div>'}
-function activityCard(a){
-var local=a.mine===true,id=esc(a.id),liked=state.likes.indexOf(a.id)>=0;
-if(local){a=Object.assign({who:"You",initials:"YOU",when:new Date(a.createdAt).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"}),desc:"Private activity recorded on this device",img:""},a)}
-return '<article class="card feed-card"><div class="feed-head"><div class="avatar">'+esc(a.initials)+'</div><div class="feed-person"><b>'+esc(a.who)+'</b><small>'+esc(a.when)+(local?' · <b>LOCAL ONLY · ONLY ME</b>':' · SAMPLE CONTENT')+'</small></div><button class="btn sm" data-act="hide" data-id="'+id+'" aria-label="'+(local?"Delete my activity":"Hide sample card")+'">···</button></div><div class="feed-body"><h3>'+esc(a.title)+'</h3><p>'+esc(a.desc)+'</p></div>'+(a.img?'<img class="feed-img" src="'+esc(a.img)+'" alt="Real LegMaker investigational prototype photograph" loading="lazy">':'')+'<div class="feed-metrics"><div><span>Minutes</span><b>'+esc(a.duration)+'</b></div><div><span>Sport</span><b style="font-size:12px">'+esc(a.mode)+'</b></div><div><span>Visibility</span><b style="font-size:12px">'+esc(local?"Only me":"Demo")+'</b></div></div><div class="feed-footer">'+(local?'<button data-act="edit" data-id="'+id+'">'+ico("chart")+'Edit activity</button><button data-act="delete" data-id="'+id+'">'+ico("flag")+'Delete activity</button>':'<button data-act="like" data-id="'+id+'" aria-pressed="'+liked+'">'+ico("heart")+(liked?"Liked locally":"Like demo")+'</button><button data-act="comment" data-id="'+id+'">'+ico("message")+'Comment demo</button><button data-act="report" data-id="'+id+'">'+ico("flag")+'Hide/report sample</button>')+'</div></article>'
-}
-function myMinutes(){return state.activities.reduce(function(s,a){return s+(Number(a.duration)||0)},0)}
-function sportStats(){var counts={};state.activities.forEach(function(a){var k=String(a.mode||"Other");counts[k]=(counts[k]||0)+1});return Object.keys(counts).sort(function(a,b){return counts[b]-counts[a]}).map(function(k){return {name:k,count:counts[k]}})}
-function exportActivities(){var q=function(v){var x=String(v==null?"":v);if(/^\s*[=+\-@]/.test(x))x="'"+x;return '"'+x.replace(/"/g,'""')+'"'};var rows=state.activities.map(function(a){return [a.createdAt||"",a.mode||"",a.title||"",a.duration||0,"Only me"].map(q).join(",")});var csv=["date,sport,title,minutes,visibility"].concat(rows).join("\r\n"),blob=new Blob([csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),link=document.createElement("a");link.href=url;link.download="rehabwheel-private-activities.csv";document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(url)},500);toast("Private CSV export generated on this device.")}
-function downloadPrivateBackup(){
-  var payload={format:"rehabwheel-private-activities",version:1,exportedAt:new Date().toISOString(),weeklyGoal:state.goal,activities:state.activities.map(function(a){return {id:a.id,createdAt:a.createdAt,title:a.title,duration:a.duration,mode:a.mode,visibility:"Only me"}})};
-  var blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),link=document.createElement("a");
-  link.href=url;link.download="rehabwheel-private-backup.json";document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(url)},900);
-  toast("Private JSON backup saved to your device. Keep the file secure.");
-}
-function parsePrivateBackup(value){
-  if(!value||value.format!=="rehabwheel-private-activities"||value.version!==1||!Array.isArray(value.activities)||value.activities.length>1000)throw Error("Not a supported Rehabwheel backup.");
-  var safe=value.activities.map(function(a,i){
-    if(!a||typeof a!=="object")throw Error("Invalid activity record.");
-    var title=String(a.title||"").trim(),mode=String(a.mode||"Other adaptive sport").trim(),minutes=Number(a.duration),date=new Date(a.createdAt||"");
-    if(!title||title.length>72||mode.length>60||!Number.isInteger(minutes)||minutes<1||minutes>600||!Number.isFinite(date.getTime())||date.getTime()>Date.now()+60000)throw Error("An activity contains invalid values.");
-    return {id:"restore-"+i+"-"+date.getTime(),createdAt:date.toISOString(),title:title,mode:mode,duration:minutes,visibility:"Only me",mine:true};
-  });
-  var goal=Number(value.weeklyGoal);
-  return {activities:safe,goal:Number.isFinite(goal)&&goal>=15&&goal<=600?goal:90};
-}
-
-function timedMs(){
- var t=state.timer;
- var delta=t.running&&t.startedAt>0?Math.max(0,Date.now()-t.startedAt):0;
- return Math.min(36000000,t.elapsedMs+delta)
-}
-function prettyTimer(ms){
- var sec=Math.floor(ms/1000),hour=Math.floor(sec/3600),minute=Math.floor((sec%3600)/60),second=sec%60;
- return (hour?String(hour).padStart(2,"0")+":":"")+String(minute).padStart(2,"0")+":"+String(second).padStart(2,"0")
-}
-function timerPanel(){
- var t=state.timer,activity=["Wheelchair rolling","Handcycling","Wheelchair basketball","Wheelchair tennis","Wheelchair racing","Adaptive soccer","Swimming","Strength training","Seated cycling","Motor-assisted cycling","Assisted pedaling","Active pedaling","Stretching / mobility","Other adaptive sport"];
- return '<section class="card session-timer" aria-labelledby="timerHeading"><div class="timer-head"><div><span class="eyebrow">YOUR PERSONAL SPORTS SESSION</span><h2 id="timerHeading">Train at your own pace</h2><p>No GPS, rankings or clinical metrics. Your time stays on this device.</p></div><span class="timer-privacy">'+ico("lock")+' Private</span></div><label class="timer-sport-label" for="timerSport">Activity</label><select class="timer-sport" id="timerSport" '+(t.running?'disabled':'')+'>'+activity.map(function(a){return '<option value="'+esc(a)+'"'+(a===t.sport?' selected':'')+'>'+esc(a)+'</option>'}).join("")+'</select><output id="timerReadout" class="timer-time" aria-label="Elapsed exercise time">'+prettyTimer(timedMs())+'</output><div class="timer-controls">'+(t.running?'<button class="btn red" data-act="timer-pause">Pause session</button>':'<button class="btn red" data-act="timer-start">'+(timedMs()>0?'Resume session':'Start session')+'</button>')+'<button class="btn" data-act="timer-save" '+(timedMs()<1000?'disabled':'')+'>Finish &amp; save</button><button class="btn" data-act="timer-discard" '+(timedMs()<1000&&!t.running?'disabled':'')+'>Reset</button></div><p class="timer-note">Saving adds a private activity rounded up to the next whole minute; precise elapsed time appears above. Do not use this timer to control your device.</p></section>';
-}
-function tickTimer(){
- var el=document.getElementById("timerReadout");if(el&&state.timer.running)el.textContent=prettyTimer(timedMs())
-}
-function startSession(){
- var t=state.timer;if(t.running)return;
- if(timedMs()>=36000000){toast("Maximum session timer reached. Finish or reset first.");return}
- t.startedAt=Date.now();t.running=true;persist();render()
-}
-function pauseSession(){
- var t=state.timer;if(!t.running)return;
- t.elapsedMs=timedMs();t.running=false;t.startedAt=0;persist();render()
-}
-function saveTimedSession(){
- if(state.timer.running)pauseSession();
- var ms=timedMs();if(ms<1000){toast("Start a session before saving.");return}
- var minutes=Math.min(600,Math.ceil(ms/60000));
- var sport=state.timer.sport;
- state.activities.unshift({id:"timed-"+Date.now(),createdAt:new Date().toISOString(),title:sport+" session",duration:minutes,mode:sport,visibility:"Only me",mine:true});
- state.timer={sport:sport,elapsedMs:0,startedAt:0,running:false};
- persist();render();toast("Your "+minutes+"-minute activity was saved privately.")
-}
-
-
-function trainingInsights(){
-  var now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate()),begin=new Date(today);
-  begin.setDate(begin.getDate()-27);
-  var utcDay=function(d){return Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000};
-  var firstDay=utcDay(begin),windows=[0,0,0,0],bySport={},total=0,count=0;
-  state.activities.forEach(function(a){
-    var date=new Date(a.createdAt||"");
-    if(!Number.isFinite(date.getTime())||date.getTime()>Date.now()||date<begin)return;
-    var mins=Number(a.duration);
-    if(!Number.isFinite(mins)||mins<=0)return;
-    var index=Math.floor((utcDay(date)-firstDay)/7);
-    if(index<0||index>3)return;
-    windows[index]+=mins;total+=mins;count++;
-    var sport=String(a.mode||"Other adaptive sport");
-    bySport[sport]=(bySport[sport]||0)+mins;
-  });
-  return {total:total,count:count,windows:windows,sports:Object.keys(bySport).sort(function(a,b){return bySport[b]-bySport[a]}).map(function(name){return {name:name,minutes:bySport[name]}})};
-}
-function insightPanel(){
- var data=trainingInsights(),highest=Math.max.apply(null,[1].concat(data.windows));
- return '<section class="card training-insights" aria-labelledby="trainingInsightsTitle"><div class="section-head"><div><span class="eyebrow">PRIVATE TRAINING INSIGHTS</span><h2 id="trainingInsightsTitle">Your last 28 days</h2></div><span class="insights-private">'+ico("lock")+' Only me</span></div>'+
- '<div class="insights-totals"><div><strong>'+data.total+'</strong><span>Minutes recorded</span></div><div><strong>'+data.count+'</strong><span>Sessions recorded</span></div><div><strong>'+data.sports.length+'</strong><span>Sports logged</span></div></div>'+
- '<div class="insights-columns" role="img" aria-label="Minutes over each of four successive seven-day periods: '+data.windows.join(", ")+'">'+data.windows.map(function(v,i){return '<div class="insights-week"><b>'+v+' min</b><div class="insights-track"><span style="height:'+Math.max(0,Math.round(v/highest*100))+'%"></span></div><small>Week '+(i+1)+'</small></div>'}).join("")+'</div>'+
- '<h3 class="insights-subhead">Your most logged sports</h3>'+(data.sports.length?'<div class="insights-sports">'+data.sports.slice(0,4).map(function(a){return '<div><span>'+esc(a.name)+'</span><strong>'+esc(a.minutes)+' min</strong></div>'}).join("")+'</div>':'<p class="muted small">No dated sessions in the last 28 days. Start the timer or log an activity to build your history.</p>')+
- '<p class="tiny muted">Based only on manual records saved in this browser. The four weeks run from oldest to newest. No GPS, medical or device measurements.</p></section>';
-}
-
-function trainingSummary(){var ss=sportStats();return '<div class="training-summary">'+ico("chart")+'<div><b>'+(ss.length?"Most logged sport: "+esc(ss[0].name):"Your personal sports journal")+'</b><small>'+(ss.length?esc(ss[0].count)+" sessions recorded for this sport":"Choose a sport, log a session, and build your personal activity history.")+'</small></div></div>'}
-function weekStart(){var d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d}
-function weeklyActivities(){var start=weekStart().getTime();return state.activities.filter(function(a){var time=Date.parse(a.createdAt||"");return Number.isFinite(time)&&time>=start&&time<=Date.now()})}
-function weeklyMinutes(){return weeklyActivities().reduce(function(sum,a){return sum+(Number(a.duration)||0)},0)}
-function challenges(){var n=weeklyActivities().length,m=weeklyMinutes(),goal=state.goal;return '<div class="challenge-grid"><div class="challenge"><span class="challenge-label">'+ico("chart")+' PERSONAL CHALLENGE</span><strong>A week of movement</strong><p>Record up to five movement sessions, at your own pace.</p><progress max="5" value="'+Math.min(n,5)+'" aria-label="Sessions toward five personal sessions"></progress><div class="challenge-foot"><span>'+n+' logged this week</span><span>5 session target</span></div></div><div class="challenge"><span class="challenge-label">'+ico("heart")+' CHOOSE YOUR PACE</span><strong>My weekly minutes</strong><p>Progress against the personal target you set—not a clinical recommendation.</p><progress max="'+goal+'" value="'+Math.min(m,goal)+'" aria-label="Minutes toward personal weekly goal"></progress><div class="challenge-foot"><span>'+m+' of '+goal+' minutes</span><span>Private</span></div></div></div>'}
-function productSpotlight(){return '<aside class="product-spotlight" aria-label="LegMaker technology spotlight"><div><span class="eyebrow">OUR TECHNOLOGY ADVANTAGE</span><h3>Built around the chair.</h3><p>See the genuine, investigational LegMaker prototype designed to attach directly to a compatible wheelchair. A separate product experience—not an automatic source of social data.</p><a href="/legmaker.html">Explore real LegMaker hardware ↗</a></div><img src="/assets/photos/legmaker-seated-demonstration.webp" alt="Original LegMaker prototype on a manual wheelchair" loading="lazy"></aside>'}
-function welcome(){return '<section class="welcome"><div class="welcome-copy"><span class="eyebrow">YOUR ADAPTIVE SPORTS COMMUNITY</span><h2>Your sport.<br>Your community.<br>Your pace.</h2><p>Track adaptive sports, join clubs and celebrate progress—designed for wheelchair users and anyone who enjoys inclusive movement.</p><button class="btn" data-act="create">'+ico("plus")+' Log an activity</button><div class="hero-micro"><span>Sports first</span><span>Wheelchair-first</span><span>Private by default</span></div></div><img src="/assets/photos/legmaker-outdoor-2.webp" alt="Real LegMaker wheelchair-attached investigational prototype"></section>'}
-function feed(){var list=state.activities.map(function(a){return Object.assign({mine:true,who:"You",initials:"YOU",when:"Saved on this device",desc:"Manual activity entry · Private to this browser",img:""},a)}).concat(samples.filter(function(a){return state.blocked.indexOf(a.id)<0}));if(state.filter==="mine")list=list.filter(function(a){return a.mine});else if(state.filter==="clubs")list=list.filter(function(a){return a.tag==="clubs"});else if(state.filter==="following")list=list.filter(function(a){return a.tag==="following"});if(state.sportFilter!=="All sports")list=list.filter(function(a){return a.mode===state.sportFilter});return welcome()+'<section class="stats">'+stat("Minutes this week",weeklyMinutes())+stat("Sessions this week",weeklyActivities().length)+stat("My weekly goal",state.goal+" min")+'</section>'+challenges()+productSpotlight()+head("Activity feed",'<span class="small muted">All content is illustrative</span>')+'<div class="filters">'+[["all","All"],["following","Following"],["clubs","Clubs"],["mine","Mine"]].map(function(t){return '<button class="pill" data-filter="'+t[0]+'" aria-pressed="'+(state.filter===t[0])+'">'+t[1]+'</button>'}).join("")+'<label class="sport-feed-select"><span>Sport</span><select id="feedSportFilter" aria-label="Filter feed by sport">'+["All sports","Wheelchair rolling","Handcycling","Wheelchair basketball","Wheelchair tennis","Wheelchair racing","Adaptive soccer","Swimming","Strength training","Seated cycling","Motor-assisted cycling","Assisted pedaling","Active pedaling","Stretching / mobility","Other adaptive sport"].map(function(s){return '<option value="'+esc(s)+'"'+(state.sportFilter===s?' selected':'')+'>'+esc(s)+'</option>'}).join("")+'</select></label></div>'+(list.length?list.map(activityCard).join(""):empty("Nothing here yet","Log a session to see your private activity in this preview."))}
-function sportsDirectory(){
-var sports=[["Wheelchair rolling","Move on your own terms","♿"],["Handcycling","Explore cycling goals","🚴"],["Wheelchair basketball","A place for teamwork","🏀"],["Wheelchair tennis","Train your court skills","🎾"],["Wheelchair racing","Find your track rhythm","🏁"],["Adaptive soccer","Play the beautiful game","⚽"],["Swimming","Move through water","🏊"],["Strength training","Build a personal routine","💪"],["Seated cycling","Set your own cadence","🚲"]];
-return '<div class="sports-directory">'+sports.map(function(s){return '<button class="sport-card" type="button" data-sportpick="'+esc(s[0])+'" aria-label="Log '+esc(s[0])+' activity"><span class="sport-symbol" aria-hidden="true">'+s[2]+'</span><strong>'+esc(s[0])+'</strong><small>'+esc(s[1])+'</small><span class="sport-start">Log activity →</span></button>'}).join("")+'</div>';
-}
-function explore(){return '<section class="card pad" style="margin-bottom:15px">'+head("Choose your sport")+'<p class="muted small">Explore adaptive sports and record your own activities. Categories describe options, not assumptions about ability.</p><div class="privacy-note">'+ico("lock")+' Your activities stay private to this device. No GPS or public leaderboard.</div></section>'+sportsDirectory()+'<section class="card pad" style="margin-top:18px">'+head("Friendly sports community")+'<p class="small muted">Find clubs, follow shared interests and discover inclusive events. All profiles and events shown are samples.</p><div class="grid2">'+demoClubs.slice(0,2).map(clubTile).join("")+'</div></section>'}
-function clubTile(c){return '<article class="card tile"><span class="tag">Community club · preview</span><h3>'+esc(c.name)+'</h3><p>'+esc(c.desc)+'</p><button class="btn sm" data-act="club" data-id="'+c.id+'">'+ico("users")+(state.clubs.includes(c.id)?"Joined locally":"Join preview club")+'</button></article>'}
-function clubs(){return '<div class="card pad" style="margin-bottom:16px">'+head("Move better together")+'<p class="muted small">A club-first social structure inspired by fitness communities, adapted for wheelchair users, inclusive activities and accessibility.</p></div><div class="grid2">'+demoClubs.map(clubTile).join("")+'</div><div class="card pad" style="margin-top:17px">'+head("Upcoming events",'<span class="small muted">Illustrative only</span>')+demoEvents.map(function(e){return '<div class="listrow"><div class="avatar">'+ico("calendar")+'</div><div style="flex:1"><b>'+esc(e.name)+'</b><span>'+esc(e.date)+' · '+esc(e.where)+'</span></div><button class="btn sm" data-act="rsvp" data-id="'+e.id+'">'+(state.rsvps.includes(e.id)?"Interested":"Save event")+'</button></div>'}).join("")+'</div>'}
-function progress(){var mins=weeklyMinutes(),pct=Math.min(100,Math.round(100*mins/state.goal));var start=weekStart(),daily=[0,0,0,0,0,0,0];weeklyActivities().forEach(function(a){var d=new Date(a.createdAt);var index=Math.floor((Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())-Date.UTC(start.getFullYear(),start.getMonth(),start.getDate()))/86400000);if(index>=0&&index<7)daily[index]+=Number(a.duration)||0});var ceiling=Math.max(1,Math.max.apply(null,daily)),bars=daily.map(function(v){return Math.max(0,Math.round(v/ceiling*100))});return timerPanel()+trainingSummary()+insightPanel()+'<div class="card pad"><span class="eyebrow">PERSONAL PROGRESS · ON THIS DEVICE</span><h2 style="font-size:30px;letter-spacing:-1px;margin:7px 0 2px">'+mins+' minutes</h2><p class="muted small">You choose what to track. No speed targets, distance assumptions or clinical interpretation.</p><div class="progress-chart">'+bars.map(function(v,i){return '<div class="bar" style="height:'+v+'%" role="img" aria-label="'+daily[i]+' minutes logged on day '+(i+1)+' of this week"></div>'}).join("")+'</div><div class="axis"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><p class="tiny muted">Bars show only dated activities logged on this device during the current week. No data is collected from a wearable or LegMaker.</p></div><div class="stats" style="margin-top:15px">'+stat("Weekly sessions",weeklyActivities().length)+stat("Goal reached",pct+"%")+stat("My goal",state.goal+" min")+'</div><div class="card pad">'+head("Personal goals",'<button class="btn sm" data-act="goal">Edit goal</button>')+'<p class="muted small">Your targets are yours. There are no public rankings based on disability, pace or recovery outcomes.</p></div><div class="card pad" style="margin-top:14px">'+head("My saved sessions")+(state.activities.length?state.activities.map(activityCard).join(""):empty("No sessions logged","Use Log activity to save your first manual session on this device."))+'</div>'}
-function profile(){return '<div class="card"><div class="profile-cover"></div><div class="profile-info"><div class="avatar" style="height:60px;width:60px;border:4px solid white;margin-top:-47px;position:relative">YOU</div><h2>My Rehabwheel</h2><p class="muted small">Private sports profile preview · No account created</p><div class="stats">'+stat("Activities",state.activities.length)+stat("Minutes",myMinutes())+stat("Clubs",state.clubs.length)+'</div><button class="btn" data-act="privacy">'+ico("lock")+' Privacy & data</button> <button class="btn" data-act="export">'+ico("arrow")+' Export CSV</button> <button class="btn" data-act="backup">'+ico("lock")+' Save backup</button> <button class="btn" data-act="import">'+ico("plus")+' Restore backup</button></div></div><div class="card pad" style="margin-top:16px">'+head("My sports spaces")+'<div class="listrow">'+ico("users")+'<div><b>Community</b><span>Sports clubs, activity feed and events</span></div></div><div class="listrow">'+ico("compass")+'<div><b>Explore sports</b><span>Handcycling, basketball, tennis, swimming and more</span></div></div><div class="listrow">'+ico("lock")+'<div><b>LegMaker care portal</b><span>Separate from public sports activity and sharing</span></div></div></div>'}
-function right(){var mins=weeklyMinutes(),pct=Math.min(100,Math.round(100*mins/state.goal));return '<div class="card"><h3>Your weekly goal</h3><div class="goal-ring" style="background:conic-gradient(var(--red) 0 '+pct+'%,#f0e9ea '+pct+'% 100%)"><strong>'+pct+'%</strong></div><p class="small muted" style="text-align:center">'+mins+' of '+state.goal+' minutes logged locally</p><button class="btn sm" style="width:100%" data-act="goal">Set your goal</button></div><div class="card"><h3>Community highlights</h3><div class="listrow">'+ico("users")+'<div><b>Find your sports club</b><span>Adaptive sports and supportive friends</span></div></div><div class="listrow">'+ico("calendar")+'<div><b>Explore events</b><span>Accessible meetups & online events</span></div></div><button class="btn sm" style="margin-top:12px;width:100%" data-tab="clubs">Explore clubs '+ico("arrow")+'</button></div><div class="card"><h3>Privacy is personal</h3><p class="small muted">Activity visibility starts at <b>Only me</b>. No automatic GPS, health or rehabilitation data sharing.</p><button class="btn sm" data-act="privacy">'+ico("lock")+' View controls</button></div>'}
-function render(){document.querySelectorAll("#sideNav,#mobileNav").forEach(function(n){var mobile=n.id==="mobileNav";n.innerHTML=tabs.map(function(t){return '<button class="'+(mobile?"":"sidebtn ")+(state.tab===t[0]?"active":"")+'" data-tab="'+t[0]+'" aria-current="'+(state.tab===t[0]?"page":"false")+'">'+ico(t[2])+'<span>'+t[1]+'</span></button>'}).join("")});var titles={feed:"Your sports feed",explore:"Explore sports",clubs:"Sports clubs & events",progress:"Your training",profile:"Your profile"};$("#pageTitle").textContent=titles[state.tab];$("#view").innerHTML=({feed:feed,explore:explore,clubs:clubs,progress:progress,profile:profile})[state.tab]();$("#rightRail").innerHTML=right()}
-function navigate(tab){state.tab=tab;render();window.scrollTo({top:0,behavior:"smooth"})}
-var currentSave=null,lastModalFocus=null,deferredInstall=null;
-function openModal(type,id){lastModalFocus=document.activeElement;var title="",intro="",body="",save="Save",fn=null;
-if(type==="create"||type==="edit"){
-  var editing=type==="edit",existing=editing?state.activities.find(function(a){return a.id===id}):null;
-  if(editing&&!existing){toast("Activity no longer exists on this device.");return}
-  title=editing?"Edit private activity":"Log a sports session";
-  intro="Your activity is stored only in this browser and is not posted to other members.";
-  var sportOptions=["Wheelchair rolling","Handcycling","Wheelchair basketball","Wheelchair tennis","Wheelchair racing","Adaptive soccer","Swimming","Strength training","Seated cycling","Motor-assisted cycling","Assisted pedaling","Active pedaling","Stretching / mobility","Other adaptive sport"];
-  body='<form id="activityForm" class="formgrid"><label class="field">Activity title<input name="title" required maxlength="72" placeholder="My sports session" autocomplete="off" value="'+esc(editing?existing.title:"")+'"></label><label class="field">Minutes<input name="duration" type="number" min="1" max="600" required value="'+(editing?Number(existing.duration):20)+'"></label><label class="field">Activity type<select name="mode">'+sportOptions.map(function(x){return '<option value="'+esc(x)+'"'+(editing&&existing.mode===x?' selected':'')+'>'+esc(x)+'</option>'}).join("")+'</select></label><label class="field">Visibility<input value="Only me" disabled aria-label="This activity remains private to this device"></label><p class="privacy-note">Only you can view this record in your current browser. No GPS or clinical information is collected.</p></form>';
-  fn=function(){
-    var form=$("#activityForm");
-    if(!form.reportValidity())return false;
-    var values=new FormData(form),minutes=Number(values.get("duration")),activityTitle=String(values.get("title")||"").trim(),mode=String(values.get("mode")||"");
-    if(!activityTitle||activityTitle.length>72){toast("Enter a title of up to 72 characters.");return false}
-    if(!Number.isFinite(minutes)||!Number.isInteger(minutes)||minutes<1||minutes>600){toast("Enter 1–600 whole minutes.");return false}
-    if(sportOptions.indexOf(mode)<0){toast("Choose a valid sport.");return false}
-    if(editing){existing.title=activityTitle;existing.duration=minutes;existing.mode=mode;existing.visibility="Only me";}
-    else {state.activities.unshift({id:"m"+Date.now(),createdAt:new Date().toISOString(),title:activityTitle,duration:minutes,mode:mode,visibility:"Only me",mine:true})}
-    persist();navigate(editing&&state.tab==="progress"?"progress":"feed");toast(editing?"Private activity updated.":"Saved privately on this device.");return true;
-  };
-}
-if(type==="install"){title="Add Rehabwheel to your iPhone";intro="Use the web preview from your Home Screen; this does not install an App Store application.";body='<div class="privacy-note">In Safari, tap Share, then Add to Home Screen, and confirm. If you are using another iPhone browser, open this page in Safari first.</div><p>No cloud synchronization or real community accounts are enabled.</p>';save="Done";fn=function(){return true}};
-if(type==="goal"){title="Choose your weekly goal";intro="A personal movement target, not a clinical prescription.";body='<div class="formgrid"><label class="field">Weekly minutes<input id="goalNum" type="number" min="15" max="600" value="'+state.goal+'"></label></div>';fn=function(){var n=Number($("#goalNum").value);if(!Number.isFinite(n)||n<15||n>600){toast("Choose between 15 and 600 minutes.");return false}state.goal=n;persist();render();toast("Your personal goal was updated.");return true}};
-if(type==="privacy"){title="Your privacy controls";intro="Safety-first design for the future Rehabwheel community.";body='<div class="privacy-note"><b>Preview privacy:</b> All manually logged sessions are private to this browser, and no content is uploaded. Saved clubs, likes and RSVPs are illustrative.</div><div class="stack"><div class="listrow">'+ico("lock")+'<div><b>Default activity visibility</b><span>Only me</span></div></div><div class="listrow">'+ico("lock")+'<div><b>Location sharing</b><span>Off · Not requested</span></div></div><div class="listrow">'+ico("lock")+'<div><b>Health/clinical data sharing</b><span>Never automatic · Care portal stays separate</span></div></div><div class="listrow">'+ico("flag")+'<div><b>Reporting & blocking</b><span>Local demonstration only. No reports are delivered.</span></div></div></div><button class="btn" style="margin-top:16px" id="clearAll">Erase my local preview data</button>';save="Done";fn=function(){return true};}
-if(type==="report"){title="Content safety";intro="Preview moderation only: reports are not transmitted to a moderation team.";body='<p>Use <b>Hide this sample</b> to remove it from your feed on this device. In production, reports must be delivered to a human moderation queue with escalation and appeals.</p><button class="btn" id="hideSample">Hide this sample post</button>';save="Close";fn=function(){return true}};
-if(type==="comment"){title="Comments preview";intro="Commenting and direct messaging require real accounts, moderation and secure data storage.";body='<div class="privacy-note">No comment is sent or stored. Please do not type personal or medical information into this preview.</div>';save="Close";fn=function(){return true}};
-$("#modalTitle").textContent=title;$("#modalIntro").textContent=intro;$("#modalBody").innerHTML=body;$("#saveModal").textContent=save;currentSave=fn;$("#modal").hidden=false;$("#cancelModal").focus();
-if(type==="privacy")$("#clearAll").onclick=function(){if(confirm("Erase activities and preferences saved by this preview on this device?")){try{localStorage.removeItem(key)}catch(_){}state.activities=[];state.likes=[];state.clubs=[];state.rsvps=[];state.follows=[];state.blocked=[];state.goal=90;state.timer={sport:"Wheelchair rolling",elapsedMs:0,startedAt:0,running:false};state.filter="all";state.sportFilter="All sports";closeModal();render();toast("All local preview activities, preferences and running timers erased.")}};
-if(type==="report")$("#hideSample").onclick=function(){state.blocked.push(id);persist();closeModal();render();toast("Sample hidden locally. No report was sent.")}}
-function closeModal(){$("#modal").hidden=true;currentSave=null;if(lastModalFocus&&typeof lastModalFocus.focus==="function")lastModalFocus.focus();lastModalFocus=null}
-document.addEventListener("change",function(e){
-  if(e.target.id==="feedSportFilter"){state.sportFilter=e.target.value;render();return}if(e.target.id==="timerSport"){state.timer.sport=e.target.value;persist();render();return}
-  if(e.target.id==="backupImport"){
-    var selected=e.target.files&&e.target.files[0];e.target.value="";
-    if(!selected)return;
-    if(selected.size>400000){toast("Backup is too large (maximum 400 KB).");return}
-    selected.text().then(function(body){
-      var restored=parsePrivateBackup(JSON.parse(body));
-      if(!confirm("Replace activities saved on this device with "+restored.activities.length+" records from the backup?"))return;
-      state.activities=restored.activities;state.goal=restored.goal;state.timer={sport:"Wheelchair rolling",elapsedMs:0,startedAt:0,running:false};persist();render();toast("Private activity backup restored. Previous session timer reset.");
-    }).catch(function(){toast("Import failed. Choose a valid Rehabwheel private backup.")});
-  }
-});document.addEventListener("click",function(e){var btn=e.target.closest("button");if(!btn)return;var tab=btn.dataset.tab,act=btn.dataset.act,id=btn.dataset.id;if(btn.dataset.sportpick){openModal("create");var sportField=document.querySelector('#activityForm select[name="mode"]');if(sportField)sportField.value=btn.dataset.sportpick;return}if(tab){navigate(tab);return}if(btn.id==="newBtn"||btn.id==="sideCreate"||act==="create"){openModal("create");return}if(btn.id==="installBtn"){
-  if(deferredInstall){var prompt=deferredInstall;deferredInstall=null;prompt.prompt();Promise.resolve(prompt.userChoice).then(function(choice){if(choice&&choice.outcome==="accepted")toast("Web app added or installation started.");document.getElementById("installBtn").hidden=true}).catch(function(){toast("Use your browser menu to add the site to Home Screen.")})}
-  else openModal("install");
-  return
-}
-if(btn.id==="privacyBtn"||act==="privacy"){openModal("privacy");return}if(btn.dataset.filter){state.filter=btn.dataset.filter;render();return}if(act==="like"){toggle(state.likes,id);toast("Reaction saved on this device only.");return}if(act==="club"){toggle(state.clubs,id);toast("Club selection saved on this device only.");return}if(act==="rsvp"){toggle(state.rsvps,id);toast("Event saved in this preview, not registered.");return}if(act==="follow"){toggle(state.follows,id);toast("Follow saved locally. No request sent.");return}if(act==="timer-start"){startSession();return}if(act==="timer-pause"){pauseSession();return}if(act==="timer-save"){saveTimedSession();return}if(act==="timer-discard"){if(!confirm("Discard this personal timer without saving?"))return;state.timer.elapsedMs=0;state.timer.startedAt=0;state.timer.running=false;persist();render();toast("Timer reset.");return}if(act==="goal"){openModal("goal");return}if(act==="edit"){openModal("edit",id);return}if(act==="delete"){if(!confirm("Delete this private activity from this device?"))return;state.activities=state.activities.filter(function(a){return a.id!==id});persist();render();toast("Private activity deleted.");return}if(act==="export"){exportActivities();return}if(act==="backup"){downloadPrivateBackup();return}if(act==="import"){document.getElementById("backupImport").click();return}if(act==="comment"){openModal("comment",id);return}if(act==="report"||act==="hide"){if(state.activities.some(function(a){return a.id===id})){if(!confirm("Delete this private activity from this device?"))return;state.activities=state.activities.filter(function(a){return a.id!==id});persist();render();toast("Your activity was removed from this device.")}else openModal("report",id);return}if(btn.id==="cancelModal"){closeModal();return}if(btn.id==="saveModal"){if(currentSave&&currentSave()!==false)closeModal()}});
-$("#modal").addEventListener("click",function(e){if(e.target.id==="modal")closeModal()});
-document.addEventListener("keydown",function(e){
-  var dialog=document.querySelector("#modal");
-  if(!dialog||dialog.hidden)return;
-  if(e.key==="Escape"){e.preventDefault();closeModal();return}
-  if(e.key!=="Tab")return;
-  var elements=Array.from(dialog.querySelectorAll('button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),a[href]')).filter(function(x){return x.getClientRects().length>0});
-  if(!elements.length){e.preventDefault();return}
-  var first=elements[0],last=elements[elements.length-1];
-  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
-  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
-});document.addEventListener("submit",function(e){if(e.target.id==="activityForm"){e.preventDefault();if(currentSave&&currentSave()!==false)closeModal()}});
-function updateOnlineState(){var banner=document.getElementById("offlineBanner");if(banner)banner.hidden=navigator.onLine!==false}
-window.addEventListener("online",updateOnlineState);
-window.addEventListener("offline",updateOnlineState);
-updateOnlineState();
-setInterval(tickTimer,1000);
-if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",function(){navigator.serviceWorker.register("/community/sw.js",{scope:"/community/"}).catch(function(){/* Offline preview remains optional */})})}
-window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredInstall=e;document.getElementById("installBtn").hidden=false});
-window.addEventListener("appinstalled",function(){deferredInstall=null;document.getElementById("installBtn").hidden=true;toast("Rehabwheel web preview added to your device.")});
-if(/iPhone|iPad|iPod/.test(navigator.userAgent||"")&&!navigator.standalone){document.getElementById("installBtn").hidden=false}
-render();
-})();
-</script></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102932">
+<meta name="color-scheme" content="light">
+<title>Rehabwheel Community Waitlist | Adaptive Sports &amp; Connections</title>
+<meta name="description" content="Join the Rehabwheel Community waitlist. Get early-access updates about a planned wheelchair-first experience for adaptive sports, connections, clubs and activities.">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<link rel="canonical" href="https://rehabwheel.com/community/">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rehabwheel">
+<meta property="og:url" content="https://rehabwheel.com/community/">
+<meta property="og:title" content="Rehabwheel Community Waitlist | Adaptive Sports &amp; Connections">
+<meta property="og:description" content="Join the Rehabwheel Community waitlist. Get early-access updates about a planned wheelchair-first experience for adaptive sports, connections, clubs and activities.">
+<meta property="og:image" content="https://rehabwheel.com/assets/photos/legmaker-seated-demonstration.webp">
+<meta property="og:image:alt" content="LegMaker prototype photographed on a manual wheelchair; pictured device is investigational and separate from Rehabwheel Community">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rehabwheel Community Waitlist | Adaptive Sports &amp; Connections">
+<meta name="twitter:description" content="Join the Rehabwheel Community waitlist. Get early-access updates about a planned wheelchair-first experience for adaptive sports, connections, clubs and activities.">
+<meta name="twitter:image" content="https://rehabwheel.com/assets/photos/legmaker-seated-demonstration.webp">
+<link rel="stylesheet" href="/community/waitlist.css?v=20261020-1">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://rehabwheel.com/#organization","name":"Rehabwheel Inc.","url":"https://rehabwheel.com/","logo":{"@type":"ImageObject","url":"https://rehabwheel.com/rehabwheel_logo.jpg"}},{"@type":"WebSite","@id":"https://rehabwheel.com/#website","url":"https://rehabwheel.com/","name":"Rehabwheel","publisher":{"@id":"https://rehabwheel.com/#organization"}},{"@type":"WebPage","@id":"https://rehabwheel.com/community/#webpage","url":"https://rehabwheel.com/community/","name":"Rehabwheel Community Waitlist | Adaptive Sports & Connections","description":"Join the Rehabwheel Community waitlist. Get early-access updates about a planned wheelchair-first experience for adaptive sports, connections, clubs and activities.","inLanguage":"en","isPartOf":{"@id":"https://rehabwheel.com/#website"},"publisher":{"@id":"https://rehabwheel.com/#organization"},"about":{"@id":"https://rehabwheel.com/#organization"}},{"@type":"FAQPage","@id":"https://rehabwheel.com/community/#faq","isPartOf":{"@id":"https://rehabwheel.com/community/#webpage"},"mainEntity":[{"@type":"Question","name":"Is Rehabwheel Community available now?","acceptedAnswer":{"@type":"Answer","text":"Not yet. The public site is a waitlist for an upcoming community experience. The unfinished interactive preview is no longer offered publicly."}},{"@type":"Question","name":"What is planned for Rehabwheel Community?","acceptedAnswer":{"@type":"Answer","text":"The product vision includes adaptive sports, personal activity tracking, inclusive clubs and events, and opportunities to connect. Features may change before launch."}},{"@type":"Question","name":"Will I need a LegMaker device to participate?","acceptedAnswer":{"@type":"Answer","text":"No device is required to join the waitlist. Rehabwheel Community is a separate planned social product; LegMaker is an investigational medical-technology device."}},{"@type":"Question","name":"Does joining the waitlist create an account?","acceptedAnswer":{"@type":"Answer","text":"No. Sending a request only shares your contact details for early-access updates. It does not create an account or guarantee an invitation or launch date."}},{"@type":"Question","name":"What information should I enter?","acceptedAnswer":{"@type":"Answer","text":"An email address is required and your first name is optional. Please do not submit diagnoses, rehabilitation details, medical records, or other sensitive health information."}},{"@type":"Question","name":"How can I unsubscribe?","acceptedAnswer":{"@type":"Answer","text":"Email nikita@rehabwheel.com with the subject “Unsubscribe Community Waitlist.” You can also request deletion of the contact details you submitted."}}]}]}</script>
+<script defer src="/community/waitlist.js?v=20261020-1"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="announcement">REHABWHEEL COMMUNITY / COMING SOON / JOIN THE WAITLIST</div>
+<header class="header">
+ <div class="container navbar">
+  <a class="brand" href="/" aria-label="Rehabwheel main website">
+   <img class="brand-image" src="/rehabwheel_logo.jpg" alt="Rehabwheel logo" width="58" height="58" decoding="async">
+   <span class="brand-word"><strong>Rehabwheel</strong><small>Community</small></span>
+  </a>
+  <nav class="header-links" aria-label="Community navigation">
+   <a href="#vision">Our vision</a><a href="#questions">Questions</a>
+   <a class="nav-cta" href="#join">Join waitlist ↗</a>
+  </nav>
+ </div>
+</header>
+<main id="main">
+ <section class="hero" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+   <div>
+    <p class="kicker">A new place to belong</p>
+    <h1 id="hero-title">Move your way. <em>Find your people.</em></h1>
+    <p class="hero-lede">A wheelchair-first community experience is taking shape. We're imagining a place to celebrate adaptive sports, find connections, discover clubs and make every kind of movement count.</p>
+    <div class="buttons">
+      <a class="button primary" href="#join">Join the early-access waitlist&nbsp; ↗</a>
+      <a class="button outline" href="#features">Explore what's planned</a>
+    </div>
+    <p class="hero-micro">Not launched yet · No live accounts · No confirmed release date</p>
+   </div>
+   <figure class="hero-art">
+    <div class="hero-photo">
+     <img src="/assets/photos/legmaker-seated-demonstration.webp" alt="Photograph of a LegMaker investigational prototype attached to a manual wheelchair" width="1440" height="960" fetchpriority="high" decoding="async">
+     <span class="photo-stamp">REHABWHEEL / ORIGINAL PHOTO</span>
+    </div>
+    <figcaption>Original Rehabwheel prototype photo. LegMaker is investigational and separate from the planned Community experience.</figcaption>
+   </figure>
+  </div>
+ </section>
+ <section class="intro container" id="features" aria-labelledby="features-title">
+  <div class="intro-head">
+   <span class="overline">The community we're imagining</span>
+   <h2 id="features-title">Built for belonging. Designed around you.</h2>
+   <p>Connection is bigger than a leaderboard. Rehabwheel Community is being designed to support different sports, interests and ways of moving—with accessibility and respect at the center.</p>
+  </div>
+  <div class="features">
+   <article class="feature"><span class="feature-label">01 / MOVE</span><h3>Celebrate activity</h3><p>A planned personal activity experience for wheelchair rolling, handcycling, basketball, swimming, seated exercise and more.</p></article>
+   <article class="feature"><span class="feature-label">02 / CONNECT</span><h3>Meet your community</h3><p>Future ways to discover people with shared interests, follow community conversations and build meaningful connections.</p></article>
+   <article class="feature"><span class="feature-label">03 / BELONG</span><h3>Find clubs &amp; events</h3><p>A vision for inclusive sports groups and community activities, without pretending that sample clubs or events are live.</p></article>
+  </div>
+ </section>
+ <section class="vision" id="vision" aria-labelledby="vision-title">
+  <div class="container vision-layout">
+   <div><span class="overline">Movement takes many forms</span><h2 id="vision-title">Your pace. Your interests. Your community.</h2>
+    <p>We're planning an experience that puts accessibility and personal choice first.</p>
+    <div class="pill-row"><span class="pill">Wheelchair sports</span><span class="pill">Inclusive connections</span><span class="pill">Personal progress</span><span class="pill">Community events</span></div>
+   </div>
+   <aside class="callout" aria-label="Early-access status">
+    <h3>The app is not public yet.</h3>
+    <p>We're preparing the next phase of Rehabwheel Community. Joining the waitlist is an expression of interest—not an account, a booking, a purchase, or guaranteed access. We'll share updates when there's something ready to announce.</p>
+   </aside>
+  </div>
+ </section>
+ <section class="waitlist" id="join" aria-labelledby="join-title">
+  <div class="container waitlist-inner">
+   <div>
+    <span class="overline">Early access / Stay in the loop</span>
+    <h2 id="join-title">Be among the first to hear.</h2>
+    <p class="section-copy">Interested in Rehabwheel Community? Request a place on the early-access mailing list for product updates and future invitations.</p>
+    <p class="safety-note">Email only is enough. We don't need medical or disability information to register your interest.</p>
+   </div>
+   <div class="form-panel">
+    <span class="form-eyebrow">Rehabwheel / Community</span>
+    <h3>Join the waitlist</h3>
+    <p>Just your email. Your name is optional.</p>
+    <form id="communityWaitlist" action="https://formsubmit.co/nikita@rehabwheel.com" method="POST">
+     <input type="hidden" name="_subject" value="Rehabwheel Community — Waitlist Request">
+     <input type="hidden" name="_template" value="table">
+     <input type="hidden" name="_captcha" value="true">
+     <input type="hidden" name="_next" value="https://rehabwheel.com/community/thanks.html">
+     <input type="hidden" name="signup_source" value="rehabwheel.com/community/">
+     <label class="visually-hidden" aria-hidden="true">Leave this field empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+     <label class="field" for="joinEmail"><span>Email address *</span><input id="joinEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="254" aria-describedby="emailHelp"></label>
+     <label class="field" for="joinName"><span>First name (optional)</span><input id="joinName" name="name" type="text" placeholder="First name" autocomplete="given-name" maxlength="60"></label>
+     <label class="checkbox" for="joinConsent"><input id="joinConsent" name="community_email_consent" value="Yes, I want Rehabwheel Community updates" type="checkbox" required><span>I agree to receive emails about Rehabwheel Community early access and updates. I can unsubscribe at any time. *</span></label>
+     <button class="submit" id="submitJoin" type="submit">Request early access&nbsp; ↗</button>
+     <p id="emailHelp" class="form-fine">Your request is submitted to Rehabwheel through FormSubmit, a third-party form service. Its delivery and activation must be verified by the Rehabwheel team. Please do not include sensitive health information. Read our <a href="/privacy.html">Privacy Policy</a>.</p>
+     <p id="status" role="status" aria-live="polite"></p>
+    </form>
+   </div>
+  </div>
+ </section>
+ <section class="faq container" id="questions" aria-labelledby="questions-title">
+  <div class="faq-header"><span class="overline">Good to know</span><h2 id="questions-title">A few things, made clear.</h2><p class="section-copy">We're opening a waitlist, not a finished app. Here's what that means.</p></div>
+  <details><summary>Is Rehabwheel Community available now?</summary><p>Not yet. The public site is a waitlist for an upcoming community experience. The unfinished interactive preview is no longer offered publicly.</p></details>
+<details><summary>What is planned for Rehabwheel Community?</summary><p>The product vision includes adaptive sports, personal activity tracking, inclusive clubs and events, and opportunities to connect. Features may change before launch.</p></details>
+<details><summary>Will I need a LegMaker device to participate?</summary><p>No device is required to join the waitlist. Rehabwheel Community is a separate planned social product; LegMaker is an investigational medical-technology device.</p></details>
+<details><summary>Does joining the waitlist create an account?</summary><p>No. Sending a request only shares your contact details for early-access updates. It does not create an account or guarantee an invitation or launch date.</p></details>
+<details><summary>What information should I enter?</summary><p>An email address is required and your first name is optional. Please do not submit diagnoses, rehabilitation details, medical records, or other sensitive health information.</p></details>
+<details><summary>How can I unsubscribe?</summary><p>Email <a href="mailto:nikita@rehabwheel.com?subject=Unsubscribe%20Community%20Waitlist">nikita@rehabwheel.com</a> with the subject “Unsubscribe Community Waitlist.” You can also request deletion of the contact details you submitted.</p></details>
+ </section>
+</main>
+<footer class="footer">
+ <div class="container">
+  <div class="footer-inner">
+   <a class="brand" href="/" aria-label="Return to Rehabwheel homepage"><img class="brand-image" src="/rehabwheel_logo.jpg" alt="" width="47" height="47" loading="lazy"><span class="brand-word"><strong>Rehabwheel</strong><small>Community</small></span></a>
+   <nav class="footer-links" aria-label="Legal and company links"><a href="/">Corporate site</a><a href="/sports-community.html">Community vision</a><a href="/privacy.html">Privacy</a><a href="/contact.html">Contact</a><a href="mailto:nikita@rehabwheel.com?subject=Unsubscribe%20Community%20Waitlist">Unsubscribe</a></nav>
+  </div>
+  <p class="footer-note">© Rehabwheel Inc. Community is a planned social product, separate from investigational LegMaker. No live memberships, events or clinical claims are represented on this page.</p>
+ </div>
+</footer>
+</body>
+</html>

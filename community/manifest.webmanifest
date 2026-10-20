@@ -1,13 +1,13 @@
 {
-  "name": "Rehabwheel Sports Community",
-  "short_name": "Rehabwheel",
-  "description": "Sports-first wheelchair-friendly activity journal and early-access community preview. Your sessions stay private on your device.",
+  "name": "Rehabwheel Community — Coming Soon",
+  "short_name": "RW Community",
+  "description": "Rehabwheel Community early-access waitlist and launch updates. The social app is not public yet.",
   "id": "/community/",
   "start_url": "/community/",
   "scope": "/community/",
-  "display": "standalone",
-  "theme_color": "#112c30",
-  "background_color": "#f6f7f6",
+  "display": "browser",
+  "theme_color": "#102932",
+  "background_color": "#f6f6f0",
   "icons": [
     {
       "src": "/icon-192.png",
