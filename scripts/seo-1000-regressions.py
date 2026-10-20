@@ -23,11 +23,13 @@ class Page(HTMLParser):
         self.titles = []
         self.scripts = []
         self.mode = None
+        self.in_head = False
         self.buf = ""
         super().__init__(convert_charrefs=True)
         self.feed(src)
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "head": self.in_head = True
         if tag == "link" and attrs.get("rel") == "canonical":
             self.canonicals.append(attrs.get("href", ""))
         if tag == "meta":
@@ -35,12 +37,13 @@ class Page(HTMLParser):
             if key: self.meta.setdefault(key, []).append(attrs.get("content", ""))
         if tag == "img": self.images.append(attrs)
         if tag == "h1": self.h1 += 1
-        if tag == "title": self.mode, self.buf = "title", ""
+        if tag == "title" and self.in_head: self.mode, self.buf = "title", ""
         if tag == "script" and attrs.get("type") == "application/ld+json":
             self.mode, self.buf = "schema", ""
     def handle_data(self, data):
         if self.mode: self.buf += data
     def handle_endtag(self, tag):
+        if tag == "head": self.in_head = False
         if tag == "title" and self.mode == "title":
             self.titles.append(self.buf.strip()); self.mode = None
         if tag == "script" and self.mode == "schema":
