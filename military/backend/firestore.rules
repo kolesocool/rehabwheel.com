@@ -1,0 +1,77 @@
+// Rehabwheel Military Programs Hub — DEDICATED Firebase project ONLY.
+// Never deploy this file over the Community project's rules.
+// Restricts server data to verified accounts with admin-assigned custom claims.
+// Not approved for classified, CUI, PHI, ITAR or controlled technical data.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function member() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.rehabwheelMilitary == true
+        && request.auth.token.militaryRole in ['viewer','editor','admin'];
+    }
+    function editor() {
+      return member() && request.auth.token.militaryRole in ['editor','admin'];
+    }
+    function admin() {
+      return member() && request.auth.token.militaryRole == 'admin';
+    }
+    function validBase(data) {
+      return data.keys().hasOnly(['title','status','owner','deadline','priority','notes','createdBy','updatedAt'])
+        && data.keys().hasAll(['title','status','owner','deadline','priority','notes','createdBy','updatedAt'])
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 120
+        && data.status in ['Planning','In progress','Submitted','On hold','Complete']
+        && data.owner is string && data.owner.size() <= 100
+        && data.deadline is string && data.deadline.size() <= 10
+        && data.priority in ['Normal','High','Critical']
+        && data.notes is string && data.notes.size() <= 2000
+        && data.createdBy is string
+        && data.updatedAt == request.time;
+    }
+    function validVault(data) {
+      return data.keys().hasOnly(['title','category','filename','contentType','bytes','storagePath','createdBy','updatedAt'])
+        && data.keys().hasAll(['title','category','filename','contentType','bytes','storagePath','createdBy','updatedAt'])
+        && data.title is string && data.title.size()>0 && data.title.size()<=120
+        && data.category in ['Proposal','Technical','Manufacturing','Procurement','Other']
+        && data.filename is string && data.filename.size()>0 && data.filename.size()<=180
+        && data.contentType in [
+          'application/pdf',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+          'text/plain'
+        ]
+        && data.bytes is int && data.bytes > 0 && data.bytes <= 10485760
+        && data.storagePath is string && data.storagePath.matches('military/[A-Za-z0-9_-]+/[A-Za-z0-9_-]+')
+        && data.createdBy is string
+        && data.updatedAt == request.time;
+    }
+    match /militaryHub/{section}/entries/{entryId} {
+      allow get, list: if member() && section in ['programs','tasks','engineering','procurement','documents'];
+      allow create: if editor()
+        && (
+          (section in ['programs','tasks','engineering','procurement']
+            && validBase(request.resource.data))
+          || (section == 'documents' && validVault(request.resource.data)
+            && request.resource.data.storagePath.matches('military/'+request.auth.uid+'/[A-Za-z0-9_-]+'))
+        )
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update: if editor()
+        && request.resource.data.createdBy == resource.data.createdBy
+        && (
+          (section in ['programs','tasks','engineering','procurement'] && validBase(request.resource.data))
+          || (section == 'documents' && validVault(request.resource.data) && request.resource.data.storagePath == resource.data.storagePath
+            && request.resource.data.filename == resource.data.filename
+            && request.resource.data.bytes == resource.data.bytes
+            && request.resource.data.contentType == resource.data.contentType)
+        );
+      allow delete: if admin();
+    }
+    // Explicit deny for all member role/grant records, future collections, and
+    // any user attempt to grant themself privileged permissions.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
