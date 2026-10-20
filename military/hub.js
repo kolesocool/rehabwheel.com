@@ -3,6 +3,7 @@
    verified Firebase authentication AND server-side military role rules.
    The application FAILS CLOSED if config, claims, or network are absent. */
 import {firebaseConfig} from './firebase-config.js';
+import {renderMobility} from './mobility.js';
 
 const $=id=>document.getElementById(id);
 const screens={login:$('loginScreen'),denied:$('deniedScreen'),hub:$('hubScreen')};
@@ -15,7 +16,7 @@ const catalogs={
  procurement:{title:'Procurement',subtitle:'Sourcing and purchasing coordination.',columns:['title','status','owner','deadline'],fields:['title','status','owner','deadline','notes']},
  documents:{title:'Protected document vault',subtitle:'Authenticated team documents stored outside public GitHub Pages.',columns:['title','category','filename','updatedAt'],fields:['title','category','file']}
 };
-const sectionNames={overview:'Command overview',programs:'Program pipeline',tasks:'Action center',engineering:'Engineering',procurement:'Procurement',documents:'Document vault'};
+const sectionNames={overview:'Command overview',programs:'Program pipeline',tasks:'Action center',engineering:'Engineering',procurement:'Procurement',documents:'Document vault',mobility:'Mobility concept'};
 const states=['Planning','In progress','Submitted','On hold','Complete'];
 const priorities=['Normal','High','Critical'];
 let auth=null,db=null,storage=null,authApi=null,dbApi=null,storageApi=null;
@@ -92,15 +93,16 @@ async function readCollection(key){
  cache[key]=list;return list;
 }
 async function activate(key){
- if(!currentUser||!(key==='overview'||catalogs[key]))return;
+ if(!currentUser||!(key==='overview'||key==='mobility'||catalogs[key]))return;
  active=key;
  for(const b of $('hubNav').querySelectorAll('[data-view]')){if(b.dataset.view===key)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');}
  $('currentView').textContent=sectionNames[key];
- $('workspaceHeading').textContent=key==='overview'?'A clearer view of what moves next.':catalogs[key].title;
- $('workspaceIntro').textContent=key==='overview'?'Live authorized team records, tasks, and documents—nothing is published here.':catalogs[key].subtitle;
+ $('workspaceHeading').textContent=key==='overview'?'A clearer view of what moves next.':key==='mobility'?'LegMaker Military Mobility.':catalogs[key].title;
+ $('workspaceIntro').textContent=key==='overview'?'Live authorized team records, tasks, and documents—nothing is published here.':key==='mobility'?'A proposed wheelchair drive + lower-limb exercise system. Concept-stage design and verification priorities.':catalogs[key].subtitle;
  const root=$('workspaceContent');root.replaceChildren(element('p','loading','Loading private records…'));
  try{
   if(key==='overview'){await overview(root);}
+  else if(key==='mobility'){renderMobility(root);}
   else{const items=await readCollection(key);if(active===key)renderSection(root,key,items);}
  }catch(e){if(active===key)root.replaceChildren(element('p','loading',friendlyError(e)));if(String(e?.code||'').includes('permission-denied')){clearPrivateState();show('denied');}}
 }
