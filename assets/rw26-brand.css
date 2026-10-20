@@ -289,6 +289,7 @@ body.agency-site{
 .agency-site footer{background:#0f2630;color:#e8f3ef}
 .agency-site footer :is(p,small){color:#d8e5e1}
 .agency-site footer a{color:#e1f8ef}
+.agency-site footer .brand{color:#f1faf7!important}
 .agency-site .footer-links a{min-height:38px}
 /* Subpages retain familiar structure but gain shared editorial hierarchy */
 .agency-site.inner main :is(.page-hero,.inner-hero,.content-hero),
