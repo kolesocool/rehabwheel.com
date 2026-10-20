@@ -41,7 +41,7 @@ for url in urls:
     assert 'noindex' not in p.meta.get('robots',''),file
     assert p.title not in seen_titles,file+' duplicate title';seen_titles.add(p.title)
     desc=p.meta['description'];assert desc not in seen_descriptions,file+' duplicate description';seen_descriptions.add(desc)
-    assert 'og:title' in p.meta and 'twitter:title' in p.meta, file+' missing social title metadata'\n    # Existing legacy pages may have incomplete metadata or split structured data.
+    # Existing legacy pages may have incomplete metadata or split structured data.
     # Report those as backlog findings, while strictly enforcing new Community SEO.
     strict=file=='community/index.html'
     social_titles=(p.meta.get('og:title'),p.meta.get('twitter:title'))
