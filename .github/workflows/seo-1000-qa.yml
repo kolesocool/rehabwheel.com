@@ -1,0 +1,29 @@
+name: Rehabwheel SEO 1000 QA
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'docs/SEO_1000_AUDIT_MATRIX.md'
+      - 'scripts/seo-1000-regressions.py'
+      - '.github/workflows/seo-1000-qa.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - 'docs/SEO_1000_AUDIT_MATRIX.md'
+      - 'scripts/seo-1000-regressions.py'
+      - '.github/workflows/seo-1000-qa.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check SEO and private-data release invariants
+        run: python3 scripts/seo-1000-regressions.py
