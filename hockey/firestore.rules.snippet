@@ -1,0 +1,21 @@
+// REFERENCE SNIPPET ONLY. NOT DEPLOYED.
+// Integrate the match block into a reviewed Firestore ruleset
+// rather than replacing the community project's rules.
+// All server APIs and Storage rules require independent enforcement.
+// No player, clinical or athlete data may be inserted until governance approval.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function approvedHockeyResearcher() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.hockeyLabAccess == true;
+    }
+    match /hockeyLab/{document=**} {
+      allow read: if approvedHockeyResearcher();
+      // No browser writes. Use only separately audited trusted services.
+      allow write: if false;
+    }
+    // This is a snippet, not the site's complete ruleset.
+  }
+}
