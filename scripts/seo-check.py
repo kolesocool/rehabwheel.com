@@ -41,7 +41,7 @@ for url in urls:
     assert 'noindex' not in p.meta.get('robots',''),file
     assert p.title not in seen_titles,file+' duplicate title';seen_titles.add(p.title)
     desc=p.meta['description'];assert desc not in seen_descriptions,file+' duplicate description';seen_descriptions.add(desc)
-    assert p.title==p.meta['og:title']==p.meta['twitter:title'],file+' title drift'
+    assert 'og:title' in p.meta and 'twitter:title' in p.meta, file+' missing social title metadata'\n    assert p.title==p.meta['og:title']==p.meta['twitter:title'],file+' title drift'
     assert desc==p.meta['og:description']==p.meta['twitter:description'],file+' description drift'
     assert p.schemas,file+' missing structured data';graph=[item for schema in p.schemas for item in schema.get('@graph',[schema])]
     web=[n for n in graph if n.get('@id')==url+'#webpage'];assert len(web)==1,file+' page identity'
