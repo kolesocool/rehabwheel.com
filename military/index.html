@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102b31">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Pragma" content="no-cache">
+<meta name="description" content="Restricted Rehabwheel team workspace. Authentication required.">
+<title>Military Programs | Restricted Access | Rehabwheel</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="/military/hub.css?v=20261020-1">
+<script type="module" src="/military/hub.js?v=20261020-1"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="ambient" aria-hidden="true"></div>
+<header class="site-header">
+ <a class="brand" href="/" aria-label="Rehabwheel company website">
+  <img src="/rehabwheel_logo.jpg" width="52" height="52" alt="Rehabwheel logo" decoding="async">
+  <span><strong>REHABWHEEL</strong><small>MILITARY PROGRAMS</small></span>
+ </a>
+ <div class="head-right">
+  <span class="head-status"><i aria-hidden="true"></i>RESTRICTED WORKSPACE</span>
+  <button type="button" class="signout ghost-action" id="signout" hidden>Sign out <span aria-hidden="true">↗</span></button>
+ </div>
+</header>
+<main id="main">
+ <section id="loginScreen" class="entry-shell" aria-labelledby="loginTitle">
+  <div class="intro">
+   <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> INTERNAL OPERATIONS / CONTROLLED ACCESS</p>
+   <h1 id="loginTitle">Mission clarity.<br><em>Private by design.</em></h1>
+   <p class="intro-deck">A dedicated workspace for Rehabwheel's military-facing program coordination, engineering readiness and institutional procurement workflows.</p>
+   <div class="intro-rule" aria-hidden="true"><span>01 / ACCESS</span><span>02 / VERIFY</span><span>03 / WORKSPACE</span></div>
+   <div class="confidential-caption"><span class="caption-icon" aria-hidden="true">◎</span><p>Internal Rehabwheel workspace. Not a U.S. Army, Department of Defense or government-operated website. No official affiliation or endorsement is implied.</p></div>
+  </div>
+  <div class="access-card" id="accessCard">
+   <div class="card-heading"><span class="mini-label">AUTHORIZED TEAM MEMBERS</span><span class="verified-deco" aria-hidden="true">RW / SECURE</span></div>
+   <div class="lock-art" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><rect x="12" y="29" width="40" height="28" rx="5"/><path d="M21 29V20a11 11 0 0 1 22 0v9"/><circle cx="32" cy="41" r="3"/><path d="M32 44v6"/></svg></div>
+   <h2>Team sign in.</h2>
+   <p class="card-deck">Your credentials and assigned access role are required. Private workspace information is never embedded in this page.</p>
+   <form id="loginForm" autocomplete="on" novalidate>
+    <label for="email">Work email</label>
+    <input id="email" name="email" type="email" required maxlength="254" autocomplete="username" placeholder="you@rehabwheel.com" inputmode="email">
+    <label for="password">Password</label>
+    <div class="password-field">
+     <input id="password" name="password" type="password" required autocomplete="current-password" placeholder="Enter your password">
+     <button type="button" class="reveal" id="revealPassword" aria-label="Show password" aria-pressed="false">Show</button>
+    </div>
+    <button class="login-button" id="loginButton" type="submit" disabled>Secure sign in <span aria-hidden="true">→</span></button>
+    <p class="form-status" id="loginStatus" role="status" aria-live="polite">Checking secure access configuration…</p>
+   </form>
+   <div class="card-footer"><span aria-hidden="true">◈</span> Encrypted authentication · Role-based authorization · No public documents</div>
+   <p class="support">Need an account or access restored? <a href="mailto:nikita@rehabwheel.com?subject=Rehabwheel%20Military%20Hub%20Access">Contact Rehabwheel administration</a>.</p>
+  </div>
+ </section>
+ <section id="deniedScreen" class="access-denied" hidden aria-labelledby="deniedTitle">
+  <span class="mini-label">ACCESS RESTRICTED</span><h1 id="deniedTitle">This workspace requires approval.</h1>
+  <p>Authentication alone does not grant military-workspace access. Contact the Rehabwheel administrator to request the appropriate role.</p>
+  <div class="denied-actions"><button type="button" id="deniedSignout" class="login-button">Sign out</button><a href="mailto:nikita@rehabwheel.com?subject=Rehabwheel%20Military%20Hub%20Access">Request access ↗</a></div>
+ </section>
+ <section id="hubScreen" class="hub" hidden aria-label="Authorized military programs workspace">
+  <aside class="rail" aria-label="Military workspace navigation">
+   <div class="rail-top"><span class="mini-label">REHABWHEEL / INTERNAL</span><h2>Military<br>Programs Hub</h2><p>Team operations</p></div>
+   <nav class="hub-nav" id="hubNav" aria-label="Workspace modules">
+    <button type="button" data-view="overview" aria-current="page"><span class="nav-number">01</span> Command overview <span aria-hidden="true">↗</span></button>
+    <button type="button" data-view="programs"><span class="nav-number">02</span> Program pipeline <span aria-hidden="true">↗</span></button>
+    <button type="button" data-view="tasks"><span class="nav-number">03</span> Action center <span aria-hidden="true">↗</span></button>
+    <button type="button" data-view="engineering"><span class="nav-number">04</span> Engineering <span aria-hidden="true">↗</span></button>
+    <button type="button" data-view="procurement"><span class="nav-number">05</span> Procurement <span aria-hidden="true">↗</span></button>
+    <button type="button" data-view="documents"><span class="nav-number">06</span> Document vault <span aria-hidden="true">↗</span></button>
+   </nav>
+   <div class="rail-foot"><span class="rail-dot" aria-hidden="true"></span><span>Private project records only<br><small>Access enforced by server rules</small></span></div>
+  </aside>
+  <div class="workspace">
+   <div class="workspace-top">
+    <div><span class="mini-label">SECURE PROGRAM OPERATIONS</span><p class="breadcrumbs">Rehabwheel <span aria-hidden="true">/</span> Military Programs <span aria-hidden="true">/</span> <span id="currentView">Overview</span></p></div>
+    <div class="identity"><span id="roleChip">Verified member</span><span id="identityEmail"></span></div>
+   </div>
+   <header class="workspace-hero"><div><p class="eyebrow">LEGMAKER / DEFENSE REHABILITATION WORKSTREAM</p><h1 id="workspaceHeading">A clearer view of what moves next.</h1><p id="workspaceIntro">Authorized team records, tasks, and controlled documents—organized in one working environment.</p></div><span class="workspace-mark" aria-hidden="true">RW<span>↗</span></span></header>
+   <section id="workspaceContent" aria-live="polite" aria-label="Protected workspace records">
+    <p class="loading">Validating access to protected data…</p>
+   </section>
+   <div class="hub-disclaimer"><strong>Information boundary.</strong> This workspace is intended for ordinary company-confidential material only after security review. Do not upload classified information, CUI, controlled technical data, export-restricted material, or patient-identifiable information. This portal is not a government system.</div>
+  </div>
+ </section>
+</main>
+<footer class="site-footer"><span>© Rehabwheel Inc. · Restricted team workspace</span><span>Investigational technology · No government endorsement</span><a href="/security.html">Website security ↗</a></footer>
+</body>
+</html>
