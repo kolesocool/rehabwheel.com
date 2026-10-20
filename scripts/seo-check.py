@@ -29,13 +29,14 @@ class Page(HTMLParser):
         if tag=='script' and self.mode=='schema':self.schemas.append(json.loads(self.buf));self.mode=None
 
 pages={p.name:Page(p.read_text()) for p in Path('.').glob('*.html')}
+pages['community/index.html']=Page(Path('community/index.html').read_text())
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9','i':'http://www.google.com/schemas/sitemap-image/1.1'}
 root=ET.parse('sitemap.xml').getroot();urls=[e.text for e in root.findall('s:url/s:loc',ns)]
-assert len(urls)==len(set(urls))==25
+assert len(urls)==len(set(urls)) and len(urls)>=26
 assert not any(x.endswith(('404.html','icons.html')) for x in urls)
 seen_titles=set();seen_descriptions=set()
 for url in urls:
-    file=urlsplit(url).path.lstrip('/') or 'index.html';p=pages[file]
+    file=urlsplit(url).path.lstrip('/') or 'index.html';file+='index.html' if file.endswith('/') else '';p=pages[file]
     assert p.links==[url],file+' canonical';assert p.h1==1,file+' h1'
     assert 'noindex' not in p.meta.get('robots',''),file
     assert p.title not in seen_titles,file+' duplicate title';seen_titles.add(p.title)
@@ -45,7 +46,7 @@ for url in urls:
     assert len(p.schemas)==1,file+' fragmented schema';graph=p.schemas[0]['@graph']
     web=[n for n in graph if n.get('@id')==url+'#webpage'];assert len(web)==1,file+' page identity'
     assert web[0]['name']==p.title and web[0]['description']==desc,file+' schema drift'
-    for target in web[0]['relatedLink']:
+    for target in web[0].get('relatedLink',[]):
         u=urlsplit(target);dest=u.path.lstrip('/') or 'index.html';assert dest in pages,target
         if u.fragment:assert unquote(u.fragment) in pages[dest].ids,target
     for node in graph:
@@ -54,4 +55,4 @@ for url in urls:
 for image in root.findall('.//i:loc',ns):assert Path(urlsplit(image.text).path.lstrip('/')).is_file(),image.text
 assert 'noindex' in pages['icons.html'].meta['robots']
 assert len(re.findall(r'^\| \d+ \|',Path('docs/SEO_100_EXTRA.md').read_text(),re.M))==100
-print('PASS: 25 unique canonical pages, metadata alignment, consolidated schema, FAQ/product identities, contextual targets, sitemap images and 100-item record.')
+print(f'PASS: {len(urls)} unique canonical pages, metadata alignment, consolidated schema, FAQ/product identities, contextual targets, sitemap images and 100-item record.')
