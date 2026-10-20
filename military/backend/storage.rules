@@ -1,0 +1,35 @@
+// Rehabwheel Military Hub: authenticated in-browser file reads only.
+// Do not use getDownloadURL (public bearer-token URLs) for private documents.
+// This is not a classified/CUI/PHI system.
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function member() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.rehabwheelMilitary == true
+        && request.auth.token.militaryRole in ['viewer','editor','admin'];
+    }
+    function editor() { return member() && request.auth.token.militaryRole in ['editor','admin']; }
+    function admin() { return member() && request.auth.token.militaryRole == 'admin'; }
+    function allowedType() {
+      return request.resource.contentType in [
+        'application/pdf',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'text/plain'
+      ];
+    }
+    match /military/{uploaderUid}/{fileId} {
+      allow get: if member();
+      allow list: if false;
+      allow create: if editor() && request.auth.uid == uploaderUid
+        && request.resource.size > 0 && request.resource.size <= 10485760
+        && allowedType();
+      allow update: if false;
+      allow delete: if admin();
+    }
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}
