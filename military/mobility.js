@@ -36,6 +36,7 @@ const diagram = `<svg class="mm-sketch" viewBox="0 0 650 420" role="img" aria-la
 <path d="M157 85L263 85L288 153L174 153" fill="#17433f" stroke="#b8d8ca" stroke-width="5" stroke-linejoin="round"/>
 <path d="M154 92L135 51M136 51L109 51" stroke="#b8d8ca" stroke-width="9" stroke-linecap="round"/>
 <path d="M188 166L286 166L365 268L340 277L257 204L196 203Z" fill="url(#mmSteel)" opacity=".9"/>
+<circle cx="288" cy="261" r="69" fill="#164a4b" stroke="#8fbcaa" stroke-width="5" opacity=".58"/>
 <circle cx="234" cy="282" r="83" fill="#0e3235" stroke="#c5e7d6" stroke-width="7"/>
 <circle cx="234" cy="282" r="59" fill="none" stroke="#88bbab" stroke-width="3" stroke-dasharray="3 13"/>
 <circle cx="234" cy="282" r="24" fill="url(#mmGold)" stroke="#e8c092" stroke-width="4"/>
@@ -102,7 +103,7 @@ export function renderMobility(root){
     </section>
 
     <section class="mm-section" aria-labelledby="mm-architecture-title">
-      <div class="mm-sectionhead"><p class="mm-overline">02 / SYSTEM DESIGN</p><h3 id="mm-architecture-title">Two motions. One coordinated safety case.</h3><p>Separate functions demand a controlled interface and explicit priority rules before any integrated testing.</p></div>
+      <div class="mm-sectionhead"><p class="mm-overline">02 / SYSTEM DESIGN</p><h3 id="mm-architecture-title">Two motions. One coordinated safety case.</h3><p>Three proposed Activate research workstreams: propulsion, exercise coordination and safety verification. Any program participation would require a separate application and approval.</p></div>
       <div class="mm-architecture">
         <article><span class="mm-card-num">01 / DRIVE</span><div class="mm-card-icon" aria-hidden="true">↗</div><h4>Detachable propulsion</h4><p>Proposed two-wheel motor-assisted drive module for controlled wheelchair transport on defined, evaluated surfaces.</p><span class="mm-tag">ENGINEERING CONCEPT</span></article>
         <article><span class="mm-card-num">02 / EXERCISE</span><div class="mm-card-icon" aria-hidden="true">◉</div><h4>LegMaker lower-limb motion</h4><p>Wheelchair-attached pedal architecture intended for passive, assistive and active lower-limb exercise modes.</p><span class="mm-tag">INVESTIGATIONAL PLATFORM</span></article>
@@ -125,7 +126,7 @@ export function renderMobility(root){
     <section class="mm-closing" aria-labelledby="mm-closing-title">
       <p class="mm-overline">04 / RESEARCH COLLABORATION</p>
       <h3 id="mm-closing-title">Build the evidence.<br><em>Then build the mission.</em></h3>
-      <p>Rehabwheel seeks technical, rehabilitation and institutional feedback on this proposed mobility-plus-exercise architecture. We welcome conversations about requirements, feasibility studies and controlled validation—not procurement claims or deployment promises.</p>
+      <p>Rehabwheel proposes to develop and evaluate the propulsion, exercise coordination and safety systems through an Activate research application, subject to eligibility and selection. We seek technical, rehabilitation and institutional feedback on this proposed mobility-plus-exercise architecture. We welcome conversations about requirements, feasibility studies and controlled validation—not procurement claims or deployment promises.</p>
       <div class="mm-buttons"><a class="mm-primary" href="mailto:info@rehabwheel.com?subject=LegMaker%20Military%20Mobility%20Research%20Discussion">Discuss an evaluation <span aria-hidden="true">↗</span></a><a class="mm-secondary" href="/technology.html">Explore LegMaker technology <span aria-hidden="true">↗</span></a></div>
       <div class="mm-legal"><strong>Important:</strong> LegMaker is investigational. Military Mobility is a proposed research concept and is not presented as a validated assistive transport system, marketed medical device, approved clinical intervention or government program. No U.S. Department of Defense, service branch, or federal endorsement or partnership is implied. This static presentation contains no confidential records.</div>
     </section>
