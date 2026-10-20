@@ -24,7 +24,7 @@ service firebase.storage {
     match /military/{uploaderUid}/{fileId} {
       allow get: if member();
       allow list: if false;
-      allow create: if editor() && request.auth.uid == uploaderUid
+      allow create: if resource == null && editor() && request.auth.uid == uploaderUid
         && request.resource.size > 0 && request.resource.size <= 10485760
         && allowedType();
       allow update: if false;
