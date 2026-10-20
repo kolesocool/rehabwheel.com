@@ -41,4 +41,4 @@ If the **login page itself** (not merely its data) must be inaccessible before a
 - Security rules: `military/backend/firestore.rules`, `military/backend/storage.rules`.
 - Admin-only provisioning script: `military/backend/provision-user.mjs`.
 - Run source/locked-mode QA: `node military/scripts/verify.mjs`; browser smoke QA: `node military/scripts/smoke.mjs`.
-- Run dedicated Firebase rules emulator test: `cd military/backend && npm ci && npm run test:rules` once lockfile/dependencies are installed.
+- Run dedicated Firebase rules emulator test: `cd military/backend && npm install && npm run test:rules` once lockfile/dependencies are installed.
