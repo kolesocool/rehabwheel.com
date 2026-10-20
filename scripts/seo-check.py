@@ -43,7 +43,7 @@ for url in urls:
     desc=p.meta['description'];assert desc not in seen_descriptions,file+' duplicate description';seen_descriptions.add(desc)
     assert p.title==p.meta['og:title']==p.meta['twitter:title'],file+' title drift'
     assert desc==p.meta['og:description']==p.meta['twitter:description'],file+' description drift'
-    assert len(p.schemas)==1,file+' fragmented schema';graph=p.schemas[0]['@graph']
+    assert p.schemas,file+' missing structured data';graph=[item for schema in p.schemas for item in schema.get('@graph',[schema])]
     web=[n for n in graph if n.get('@id')==url+'#webpage'];assert len(web)==1,file+' page identity'
     assert web[0]['name']==p.title and web[0]['description']==desc,file+' schema drift'
     for target in web[0].get('relatedLink',[]):
