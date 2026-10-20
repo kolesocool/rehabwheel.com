@@ -2,6 +2,13 @@
 
 **Status:** Private portal UI and authorization policy are coded. **Authentication is intentionally disabled until a dedicated Firebase project, verified accounts, rules, audit logging, and production configuration are provisioned.** Do not describe this as a launched military portal before these steps are complete.
 
+## LegMaker Military Mobility concept module
+
+- **New authenticated workspace tab:** **Mobility concept**, with a responsive editorial presentation, conceptual wheelchair illustration, three research-storyboard views, proposed system functions and six planned verification gates.
+- **Important limitation:** This non-confidential presentation is bundled as public static JavaScript and CSS on GitHub Pages. The visual tab appears only after the existing verified-email + admin-assigned military-role authentication gate; *source text and static assets are still publicly inspectable*. Never place confidential technical details, program records, PHI, CUI, classified or export-restricted data in the module.
+- The concept does not establish clinical efficacy, active military deployment, government participation, regulatory authorization or functioning propulsion hardware. All unverified features are marked as proposed or planned.
+- Source: `military/mobility.js` and `military/mobility.css`. Authentication remains disabled until the dedicated Firebase service and server rules are provisioned and verified.
+
 ## What is public vs private
 
 - `/military/` is a **publicly retrievable static sign-in shell** because Rehabwheel.com is hosted on GitHub Pages. Its code and CSS can be viewed by anyone; therefore there are **no secrets, internal proposal details, personnel lists, grant budgets or restricted files** in that page or the repository.
