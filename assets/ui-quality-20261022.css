@@ -1,0 +1,83 @@
+/* Rehabwheel UI quality pass — 2026-10-22.
+   Progressive enhancement of the existing design system; no product-performance claims. */
+:root{--rw-focus:#087d83;--rw-reading:#243a46;--rw-border:#c6d5dc}
+html{scroll-padding-top:92px}
+body{overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+main,section,article,figure,.wrap{min-width:0}
+img,video,iframe,svg{max-width:100%}
+img{height:auto}
+a,button,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+ outline:3px solid var(--rw-focus)!important;outline-offset:4px!important;
+ box-shadow:0 0 0 6px rgba(255,255,255,.95)!important
+}
+:where(button,[role=button],summary){cursor:pointer}
+:where(button,a,input,select,textarea){touch-action:manipulation}
+:where(button,.btn,.menu-toggle,.rw-nav-trigger){min-height:44px}
+:where(input,select,textarea){font-size:16px;max-width:100%}
+:where(.hero-copy,.section-head,.rw26-pathways article,.rw-video-card) :where(p,li){
+ line-height:1.65
+}
+:where(.hero-copy,.section-head,.rw26-pathways article) p{max-width:70ch}
+:where(.hero,.section,.rw26-pathways) :where(h1,h2,h3){text-wrap:balance;overflow-wrap:normal}
+:where(.hero,.section,.rw26-pathways) p{text-wrap:pretty}
+:where(.rw26-pathways article,.rw-video-card){min-width:0}
+:where(.rw26-pathways article) a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:4px}
+:where(.rw-video-frame){width:100%;aspect-ratio:16/9;overflow:hidden}
+:where(.rw-video-frame iframe){display:block;width:100%;height:100%;border:0}
+:where(.rw-nav-panel){max-height:min(75vh,650px);overflow-y:auto;overscroll-behavior:contain}
+:where(.rw-nav-panel a,.mobile-nav a){line-height:1.45}
+:where(.rw-nav-panel a):hover{text-decoration:underline;text-underline-offset:4px}
+:where(.hero-note,.rw-evidence-hero){line-height:1.55}
+:where(.trust){row-gap:10px}
+:where(.hero-product){min-width:0}
+:where(.hero-product img){display:block;width:100%;height:auto}
+:where(.site-header){isolation:isolate}
+:where(.mobile-nav){max-height:calc(100dvh - 64px);overflow-y:auto;overscroll-behavior:contain}
+:where(.mobile-nav details){min-width:0}
+:where(.mobile-nav summary){min-height:44px;display:flex;align-items:center}
+:where(.actions .btn){text-align:center;white-space:normal}
+:where(.rw26-pathways article h2){hyphens:auto}
+:where(.rw-subscribe-consent){max-width:75ch}
+:where(.rw-subscribe-form) :where(input,button){min-height:44px}
+:where(.skip-link):focus{z-index:1000}
+@media(max-width:900px){
+ .rw-desktop-nav{display:none}
+ .hero{min-height:0}
+ .rw26-pathways{gap:16px}
+}
+@media(max-width:620px){
+ html{scroll-padding-top:76px}
+ .hero{padding-top:32px;padding-bottom:40px}
+ .hero h1{font-size:clamp(2.75rem,12vw,4rem);line-height:1.02}
+ .hero .lede{font-size:clamp(1rem,4.2vw,1.2rem)}
+ .hero .actions{gap:12px;margin:26px 0}
+ .hero .actions .btn{width:100%;min-height:48px}
+ .rw-evidence-hero{display:flex;flex-direction:column;align-items:flex-start}
+ .hero-product figcaption{max-width:100%}
+ .section{padding-top:60px;padding-bottom:60px}
+ .section h2{font-size:clamp(2rem,9vw,2.8rem)}
+ .rw26-pathways article{padding:22px}
+ .rw26-pathways article h2{font-size:clamp(1.5rem,7vw,2.25rem)}
+ .rw-video-grid{grid-template-columns:minmax(0,1fr)}
+ .rw-video-card{overflow:hidden}
+}
+@media(max-width:380px){
+ .wrap{width:calc(100% - 24px)}
+ .brand{gap:6px}
+ .brand span:last-child{font-size:.94rem}
+ .hero .trust{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media(forced-colors:active){
+ :where(.btn,.rw-nav-trigger,.rw-nav-panel,.rw26-pathways article){border:1px solid ButtonText}
+ :where(a,button,input,summary):focus-visible{outline:3px solid Highlight!important}
+}
+@media print{
+ .site-header,.progress,.mobile-nav,.menu-toggle{display:none!important}
+ body{color:#000!important;background:#fff!important}
+ a{color:#000;text-decoration:underline}
+ .hero,.section{min-height:0;break-inside:avoid}
+}
