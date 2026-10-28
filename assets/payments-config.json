@@ -1,0 +1,8 @@
+{
+  "provider": "stripe",
+  "mode": "payment_links",
+  "status": "awaiting_verified_links",
+  "currency": "USD",
+  "products": [],
+  "notice": "Add only Stripe Dashboard-generated payment links after merchant connection, price verification and compliance review. Never put secret API keys or customer payment data in this public repository."
+}
