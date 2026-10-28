@@ -1,6 +1,6 @@
 {
   "provider": "calendly",
-  "booking_url": null,
+  "booking_url": "https://calendly.com/rehabmakerinc/30min",
   "event_name": "Free LegMaker Consultation & Demo",
   "duration_minutes": 30,
   "timezone": "America/Los_Angeles",
@@ -10,5 +10,5 @@
   },
   "minimum_notice_hours": 24,
   "venue": "Humanmade, San Francisco — subject to confirmed access",
-  "notes": "Set booking_url only after Calendly event type is configured and tested. Null preserves request form; never display a fake live booking button."
+  "notes": "Owner-provided Calendly event link. Event settings (availability, timezone, notice, location, confirmation emails and conflict checks) must be verified in Calendly; preserve email-request fallback."
 }
