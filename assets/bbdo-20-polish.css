@@ -1,0 +1,46 @@
+/* BBDO-inspired, independently developed Rehabwheel editorial polish — 20 UI refinements */
+:root{--rw-lux-ink:#103b38;--rw-lux-accent:#087363;--rw-lux-cream:#f7faf6;--rw-lux-glow:#d7f1e6;--rw-lux-ease:cubic-bezier(.2,.7,.2,1)}
+/* 01: refined optical type rendering */
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+/* 02: visible accessible keyboard focus */
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid #0b8975!important;outline-offset:4px!important}
+/* 03: editorial section rhythm */
+.rw-editorial{margin-block:clamp(42px,6vw,92px)}
+/* 04: responsive display type */
+.rw-editorial h2{font-size:clamp(34px,4.8vw,68px);letter-spacing:-.052em;text-wrap:balance}
+/* 05: restrained section eyebrow */
+.rw-editorial .rw-eyebrow{display:flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em}
+.rw-editorial .rw-eyebrow:before{content:'';width:25px;height:1px;background:currentColor;opacity:.65}
+/* 06: comfortable paragraph measure */
+.rw-editorial .rw-intro{max-width:66ch;line-height:1.75;text-wrap:pretty}
+/* 07: premium bordered cards */
+.rw-editorial .rw-card{position:relative;overflow:hidden;border:1px solid #d9e7e0;border-radius:22px;box-shadow:0 14px 40px #103b380b;background:linear-gradient(155deg,#fff 50%,#f9fcfa)}
+/* 08: thin accent reveal */
+.rw-editorial .rw-card:before{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#0d7565,#a7dfcc);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--rw-lux-ease)}
+.rw-editorial .rw-card:hover:before,.rw-editorial .rw-card:focus-within:before{transform:scaleX(1)}
+/* 09: subtle card lift */
+.rw-editorial .rw-card{transition:transform .35s var(--rw-lux-ease),box-shadow .35s var(--rw-lux-ease)}
+.rw-editorial .rw-card:hover{transform:translateY(-5px);box-shadow:0 24px 55px #103b381a}
+/* 10: visual CTA feedback */
+.rw-editorial .rw-action{border-radius:11px;box-shadow:0 10px 26px #08736330;transition:transform .25s var(--rw-lux-ease),box-shadow .25s var(--rw-lux-ease),background .25s}
+.rw-editorial .rw-action:hover{transform:translateY(-2px);box-shadow:0 15px 34px #08736342}
+/* 11: editorial panel depth */
+.rw-editorial .rw-story-shell{background:radial-gradient(circle at 96% 4%,#d6f1e5,transparent 38%),linear-gradient(140deg,#f4faf6,#eef7f2);border-radius:28px}
+/* 12: refined chips */
+.rw-editorial .rw-chip{border:1px solid #b9ddce;background:#e6f6ee;padding:9px 13px;letter-spacing:.02em}
+/* 13: image presentation */
+.rw-editorial img{display:block;max-width:100%;border-radius:14px;transition:transform .45s var(--rw-lux-ease)}
+/* 14: gallery hover without layout shift */
+.rw-editorial .rw-card:hover img{transform:scale(1.025)}
+/* 15: numbered process hierarchy */
+.rw-editorial .rw-step b{width:46px;height:46px;flex-basis:46px;background:#e2f3eb;border:1px solid #b4dfcf;font-size:17px}
+/* 16: strong separators */
+.rw-editorial .rw-rule{border-top:1px solid #cfe2d8;margin-block:clamp(35px,5vw,72px)}
+/* 17: tactile link underline */
+.rw-editorial .rw-quiet-link{text-decoration-thickness:1px;text-underline-offset:5px}
+/* 18: narrow-screen legibility */
+@media(max-width:760px){.rw-editorial{padding-inline:20px}.rw-editorial h2{font-size:clamp(32px,8vw,48px)}.rw-editorial .rw-story-shell{padding:26px 21px}.rw-editorial .rw-card{padding:23px}.rw-editorial .rw-steps{gap:24px}}
+/* 19: reduced-motion respect */
+@media(prefers-reduced-motion:reduce){.rw-editorial *,.rw-editorial *:before,.rw-editorial *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important;transform:none!important}}
+/* 20: print-optimized legibility */
+@media print{.rw-editorial .rw-card,.rw-editorial .rw-story-shell{box-shadow:none!important;background:#fff!important;border:1px solid #aaa!important}.rw-editorial .rw-action{box-shadow:none!important;color:#000!important;background:#fff!important;border:1px solid #000!important}}
