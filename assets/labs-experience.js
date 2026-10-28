@@ -1,0 +1,2 @@
+/* Progressive enhancement: visible content works without JavaScript. */
+(function(){const anchors=document.querySelectorAll('a[href^="/athlete-demo/"]');for(const a of anchors){if(!a.getAttribute('aria-label'))a.setAttribute('aria-label',a.textContent.trim()+' — request a 30-minute consultation and prototype demonstration');}})();
