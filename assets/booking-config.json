@@ -1,0 +1,14 @@
+{
+  "provider": "calendly",
+  "booking_url": null,
+  "event_name": "Free LegMaker Consultation & Demo",
+  "duration_minutes": 30,
+  "timezone": "America/Los_Angeles",
+  "hours_local": {
+    "start": "09:00",
+    "end": "21:00"
+  },
+  "minimum_notice_hours": 24,
+  "venue": "Humanmade, San Francisco — subject to confirmed access",
+  "notes": "Set booking_url only after Calendly event type is configured and tested. Null preserves request form; never display a fake live booking button."
+}
