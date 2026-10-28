@@ -36,3 +36,11 @@ The booking page `/athlete-demo/` currently accepts **requests** via FormSubmit,
 ## Safety and privacy
 
 LegMaker is an investigational prototype. Avoid patient-level health information, diagnoses, outcomes, or treatment claims in public JSON. Do not present a marketing demonstration as an approved clinical trial. All content must comply with applicable privacy, consent, and research requirements.
+
+## Local story editor
+
+Open `/legmaker-labs/story-editor/` to compose and download a publication-ready JSON object locally. The page does **not** store data, upload photos or video, log in to GitHub, or publish directly. It intentionally requires explicit consent verification before generating a public story. Add the object to `assets/labs-stories.json` through a reviewed pull request. Media URLs must already be approved and publicly accessible over HTTPS.
+
+## Scheduling provider connection
+
+Connect a booking provider such as Calendly and create a 30-minute event type with America/Los_Angeles timezone, daily 9 AM–9 PM availability, and 24-hour minimum notice. Verify Humanmade room availability and add necessary screening questions. After the owner supplies the verified public booking URL, replace the email-request form CTA or embed the scheduling widget. Do not link to an unconfigured or guessed calendar URL.
