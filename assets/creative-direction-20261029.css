@@ -1,0 +1,21 @@
+/* Rehabwheel editorial art direction — October 2026 */
+:root{--rw-ink:#122c32;--rw-green:#116b61;--rw-soft:#f3f8f6;--rw-hair:#d8e6e0}
+html{scroll-padding-top:88px}body{overflow-x:clip;-webkit-font-smoothing:antialiased}
+.site-header{background:rgba(255,255,255,.97)!important;border-bottom:1px solid var(--rw-hair)!important;box-shadow:0 5px 24px rgba(15,48,43,.045)!important}
+.site-header .nav{max-width:1240px}.site-header .brand{border:0!important;background:none!important;box-shadow:none!important}
+.site-header .brand .rw-header-brand-logo{object-fit:contain;object-position:left center}
+.site-header a:focus-visible,.site-header button:focus-visible,a.btn:focus-visible{outline:3px solid #138978!important;outline-offset:4px}
+main h1,main h2,.hero h1,.section h2{letter-spacing:-.045em;overflow-wrap:break-word;text-wrap:balance}
+main p,.hero .lede{overflow-wrap:break-word}main .lede,main .rw-labs-lede{max-width:65ch}
+.hero{gap:clamp(22px,4vw,70px)}.hero h1{line-height:1.03!important}
+.hero img,.rw-labs-showcase img{max-width:100%;height:auto}
+.btn,.rw-labs-cta{min-height:46px;transition:transform .2s ease,box-shadow .2s ease!important}
+.btn:hover,.rw-labs-cta:hover{transform:translateY(-2px)}
+.cards article,.rw-lab-tile,.rw-partner-card{border-color:var(--rw-hair)!important;box-shadow:0 8px 30px rgba(20,55,50,.05)}
+.section{padding-block:clamp(58px,7vw,106px)}
+.section-head{margin-bottom:clamp(24px,4vw,48px)}
+.rw-labs-grid{gap:clamp(14px,2vw,24px)}
+.rw-lab-tile strong{line-height:1.18!important}
+img{font-style:normal}button,a{-webkit-tap-highlight-color:transparent}
+@media(max-width:760px){.wrap{width:calc(100% - 36px)!important}.site-header .nav{min-height:66px;gap:10px}.rw-header-brand-logo{height:40px!important;max-width:145px!important}.hero{padding-top:35px!important;padding-bottom:46px!important;min-height:0!important}.hero h1{font-size:clamp(38px,10vw,55px)!important;line-height:1.04!important}.hero .lede{font-size:17px!important;line-height:1.65!important}.section{padding-block:58px!important}.section h2,.rw-labs-title{font-size:clamp(32px,8vw,48px)!important}.actions .btn{width:100%;text-align:center}.rw-labs-wrap{padding-inline:18px!important}.rw-labs-grid{grid-template-columns:1fr!important}.rw-lab-tile{min-height:0!important}.rw-lab-tile:before{height:195px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
