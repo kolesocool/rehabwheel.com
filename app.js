@@ -1,3 +1,5 @@
+/* Shared extra-50 visual refinements on all pages loading app.js. */
+(()=>{if(!document.querySelector('link[data-rw-extra50]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/bbdo-extra-50-20261029.css?v=1';l.dataset.rwExtra50='';document.head.appendChild(l);}})();
 /* Shared visual system on every page using app.js. */
 (()=>{if(!document.querySelector('link[data-rw-institutional-ui]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/institutional-ui.css?v=20261013';l.dataset.rwInstitutionalUi='';document.head.appendChild(l);}})();
 /* One consent source controls local analytics and GA4. */
