@@ -24,12 +24,18 @@ jobs:
           distribution: temurin
           java-version: "21"
       - uses: android-actions/setup-android@v3
+      - name: Install Android API 36 SDK
+        run: sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
       - name: Prepare public website
         run: node prepare.mjs
       - name: Install Capacitor
         run: npm install --no-audit --no-fund --no-save @capacitor/core@7 @capacitor/android@7 @capacitor/cli@7
       - name: Generate Android project
         run: npx cap add android && npx cap sync android
+          # Google Play August 2026 requirement: target API 36.
+          sed -i 's/targetSdkVersion = [0-9]*/targetSdkVersion = 36/' android/variables.gradle
+          sed -i 's/compileSdkVersion = [0-9]*/compileSdkVersion = 36/' android/variables.gradle
+          grep -E 'targetSdkVersion|compileSdkVersion' android/variables.gradle
       - name: Build Android debug APK and unsigned release AAB
         run: |
           cd android
