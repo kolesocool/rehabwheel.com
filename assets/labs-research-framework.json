@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "status": "concept-stage",
+  "notice": "Research concepts, not approved clinical studies. No enrollment or outcomes are implied.",
+  "domains": [
+    {
+      "id": "clinical",
+      "title": "Clinical research",
+      "labs": [
+        "hospital",
+        "home"
+      ],
+      "purpose": "Evaluate feasibility, usability, safety and measurement reliability under appropriately reviewed protocols."
+    },
+    {
+      "id": "performance",
+      "title": "Adaptive performance",
+      "labs": [
+        "soccer",
+        "basketball",
+        "hockey",
+        "mma"
+      ],
+      "purpose": "Explore accessible training and performance measurement questions; no sport-performance claims are established."
+    },
+    {
+      "id": "mobility",
+      "title": "Mobility & service-member recovery",
+      "labs": [
+        "military"
+      ],
+      "purpose": "Investigate mobility integration and wheelchair-first exercise concepts; no military deployment or affiliation is implied."
+    }
+  ],
+  "measures": [
+    {
+      "name": "Device performance",
+      "items": [
+        "RPM and revolutions",
+        "Resistance and workload",
+        "Battery runtime and fault events"
+      ]
+    },
+    {
+      "name": "Feasibility & usability",
+      "items": [
+        "Setup time",
+        "Wheelchair fit and transfers",
+        "Session completion and operator feedback"
+      ]
+    },
+    {
+      "name": "Safety & oversight",
+      "items": [
+        "Adverse events and device deficiencies",
+        "Emergency stop and obstruction response",
+        "Protocol deviations and stopping criteria"
+      ]
+    }
+  ],
+  "milestones": [
+    "Bench verification and documented risk assessment",
+    "Define intended use and determine study regulatory pathway",
+    "Protocol, ethics/IRB review and consent materials where required",
+    "Feasibility evaluation after applicable approvals",
+    "De-identified analysis and transparent reporting"
+  ]
+}
