@@ -416,3 +416,7 @@ document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>
 
 
 /* Contextual explanations for California innovation and prototype support */
+
+/* Consistent Rehabwheel identity across navigation, footer, mobile menu and dynamic content.
+   Uses the official site asset; leaves third-party and partner logos untouched. */
+(()=>{'use strict';const logo='/rehabwheel_logo.jpg?v=20261029';function sync(root=document){if(!root.querySelectorAll)return;root.querySelectorAll('img').forEach(img=>{const src=img.getAttribute('src')||'';const isOfficial=/rehabwheel[_-]?logo\.(?:jpg|jpeg|png|webp|svg)/i.test(src);const inBrand=!!img.closest('.brand,.footer-brand,.rw-header-brand-logo,[class*="rehabwheel-logo"],[class*="brand-mark"]');if(isOfficial||inBrand){if(img.getAttribute('src')!==logo)img.setAttribute('src',logo);img.setAttribute('alt','Rehabwheel');img.classList.add('rw-official-brand-image')}})}function start(){sync();const obs=new MutationObserver(records=>{for(const rec of records){if(rec.type==='childList'){rec.addedNodes.forEach(n=>{if(n.nodeType===1){if(n.matches?.('img'))sync(n.parentElement||document);else sync(n)}})}else if(rec.type==='attributes'&&rec.target.tagName==='IMG')sync(rec.target.parentElement||document)}});obs.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['src']})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()})();
