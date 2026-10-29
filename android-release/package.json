@@ -1,0 +1,17 @@
+{
+  "name": "rehabwheel-android",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "node prepare.mjs",
+    "android": "npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/core": "7.4.4",
+    "@capacitor/android": "7.4.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "7.4.4"
+  }
+}
