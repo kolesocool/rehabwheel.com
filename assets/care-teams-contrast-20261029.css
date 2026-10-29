@@ -1,0 +1,24 @@
+/* Care teams contrast correction: enforce readable text on all dark surfaces */
+#clinicians.clinician{background:#0b1117!important;color:#f4f8fb!important}
+#clinicians .wrap,#clinicians .section-head,#clinicians .care-section-head{color:#f4f8fb!important}
+#clinicians h2,#clinicians h3,#clinicians #care-title,#clinicians .clinical-side h3,#clinicians .clinical-main h3{color:#fff!important;-webkit-text-fill-color:#fff!important;opacity:1!important;text-shadow:none!important}
+#clinicians p,#clinicians .section-head p:not(.eyebrow),#clinicians .clinical-side p{color:#d5e1e8!important;-webkit-text-fill-color:#d5e1e8!important;opacity:1!important}
+#clinicians .eyebrow,#clinicians .clinical-side small{color:#b9e8d8!important;-webkit-text-fill-color:#b9e8d8!important;opacity:1!important}
+#clinicians .clinical-main,#clinicians .clinical-side article{background:#131f28!important;border:1px solid #38515e!important;color:#f4f8fb!important;box-shadow:0 10px 35px rgba(0,0,0,.15)!important;border-radius:22px!important}
+#clinicians .clinical-main *,#clinicians .clinical-side article *{opacity:1}
+#clinicians .clinical-main strong,#clinicians .clinical-main h3,#clinicians .clinical-main dd,#clinicians .big-number,#clinicians .mini-stats dd{color:#fff!important;-webkit-text-fill-color:#fff!important}
+#clinicians .clinical-main span,#clinicians .clinical-main dt,#clinicians .care-chart-head,#clinicians .care-preview-note,#clinicians .clinical-side .care-tags span{color:#d4e2ea!important;-webkit-text-fill-color:#d4e2ea!important}
+#clinicians .mini-stats>div,#clinicians .care-tags span{background:#1d303b!important;border:1px solid #3a5663!important}
+#clinicians .care-preview-badge{background:#204337!important;color:#d7fff0!important;-webkit-text-fill-color:#d7fff0!important;border:1px solid #387c65!important}
+#clinicians .care-overview-link{background:#fff!important;color:#102b35!important;-webkit-text-fill-color:#102b35!important;border:1px solid #fff!important}
+#clinicians .care-next-link{color:#a6f2d6!important;-webkit-text-fill-color:#a6f2d6!important;text-decoration:underline!important;text-underline-offset:4px}
+#clinicians .spark i{background:linear-gradient(180deg,#a5e7dc,#238a84)!important}
+#clinicians .care-chart-head{display:flex!important;gap:10px!important;flex-wrap:wrap!important;line-height:1.5!important}
+#clinicians .clinical-grid{gap:clamp(18px,3vw,34px)!important}
+#clinicians .clinical-side{display:grid!important;gap:18px!important;min-width:0!important}
+#clinicians .clinical-side article{min-width:0!important;padding:clamp(22px,4vw,34px)!important}
+#clinicians .clinical-main{min-width:0!important;padding:clamp(22px,4vw,36px)!important}
+#clinicians .care-section-head{gap:24px!important}
+#clinicians .care-section-head h2{font-size:clamp(34px,5vw,62px)!important;line-height:1.09!important;letter-spacing:-.045em!important}
+#clinicians a:focus-visible{outline:3px solid #b2ffe3!important;outline-offset:4px!important}
+@media(max-width:760px){#clinicians{padding-block:60px!important}#clinicians .wrap{width:calc(100% - 36px)!important}#clinicians .care-section-head{display:flex!important;flex-direction:column!important;align-items:stretch!important}#clinicians .care-section-head h2{font-size:clamp(34px,9vw,48px)!important}#clinicians .care-overview-link{width:100%!important;text-align:center!important;justify-content:center!important}#clinicians .clinical-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important}#clinicians .clinical-main,#clinicians .clinical-side article{padding:22px 18px!important}#clinicians .mini-stats{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}#clinicians .mini-stats>div{min-width:0!important;padding:12px 8px!important}#clinicians .mini-stats dt{font-size:12px!important;overflow-wrap:break-word!important}#clinicians .mini-stats dd{font-size:clamp(17px,4.5vw,23px)!important;overflow-wrap:break-word!important}#clinicians .care-cadence{display:flex!important;flex-wrap:wrap!important;gap:15px!important}#clinicians .big-number{font-size:clamp(56px,13vw,85px)!important}#clinicians .care-chart-head{font-size:13px!important}#clinicians .care-tags{display:flex!important;flex-wrap:wrap!important;gap:8px!important}}
