@@ -1,0 +1,101 @@
+/* Rehabwheel: 50 additional editorial UI refinements, 2026-10-29 */
+/* 01. Global design tokens */
+:root{--rw50-space:clamp(20px,4vw,56px);--rw50-radius:18px;--rw50-focus:#087d72}
+/* 02. Consistent box sizing */
+*,*:before,*:after{box-sizing:border-box}
+/* 03. Safe horizontal viewport */
+html{max-width:100%;overflow-x:clip}
+/* 04. Prevent overflow */
+body{max-width:100%;overflow-x:clip}
+/* 05. Legible font rendering */
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+/* 06. Clear link underline */
+main a:not(.btn):not(.rw-lab-tile){text-underline-offset:4px}
+/* 07. Keyboard focus */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--rw50-focus);outline-offset:3px}
+/* 08. Anchor scroll offset */
+[id]{scroll-margin-top:90px}
+/* 09. Readable paragraph width */
+main p{max-width:72ch}
+/* 10. Balanced section headings */
+main h1,main h2{overflow-wrap:anywhere;text-wrap:balance}
+/* 11. Hero title optical spacing */
+.hero h1{letter-spacing:-.05em;line-height:1.04}
+/* 12. Hero body rhythm */
+.hero .lede{line-height:1.65}
+/* 13. Editorial eyebrow labels */
+.eyebrow{letter-spacing:.13em;text-transform:uppercase}
+/* 14. Uniform section width */
+.section>.wrap{max-width:1180px}
+/* 15. Consistent section rhythm */
+.section{padding-block:clamp(56px,7vw,104px)}
+/* 16. Consistent section headings */
+.section-head{margin-bottom:clamp(26px,4vw,46px)}
+/* 17. Card line consistency */
+.cards article{border-width:1px}
+/* 18. Card corner consistency */
+.cards article,.panel,.research-card{border-radius:var(--rw50-radius)}
+/* 19. Card elevation */
+.cards article{box-shadow:0 6px 26px rgba(18,44,50,.045)}
+/* 20. Card hover feedback */
+@media(hover:hover){.cards article:hover{box-shadow:0 15px 40px rgba(18,44,50,.09)}}
+/* 21. Stable card heading line height */
+.cards h3{line-height:1.22}
+/* 22. Card paragraph line height */
+.cards p{line-height:1.65}
+/* 23. Photo responsiveness */
+main img{max-width:100%}
+/* 24. Photo aspect safety */
+main img{object-position:center}
+/* 25. Video responsiveness */
+main video{max-width:100%;height:auto}
+/* 26. Embed responsiveness */
+main iframe{max-width:100%}
+/* 27. Table scrolling */
+main table{display:block;max-width:100%;overflow-x:auto}
+/* 28. Prevent code overflow */
+main pre{max-width:100%;overflow:auto}
+/* 29. Button touch area */
+.btn,.rw-labs-cta{min-height:46px}
+/* 30. Button visual alignment */
+.btn{align-items:center;justify-content:center;text-align:center}
+/* 31. Button type consistency */
+.btn{line-height:1.25}
+/* 32. Button active feedback */
+.btn:active{transform:translateY(1px)}
+/* 33. Button disabled clarity */
+button:disabled,.btn[aria-disabled=true]{opacity:.55;cursor:not-allowed}
+/* 34. Navigation alignment */
+.site-header .nav{align-items:center}
+/* 35. Navigation breathing room */
+.site-header .nav{gap:clamp(10px,2vw,24px)}
+/* 36. Header stacking */
+.site-header{isolation:isolate}
+/* 37. Brand logo fidelity */
+.rw-header-brand-logo{object-fit:contain;object-position:left center}
+/* 38. Footer link affordance */
+footer a{text-underline-offset:4px}
+/* 39. Form font consistency */
+input,button,textarea,select{font:inherit}
+/* 40. Input size safety */
+input,textarea,select{max-width:100%}
+/* 41. Form labels */
+label{line-height:1.45}
+/* 42. Visible placeholder contrast */
+input::placeholder,textarea::placeholder{opacity:.75}
+/* 43. Small-screen content gutter */
+@media(max-width:620px){main .wrap{width:calc(100% - 36px)}}
+/* 44. Small-screen headings */
+@media(max-width:620px){main h1{font-size:clamp(36px,10vw,54px)}main h2{font-size:clamp(30px,8vw,44px)}}
+/* 45. Small-screen paragraph sizing */
+@media(max-width:620px){main p{font-size:clamp(15px,4vw,18px)}}
+/* 46. Small-screen card spacing */
+@media(max-width:620px){.cards article,.panel,.research-card{padding:clamp(20px,5vw,28px)}}
+/* 47. Small-screen button stack */
+@media(max-width:620px){.hero .actions{gap:12px}.hero .actions .btn{width:100%}}
+/* 48. Small-screen photo fit */
+@media(max-width:620px){main img{max-width:100%;height:auto}}
+/* 49. Motion preference */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+/* 50. Print cleanliness */
+@media print{.site-header{position:static!important;box-shadow:none!important}.btn{box-shadow:none!important}.section{break-inside:avoid}}
