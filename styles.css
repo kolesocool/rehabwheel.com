@@ -1888,3 +1888,103 @@ body .inst-banner .inst-btn:hover{background:#e6f5f3;color:#103e49!important;}
 /* Preserve light introductory copy against the explorer hero's dark background. */
 #main.explore .ex-hero p{color:#d8eeec!important}
 #main.explore .ex-hero .ex-kicker{color:#91dfce!important}
+
+
+/* Rehabwheel homepage pathways: accessible cards and CTAs, November 2026 */
+body .rw26-pathways {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(16px, 2vw, 28px);
+  padding-block: clamp(24px, 4vw, 48px);
+}
+body .rw26-pathways > article {
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 3vw, 38px);
+  overflow-wrap: anywhere;
+  background: #fff;
+  border: 1px solid #d9e5e4;
+  border-radius: 22px;
+  box-shadow: 0 12px 30px rgba(12, 41, 49, .055);
+}
+body .rw26-pathways .rw26-index {
+  display: block;
+  margin-bottom: 20px;
+  color: #126567;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  line-height: 1.5;
+}
+body .rw26-pathways > article > h2 {
+  max-width: 100%;
+  margin: 0 0 18px;
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1.13;
+  letter-spacing: -.035em;
+  color: #102e38 !important;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+body .rw26-pathways > article > p {
+  margin: 0 0 28px;
+  max-width: 48ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #344b56 !important;
+  opacity: 1;
+}
+body .rw26-pathways > article > a,
+body .rw26-pathways > article > a:visited {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 50px;
+  margin-top: auto;
+  padding: 12px 18px;
+  border: 2px solid #00715e;
+  border-radius: 999px;
+  background: #00715e !important;
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  opacity: 1;
+  box-shadow: 0 6px 14px rgba(0, 96, 80, .14);
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+body .rw26-pathways > article > a span { color: #fff !important; opacity: 1; }
+body .rw26-pathways > article > a:hover {
+  background: #005647 !important;
+  border-color: #005647;
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+body .rw26-pathways > article > a:focus-visible {
+  outline: 3px solid #0a7895;
+  outline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  body .rw26-pathways { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body .rw26-pathways > article:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 640px) {
+  body .rw26-pathways { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  body .rw26-pathways > article:last-child { grid-column: auto; }
+  body .rw26-pathways > article { padding: 24px; }
+  body .rw26-pathways > article > h2 { font-size: clamp(27px, 7vw, 34px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body .rw26-pathways > article > a { transition: none; }
+  body .rw26-pathways > article > a:hover { transform: none; }
+}
