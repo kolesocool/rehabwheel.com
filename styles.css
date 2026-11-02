@@ -1988,3 +1988,23 @@ body .rw26-pathways > article > a:focus-visible {
   body .rw26-pathways > article > a { transition: none; }
   body .rw26-pathways > article > a:hover { transform: none; }
 }
+
+/* Homepage pathways CTA contrast — keep all link states legible on green. */
+html body section.rw26-pathways.wrap > article > a:link,
+html body section.rw26-pathways.wrap > article > a:visited,
+html body section.rw26-pathways.wrap > article > a:hover,
+html body section.rw26-pathways.wrap > article > a:focus-visible,
+html body section.rw26-pathways.wrap > article > a:active {
+  background-color: #00715e !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+}
+html body section.rw26-pathways.wrap > article > a:hover,
+html body section.rw26-pathways.wrap > article > a:focus-visible {
+  background-color: #005647 !important;
+}
+html body section.rw26-pathways.wrap > article > a span {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
