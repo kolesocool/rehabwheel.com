@@ -2008,3 +2008,35 @@ html body section.rw26-pathways.wrap > article > a span {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+
+/* Minimal editorial treatment — LegMaker homepage, November 2026 */
+.rw-minimal-intro {padding-block:clamp(72px,9vw,132px);max-width:1160px}
+.rw-minimal-intro h2 {max-width:920px;margin:12px 0 20px;letter-spacing:-.055em;line-height:1.02}
+.rw-minimal-intro>p:not(.eyebrow) {max-width:620px;font-size:clamp(17px,1.4vw,20px);line-height:1.65;color:#52626b}
+.rw-minimal-link {display:inline-flex;gap:14px;margin-top:18px;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:5px}
+.rw-minimal-gallery {padding-block:clamp(72px,8vw,112px)}
+.rw-minimal-gallery .section-head {margin-bottom:32px}
+.rw-minimal-gallery .section-head h2 {max-width:800px;letter-spacing:-.045em}
+.rw-minimal-gallery .prototype-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.rw-minimal-gallery .prototype-card {overflow:hidden;border-radius:14px;background:#fff}
+.rw-minimal-gallery .prototype-card img {width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.rw-minimal-gallery .prototype-card figcaption {padding:15px 18px}
+.rw-minimal-gallery .prototype-card figcaption strong {font-size:15px;line-height:1.3}
+.rw-minimal-gallery .prototype-note {margin-top:20px}
+.rw-minimal-faq {padding-block:clamp(72px,8vw,112px)}
+.rw-minimal-faq .section-head {margin-bottom:28px}
+.rw-minimal-faq .section-head h2 {letter-spacing:-.045em}
+.rw-minimal-faq-list {max-width:900px;border-top:1px solid #d5dedd}
+.rw-minimal-faq-list details {border-bottom:1px solid #d5dedd;padding:0;background:transparent}
+.rw-minimal-faq-list summary {cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;list-style:none;font-size:clamp(18px,2vw,23px);font-weight:700;letter-spacing:-.025em;padding:25px 4px;color:#11272f}
+.rw-minimal-faq-list summary::-webkit-details-marker {display:none}
+.rw-minimal-faq-list summary::after {content:"+";font-size:27px;font-weight:400;color:#44605d}
+.rw-minimal-faq-list details[open] summary::after {content:"−"}
+.rw-minimal-faq-list details p {max-width:700px;margin:0;padding:0 30px 27px 4px;color:#52626b;line-height:1.7}
+.rw-minimal-faq-list a {color:#126b62;text-underline-offset:3px}
+@media(max-width:760px) {
+  .rw-minimal-gallery .prototype-grid {grid-template-columns:1fr;gap:20px}
+  .rw-minimal-gallery .prototype-card img {aspect-ratio:16/10}
+  .rw-minimal-intro,.rw-minimal-gallery,.rw-minimal-faq {padding-block:64px}
+}
