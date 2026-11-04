@@ -2040,3 +2040,9 @@ html body section.rw26-pathways.wrap > article > a span {
   .rw-minimal-gallery .prototype-card img {aspect-ratio:16/10}
   .rw-minimal-intro,.rw-minimal-gallery,.rw-minimal-faq {padding-block:64px}
 }
+
+.rw-minimal-modes .mode-stage {display:block;max-width:940px;min-height:0;padding:clamp(28px,4vw,52px);background:transparent;border:1px solid rgba(255,255,255,.17);border-radius:16px}
+.rw-minimal-modes .mode-stage>div:first-child {max-width:660px}
+.rw-minimal-modes .mode-stage h3 {font-size:clamp(26px,3vw,42px);letter-spacing:-.04em}
+.rw-minimal-modes .mode-stage p {max-width:600px}
+.rw-minimal-modes .agency-mode-note {font-size:12px;opacity:.75}
