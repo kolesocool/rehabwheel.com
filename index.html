@@ -82,6 +82,26 @@
 #rw-front-video iframe:fullscreen{width:100vw;height:100vh;pointer-events:auto}
 @media(max-width:700px){#rw-front-video{min-height:500px;height:calc(100svh - 64px)}#rw-front-video iframe{width:max(100vw,177.78svh);height:max(56.25vw,100svh)}#rw-front-video .rw-front-video-copy{width:calc(100% - 44px);margin:0 22px}#rw-front-video .rw-front-video-copy h2{font-size:clamp(40px,10vw,54px)!important}#rw-front-video .rw-front-video-description{font-size:16px!important}#rw-front-video .rw-front-video-shade{background:linear-gradient(90deg,rgba(3,12,22,.78),rgba(3,12,22,.28)),linear-gradient(0deg,rgba(3,12,22,.55),transparent 65%)}}
 @media(prefers-reduced-motion:reduce){#rw-front-video .rw-front-video-copy{transition:none}}
+</style><style id="rw-gallery-lightbox-styles">
+.prototype-gallery .rw-gallery-open{position:relative;display:block;width:100%;padding:0;margin:0;border:0;background:transparent;cursor:zoom-in;text-align:inherit;overflow:hidden}
+.prototype-gallery .rw-gallery-open img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+.prototype-gallery .rw-gallery-open:hover img{transform:scale(1.025)}
+.prototype-gallery .rw-gallery-open:focus-visible{outline:3px solid #167f85;outline-offset:-3px}
+.prototype-gallery .rw-gallery-hint{position:absolute;right:12px;bottom:12px;padding:7px 12px;border-radius:99px;background:rgba(9,20,29,.85);color:#fff;font-size:12px;font-weight:750;line-height:1.4}
+.rw-gallery-lightbox{position:fixed;inset:0;width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;padding:0;border:0;background:#060c12;color:white;overflow:hidden}
+.rw-gallery-lightbox::backdrop{background:rgba(0,0,0,.96)}
+.rw-gallery-lightbox[open]{display:flex;align-items:center;justify-content:center}
+.rw-gallery-viewer{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:76px 80px 70px}
+.rw-gallery-viewer img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;border-radius:3px}
+.rw-gallery-viewer button{position:absolute;z-index:2;display:grid;place-items:center;width:46px;height:46px;padding:0;border:1px solid rgba(255,255,255,.45);border-radius:50%;background:rgba(12,24,33,.82);color:#fff;font-size:32px;cursor:pointer}
+.rw-gallery-viewer button:hover{background:#167f85}
+.rw-gallery-viewer button:focus-visible{outline:3px solid #8dece7;outline-offset:3px}
+.rw-gallery-close{right:22px;top:20px}
+.rw-gallery-prev{left:19px;top:50%;transform:translateY(-50%)}
+.rw-gallery-next{right:19px;top:50%;transform:translateY(-50%)}
+.rw-gallery-meta{position:absolute;left:25px;bottom:20px;right:25px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:14px;color:#fff;font-weight:650}
+@media(max-width:700px){.rw-gallery-viewer{padding:72px 10px 78px}.rw-gallery-viewer button{width:39px;height:39px;font-size:27px}.rw-gallery-prev{left:10px;top:auto;bottom:15px;transform:none}.rw-gallery-next{right:10px;top:auto;bottom:15px;transform:none}.rw-gallery-meta{left:64px;right:64px;bottom:24px;justify-content:center;text-align:center;font-size:12px}.rw-gallery-meta #rw-gallery-count{display:none}}
+@media(prefers-reduced-motion:reduce){.prototype-gallery .rw-gallery-open img{transition:none}}
 </style></head>
 <body class="agency-site"><a class="skip-link" href="#main">Skip to content</a><a class="skip-link skip-footer" href="#site-footer">Skip to footer links</a>
 <div class="progress" id="progress"></div>
@@ -208,13 +228,49 @@
       <p>See the investigational LegMaker prototype and its wheelchair-mounted attachment.</p>
     </div>
     <div class="prototype-grid">
-      <figure class="prototype-card"><img src="assets/photos/img_6022.webp" alt="LegMaker prototype mounted on a manual wheelchair" loading="lazy" decoding="async" width="1440" height="960"><figcaption><strong>Wheelchair integration</strong></figcaption></figure>
-      <figure class="prototype-card"><img src="assets/photos/img_6013.webp" alt="Detail of the LegMaker wheelchair attachment hardware" loading="lazy" decoding="async" width="1440" height="960"><figcaption><strong>Attachment detail</strong></figcaption></figure>
-      <figure class="prototype-card"><img src="assets/photos/legmaker-seated-demonstration.webp" alt="Seated user demonstrating the LegMaker development prototype" loading="lazy" decoding="async" width="1440" height="960"><figcaption><strong>Seated demonstration</strong></figcaption></figure>
+      <figure class="prototype-card"><button class="rw-gallery-open" type="button" data-rw-gallery-index="0" aria-label="Open Wheelchair integration photograph in full-screen viewer"><img src="assets/photos/img_6022.webp" alt="LegMaker prototype mounted on a manual wheelchair" loading="lazy" decoding="async" width="1440" height="960"><span class="rw-gallery-hint" aria-hidden="true">⛶ View photo</span></button><figcaption><strong>Wheelchair integration</strong></figcaption></figure>
+      <figure class="prototype-card"><button class="rw-gallery-open" type="button" data-rw-gallery-index="1" aria-label="Open Attachment detail photograph in full-screen viewer"><img src="assets/photos/img_6013.webp" alt="Detail of the LegMaker wheelchair attachment hardware" loading="lazy" decoding="async" width="1440" height="960"><span class="rw-gallery-hint" aria-hidden="true">⛶ View photo</span></button><figcaption><strong>Attachment detail</strong></figcaption></figure>
+      <figure class="prototype-card"><button class="rw-gallery-open" type="button" data-rw-gallery-index="2" aria-label="Open Seated demonstration photograph in full-screen viewer"><img src="assets/photos/legmaker-seated-demonstration.webp" alt="Seated user demonstrating the LegMaker development prototype" loading="lazy" decoding="async" width="1440" height="960"><span class="rw-gallery-hint" aria-hidden="true">⛶ View photo</span></button><figcaption><strong>Seated demonstration</strong></figcaption></figure>
     </div>
+    <dialog id="rw-gallery-lightbox" class="rw-gallery-lightbox" aria-label="LegMaker photo gallery">
+      <div class="rw-gallery-viewer">
+        <button type="button" class="rw-gallery-close" aria-label="Close photo viewer">×</button>
+        <button type="button" class="rw-gallery-prev" aria-label="Previous photo">‹</button>
+        <img id="rw-gallery-image" alt="" width="1440" height="960">
+        <button type="button" class="rw-gallery-next" aria-label="Next photo">›</button>
+        <div class="rw-gallery-meta"><span id="rw-gallery-caption"></span><span id="rw-gallery-count"></span></div>
+      </div>
+    </dialog>
     <p class="prototype-note">Investigational prototype. Specifications may change. <a href="photos.html">View all photos ↗</a></p>
   </div>
-</section>
+</section><script id="rw-gallery-lightbox-script">
+(function(){
+  var root=document.querySelector('.prototype-gallery'),dialog=document.getElementById('rw-gallery-lightbox');
+  if(!root||!dialog)return;
+  var buttons=Array.from(root.querySelectorAll('.rw-gallery-open'));
+  var image=document.getElementById('rw-gallery-image');
+  var caption=document.getElementById('rw-gallery-caption');
+  var count=document.getElementById('rw-gallery-count');
+  var index=0;
+  function render(n){
+    index=(n+buttons.length)%buttons.length;
+    var card=buttons[index],photo=card.querySelector('img');
+    image.src=photo.currentSrc||photo.src;
+    image.alt=photo.alt;
+    caption.textContent=card.closest('figure').querySelector('figcaption').textContent.trim();
+    count.textContent=(index+1)+' / '+buttons.length;
+  }
+  buttons.forEach(function(btn,i){btn.addEventListener('click',function(){render(i);dialog.showModal();});});
+  dialog.querySelector('.rw-gallery-close').addEventListener('click',function(){dialog.close();});
+  dialog.querySelector('.rw-gallery-prev').addEventListener('click',function(){render(index-1);});
+  dialog.querySelector('.rw-gallery-next').addEventListener('click',function(){render(index+1);});
+  dialog.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();render(index+1);}
+    if(e.key==='ArrowLeft'){e.preventDefault();render(index-1);}
+  });
+  dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close();});
+})();
+</script>
 
 <section class="rw-seo-questions section wrap rw-minimal-faq" id="legmaker-questions" aria-labelledby="legmaker-questions-title">
   <div class="section-head"><p class="eyebrow">COMMON QUESTIONS</p><h2 id="legmaker-questions-title">The essentials.</h2></div>
