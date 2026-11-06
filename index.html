@@ -80,6 +80,35 @@
 #rw-front-video iframe:fullscreen{width:100vw;height:100vh;top:50%;left:50%;pointer-events:auto}
 @media(max-width:700px){#rw-front-video{height:calc(100svh - 64px);min-height:500px}#rw-front-video iframe{width:max(100vw,177.78svh);height:max(56.25vw,100svh)}#rw-front-video .rw-front-video-copy{left:22px;right:22px;bottom:40px}#rw-front-video .rw-front-video-actions a,#rw-front-video .rw-front-video-actions button{padding:11px 15px}}
 @media(prefers-reduced-motion:reduce){#rw-front-video .rw-front-video-shade{background:linear-gradient(180deg,rgba(3,12,27,.25),rgba(3,12,27,.75))}}
+
+/* Hero readability: enforce white on all video-overlay copy despite global site rules. */
+#rw-front-video .rw-front-video-shade{
+  background:linear-gradient(90deg,rgba(4,13,26,.84) 0%,rgba(4,13,26,.62) 48%,rgba(4,13,26,.24) 100%),linear-gradient(0deg,rgba(4,13,26,.58),transparent 70%);
+}
+#rw-front-video .rw-front-video-copy{
+  max-width:650px;
+  padding:26px 28px;
+  border-radius:20px;
+  background:rgba(4,13,26,.57);
+}
+#rw-front-video .rw-front-video-copy .rw-front-video-kicker,
+#rw-front-video .rw-front-video-copy h2,
+#rw-front-video .rw-front-video-copy .rw-front-video-description,
+#rw-front-video .rw-front-video-fallback{
+  color:#fff!important;
+  opacity:1!important;
+  text-shadow:0 1px 3px rgba(0,0,0,.25);
+}
+#rw-front-video .rw-front-video-copy .rw-front-video-kicker{font-size:14px!important;letter-spacing:.15em}
+#rw-front-video .rw-front-video-copy .rw-front-video-description{font-size:18px!important;line-height:1.6!important;max-width:52ch}
+#rw-front-video .rw-front-video-copy h2{margin:0 0 18px!important;line-height:1.08!important;font-size:clamp(42px,5.5vw,74px)!important}
+#rw-front-video .rw-front-video-actions a{color:#10242b!important}
+#rw-front-video .rw-front-video-actions button{color:#fff!important}
+@media(max-width:700px){
+  #rw-front-video .rw-front-video-copy{padding:20px 18px;left:18px;right:18px;bottom:25px}
+  #rw-front-video .rw-front-video-copy h2{font-size:42px!important}
+  #rw-front-video .rw-front-video-copy .rw-front-video-description{font-size:16px!important}
+}
 </style></head>
 <body class="agency-site"><a class="skip-link" href="#main">Skip to content</a><a class="skip-link skip-footer" href="#site-footer">Skip to footer links</a>
 <div class="progress" id="progress"></div>
