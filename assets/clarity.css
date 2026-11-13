@@ -39,6 +39,12 @@
 .agency-site .rw-video-card > a{padding-inline:18px!important;margin-bottom:18px!important;font-size:14px!important;line-height:1.6!important}
 /* 020: Use an uninterrupted widescreen video surface. */
 .agency-site .rw-video-frame{aspect-ratio:16/9!important;border-radius:0!important}
+/* Keep the vertical YouTube Short in the same full-width frame as the other videos. */
+.agency-site #video-short-m4zPuwhUrSs .rw-video-frame{
+  width:100%!important;
+  max-width:none!important;
+  margin-inline:0!important;
+}
 /* 021: Group the five visualization links on one calm surface. */
 .agency-site .rw-explorer-entry{padding:28px!important;border-radius:18px!important;background:#eaf2ee!important}
 /* 022: Make the visualization introduction easier to scan. */
