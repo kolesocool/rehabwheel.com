@@ -3,7 +3,7 @@
    only after consent has been obtained. No personal data in events. */
 (function () {
   "use strict";
-  const allowed = new Set(["page_view","cta_click","navigation_click","outbound_click","demo_request_submitted","contact_request_submitted","newsletter_opt_in_confirmed","purchase_order_request_submitted","funding_resource_clicked","research_collaboration_request_submitted","assistant_opened","assistant_interaction_completed","form_validation_error","site_search","download_click","video_play","video_complete","not_found","form_handoff","inquiry_provider_accepted","purchase_provider_accepted","newsletter_request_accepted"]);
+  const allowed = new Set(["page_view","cta_click","navigation_click","outbound_click","demo_request_submitted","contact_request_submitted","newsletter_opt_in_confirmed","purchase_order_request_submitted","funding_resource_clicked","research_collaboration_request_submitted","assistant_opened","assistant_interaction_completed","form_validation_error","site_search","download_click","video_play","video_complete","not_found","form_handoff","inquiry_provider_accepted","purchase_provider_accepted","newsletter_request_accepted","generate_lead","demo_booking_started"]);
   const config = window.REHABWHEEL_ANALYTICS || {};
   // Site owners may set a measurement ID through a separate, public config file.
   // Consent must be explicitly granted; never infer it from browsing.
@@ -41,6 +41,7 @@
     let target;
     try { target = new URL(a.href, location.href); } catch (_) { return; }
     if (!/^https?:$/.test(target.protocol)) return;
+    if (target.hostname === "calendly.com" || target.hostname.endsWith(".calendly.com")) send("demo_booking_started", {category:"booking"});
     if (target.origin !== location.origin) send("outbound_click", {category:"external"});
     else if (a.closest("nav")) send("navigation_click", {category:"navigation"});
     else if (a.classList.contains("btn")) send("cta_click", {category:"button"});
