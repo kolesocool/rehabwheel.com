@@ -4,13 +4,13 @@ const init=()=>{
  const current=location.pathname==='/'?'/index.html':location.pathname;
  document.querySelectorAll('.site-header a[href]').forEach(a=>{const u=new URL(a.href,location.href);if(u.pathname===current&&!u.hash)a.setAttribute('aria-current','page');});
  document.querySelectorAll('[data-print-page]').forEach(b=>b.addEventListener('click',()=>window.print()));
- document.querySelectorAll('.web-contact-form,.rw-subscribe-form').forEach(form=>{
+ document.querySelectorAll('.web-contact-form,.rw-subscribe-form,.rw-booking-form').forEach(form=>{
   const fallback=document.createElement('p');fallback.className='agency-form-fallback';fallback.innerHTML='Prefer email? <a href="mailto:nikita@rehabwheel.com">nikita@rehabwheel.com</a>';form.append(fallback);
   const status=document.createElement('p');status.className='agency-submit-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');form.append(status);
   form.querySelectorAll('[required]').forEach(field=>{const label=field.closest('label')?.querySelector('span');if(label&&!label.querySelector('.agency-required')){const mark=document.createElement('small');mark.className='agency-required';mark.textContent=' (required)';label.append(mark);}});
  });
  document.addEventListener('submit',async event=>{
-  const form=event.target;if(!form.matches('.web-contact-form,.rw-subscribe-form'))return;
+  const form=event.target;if(!form.matches('.web-contact-form,.rw-subscribe-form,.rw-booking-form'))return;
   const prevented=event.defaultPrevented;event.preventDefault();
   if(prevented||!form.checkValidity()||form.dataset.sending==='true'||form.dataset.accepted==='true')return;
   const action=new URL(form.action);if(action.origin!=='https://formsubmit.co')return;
@@ -24,8 +24,11 @@ const init=()=>{
    status.textContent=newsletter?'Your subscription request was accepted by the delivery service. The Rehabwheel team still needs to process it.':order?'Your purchasing inquiry was accepted by the delivery service for team review. This is not an order confirmation.':'Your inquiry was accepted by the delivery service. The Rehabwheel team will review it and respond by email.';
    form.dataset.accepted='true';button.textContent='Request sent';
    const eventName=newsletter?'newsletter_request_accepted':order?'purchase_provider_accepted':'inquiry_provider_accepted';
-   const type=newsletter?'newsletter':order?'purchase_order':form.querySelector('#inquiryType')?.value==='LegMaker Demo Request'?'demo':'contact';
+   const type=newsletter?'newsletter':order?'purchase_order':form.matches('.rw-booking-form')||form.querySelector('#inquiryType')?.value==='LegMaker Demo Request'?'demo':'contact';
    window.RehabwheelAnalytics?.track(eventName,{form_type:type});
+   // Count leads only after a verified successful FormSubmit AJAX receipt.
+   // Newsletter opt-ins are tracked separately and are not sales leads.
+   if(!newsletter)window.RehabwheelAnalytics?.track('generate_lead',{form_type:type});
    const again=document.createElement('button');again.type='button';again.className='agency-reset';again.textContent='Start a new request';again.addEventListener('click',()=>{form.reset();form.dataset.accepted='false';button.disabled=false;button.innerHTML=old;status.textContent='';again.remove();form.querySelector('input:not([type=hidden]):not([name=_honey]),select')?.focus();});status.after(again);
   }catch{status.textContent='We could not confirm acceptance. Your entries are still here. Check your connection before retrying, or contact us by email below.';button.disabled=false;button.innerHTML=old;}
   finally{form.dataset.sending='false';form.removeAttribute('aria-busy');}
