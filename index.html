@@ -1,5 +1,12 @@
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
+<script>
+// GitHub Pages serves this file for both / and /index.html.
+// Normalize explicit index.html visits before analytics and other scripts run.
+if (location.pathname === '/index.html') {
+  location.replace('/' + location.search + location.hash);
+}
+</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>LegMaker Wheelchair Cycling Device | Rehabwheel</title>
 <meta name="description" content="Discover LegMaker, an investigational device for seated lower-limb cycling with a manual wheelchair. View prototype photos, videos and evaluation information.">
