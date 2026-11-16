@@ -1,0 +1,32 @@
+.careers-page{--career-ink:#102923;--career-green:#176659;--career-paper:#f4f6ef;color:var(--career-ink)}
+.careers-page h1,.careers-page h2,.careers-page h3{margin:0;letter-spacing:-.045em;line-height:1.08;color:inherit}
+.careers-page h1{font-size:clamp(2.85rem,6vw,5.75rem);max-width:12ch;text-wrap:balance}
+.careers-page h2{font-size:clamp(2.2rem,4.4vw,4rem);text-wrap:balance}
+.careers-page h3{font-size:clamp(1.28rem,2vw,1.6rem);letter-spacing:-.025em}
+.careers-page a:focus-visible{outline:3px solid #39897b;outline-offset:5px}
+.careers-hero{background:var(--career-paper);padding:clamp(56px,8vw,112px) 0}
+.careers-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,92px);align-items:center}
+.careers-kicker{margin:0 0 20px;font-weight:750;color:#285c50;font-size:.85rem;letter-spacing:.04em}
+.careers-lead,.careers-intro{font-size:clamp(1.05rem,1.8vw,1.25rem);max-width:53ch;line-height:1.65;margin:22px 0 28px;color:#344b44}
+.careers-photo{margin:0}
+.careers-photo img{display:block;width:100%;aspect-ratio:1.14;object-fit:cover;border-radius:14px}
+.careers-photo figcaption{margin:9px 0 0;font-size:.84rem;color:#425950}
+.careers-page .careers-button{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;padding:.75rem 1.15rem;min-height:46px;font-size:.94rem;font-weight:750;border-radius:999px;background:var(--career-green);color:#fff;text-decoration:none}
+.careers-page .careers-button:hover{background:#10493f;color:#fff}
+.careers-section{padding-block:clamp(58px,8vw,104px)}
+.careers-principles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(22px,4vw,54px);margin-top:36px}
+.careers-principles article{border-top:1px solid #b5cbc2;padding-top:20px}
+.careers-principles p,.careers-opportunity p{margin:12px 0 0;color:#344b44;max-width:63ch}
+.careers-work{background:var(--career-ink);color:#f7faf5;padding:clamp(56px,8vw,104px) 0}
+.careers-work .careers-kicker,.careers-work a{color:#bde9db}
+.careers-work a,.careers-contact a{font-weight:700;text-underline-offset:.24em}
+.careers-work p:not(.careers-kicker){margin:0 0 20px;max-width:54ch;font-size:1.12rem;line-height:1.7}
+.careers-opportunity{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:25px 0;border-top:1px solid #b5cbc2}
+.careers-opportunity:last-of-type{border-bottom:1px solid #b5cbc2}
+.careers-opportunity .careers-button{flex-shrink:0}
+.careers-contact{margin:26px 0 0;color:#344b44;overflow-wrap:anywhere}
+@media(max-width:760px){
+  .careers-split,.careers-principles{grid-template-columns:minmax(0,1fr)}
+  .careers-opportunity{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html:has(.careers-page){scroll-behavior:auto}}
